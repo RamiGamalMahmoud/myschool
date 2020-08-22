@@ -2,7 +2,10 @@
 
 namespace SM\Models;
 
-interface IModel extends IRead, IWrite
+interface IModel
 {
-    
+    function read($argv = []);
+    function insert($argv = []);
+    function update($argv = []);
+    function delete($argv = []);
 }
