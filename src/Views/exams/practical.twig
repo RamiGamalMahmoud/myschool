@@ -76,15 +76,7 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-					{% for row in data %}
-						<tr>
-							{% for key, item in row %}
-								<td dataname="{{ key }}" contenteditable={{ key in notEditable ? "false" : "true" }}>
-									{{ item < 0 ? 'غ' : item}}
-								</td>
-							{% endfor %}
-						</tr>
-					{% endfor %}
+					{% include "exams/table-content.twig" %}
 				</tbody>
 			</table>
 		</div>
