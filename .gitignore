@@ -1,0 +1,6 @@
+notes/
+storage/
+test/
+lib/
+vendor/
+composer.lock

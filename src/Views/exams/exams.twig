@@ -1,0 +1,150 @@
+{% extends parentTemplate %}
+
+{% block childCSS %}
+	<link rel="stylesheet" href="/css/exams/content.css">
+{% endblock childCSS %}
+
+{% block content %}
+
+	<div
+		class='content'>
+
+		<!-- The Header of the page -->
+		<div class='page-header'>
+			<div class='page-data'>
+				<span class='grade-name'>الكنترول</span>
+			</div>
+
+			<div class='menu-bar'>
+
+				<div class='menu'>
+					<span class='menu-title'>الصف</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<a href='{{ linkPrefex }}/view/1' class='menu-btn'>الأول</a>
+							<a href='{{ linkPrefex }}/view/2' class='menu-btn'>الثاني</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title'>رصد الدور الأول</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<div class='sub-menu'>
+								<span class='sub-menu-title'>التيرم الأول</span>
+								<div class='sub-menu-content'>
+									<div class='wrapper'>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/evaluation/fs' class='menu-btn'>التقويمات</a>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/practical/fs' class='menu-btn'>العملي</a>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/written/fs' class='menu-btn'>التحريري</a>
+									</div>
+								</div>
+							</div>
+
+							<div class='sub-menu'>
+								<span class='sub-menu-title'>التيرم الثاني</span>
+								<div class='sub-menu-content'>
+									<div class='wrapper'>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/evaluation/ss' class='menu-btn'>التقويمات</a>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/practical/ss' class='menu-btn'>العملي</a>
+										<a href='{{ linkPrefex }}/view/{{ gradeNumber ? : 1 }}/monitoring/written/ss' class='menu-btn'>التحريري</a>
+									</div>
+								</div>
+							</div>
+							<a href='' class='menu-btn'>تقارير الرصد</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title'>الشهادات</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<a href='' class='menu-btn'>نصف العام</a>
+							<a href='' class='menu-btn'>آخر العام</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title'>الشيتات</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<a href='' class='menu-btn' class='menu-btn'>نصف العام</a>
+							<a href='' class='menu-btn'>آخر العام</a>
+							<a href='' class='menu-btn'>ناجح</a>
+							<a href='' class='menu-btn'>له دور ثان</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title'>كشوف</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<div class='sub-menu'>
+								<span class='sub-menu-title'>العشرة الأوائل</span>
+								<div class='sub-menu-content'>
+									<div class='wrapper'>
+										<a href='' class='menu-btn'>التيرم الأول</a>
+										<a href='' class='menu-btn'>آخر العام</a>
+									</div>
+								</div>
+							</div>
+
+							<div class='sub-menu'>
+								<span class='sub-menu-title'>نتيجة إجمالية</span>
+								<div class='sub-menu-content'>
+									<div class='wrapper'>
+										<a href='' class='menu-btn'>التيرم الأول</a>
+										<a href='' class='menu-btn'>آخر العام</a>
+										<a href='' class='menu-btn'>بعد الدور الثاني</a>
+									</div>
+								</div>
+							</div>
+							<a href='' class='menu-btn'>ناجحون دور أول و ثان</a>
+							<a href='' class='menu-btn'>راسب و باق للإعادة</a>
+							<a href='' class='menu-btn'>محول مهني</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title'>إحصاءات</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<a href='' class='menu-btn'>التيرم الأول</a>
+							<a href='' class='menu-btn'>آخر العام</a>
+							<a href='' class='menu-btn'>بعد الدور الثاني</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu'>
+					<span class='menu-title last'>الدور الثاني</span>
+					<div class='menu-content'>
+						<div class='wrapper'>
+							<a href='' class='menu-btn'>كشوف المناداة</a>
+							<a href='' class='menu-btn'>دليل الدور الثاني</a>
+							<a href='' class='menu-btn'>توقيع الدور الثاني</a>
+						</div>
+					</div>
+				</div>
+
+				<div class='menu' id='options'>
+					<span class='show-hide-colors menu-title'>إخفاء الألوان</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	{% if childTemplate %}
+		{% include childTemplate %}
+	{% endif %}
+
+{% endblock content %}
+{% block js %}
+	<script src="/js/exams/content.js" type="module"></script>
+{% endblock js %}

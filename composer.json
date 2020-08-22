@@ -1,0 +1,25 @@
+{
+    "name": "rami-gamal/schl",
+    "description": "simple web applicaton for school",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Rami Gamal",
+            "email": "rami.gamal.mahmoud@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "twig/twig": "3.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "SM\\": "src/",
+            "Simple\\": "lib/Simple"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.4@dev"
+    }
+}

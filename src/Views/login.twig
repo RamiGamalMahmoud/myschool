@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block css %}
+<link rel="stylesheet" href="/css/login.css">
+{% endblock css %}
+
+
+
+{% block title %}
+تسجيل الدخول
+{% endblock title %}
+
+
+
+{% block body %}
+
+<h2>مرحبا بك في برنامج الإدارة المدرسية</h2>
+<form class="login-form" action="" method="post">
+    <input class="userName" type="text" name="userName" id="userName" placeholder="اسم المستخدم" autocomplete="off">
+    <input class="password" type="password" name="password" id="password" placeholder="كلمة المرور"
+        autocomplete="new-password">
+    <input class="submit" type="submit" value="تسجيل الدخول">
+</form>
+
+{% endblock body %}
+
+{% block js %}
+<script src="/js/login.js"></script>
+{% endblock js %}

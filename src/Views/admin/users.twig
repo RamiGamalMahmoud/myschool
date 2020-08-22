@@ -1,0 +1,39 @@
+{% block content %}
+
+<div class="content">
+    <div class="data">
+        <form>
+            <table class="users-data">
+                <thead>
+                    <tr>
+                        <th>مسلسل</th>
+                        <th>اسم المستخدم</th>
+                        <th>الاسم بالكامل</th>
+                        <th>الوظيفة</th>
+                        <th>المجموعة</th>
+                        <th>خيارات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        
+                    <tr>
+                        <td>{{ row.userId }}</td>
+                        <td>{{ row.userName }}</td>
+                        <td>{{ row.fullName }}</td>
+                        <td>{{ row.moth ? '' : 'N/A' }}</td>
+                        <td>{{ row.groupId }}</td>
+                        <td>
+                            <a href='./edit' class='edit-user'>تعديل</a>
+                            <a href='./delete' class='delete-user'>حذف</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+        <a href='./add' class="add-btn"><i class="fa fa-plus"></i>مستخدم جديد</a>
+    </div>
+</div>
+
+{% endblock content %}

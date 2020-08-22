@@ -1,0 +1,105 @@
+{% block section %}
+
+<div class="new-student-container">
+    <h3 class="form-title">إضافة طالب جديد</h3>
+    <span id="calc-date-on">تاريخ حساب السن<span>2019/10/1</span></span>
+    <form class="add-student-form" action="./insert" method="POST">
+        <fieldset>
+            <div>
+                <label for="student-name">اسم الطالب</label>
+                <input type="text" name="studentName" id="student-name">
+            </div>
+
+            <div>
+                <label for="student-code">كود الطالب</label>
+                <input type="text" name="studentCode" id="student-code">
+            </div>
+
+            <div>
+                <label for="national-id">الرقم القومي</label>
+                <input type="text" name="nationalId" id="national-id">
+            </div>
+
+            <div class="religion-part">
+                <label for="religion">الديانة</label>
+                <select name="religion" id="religion">
+                    <option value="مسلم">مسلم</option>
+                    <option value="مسيحي">مسيحي</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset class="from-national">
+
+            <div class="type-part">
+                <label for="sex">النوع</label>
+                <input type="text" name="sex" id="sex" readonly>
+            </div>
+
+            <div class="pirth-date-part">
+                <label for="pirth-date">تاريخ الميلاد</label>
+                <input type="text" name="pirthDate" id="pirth-date" readonly>
+            </div>
+
+
+            <div class="age-container">
+                <span class="age-title">سن الطالب في<span>2019/10/1</span></span>
+                <div class="age-data">
+                    <div class="age-item">
+                        <label for="pirth-day">يوم</label>
+                        <input type="text" name="day" id="pirth-day" readonly>
+                    </div>
+
+                    <div class="age-item">
+                        <label for="pirth-month">شهر</label>
+                        <input type="text" name="month" id="pirth-month" readonly>
+                    </div>
+
+                    <div class="age-item">
+                        <label for="pirth-year">سنة</label>
+                        <input type="text" name="year" id="pirth-year" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div id="from-national-message">
+                <p>
+                    هذه البيانات يتم استخراجها من الرقم القومي .<br> لذلك من أجل
+                    للتأكد من صحة إدخالك للرقم القومي الصحيح يرجى مراجعة بيانات هذا الجزء من شهادة الميلاد !!
+                </p>
+            </div>
+        </fieldset>
+
+        <fieldset id="schooler-data">
+            <div>
+                <label for="class-number">الفصل</label>
+                <input type="text" name="classNumber" id="class-number">
+            </div>
+            <div>
+                <label for="grade">الصف</label>
+                <select name="grade" id="grade">
+                    <option value="1">الأول</option>
+                    <option value="2">الثاني</option>
+                    <option value="3">الثالث</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="enrollment-status">حالة القيد</label>
+                <select name="enrollemntStatus" id="enrollment-status">
+                    <option value="مستجد">مستجد</option>
+                    <option value="معيد">معيد</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <div id="form-buttons">
+            <i class="fa fa-save"></i>
+            <input type="submit" value="حفظ بيانات الطالب">
+            <i class="fa fa-remove"></i>
+            <input type="reset" value="تفريغ البيانات">
+        </div>
+    </form>
+</div>
+
+{% endblock section %}

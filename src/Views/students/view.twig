@@ -1,0 +1,50 @@
+{% block section %}
+
+<div class="data">
+    <div class="table-head">
+        <table class="students-data data-header">
+            <thead>
+                <tr>
+                    <th rowspan="2" dataName="studentId">مسلسل</th>
+                    <th rowspan="2" dataName="studentName">اسم الطالب</th>
+                    <th rowspan="2" dataName="classNumber">الفصل</th>
+                    <th rowspan="2" dataName="grade">الصف</th>
+                    <th rowspan="2" dataName="enrollmentStatus">حالة القيد</th>
+                    <th rowspan="2" dataName="religion">الديانة</th>
+                    <th rowspan="2" dataName="nationalId">الرقم القومي</th>
+                    <th rowspan="2" dataName="sex">النوع</th>
+                    <th rowspan="2" dataName="pirthDate">تاريخ الميلاد</th>
+                    <th colspan="3" dataName="">السن</th>
+                </tr>
+                <tr>
+                    <th dataName="day">يوم</th>
+                    <th dataName="month">شهر</th>
+                    <th dataName="year">سنة</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="table-body">
+        <table class="students-data">
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td contenteditable='false' dataName='studentId'>{{ row.studentId }}</td>
+                    <td contenteditable='true'  dataName='studentName'>{{ row.studentName }}</td>
+                    <td contenteditable='true'  dataName='classNumber'>{{ row.classNumber }}</td>
+                    <td contenteditable='true'  dataName='grade'>{{ row.grade }}</td>
+                    <td contenteditable='true'  dataName='enrollmentStatus'>{{ row.enrollmentStatus }}</td>
+                    <td contenteditable='true'  dataName='religion'>{{ row.religion }}</td>
+                    <td contenteditable='true'  dataName='nationalId'>{{ row.nationalId }}</td>
+                    <td contenteditable='false' dataName='sex'>{{ row.sex }}</td>
+                    <td contenteditable='false' dataName='pirthDate'>{{ row.pirthDate }}</td>
+                    <td contenteditable='false' dataName='day'>{{ row.day }}</td>
+                    <td contenteditable='false' dataName='month'>{{ row.month }}</td>
+                    <td contenteditable='false' dataName='year'>{{ row.year }}</td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock section %}
