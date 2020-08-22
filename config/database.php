@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Database configrations goes here
+ */
 return [
     'dbName'   => 'school_management',
     'driver'   => 'mysql',
