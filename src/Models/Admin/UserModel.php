@@ -17,7 +17,7 @@ class UserModel implements IModel
     {
         $data = $this->db->select(['userId', 'userName', 'fullName', 'groupId'])
         ->from('users')
-        ->get();
+        ->fetch();
         return $data;
     }
 

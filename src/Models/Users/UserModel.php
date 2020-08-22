@@ -20,7 +20,7 @@ class UserModel
         ->from('users')
         ->where('userName', '=', $userName)
         ->andWhere('password', '=', $password)
-        ->getFirst();
+        ->fetchFirst();
 
         return $data;
     }

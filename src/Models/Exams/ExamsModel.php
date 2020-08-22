@@ -101,7 +101,7 @@ class ExamsModel implements IModel
         $count = $this->db->count('studentId')
             ->from($table)
             ->where('studentId', '=', $studentId)
-            ->getFirst()['count'];
+            ->fetchFirst()['count'];
 
         return $count > 0;
     }
@@ -156,7 +156,7 @@ class ExamsModel implements IModel
             ->leftJoin($datatable)
             ->on('students_data.studentId', $datatable . '.studentId')
             ->where('students_data.grade', '=', $grade)
-            ->get();
+            ->fetch();
     }
 
     /**
@@ -180,7 +180,7 @@ class ExamsModel implements IModel
             ->leftJoin($datatable)
             ->on('students_data.studentId', $datatable . '.studentId')
             ->where('students_data.grade', '=', $grade)
-            ->get();
+            ->fetch();
     }
 
     /**
@@ -212,6 +212,6 @@ class ExamsModel implements IModel
             ->leftJoin($datatable)
             ->on('students_data.studentId', $datatable . '.studentId')
             ->where('students_data.grade', '=', $grade)
-            ->get();
+            ->fetch();
     }
 }
