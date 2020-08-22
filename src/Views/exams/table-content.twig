@@ -1,0 +1,4 @@
+{% for row in data %}
+	<tr>
+		{% for key, item in row %}
+			<td dataname="{{ key }}" contenteditable={{ key in notEditable ? "false" : "true" }} class={{ item < 0 ? "warning" : "" }} >{{ item < 0 ? 'غ' : item}}</td> {% endfor %} </tr> {% endfor %}
