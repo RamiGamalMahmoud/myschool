@@ -6,8 +6,8 @@ const datatable = new DataTable(document.querySelector('.data-table'));
 /**
  * Prepare the link that will be used with the ajax calls
  */
-var link = location.toString().replace('/view/', '/save/')
-
+var link = location.toString();
+console.log(link);
 datatable.init(link, function (txt){
     console.log(txt);
 });
