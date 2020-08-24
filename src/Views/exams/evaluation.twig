@@ -141,7 +141,25 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-					{% include "exams/table-content.twig" %}</tbody>
+                {% for entity in data %}
+                    <tr>
+                        <td dataname="studentId">{{ entity.studentId }}</td>
+                        <td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
+                        <td dataname="studentName">{{ entity.studentName }}</td>
+                        <td dataname="classNumber">{{ entity.classNumber }}</td>
+                        <td contenteditable="true" class={{ entity.arabic >= 0 ?:        "warning" }} dataName="arabic">{{ entity.arabic < 0 ? "غ" : entity.arabic }}</td>
+                        <td contenteditable="true" class={{ entity.english >= 0 ?:       "warning" }} dataName="english">{{ entity.english < 0 ? "غ" : entity.english }}</td>
+                        <td contenteditable="true" class={{ entity.socialStudies >= 0 ?: "warning" }} dataName="socialStudies">{{ entity.socialStudies < 0 ? "غ" : entity.socialStudies }}</td>
+                        <td contenteditable="true" class={{ entity.math >= 0 ?:          "warning" }} dataName="math">{{ entity.math < 0 ? "غ" : entity.math }}</td>
+                        <td contenteditable="true" class={{ entity.sciences >= 0 ?:      "warning" }} dataName="sciences">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
+                        <td contenteditable="true" class={{ entity.activity_1 >= 0 ?:    "warning" }} dataName="activity_1">{{ entity.activity_1 < 0 ? "غ" : entity.activity_1 }}</td>
+                        <td contenteditable="true" class={{ entity.activity_2 >= 0 ?:    "warning" }} dataName="activity_2">{{ entity.activity_2 < 0 ? "غ" : entity.activity_2 }}</td>
+                        <td contenteditable="true" class={{ entity.religion >= 0 ?:      "warning" }} dataName="religion">{{ entity.religion < 0 ? "غ" : entity.religion }}</td>
+                        <td contenteditable="true" class={{ entity.computer >= 0 ?:      "warning" }} dataName="computer">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
+                        <td contenteditable="true" class={{ entity.draw >= 0 ?:          "warning" }} dataName="draw">{{ entity.draw < 0 ? "غ" : entity.draw }}</td>
+                        <td contenteditable="true" class={{ entity.sports >= 0 ?:        "warning" }} dataName="sports">{{ entity.sports < 0 ? "غ" : entity.sports }}</td>
+                    </tr>
+                {% endfor %}
 			</tbody>
 		</table>
 	</div>

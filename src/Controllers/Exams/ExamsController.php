@@ -7,6 +7,8 @@ use SM\Models\Exams\ExamsModel;
 use SM\Models\IModel;
 use Simple\Core\Request;
 use Simple\Core\View;
+use Simple\Helpers\Functions;
+use SM\Entities\EvaluationEntity;
 
 class ExamsController extends BaseController
 {
@@ -55,44 +57,45 @@ class ExamsController extends BaseController
 
     public function view()
     {
-        $gradeNumber = $this->request->getSegment(2);
+        $gradeNumber = $this->request->getSegment(1);
         $this->context['gradeNumber'] = $gradeNumber;
         $this->render($this->context);
     }
 
     public function monitoring()
     {
-        $gradeNumber = $this->request->getSegment(2);
-        $this->context['gradeNumber'] = $gradeNumber;
+        // Extracting data from the request
+        $gradeNumber     = $this->request->getSegment(1);
+        $monitoringTable = $this->request->getSegment(2);
+        $semester        = $this->request->getSegment(3);
 
-        $gradeName = $gradeNumber == 1? 'الصف الأول' : 'الصف الثاني';
-
-        $this->context['gradeName'] = $gradeName;
-
-        $monitoringTable = $this->request->getSegment(4);
-        $semester = $this->request->getSegment(5);
-
-        $tableName = $this->tableName[$monitoringTable][$semester];
-
-        $this->context['tableName'] = $tableName;
+        $gradeName = $gradeNumber == 1 ? 'الصف الأول' : 'الصف الثاني';
 
         $tableData = (require CONFIG_DIR . DS . 'exams' . DS . 'monitoring.config.php')[$monitoringTable];
-        $this->context['childTemplate'] = 'exams' . DS . $monitoringTable . '.twig';
-        $this->context['degrees'] = $tableData;
+        $tableName = $this->tableName[$monitoringTable][$semester];
 
-        $params = [
+        // preparing the view context data
+        $this->context['gradeName']     = $gradeName;
+        $this->context['gradeNumber']   = $gradeNumber;
+        $this->context['tableName']     = $tableName;
+        $this->context['childTemplate'] = 'exams' . DS . $monitoringTable . '.twig';
+        $this->context['degrees']       = $tableData;
+
+        // parameters that will be sent to the repo
+        $argv = [
             'gradeNumber' => $gradeNumber,
             'dataTable' => $monitoringTable,
             'semester' => $semester
         ];
-        
-        $data = $this->model->read($params);
-        $this->context['data'] = $data;
+
+        $entities = $this->model->read($argv);
+        $this->context['data'] = $entities;
         $this->render($this->context);
     }
 
     public function save()
     {
+
         $data = file_get_contents('php://input');
         $data = json_decode($data);
 
@@ -100,13 +103,13 @@ class ExamsController extends BaseController
         $dataName  = trim($data->dataName);
         $dataValue = trim($data->dataValue);
 
-        $gradeNumber = $this->request->getSegment(2);
-        $monitoringTable = $this->request->getSegment(4);
-        $semester = $this->request->getSegment(5);
+        $gradeNumber     = $this->request->getSegment(1);
+        $monitoringType  = $this->request->getSegment(2);
+        $semester        = $this->request->getSegment(3);
 
         $params = [
             'gradeNumber' => $gradeNumber,
-            'dataTable' => $monitoringTable,
+            'monitoringType' => $monitoringType,
             'semester' => $semester,
             'studentId' => $studentId,
             'dataName' => $dataName,

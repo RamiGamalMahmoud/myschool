@@ -5,7 +5,7 @@ namespace SM\Controllers;
 use Simple\Core\Request;
 use SM\MiddleWares\Auth;
 use Simple\Helpers\Session;
-use SM\Core\View;
+use Simple\Core\View;
 
 class Login
 {

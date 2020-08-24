@@ -2,7 +2,7 @@
 
 namespace SM\Controllers;
 
-use SM\Core\Util\Session;
+use Simple\Helpers\Session;
 
 class IndexController
 {

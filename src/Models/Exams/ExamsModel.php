@@ -2,12 +2,16 @@
 
 namespace SM\Models\Exams;
 
+use InvalidArgumentException;
+use SM\Repositories\EvaluationRepository;
 use SM\Models\IModel;
 use Simple\Helpers\DB;
+use SM\Repositories\BaseRepository;
 
 class ExamsModel implements IModel
 {
     private DB $db;
+    private BaseRepository $repo;
     private $datatable = [
 
         'evaluation' => [
@@ -46,19 +50,20 @@ class ExamsModel implements IModel
      */
     public function read($argv = [])
     {
+        // monitoringType, grade, semester
+        // Functions::dump($argv); exit();
         $grade = $argv['gradeNumber'];
         $monitoringType = $argv['dataTable'];
-        $datatable = $this->datatable[$argv['dataTable']][$argv['semester']];
+        $this->semester = $argv['semester'];
 
+        $method = 'read' . ucfirst($monitoringType);
+        if (method_exists(self::class, $method)) {
+            return call_user_func([$this, $method], $grade);
+        }
         switch ($monitoringType) {
             case 'evaluation':
-                return $this->readEvaluation($datatable, $grade);
-
-            case 'practical':
-                return $this->readPractical($datatable, $grade);
-
-            case 'written':
-                return $this->readWritten($datatable, $grade);
+                // get the evaluatin repo
+                return $this->readEvaluation($grade);
         }
         return false;
     }
@@ -70,59 +75,19 @@ class ExamsModel implements IModel
      */
     public function update($argv = [])
     {
-        $table = $this->datatable[$argv['dataTable']][$argv['semester']] ?? false;
-        $studentId = $argv['studentId'] ?? false;
-        $dataName  = $argv['dataName'] ?? false;
-        $dataValue = $argv['dataValue'];
+        $repoClass = 'SM\\Repositories\\';
+        $repoClass .= ucfirst($argv['monitoringType']) . 'Repository';
+        $entityClass = 'SM\\Entities\\' . ucfirst($argv['monitoringType']) . 'Entity';
 
-        if (!($table && $studentId && $dataName)) {
-            return false;
+        if(class_exists($repoClass) && class_exists($entityClass)){
+            $this->repo = new $repoClass($argv['semester']);
+            $entity = new $entityClass();
+            $entity->{$argv['dataName']} = $argv['dataValue'];
+            $entity->studentId = $argv['studentId'];
+            $this->repo->update($entity, $argv['dataName']);
+        } else {
+            throw new InvalidArgumentException('student not found');
         }
-
-        $dataValue = is_numeric($dataValue) ? $dataValue : '-1';
-        // Check if there is alredy record exists in the monitoring table
-        if (!$this->recordExists($table, $studentId)) {
-
-            // If not then create it
-            $this->createEmptyRecord($table, $studentId);
-        }
-
-        // Finaly update the desired column
-        $this->db->update($table)
-            ->set([$dataName], [$dataValue])
-            ->where('studentId', '=', $studentId)
-            ->run();
-        // And print the value to the user
-        echo $dataValue;
-    }
-
-    private function recordExists($table, $studentId)
-    {
-        $count = $this->db->count('studentId')
-            ->from($table)
-            ->where('studentId', '=', $studentId)
-            ->fetchFirst()['count'];
-
-        return $count > 0;
-    }
-
-    /**
-     * Create an empty record in a monitoring table with the studentId
-     * @param string $tableName
-     * @param string $studentId
-     * @return bool
-     */
-    private function createEmptyRecord($tableName, $studentId)
-    {
-        $fieldsNames = $this->db->getFields($tableName);
-        $values = [];
-        foreach ($fieldsNames as $field) {
-            $values[] = null;
-        }
-        $values[0] = $studentId;
-
-        return $this->db->insertInto($tableName, $fieldsNames)
-            ->values($values)->run();
     }
 
     /**
@@ -131,32 +96,10 @@ class ExamsModel implements IModel
      * @param $grade the grade number
      * @return array
      */
-    private function readEvaluation($datatable, $grade)
+    private function readEvaluation($grade)
     {
-        $fields = [
-            'students_data.studentId',
-            'students_data.studentId AS sittingNumber',
-            'students_data.studentName',
-            'students_data.classNumber',
-            $datatable . '.arabic',
-            $datatable . '.english',
-            $datatable . '.socialStudies',
-            $datatable . '.math',
-            $datatable . '.sciences',
-            $datatable . '.activity_1',
-            $datatable . '.activity_2',
-            $datatable . '.religion',
-            $datatable . '.computer',
-            $datatable . '.draw',
-            $datatable . '.sports'
-        ];
-
-        return $this->db->select($fields)
-            ->from('students_data')
-            ->leftJoin($datatable)
-            ->on('students_data.studentId', $datatable . '.studentId')
-            ->where('students_data.grade', '=', $grade)
-            ->fetch();
+        $repo = new EvaluationRepository($this->semester);
+        return $repo->fetch($grade);
     }
 
     /**
@@ -167,20 +110,8 @@ class ExamsModel implements IModel
      */
     private function readPractical($datatable, $grade)
     {
-        $fields = [
-            'students_data.studentId',
-            'students_data.studentId AS sittingNumber',
-            'students_data.studentName',
-            'students_data.classNumber',
-            $datatable . '.sciences',
-            $datatable . '.computer'
-        ];
-        return $this->db->select($fields)
-            ->from('students_data')
-            ->leftJoin($datatable)
-            ->on('students_data.studentId', $datatable . '.studentId')
-            ->where('students_data.grade', '=', $grade)
-            ->fetch();
+        $repo = new EvaluationRepository($this->semester);
+        return $repo->fetch($grade);
     }
 
     /**
@@ -191,27 +122,23 @@ class ExamsModel implements IModel
      */
     private function readWritten($datatable, $grade)
     {
-        $fields = [
-            'students_data.studentId',
-            'students_data.studentId AS sittingNumber',
-            'students_data.studentName',
-            'students_data.classNumber',
-            $datatable . '.arabic',
-            $datatable . '.english',
-            $datatable . '.socialStudies',
-            $datatable . '.aljebra',
-            $datatable . '.geometry',
-            $datatable . '.sciences',
-            $datatable . '.religion',
-            $datatable . '.computer',
-            $datatable . '.draw'
-        ];
-
-        return $this->db->select($fields)
-            ->from('students_data')
-            ->leftJoin($datatable)
-            ->on('students_data.studentId', $datatable . '.studentId')
-            ->where('students_data.grade', '=', $grade)
-            ->fetch();
+        $repo = new EvaluationRepository($this->semester);
+        return $repo->fetch($grade);
     }
 }
+
+/**
+ * Entity, Repository, Model,
+ * 
+ * Entity => just one record
+ * EvaluationEntity
+ *  [ StudentId, SittingNumber, .... ]
+ * PracticalEntity
+ *  [ StudentId, SittingNumber, .... ]
+ * WrittenEntity
+ *  [ StudentId, SittingNumber, .... ]
+ * 
+ * Repository
+ *  
+ * MonitoringRepository
+ */

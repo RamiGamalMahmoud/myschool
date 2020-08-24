@@ -2,7 +2,7 @@
 
 namespace SM\Controllers;
 
-use SM\Core\View;
+use Simple\Core\View;
 
 class Error
 {
