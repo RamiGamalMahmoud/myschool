@@ -23,7 +23,9 @@ Route::get('admin/exams', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuth
 
 Route::get('admin/exams/\d*', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
 
-Route::get('admin/exams/\d*/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
+Route::get('admin/exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
+
+Route::get('admin/exams/\d*/sheets/{semester}', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
 
 /**
 * EXAMS HTTP GET ROUTES
@@ -33,7 +35,9 @@ Route::get('exams', CONTROLLRES . 'Exams\\ExamsController@index');
 
 Route::get('exams/\d*', CONTROLLRES . 'Exams\\ExamsController@view');
 
-Route::get('exams/\d*/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@monitoring');
+Route::get('exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@monitoring');
+
+Route::get('exams/\d*/sheets/{semester}', CONTROLLRES . 'Exams\\ExamsController@sheets');
 
 
 /**
@@ -46,11 +50,11 @@ Route::post('login', CONTROLLRES . 'Login@authenticate');
 
 Route::post('admin/students/save/\d*', CONTROLLRES . 'StudenstController@saveNewStudent');
 
-Route::post('admin/exams/\d*/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams');
+Route::post('admin/exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams');
 
 ### Exams Routes
 
-Route::post('exams/\d*/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@save');
+Route::post('exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@save');
 
 
 /**

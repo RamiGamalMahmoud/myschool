@@ -1,5 +1,3 @@
-{% set notEditable = ["studentId", "sittingNumber", "studentName", "classNumber"] %}
-
 <div class="section">
 	<div class="section-header">
 		<div class="section-header-name">
@@ -76,7 +74,16 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-					{% include "exams/table-content.twig" %}
+					{% for entity in data %}
+						<tr>
+							<td dataname="studentId">{{ entity.studentId }}</td>
+							<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
+							<td dataname="studentName">{{ entity.studentName }}</td>
+							<td dataname="classNumber">{{ entity.classNumber }}</td>
+							<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="arabic">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
+							<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="english">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>

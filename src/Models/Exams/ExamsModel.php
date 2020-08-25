@@ -2,16 +2,15 @@
 
 namespace SM\Models\Exams;
 
-use InvalidArgumentException;
-use SM\Repositories\EvaluationRepository;
 use SM\Models\IModel;
 use Simple\Helpers\DB;
 use SM\Repositories\BaseRepository;
+use SM\Repositories\MonitoringRepository;
 
 class ExamsModel implements IModel
 {
     private DB $db;
-    private BaseRepository $repo;
+    private $repo;
     private $datatable = [
 
         'evaluation' => [
@@ -50,21 +49,12 @@ class ExamsModel implements IModel
      */
     public function read($argv = [])
     {
-        // monitoringType, grade, semester
-        // Functions::dump($argv); exit();
-        $grade = $argv['gradeNumber'];
-        $monitoringType = $argv['dataTable'];
-        $this->semester = $argv['semester'];
+        $grade          = $argv['gradeNumber'];
+        $monitoringType = $argv['monitoringType'];
+        $semester       = $argv['semester'];
 
-        $method = 'read' . ucfirst($monitoringType);
-        if (method_exists(self::class, $method)) {
-            return call_user_func([$this, $method], $grade);
-        }
-        switch ($monitoringType) {
-            case 'evaluation':
-                // get the evaluatin repo
-                return $this->readEvaluation($grade);
-        }
+        $this->repo = new MonitoringRepository($monitoringType, $semester);
+        return $this->repo->fetch($grade);
         return false;
     }
 
@@ -75,70 +65,16 @@ class ExamsModel implements IModel
      */
     public function update($argv = [])
     {
-        $repoClass = 'SM\\Repositories\\';
-        $repoClass .= ucfirst($argv['monitoringType']) . 'Repository';
+        $this->repo = new MonitoringRepository($argv['monitoringType'], $argv['semester']);
         $entityClass = 'SM\\Entities\\' . ucfirst($argv['monitoringType']) . 'Entity';
 
-        if(class_exists($repoClass) && class_exists($entityClass)){
-            $this->repo = new $repoClass($argv['semester']);
+        if (class_exists($entityClass)) {
             $entity = new $entityClass();
-            $entity->{$argv['dataName']} = $argv['dataValue'];
+            $entity->{$argv['dataName']} = is_numeric($argv['dataValue']) ? $argv['dataValue'] : -1;
             $entity->studentId = $argv['studentId'];
             $this->repo->update($entity, $argv['dataName']);
-        } else {
-            throw new InvalidArgumentException('student not found');
+            return true;
         }
-    }
-
-    /**
-     * read the evaluation table
-     * @param $datatable the table name
-     * @param $grade the grade number
-     * @return array
-     */
-    private function readEvaluation($grade)
-    {
-        $repo = new EvaluationRepository($this->semester);
-        return $repo->fetch($grade);
-    }
-
-    /**
-     * read the practical table
-     * @param $datatable the table name
-     * @param $grade the grade number
-     * @return array
-     */
-    private function readPractical($datatable, $grade)
-    {
-        $repo = new EvaluationRepository($this->semester);
-        return $repo->fetch($grade);
-    }
-
-    /**
-     * read the written table
-     * @param $datatable the table name
-     * @param $grade the grade number
-     * @return array
-     */
-    private function readWritten($datatable, $grade)
-    {
-        $repo = new EvaluationRepository($this->semester);
-        return $repo->fetch($grade);
+        return false;
     }
 }
-
-/**
- * Entity, Repository, Model,
- * 
- * Entity => just one record
- * EvaluationEntity
- *  [ StudentId, SittingNumber, .... ]
- * PracticalEntity
- *  [ StudentId, SittingNumber, .... ]
- * WrittenEntity
- *  [ StudentId, SittingNumber, .... ]
- * 
- * Repository
- *  
- * MonitoringRepository
- */

@@ -11,13 +11,13 @@ abstract class BaseRepository
     protected string $table;
     protected array $fields;
 
-    public abstract function fetch($grade): array;
+    // public abstract function fetch($grade): array;
 
-    public abstract function findById($id);
+    // public abstract function findById($id);
 
-    public abstract function save(BaseEntity $e);
+    // public abstract function save(BaseEntity $e);
 
-    public abstract function update(BaseEntity $e, string $dataName);
+    // public abstract function update(BaseEntity $e, string $dataName);
 
-    public abstract function remove(BaseEntity $e);
+    // public abstract function remove(BaseEntity $e);
 }

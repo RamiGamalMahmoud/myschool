@@ -55,19 +55,19 @@ class ExamsController extends BaseController
         View::render($this->view, $context);
     }
 
-    public function view()
-    {
-        $gradeNumber = $this->request->getSegment(1);
-        $this->context['gradeNumber'] = $gradeNumber;
-        $this->render($this->context);
-    }
+    // public function view()
+    // {
+    //     $gradeNumber = $this->request->getSegment(1);
+    //     $this->context['gradeNumber'] = $gradeNumber;
+    //     $this->render($this->context);
+    // }
 
     public function monitoring()
     {
         // Extracting data from the request
         $gradeNumber     = $this->request->getSegment(1);
-        $monitoringTable = $this->request->getSegment(2);
-        $semester        = $this->request->getSegment(3);
+        $monitoringTable = $this->request->getSegment(3);
+        $semester        = $this->request->getSegment(4);
 
         $gradeName = $gradeNumber == 1 ? 'الصف الأول' : 'الصف الثاني';
 
@@ -84,7 +84,7 @@ class ExamsController extends BaseController
         // parameters that will be sent to the repo
         $argv = [
             'gradeNumber' => $gradeNumber,
-            'dataTable' => $monitoringTable,
+            'monitoringType' => $monitoringTable,
             'semester' => $semester
         ];
 
@@ -93,6 +93,30 @@ class ExamsController extends BaseController
         $this->render($this->context);
     }
 
+    public function sheets()
+    {
+        // Extracting data from the request
+        $gradeNumber     = $this->request->getSegment(1);
+        $semester        = $this->request->getSegment(3);
+
+        $gradeName = $gradeNumber == 1 ? 'الصف الأول' : 'الصف الثاني';
+
+        /**
+         * get the folder
+         */
+
+        // $this->context['gradeName']     = $gradeName;
+        // $this->context['gradeNumber']   = $gradeNumber;
+        // $this->context['tableName']     = $tableName;
+        // $this->context['childTemplate'] = 'exams' . DS . $monitoringTable . '.twig';
+        // $this->context['degrees']       = $tableData;
+
+        $argv = [
+            'gradeNumber' => $gradeNumber,
+            'semester' => $semester
+        ];
+
+    }
     public function save()
     {
 
@@ -104,8 +128,8 @@ class ExamsController extends BaseController
         $dataValue = trim($data->dataValue);
 
         $gradeNumber     = $this->request->getSegment(1);
-        $monitoringType  = $this->request->getSegment(2);
-        $semester        = $this->request->getSegment(3);
+        $monitoringType  = $this->request->getSegment(3);
+        $semester        = $this->request->getSegment(4);
 
         $params = [
             'gradeNumber' => $gradeNumber,
