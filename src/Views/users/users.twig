@@ -1,3 +1,5 @@
+{% extends parentTemplate %}
+
 {% block content %}
 
 <div class="content">
@@ -15,14 +17,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for row in data %}
+                    {% for entity in data %}
                         
                     <tr>
-                        <td>{{ row.userId }}</td>
-                        <td>{{ row.userName }}</td>
-                        <td>{{ row.fullName }}</td>
-                        <td>{{ row.moth ? '' : 'N/A' }}</td>
-                        <td>{{ row.groupId }}</td>
+                        <td>{{ entity.userId }}</td>
+                        <td>{{ entity.userName }}</td>
+                        <td>{{ entity.fullName }}</td>
+                        <td>{{ entity.moth ? '' : 'N/A' }}</td>
+                        <td>{{ entity.groupId }}</td>
                         <td>
                             <a href='./edit' class='edit-user'>تعديل</a>
                             <a href='./delete' class='delete-user'>حذف</a>

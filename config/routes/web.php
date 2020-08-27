@@ -17,15 +17,9 @@ Route::get('/', CONTROLLRES . 'IndexController@index', ['isAuthenticated']);
 
 Route::get('admin', CONTROLLRES . 'Admin\\AdminController@index', ['isAuthenticated', 'authorize']);
 
-Route::get('admin/users', CONTROLLRES . 'Admin\\AdminController@showUsers', ['isAuthenticated', 'authorize']);
+Route::get('admin/{other}/*.*', CONTROLLRES . 'Admin\\AdminController@reRoute');
 
-Route::get('admin/exams', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
-
-Route::get('admin/exams/\d*', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
-
-Route::get('admin/exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
-
-Route::get('admin/exams/\d*/sheets/{semester}', CONTROLLRES . 'Admin\\AdminController@exams', ['isAuthenticated', 'authorize']);
+Route::get('users', CONTROLLRES . 'Users\\UsersController@index');
 
 /**
 * EXAMS HTTP GET ROUTES
@@ -33,7 +27,7 @@ Route::get('admin/exams/\d*/sheets/{semester}', CONTROLLRES . 'Admin\\AdminContr
 
 Route::get('exams', CONTROLLRES . 'Exams\\ExamsController@index');
 
-Route::get('exams/\d*', CONTROLLRES . 'Exams\\ExamsController@view');
+Route::get('exams/\d*', CONTROLLRES . 'Exams\\ExamsController@index');
 
 Route::get('exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@monitoring');
 
@@ -48,9 +42,7 @@ Route::post('login', CONTROLLRES . 'Login@authenticate');
 
 ### Admin Routes
 
-Route::post('admin/students/save/\d*', CONTROLLRES . 'StudenstController@saveNewStudent');
-
-Route::post('admin/exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Admin\\AdminController@exams');
+Route::post('admin/{other}/*.*', CONTROLLRES . 'Admin\\AdminController@reRoute');
 
 ### Exams Routes
 

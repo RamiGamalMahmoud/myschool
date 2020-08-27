@@ -24,7 +24,7 @@ class Auth
     }
     /**
      * Check if the user is logged in
-     * @param \SM\Core\Request $request the request object
+     * @param Simple\Core\Request $request the request object
      * @return bool
      */
     public static function authenticate(Request $request)
@@ -57,7 +57,7 @@ class Auth
 
     /**
      * Authorize the logged in user 
-     * @param \SM\Core\Request $request the request object
+     * @param Simple\Core\Request $request the request object
      * @return bool
      */
     public static function authorize(Request $request)

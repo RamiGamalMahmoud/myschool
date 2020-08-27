@@ -10,7 +10,7 @@ class UserModel
     
     public function __construct($userName, $password)
     {
-        $this->db = new DB($userName, $password);
+        $this->db = new DB();
     }
 
     public function login($userName, $password)
