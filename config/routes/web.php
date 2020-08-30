@@ -29,10 +29,9 @@ Route::get('exams', CONTROLLRES . 'Exams\\ExamsController@index');
 
 Route::get('exams/\d*', CONTROLLRES . 'Exams\\ExamsController@index');
 
-Route::get('exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@monitoring');
+Route::get('exams/\d*/{section}/*.*', CONTROLLRES . 'Exams\\ExamsController@reRoute');
 
-Route::get('exams/\d*/sheets/{semester}', CONTROLLRES . 'Exams\\ExamsController@sheets');
-
+Route::get('monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\MonitoringController@index');
 
 /**
  * HTTP POST METHOD ROUTES
@@ -46,8 +45,9 @@ Route::post('admin/{other}/*.*', CONTROLLRES . 'Admin\\AdminController@reRoute')
 
 ### Exams Routes
 
-Route::post('exams/\d*/monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\ExamsController@save');
+Route::post('exams/\d*/{section}/*.*', CONTROLLRES . 'Exams\\ExamsController@reRoute');
 
+Route::post('monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\MonitoringController@save');
 
 /**
  * MIDDLEWARES ROUTES

@@ -1,9 +1,10 @@
 <?php
 
-namespace SM\Exams\Entities;
+namespace SM\Entities\Exams;
 
-class Practical extends Student
+class Practical
 {
+    public $studentId = null;
     public $sciences = null;
     public $computer = null;
 }

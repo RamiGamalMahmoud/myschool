@@ -19,8 +19,7 @@ class UsersController extends BaseController
 
         $this->view = 'users/users.twig';
         $this->model = new UsersModel();
-        $this->request = $request;
-        $this->context = $params;
+        parent::__construct($request, $params);
     }
 
     /**

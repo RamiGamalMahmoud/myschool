@@ -2,8 +2,6 @@
 	<div class="section-header">
 		<div class="section-header-name">
 			<div>
-				<span class="class-name">{{ gradeName }}</span>
-				<span>|</span>
 				<span class="table-name">{{ tableName }}</span>
 			</div>
 		</div>
@@ -139,7 +137,7 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-                {% for entity in data %}
+                {% for entity in entities %}
                     <tr>
                         <td dataname="studentId">{{ entity.studentId }}</td>
                         <td dataname="sittingNumber">{{ entity.sittingNumber }}</td>

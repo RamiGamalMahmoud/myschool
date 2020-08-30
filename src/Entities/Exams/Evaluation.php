@@ -1,11 +1,10 @@
 <?php
 
-namespace SM\Exams\Entities;
+namespace SM\Entities\Exams;
 
-use Simple\Helpers\Functions;
-
-class Evaluation extends Student
+class Evaluation
 {
+    public $studentId = null;
     public $arabic = null;
     public $english = null;
     public $socialStudies = null;

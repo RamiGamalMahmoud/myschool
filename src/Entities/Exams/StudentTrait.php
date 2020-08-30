@@ -1,10 +1,9 @@
 <?php
 
-namespace SM\Exams\Entities;
+namespace SM\Entities\Exams;
 
-abstract class Student
+trait StudentTrait
 {
-    public $studentId = null;
     public $sittingNumber = null;
     public $studentName = null;
     public $classNumber = null;

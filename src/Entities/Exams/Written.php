@@ -1,9 +1,10 @@
 <?php
 
-namespace SM\Exams\Entities;
+namespace SM\Entities\Exams;
 
-class Written extends Student
+class Written
 {
+    public $studentId = null;
     public $arabic = null;
     public $english = null;
     public $socialStudies = null;

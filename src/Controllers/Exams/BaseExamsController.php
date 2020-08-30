@@ -1,10 +1,13 @@
 <?php
 
-namespace SM\Controllers;
+namespace SM\Controllers\Exams;
 
 use Simple\Core\IRequest;
+use Simple\Core\Request;
+use SM\Models\Exams\Monitoring\IMonitoringModel;
+use Simple\Helpers\Functions;
 
-abstract class BaseController
+abstract class BaseExamsController
 {
     /**
      * @var array $context Array represents the data that will be used in the view template
@@ -14,7 +17,7 @@ abstract class BaseController
     /**
      * @var mixed $model 
      */
-    protected $model;
+    protected IMonitoringModel $model;
 
     /**
      * @var Simple\Core\Request $request 

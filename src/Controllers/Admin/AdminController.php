@@ -16,7 +16,7 @@ class AdminController extends BaseController
     public function __construct(Request $request)
     {
         Session::start();
-        $this->request = $request;
+        parent::__construct($request, []);
         $this->context['fullName'] = Session::get('fullName');
         $this->view = 'admin/admin.twig';
     }
