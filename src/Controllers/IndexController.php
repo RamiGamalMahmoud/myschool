@@ -11,4 +11,9 @@ class IndexController
         $location = Session::get('userType');
         header('location: /' . $location);
     }
+
+    public function sayHi()
+    {
+        echo 'Welcome to API';
+    }
 }

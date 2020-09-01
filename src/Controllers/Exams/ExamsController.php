@@ -87,7 +87,7 @@ class ExamsController extends BaseExamsController
         $path = implode('/', $segments);
 
         $request = new Request($path);
-        $router = new Router($request->getPath(), $request->getRequestMethod());
+        $router = new Router($request->getPath(), $request->getRequestMethod(), ROUTES_FOLDER);
         $route = $router->route();
 
         if ($route) {

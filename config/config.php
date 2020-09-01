@@ -14,6 +14,8 @@ define('COMPILE_PATH', ROOT . 'storage' . DS . 'templates_c');
 
 define('CONFIG_FILE', CONFIG_DIR . DS . 'config.php');
 
+define('ROUTES_FOLDER', CONFIG_DIR . DS . 'routes' . DS);
+
 define('WEB_ROUTES', CONFIG_DIR . DS . 'routes' . DS . 'web.php');
 
 define('API_ROUTES', CONFIG_DIR . DS . 'routes' . DS . 'api.php');

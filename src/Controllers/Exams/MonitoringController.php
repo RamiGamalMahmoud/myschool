@@ -40,7 +40,7 @@ class MonitoringController extends BaseController
     }
 
     /**
-     * get all data in desiered monitoring table
+     * Returns all data in the monitoring table
      */
     public function getAll()
     {

@@ -53,7 +53,7 @@ class AdminController extends BaseController
         $newPath = explode('/', $this->request->getPath(), 2)[1];
 
         $newRequest = new Request($newPath);
-        $router = new Router($newRequest->getPath(), $newRequest->getRequestMethod());
+        $router = new Router($newRequest->getPath(), $newRequest->getRequestMethod(), ROUTES_FOLDER);
 
         Dispatcher::dispatche($router->route()['route'], $newRequest, $parentContext);
     }
