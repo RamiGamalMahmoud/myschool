@@ -2,7 +2,7 @@
 
 namespace SM\Controllers;
 
-use Simple\Helpers\Session;
+use Simple\Core\Session;
 
 class IndexController
 {
@@ -10,10 +10,5 @@ class IndexController
     {
         $location = Session::get('userType');
         header('location: /' . $location);
-    }
-
-    public function sayHi()
-    {
-        echo 'Welcome to API';
     }
 }

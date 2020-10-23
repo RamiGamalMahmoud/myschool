@@ -1,10 +1,26 @@
 <?php
 
-namespace SM\Entities\Exams;
+namespace SM\Entities;
 
-trait StudentTrait
+trait TStudentPublicData
 {
-    public $sittingNumber = null;
-    public $studentName = null;
-    public $classNumber = null;
+  public function getStudentId()
+  {
+    return $this->get('studentId');
+  }
+
+  public function getSittingNumber()
+  {
+    return $this->get('sittingNumber');
+  }
+
+  public function getStudentName()
+  {
+    return $this->get('studentName');
+  }
+
+  public function getClassNumber()
+  {
+    return $this->get('classNumber');
+  }
 }

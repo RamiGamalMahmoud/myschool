@@ -7,94 +7,84 @@ use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\IRequest;
 use Simple\Core\Dispatcher;
-use Simple\Helpers\Functions;
+use SM\Controllers\BaseController;
 
-class ExamsController extends BaseExamsController
+class ExamsController extends BaseController
 {
-    public function __construct(IRequest $request, $params)
-    {
-        $linkPrefex = isset($params['linkPrefex']) ? $params['linkPrefex'] . '/exams' : '/exams';
-        parent::__construct($request, $params);
+  public function __construct(IRequest $request, $params)
+  {
+    parent::__construct($request, $params);
+    $linkPrefex = isset($params['linkPrefex']) ? $params['linkPrefex'] . '/exams' : '/exams';
+    $this->context['linkPrefex'] = $linkPrefex;
+    $this->view = 'exams/exams.twig';
+  }
 
-        $this->context['linkPrefex'] = $linkPrefex;
-        $this->view = 'exams/exams.twig';
+  /**
+   * Display the default state of the exams page
+   * 
+   * Calls the updateGradeData method and then render the view
+   */
+  public function index()
+  {
+    $this->updateGradeData();
+    $this->render($this->context);
+  }
+
+  /**
+   * Updates $gradeNumber and $gradeName
+   * 
+   * Check if the grade number segement has been set
+   * then update the grade number and the grade name
+   * @return void
+   */
+  private function updateGradeData()
+  {
+    @$gradeNumber = $this->request->getSegment(1);
+    if ($gradeNumber) {
+      $this->context['gradeNumber'] = $gradeNumber;
+      $this->context['gradeName'] = $this->getGradeName($gradeNumber);
+    }
+  }
+
+  /**
+   * Gets the grade name the $gradeNumber
+   * 
+   * @param int $gradeNumber
+   * @return string the grade name
+   */
+  private function getGradeName($gradeNumber)
+  {
+    if ($gradeNumber == 1) {
+      return 'الصف الأول';
+    } elseif ($gradeNumber == 2) {
+      return 'الصف الثاني';
     }
 
-    /**
-     * Views the default state of the exams page
-     * 
-     * Calls the updateGradeData method and then render the view
-     */
-    public function index()
-    {
-        $this->updateGradeData();
-        $this->render($this->context);
-    }
+    return 'صف غير محدد';
+  }
 
-    /**
-     * Updates $gradeNumber and $gradeName
-     * 
-     * Check if the grade number segement has been set
-     * then update the grade number and the grade name
-     * @return void
-     */
-    private function updateGradeData()
-    {
-        @$gradeNumber = $this->request->getSegment(1);
-        if ($gradeNumber) {
-            $this->context['gradeNumber'] = $gradeNumber;
-            $this->context['gradeName'] = $this->getGradeName($gradeNumber);
-        }
-    }
+  public function render(array $context)
+  {
+    View::render($this->view, $context);
+  }
 
-    /**
-     * Gets the grade name the $gradeNumber
-     * @param int $gradeNumber
-     * @return string the grade name
-     */
-    private function getGradeName($gradeNumber)
-    {
-        if ($gradeNumber == 1) {
-            return 'الصف الأول';
-        } elseif ($gradeNumber == 2) {
-            return 'الصف الثاني';
-        }
+  /**
+   * Remove the first and second segement from the request path then reroute
+   * 
+   * Takes the returned value and render the view
+   * @return void
+   */
+  public function reRoute()
+  {
+    $this->updateGradeData();
+    $request = new Request($this->getNewPath());
+    $router = new Router($request, ROUTES_FOLDER);
+    $this->context['child'] = Dispatcher::dispatche($router->route(), $request, $this->context);
+    $this->render($this->context);
+  }
 
-        return 'صف غير محدد';
-    }
-
-    /**
-     * Rendring the view
-     */
-    public function render(array $context)
-    {
-        View::render($this->view, $context);
-    }
-
-    /**
-     * Remove the first and second segement from the request path then reroute
-     * 
-     * Takes the returned value and render the view
-     * @return void
-     */
-    public function reRoute()
-    {
-        $this->updateGradeData();
-        $segments = $this->request->getSegments();
-
-        array_shift($segments);
-        array_shift($segments);
-        $path = implode('/', $segments);
-
-        $request = new Request($path);
-        $router = new Router($request->getPath(), $request->getRequestMethod(), ROUTES_FOLDER);
-        $route = $router->route();
-
-        if ($route) {
-            $this->context['child'] = Dispatcher::dispatche($route['route'], $request, $this->context);
-        } else {
-            Functions::dump($route);
-        }
-        $this->render($this->context);
-    }
+  protected function getNewPath()
+  {
+    return implode('/', array_slice($this->request->getSegments(), 2));
+  }
 }

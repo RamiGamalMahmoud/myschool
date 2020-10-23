@@ -2,23 +2,35 @@
 
 namespace SM\Controllers;
 
-use Simple\Core\Request;
+use Simple\Core\IRequest;
+use Simple\Core\Session;
 use SM\MiddleWares\Auth;
-use Simple\Helpers\Session;
 use Simple\Core\View;
 
 class Login
 {
-    public function login()
-    {
-        View::render('login.twig');
-    }
+  public function login()
+  {
+    View::render('login.twig');
+  }
 
-    public function authenticate(Request $request)
-    {
-        if (Auth::authenticate($request)) {
-            $location = Session::get('userType');
-            header('location: /' . $location);
-        }
+  public function authenticate(IRequest $request)
+  {
+    if (Auth::authenticate($request)) {
+      $location = Session::get('userType');
+      $user = [
+        'fullName' => Session::get('fullName'),
+        'userName' => Session::get('userName'),
+        'userType' => Session::get('userType')
+      ];
+
+      if ($request->getRequestType() === 'api') {
+        echo json_encode($user);
+      } else {
+        header('location: /' . $location);
+      }
+    } else {
+      return false;
     }
+  }
 }

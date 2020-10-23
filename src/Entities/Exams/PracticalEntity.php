@@ -2,9 +2,20 @@
 
 namespace SM\Entities\Exams;
 
-class Practical
+use SM\Entities\Entity;
+use SM\Entities\TStudentPublicData;
+
+class PracticalEntity extends Entity
 {
-    public $studentId = null;
-    public $sciences = null;
-    public $computer = null;
+  use TStudentPublicData;
+
+  public function getSciences()
+  {
+    return $this->get('sciences');
+  }
+
+  public function getComputer()
+  {
+    return $this->get('computer');
+  }
 }
