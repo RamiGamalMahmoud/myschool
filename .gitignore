@@ -1,7 +1,5 @@
 notes/
-storage/
 tests/
-lib/
 vendor/
 .vscode/
 */*/.vscode/
