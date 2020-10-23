@@ -2,4 +2,6 @@
 
 use Simple\Core\Route;
 
-Route::get('.*', CONTROLLRES . 'IndexController@sayHi');
+Route::get('error', CONTROLLRES . 'Error@error');
+
+Route::post('login', CONTROLLRES . 'Login@authenticate');
