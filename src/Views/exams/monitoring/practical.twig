@@ -2,8 +2,6 @@
 	<div class="section-header">
 		<div class="section-header-name">
 			<div>
-				<span class="class-name">{{ gradeName }}</span>
-				<span>|</span>
 				<span class="table-name">{{ tableName }}</span>
 			</div>
 		</div>
@@ -74,14 +72,15 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-					{% for entity in data %}
+					{% for entity in entities %}
 						<tr>
 							<td dataname="studentId">{{ entity.studentId }}</td>
 							<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
 							<td dataname="studentName">{{ entity.studentName }}</td>
 							<td dataname="classNumber">{{ entity.classNumber }}</td>
-							<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="arabic">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
-							<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="english">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
+
+							<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="sciences">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
+							<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="computer">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>

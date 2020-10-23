@@ -123,12 +123,13 @@
 					<th class="head-space-holder cell-size-1 rotated-head"></th>
 				</thead>
 				<tbody>
-					{% for entity in data %}
+					{% for entity in entities %}
 						<tr>
 							<td dataname="studentId">{{ entity.studentId }}</td>
 							<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
 							<td dataname="studentName">{{ entity.studentName }}</td>
 							<td dataname="classNumber">{{ entity.classNumber }}</td>
+
 							<td contenteditable="true" class={{ entity.arabic >= 0 ?: "warning" }} dataname="arabic">{{ entity.arabic < 0 ? "غ" : entity.arabic }}</td>
 							<td contenteditable="true" class={{ entity.english >= 0 ?: "warning" }} dataname="english">{{ entity.english < 0 ? "غ" : entity.english }}</td>
 							<td contenteditable="true" class={{ entity.socialStudies >= 0 ?: "warning" }} dataname="socialStudies">{{ entity.socialStudies < 0 ? "غ" : entity.socialStudies }}</td>
@@ -144,4 +145,4 @@
 			</table>
 		</div>
 	</div>
-</div><?php } ?>
+</div>
