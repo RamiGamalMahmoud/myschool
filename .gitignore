@@ -5,3 +5,5 @@ vendor/
 .vscode/
 */*/.vscode/
 composer.lock
+*.map
+*.css
