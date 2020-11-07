@@ -1,0 +1,41 @@
+@import '../common/colors';
+@import '../common/buttons';
+@import '../common/table';
+@import '../common/data-table';
+
+.data {
+  margin: 50px auto 0;
+  width: fit-content;
+}
+
+.users-data {
+  text-align: center;
+  margin-top: 20px;
+
+  th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #6c7ae0;
+    color: #FFF;
+  }
+
+  &.data-table {
+    .table-head {
+      th {
+        border-color: #FFF;
+      }
+    }
+  }
+
+  table {
+
+    th,
+    td {
+      border: none;
+    }
+  }
+}
+
+.add-user {
+  margin-top: 10px;
+}

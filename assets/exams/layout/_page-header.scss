@@ -1,0 +1,81 @@
+.page-header {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  background-color: #ecf0f1;
+}
+
+.page-data {
+  color: #FFF;
+  background-color: #00BCD4;
+}
+
+/* data part */
+.data {
+  width: 100%;
+  overflow: hidden;
+}
+
+th {
+
+  &.student-name-size {
+    width: 270px;
+    min-width: 270px;
+    max-width: 270px;
+  }
+}
+
+.section-header {
+  overflow: hidden;
+  width: fit-content;
+  margin: 10px 0px 10px 0;
+
+  .section-header-name,
+  .section-header-data {
+    float: right;
+
+  }
+
+  .section-header-name {
+    width: 360px;
+    height: 61px;
+    font-size: 1.3em;
+    line-height: 61px;
+    font-weight: bold;
+    border-bottom: 5px solid #2ecc71;
+    background-color: #ecf0f1;
+  }
+
+  .section-header-data {
+    margin-right: 10px;
+  }
+
+  .section-header-name span {
+    display: inline-block;
+    padding: 0 5px;
+    text-align: center;
+  }
+
+  .section-header-data table {
+    td {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    td {
+      height: 25px;
+      padding: 5px 0;
+
+      &:first-child {
+        background-color: #2ecc71;
+        color: #FFF;
+      }
+    }
+  }
+
+  .section-header-name div {
+    width: fit-content;
+    margin: auto;
+  }
+}

@@ -1,0 +1,166 @@
+/**
+*
+*/
+.certifecates-page {
+    width     : 957px;
+    margin    : 0 auto;
+    text-align: center;
+}
+
+.certifecates-page-header {
+    margin        : 0;
+    font-size     : 1.2em;
+    padding-bottom: 10px;
+    border-bottom : 2px solid #576574;
+}
+
+.controls .btn {
+    font-size       : 0.8em;
+    border          : none;
+    padding         : 10px 30px;
+    font-weight     : bold;
+    cursor          : pointer;
+    background-color: #00BCD4;
+    color           : #FFF;
+}
+
+.controls .btn:hover {
+    background-color: #f1c40f;
+    color           : #000;
+}
+
+.controls .btn:focus {
+    outline: none;
+}
+
+/**
+* The Certificate part
+*/
+.certifecate {
+    padding      : 10px 0;
+    border-bottom: 2px dashed black;
+}
+
+.certifecate:last-child {
+    border: none;
+}
+
+.certifecate-head .title,
+.certifecate-head .release {
+    margin: 10px auto;
+}
+
+.certifecate-head .title>span:first-child {
+    padding         : 10px;
+    background-color: #ecf0f1;
+}
+
+.student-data {
+    overflow: hidden;
+}
+
+.student-name-container {
+    float: right;
+}
+
+.sitting-number-container {
+    float: left;
+}
+
+.student-name,
+.sitting-number {
+    display         : inline-block;
+    padding         : 5px 10px;
+    font-weight     : bold;
+    min-width       : 200px;
+    background-color: #ecf0f1;
+    border-bottom   : 2px solid #576574;
+}
+
+/**
+* The certificate degrees
+*/
+
+.sutbjects-head,
+.subjects-data,
+.final-state,
+.certifecate-footer {
+    overflow: hidden;
+}
+
+.right-part,
+.left-part,
+.footer-part,
+.subject-degree {
+    float      : right;
+    font-weight: bold;
+
+}
+
+.right-part {
+    margin-top   : 10px;
+    border       : 1px solid black;
+    border-bottom: none;
+}
+
+.left-part {
+    margin-top  : 10px;
+    margin-right: 10px;
+}
+
+.left-part span {
+    border: 1px solid black;
+}
+
+.right-part span {
+    border-bottom: 1px solid black;
+}
+
+
+.right-part span,
+.left-part span {
+    display    : block;
+    width      : 65px;
+    height     : 35px;
+    line-height: 35px;
+}
+
+.left-part .subject span.small-font {
+    line-height: 1;
+    font-size  : 1em;
+}
+
+.right-part span {
+    width: 100px;
+}
+
+.subject,
+.subject-degree {
+    float: right;
+}
+
+.subject span {
+    display: block;
+}
+
+span.second-round-subjects {
+    width: 845px;
+}
+
+.footer-part {
+    margin-top  : 15px;
+    margin-right: 18%;
+    font-size   : 18px;
+}
+
+.footer-part span:nth-child(2) {
+    margin-top: 20px;
+    display   : block;
+}
+
+.footer-part.student-rank span:nth-child(2) {
+    width      : 60px;
+    height     : 40px;
+    line-height: 40px;
+    border     : 1px dashed black;
+}

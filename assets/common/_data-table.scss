@@ -1,0 +1,22 @@
+$table-border-color: #AAA;
+
+.data-table {
+
+  .table-head,
+  .table-body {
+    overflow: auto;
+
+  }
+
+  .table-head table {
+    border-top: none;
+  }
+
+  .table-body {
+    table {
+      border-top: none;
+    }
+  }
+
+  border-radius: 5px;
+}

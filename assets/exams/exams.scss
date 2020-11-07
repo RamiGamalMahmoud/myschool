@@ -1,0 +1,41 @@
+@import '../common/table';
+@import '../common/data-table';
+@import './layout/admin-nav';
+@import '../common/util/menus/drop-down';
+@import './layout/page-header';
+
+.data-table {
+  position: relative;
+
+  .table-body {
+    height: 609px;
+
+    table {
+      tr {
+        &.active-row {
+          background-color: #a6d1c0;
+        }
+      }
+
+      td {
+        height: 30px;
+        text-align: center;
+        font-weight: bold;
+
+        &:nth-child(3) {
+          text-align: right;
+          padding-right: 15px;
+        }
+
+        &:focus {
+          outline: none;
+          background-color: antiquewhite;
+        }
+
+        &.active-cell::selection {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
