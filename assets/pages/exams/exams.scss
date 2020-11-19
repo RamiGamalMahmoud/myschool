@@ -1,8 +1,5 @@
-@import '../common/table';
-@import '../common/data-table';
-@import './layout/admin-nav';
-@import '../common/util/menus/drop-down';
-@import './layout/page-header';
+@import './page-header';
+@import './certificates.scss';
 
 .data-table {
   position: relative;

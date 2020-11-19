@@ -1,6 +1,6 @@
 {% extends "base.twig" %}
 
-{% block css %}
+{# {% block css %}
 <link rel="stylesheet" href="/css/admin/content.css">
 <link rel="stylesheet" href="/css/admin/style.css">
 
@@ -8,64 +8,70 @@
 
 {% endblock childCSS %}
 
-{% endblock css %}
+{% endblock css %} #}
 
 
-{% block title %} Admin {% endblock title %}
+{% block title %}
+	Admin
+{% endblock title %}
 
 
 {% block body %}
 
-<nav class="admin-nav">
-    <div class="user dropdown">
-        <span class="dropdown-btn btn">
-            <i class="fa fa-user"></i>
-            <span class="user-name">{{ fullName }}</span>
-            <i class="fa fa-angle-down"></i>
-        </span>
-        <ul class="dropdown-content">
-            <li>
-                <a href="/logout" class="btn">
-                    <i class="fa fa-sign-out"></i>
-                    تسجيل الخروج
-                </a>
-            </li>
-        </ul>
-    </div>
-    <ul class="admin-links">
-        <li><a href="/admin/users/" class="btn">
-                <i class="fa fa-users"></i>
-                إدارة المستخدمين
-            </a></li>
-        <li><a href="/admin/students/" class="btn">
-                <i class="fa fa-child"></i>
-                شئون الطلبة
-            </a></li>
-        <li><a href="/admin/employees/" class="btn">
-                <i class="fa fa-user-secret"></i>
-                شئون العاملين
-            </a></li>
-        <li><a href="/admin/exams/" class="btn">
-                <i class="fa fa-graduation-cap"></i>
-                شئون الإمتحانات
-            </a></li>
-    </ul>
-</nav>
-<div class="nav-holder"></div>
-{{ name }}
-<div class="content">
+	<nav class="admin-nav">
+		<div class="user dropdown">
+			<span class="dropdown-btn btn">
+				<i class="fa fa-user"></i>
+				<span class="user-name">{{ fullName }}</span>
+				<i class="fa fa-angle-down"></i>
+			</span>
+			<ul class="dropdown-content">
+				<li>
+					<a href="/logout" class="btn">
+						<i class="fa fa-sign-out"></i>
+						تسجيل الخروج
+					</a>
+				</li>
+			</ul>
+		</div>
+		<ul class="admin-links">
+			<li>
+				<a href="/admin/users/" class="btn">
+					<i class="fa fa-users"></i>
+					إدارة المستخدمين
+				</a>
+			</li>
+			<li>
+				<a href="/admin/students/" class="btn">
+					<i class="fa fa-child"></i>
+					شئون الطلبة
+				</a>
+			</li>
+			<li>
+				<a href="/admin/employees/" class="btn">
+					<i class="fa fa-user-secret"></i>
+					شئون العاملين
+				</a>
+			</li>
+			<li>
+				<a href="/admin/exams/" class="btn">
+					<i class="fa fa-graduation-cap"></i>
+					شئون الإمتحانات
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="nav-holder"></div>
+	{{ name }}
+	<div class="content">
 
-    {% block content %}
+		{% block content %}{% endblock content %}
 
-    {% endblock content %}
+		{% if contentTemplate %}
+			{% include contentTemplate %}
+		{% endif %}
 
-    {% if contentTemplate %}
-    {% include contentTemplate %}
-    {% endif %}
-
-</div>
+	</div>
 {% endblock body %}
 
-{% block js %}
-
-{% endblock js %}
+{% block js %}{% endblock js %}

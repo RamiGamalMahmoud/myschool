@@ -1,478 +1,360 @@
-a{text-decoration: none;}
-li{list-style: none;}
-
 /* Sid bar */
-.sidbar{
-    width: 130px;
-    margin-top: 5px;
-    float: right;
-    background-color: teal;
+.sidbar {
+  width: 130px;
+  margin-top: 5px;
+  float: right;
+  background-color: teal;
 }
 
-.btn{
-    cursor: pointer;
-    display: block;
-    padding: 15px 0px;
-    margin: auto ;
-    text-align: center;
-    font-weight: 600;
-    width: 130px;
-    color: #fff4e3;
-}
-
-.btn:hover{
-    background-color: var(--hover-color);
-    color: #34495e;
-}
-.btn:first-child{
-    margin-top: 0;
-    
-}
 
 /* Dropdown Menu*/
-.slide-menu{
-    position: relative;
+.slide-menu {
+  position: relative;
 }
-.slide-menu ul{
-    z-index: 2;
-    padding: 0 5px 0 0 ;
-    margin-top: 0;
-    display: none;
-    position: absolute;
-    right: 130px;
-    top: 0;
-    box-shadow: 0 0 5px #6E7783;
-    color: #34495e;
+
+.slide-menu ul {
+  z-index: 2;
+  padding: 0 5px 0 0;
+  margin-top: 0;
+  display: none;
+  position: absolute;
+  right: 130px;
+  top: 0;
+  box-shadow: 0 0 5px #6E7783;
+  color: #34495e;
 
 }
 
-.slide-menu ul a.btn{
-    width: 100px;
-    border-top: 1px solid #ffcdab;
-    background-color: #ffa45c;
+.slide-menu ul a.btn {
+  width: 100px;
+  border-top: 1px solid #ffcdab;
+  background-color: #ffa45c;
 }
 
-.slide-menu ul li:first-child a.btn{
-    border: none;
+.slide-menu ul li:first-child a.btn {
+  border: none;
 }
-.slide-menu ul a.btn:hover{
-    background-color: #ffcdab;
-    color: #555;
+
+.slide-menu ul a.btn:hover {
+  background-color: #ffcdab;
+  color: #555;
 }
-.slide-menu:hover ul.slide-menu-content{
-    display: inline-block;
+
+.slide-menu:hover ul.slide-menu-content {
+  display: inline-block;
 }
-.slide-menu .sub-menu:hover .sub-content{
-    display: inline-block;
+
+.slide-menu .sub-menu:hover .sub-content {
+  display: inline-block;
 }
 
 
 /* More Options Form*/
-.more-options{
-    border-top: 5px solid #FFF;
-}
-.more-options form fieldset{
-    border: none;
-    margin: 2px 0 0 0;
-    border-top: 5px solid #FFF;
-    width: 100%;
-    padding: 0;
-}
-.more-options form fieldset .field-title{
-    border-bottom: 1px dashed #ffa45c;
-    background-color: #6e6e6b;
-    text-align: center;
-    color: #FFF;
-    display: inline-block;
-    padding: 10px 0;
-    font-weight: bold;
-    width: 100%;
-    margin-bottom: 5px;
+.more-options {
+  border-top: 5px solid #FFF;
 }
 
-.more-options form fieldset label{
-    position: relative;
-    font-weight: bold;
-    cursor: pointer;
-    display: block;
-    padding: 10px 45px 10px 0;
-    color: #FFF;
-    right: 0;
-}
-.more-options form fieldset label:hover{
-    background-color: #ffcdab;
-    color: #34495e;
-}
-.radio-check{
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    background-color: #FFF;
-    border-radius: 50%;
-    position: absolute;
-    right: 20px;
-}
-.more-options form input[type='radio']{
-    display: none;
-}
-.more-options form input[type='radio']:checked ~ .radio-check{
-    border: 3px solid #ffa45c;
-    background-color: #5d5d5a;
-}
-.more-options form input[type='submit']{
-    /* border-radius: 10px; */
-    border: none;
-    background-color: teal;
-    display: inline-block;
-    padding: 10px 15px;
-    width: 100%;
-    color: #FFF;
-    border-top: 5px solid #FFF;
-    cursor: pointer;
-    font-weight: bold;
-}
-.more-options form.hidden{
-    display:none;
+.more-options form fieldset {
+  border: none;
+  margin: 2px 0 0 0;
+  border-top: 5px solid #FFF;
+  width: 100%;
+  padding: 0;
 }
 
-
-/* Data Table */
-.content{
-    overflow:hidden;
-}
- .data{
-    float: right;
-    margin: 5px 5px 0 0;
-    width: 1120px;
-    overflow: hidden;
-}
-table{
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
-    direction: rtl;
+.more-options form fieldset .field-title {
+  border-bottom: 1px dashed #ffa45c;
+  background-color: #6e6e6b;
+  text-align: center;
+  color: #FFF;
+  display: inline-block;
+  padding: 10px 0;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
-.data .table-head{
-    width: 100%;
-    max-width: 1120px;
-    overflow: scroll;
-    transform: rotateX(180deg);
-}
-.data .table-head{
-    direction: ltr;
-}
-.data .table-head table{
-    transform: rotateX(180deg);
-}
-.data .table-body{
-    height: 750px;
-    width: 100%;
-    overflow: auto;
-    border-bottom: 5px solid #00b894;
-    direction: ltr;
-}
-.data .table-body table{
-    direction: rtl;
+.more-options form fieldset label {
+  position: relative;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  padding: 10px 45px 10px 0;
+  color: #FFF;
+  right: 0;
 }
 
-.data .table-head th{
-    background-color: teal;
-    cursor: pointer;
-    color: #FFF;
-    padding: 5px;
-    font-weight: bold;
-    font-size: 1.1em;
-    border: 1px solid #FFF;
+.more-options form fieldset label:hover {
+  background-color: #ffcdab;
+  color: #34495e;
 }
 
-.data .table-head th:first-child{
-    border-right: none;
+.radio-check {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-color: #FFF;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
 }
 
-
-*[dataName="studentId"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="studentName"]{
-    min-width: 275px;
-    max-width: 275px;
-    width: 275px;
+.more-options form input[type='radio'] {
+  display: none;
 }
 
-*[dataName="classNumber"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="enrollmentStatus"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="religion"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="sex"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="nationalId"]{
-    min-width: 150px;
-    max-width: 150px;
-    width: 150px;
-}
-*[dataName="pirthDate"]{
-    min-width: 100px;
-    max-width: 100px;
-    width: 100px;
-}
-*[dataName="day"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="month"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="year"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
-}
-*[dataName="grade"]{
-    min-width: 70px;
-    max-width: 70px;
-    width: 70px;
+.more-options form input[type='radio']:checked~.radio-check {
+  border: 3px solid #ffa45c;
+  background-color: #5d5d5a;
 }
 
-.data .table-body table tbody td{
-    border: 1px solid #DDD;
-    font-weight: bold;
-    padding: 5px;
-}
-.data .table-body table tbody td:focus{
-    outline: none;
-    background-color: #10ac84;
-    color: #FFF;
-}
-.data .table-body table tbody tr td:nth-child(2){
-    text-align: right;
-}
-
-.data .table-body table tr:hover{
-    box-shadow: 0px 0px 5px #888;
-    background-color: #555;
-    color: #FFF;
+.more-options form input[type='submit'] {
+  /* border-radius: 10px; */
+  border: none;
+  background-color: teal;
+  display: inline-block;
+  padding: 10px 15px;
+  width: 100%;
+  color: #FFF;
+  border-top: 5px solid #FFF;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.text-right{
-    text-align: right;
+.more-options form.hidden {
+  display: none;
 }
 
 /* Add New Student Form*/
-.new-student-container{
-    width: 80%;
-    float: right;
-    margin-right: 30px;
-    font-weight: bold;
-    position: relative;
+.new-student-container {
+  width: 80%;
+  float: right;
+  margin-right: 30px;
+  font-weight: bold;
+  position: relative;
 }
-#calc-date-on{
-    position: absolute;
-    padding: 20px;
-    background-color: #34495e;
-    color: #ffa45c;
-    text-align: center;
-    box-shadow: 0 0 10px #7b848d;
+
+#calc-date-on {
+  position: absolute;
+  padding: 20px;
+  background-color: #34495e;
+  color: #ffa45c;
+  text-align: center;
+  box-shadow: 0 0 10px #7b848d;
 }
-#calc-date-on span{
-    display: block;
-    padding-top: 5px;
-    margin-top: 5px;
-    border-top: 1px solid #FFF;
-    color: #ffcdab;
+
+#calc-date-on span {
+  display: block;
+  padding-top: 5px;
+  margin-top: 5px;
+  border-top: 1px solid #FFF;
+  color: #ffcdab;
 }
-.new-student-container .form-title{
-    padding: 10px 0;
-    background-color: #ffcdab;
-    text-align: center;
-    margin: 0 auto 5px;
-    font-size: 1.6em;
-    word-spacing: 5px;
-    color: #34495e;
-    border-radius: 5px;
+
+.new-student-container .form-title {
+  padding: 10px 0;
+  background-color: #ffcdab;
+  text-align: center;
+  margin: 0 auto 5px;
+  font-size: 1.6em;
+  word-spacing: 5px;
+  color: #34495e;
+  border-radius: 5px;
 }
-.new-student-container form input[type='text'], .new-student-container form select{
-    padding: 8px 10px;
-    font-weight: bold;
-    font-size: 1.2em;
-    border: none;
-    height: 38px;
-    background-color: #DDD;
+
+.new-student-container form input[type='text'],
+.new-student-container form select {
+  padding: 8px 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: none;
+  height: 38px;
+  background-color: #DDD;
 }
-.new-student-container form input[type='text']:hover, .new-student-container form select:hover{
-    box-shadow: 0 0 10px #a5a5a5;
-    background-color: #FFF;
+
+.new-student-container form input[type='text']:hover,
+.new-student-container form select:hover {
+  box-shadow: 0 0 10px #a5a5a5;
+  background-color: #FFF;
 }
-.new-student-container form input[type='text']:focus, .new-student-container form select:focus{
-    background-color: #FFF;
-    outline: 2px solid #10ac84;
+
+.new-student-container form input[type='text']:focus,
+.new-student-container form select:focus {
+  background-color: #FFF;
+  outline: 2px solid #10ac84;
 }
-.new-student-container form fieldset{
-    padding: 20px;
-    border-radius: 0 25px 25px 0;
-    border: 2px solid #6E7783;
-    width: 500px;
-    margin: 10px auto 0;
+
+.new-student-container form fieldset {
+  padding: 20px;
+  border-radius: 0 25px 25px 0;
+  border: 2px solid #6E7783;
+  width: 500px;
+  margin: 10px auto 0;
 
 }
 
-.new-student-container form fieldset:first-child div{
-    width: fit-content;
-    margin: 5px;
-}
-.new-student-container form fieldset:first-child input[type='text']{
-    width: 350px;
-}
-.new-student-container form fieldset:not(:first-child) > div{
-    float: right;
+.new-student-container form fieldset:first-child div {
+  width: fit-content;
+  margin: 5px;
 }
 
-.new-student-container form fieldset label{
-    display: inline-block;
-    width: 90px;
+.new-student-container form fieldset:first-child input[type='text'] {
+  width: 350px;
 }
+
+.new-student-container form fieldset:not(:first-child)>div {
+  float: right;
+}
+
+.new-student-container form fieldset label {
+  display: inline-block;
+  width: 90px;
+}
+
 .new-student-container form fieldset:not(:first-child) input,
-.new-student-container form fieldset:not(:first-child) select{
-    width: 100px;
+.new-student-container form fieldset:not(:first-child) select {
+  width: 100px;
 }
+
 .new-student-container form fieldset div.pirth-date-part label,
-.new-student-container form fieldset div.pirth-date-part input{
-    width: 150px;
+.new-student-container form fieldset div.pirth-date-part input {
+  width: 150px;
 }
-.age-container > span{
-    display: block;
-    width: 100%;
-    padding: 5px 10px;
-    text-align: center;
-    background-color: #34495e;
-    color: #FFF;
+
+.age-container>span {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  text-align: center;
+  background-color: #34495e;
+  color: #FFF;
 }
-.age-container > span span{
-    display: block;
-    color: #ffa45c;
-    border-top: 1px solid #DDD;
-    padding-top: 5px;
-    margin-top: 5px;
+
+.age-container>span span {
+  display: block;
+  color: #ffa45c;
+  border-top: 1px solid #DDD;
+  padding-top: 5px;
+  margin-top: 5px;
 }
-.new-student-container form fieldset > div.age-container{
-    overflow: hidden;
-    width: fit-content;
-    margin: auto;
-    clear: both;
-    margin-right: 35px;
+
+.new-student-container form fieldset>div.age-container {
+  overflow: hidden;
+  width: fit-content;
+  margin: auto;
+  clear: both;
+  margin-right: 35px;
 }
-fieldset .age-container .age-data .age-item{
-    width: fit-content;
-    float: right;
+
+fieldset .age-container .age-data .age-item {
+  width: fit-content;
+  float: right;
 }
-fieldset .age-container .age-data .age-item:not(:first-child){
-    margin-right: 5px;
+
+fieldset .age-container .age-data .age-item:not(:first-child) {
+  margin-right: 5px;
 }
-.from-national input[type='text']{
-    text-align: center;
-    border: none;
-    cursor: context-menu;
+
+.from-national input[type='text'] {
+  text-align: center;
+  border: none;
+  cursor: context-menu;
 }
-fieldset .age-container .age-data .age-item input[type='text']{
-    width: 60px;
+
+fieldset .age-container .age-data .age-item input[type='text'] {
+  width: 60px;
 }
-.from-national input[type='text']:focus{outline: none;}
-.new-student-container form fieldset.from-national label{
-    display: block;
-    text-align: center;
-    padding: 5px 10px;
-    width: 100%;
+
+.from-national input[type='text']:focus {
+  outline: none;
+}
+
+.new-student-container form fieldset.from-national label {
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+  width: 100%;
 }
 
 
-.new-student-container form fieldset.from-national > div{
-    padding: 5px;
+.new-student-container form fieldset.from-national>div {
+  padding: 5px;
 }
-.from-national{
-    position: relative;
+
+.from-national {
+  position: relative;
 }
-#from-national-message{
-    position: absolute;
-    width: 185px;
-    right: 295px;
-    top: 15px;
-    padding: 10px 20px;
-    line-height: 1.6em;
-    background-color: #34495e;
-    color: #ffa45c;
-    text-align: justify;
-    box-shadow: 0 0 10px #6e6e6b;
+
+#from-national-message {
+  position: absolute;
+  width: 185px;
+  right: 295px;
+  top: 15px;
+  padding: 10px 20px;
+  line-height: 1.6em;
+  background-color: #34495e;
+  color: #ffa45c;
+  text-align: justify;
+  box-shadow: 0 0 10px #6e6e6b;
 }
-fieldset .age-container .age-data .age-item label{
-    
-    padding: 5px;
-    margin: 5px 0 0 0;
-    width: 60px;
+
+fieldset .age-container .age-data .age-item label {
+
+  padding: 5px;
+  margin: 5px 0 0 0;
+  width: 60px;
 }
-#schooler-data div{
-    margin: 10px;
+
+#schooler-data div {
+  margin: 10px;
 }
-.new-student-container form label{
-    padding: 10px;
-    background-color: #10ac84;
-    color: #FFF;
+
+.new-student-container form label {
+  padding: 10px;
+  background-color: #10ac84;
+  color: #FFF;
 }
-#schooler-data label{
-    padding: 10px;
-    display: block;
-    width: 100%;
-    text-align: center;
+
+#schooler-data label {
+  padding: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .new-student-container form input[type="submit"],
-.new-student-container form input[type="reset"]{
-    border: none;
-    /* display: block; */
-    padding: 10px;
-    width: 300px;
-    background-color: teal;
-    color: #FFF;
-    font-size: 1.3em;
-    font-weight: bold;
-    margin: 10px auto;
-}
-#form-buttons{
-    position: relative;
-    width: fit-content;
-    margin: auto;
+.new-student-container form input[type="reset"] {
+  border: none;
+  /* display: block; */
+  padding: 10px;
+  width: 300px;
+  background-color: teal;
+  color: #FFF;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 10px auto;
 }
 
-#form-buttons i.fa{
-    position: absolute;
-    top: 25px;
-    margin-right: 65px;
-    color: #FFF;
+#form-buttons {
+  position: relative;
+  width: fit-content;
+  margin: auto;
 }
+
+#form-buttons i.fa {
+  position: absolute;
+  top: 25px;
+  margin-right: 65px;
+  color: #FFF;
+}
+
 .new-student-container form input[type="submit"]:hover,
-.new-student-container form input[type="reset"]:hover{
-    box-shadow: 0 0 10px #a5a5a5;
-    cursor: pointer;
-    transition: all 0.5s;
+.new-student-container form input[type="reset"]:hover {
+  box-shadow: 0 0 10px #a5a5a5;
+  cursor: pointer;
+  transition: all 0.5s;
 }
-.new-student-container form input[type="reset"]{
-    background-color: #e74c3c;
+
+.new-student-container form input[type="reset"] {
+  background-color: #e74c3c;
 }

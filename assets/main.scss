@@ -1,5 +1,7 @@
 @import './variables/colors';
 
+@import './base/reset';
+
 @import './objects/buttons';
 @import './objects/data-table';
 @import './objects/drop-down';
@@ -7,7 +9,10 @@
 
 @import './base/base';
 
-@import './pages/admin/style.scss';
-@import './pages/exams/certificates.scss';
+@import './pages/admin/admin.scss';
+
 @import './pages/exams/exams.scss';
-@import './pages/students/style.scss';
+
+@import './pages/students/students.scss';
+
+@import './pages/users/users.scss';
