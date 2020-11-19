@@ -1,0 +1,13 @@
+@import './variables/colors';
+
+@import './objects/buttons';
+@import './objects/data-table';
+@import './objects/drop-down';
+@import './objects/table';
+
+@import './base/base';
+
+@import './pages/admin/style.scss';
+@import './pages/exams/certificates.scss';
+@import './pages/exams/exams.scss';
+@import './pages/students/style.scss';
