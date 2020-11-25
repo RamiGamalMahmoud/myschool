@@ -1,36 +1,38 @@
-@import './page-header';
-@import './certificates.scss';
+.exams-content {
+  @import './page-header';
+  @import './certificates.scss';
 
-.data-table {
-  position: relative;
+  .data-table {
+    position: relative;
 
-  .table-body {
-    height: 609px;
+    .table-body {
+      height: calc(100vh - 300px);
 
-    table {
-      tr {
-        &.active-row {
-          background-color: #a6d1c0;
-        }
-      }
-
-      td {
-        height: 30px;
-        text-align: center;
-        font-weight: bold;
-
-        &:nth-child(3) {
-          text-align: right;
-          padding-right: 15px;
+      table {
+        tr {
+          &.active-row {
+            background-color: #a6d1c0;
+          }
         }
 
-        &:focus {
-          outline: none;
-          background-color: antiquewhite;
-        }
+        td {
+          height: 30px;
+          text-align: center;
+          font-weight: bold;
 
-        &.active-cell::selection {
-          background-color: transparent;
+          &:nth-child(3) {
+            text-align: right;
+            padding-right: 15px;
+          }
+
+          &:focus {
+            outline: none;
+            background-color: antiquewhite;
+          }
+
+          &.active-cell::selection {
+            background-color: transparent;
+          }
         }
       }
     }
