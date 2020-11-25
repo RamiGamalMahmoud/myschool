@@ -7,7 +7,7 @@
 {% block content %}
 
 	<div
-		class='content'>
+		class='content exams-content'>
 
 		<!-- The Header of the page -->
 		<div class='page-header'>
@@ -142,10 +142,10 @@
 			</div>
 		</div>
 
+		{% if child %}
+			{% include template_from_string(child) %}
+		{% endif %}
 	</div>
-	{% if child %}
-		{% include template_from_string(child) %}
-	{% endif %}
 
 {% endblock content %}
 {% block js %}
