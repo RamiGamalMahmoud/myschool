@@ -1,7 +1,7 @@
 param($watch, $compress)
 
-$source = "assets\main.scss"
-$dest = "public\css\style.css"
+$source = "..\assets\main.scss"
+$dest = "..\public\css\style.css"
 $command = "sass " + $source + " " + $dest + " "
 
 
