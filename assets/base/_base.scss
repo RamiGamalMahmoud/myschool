@@ -1,1 +1,16 @@
-// @import './reset';
+.table {
+
+  td,
+  th {
+
+    &.warning {
+      color: #9F6000;
+      background-color: #FEEFB3;
+    }
+
+    &.danger {
+      color: #D8000C;
+      background-color: #FFD2D2;
+    }
+  }
+}
