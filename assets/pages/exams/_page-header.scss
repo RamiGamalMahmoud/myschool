@@ -68,7 +68,7 @@ th {
       padding: 5px 0;
 
       &:first-child {
-        background-color: #2ecc71;
+        background-color: $table-header-bg-color;
         color: #FFF;
       }
     }
