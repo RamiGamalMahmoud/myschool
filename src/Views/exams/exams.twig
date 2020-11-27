@@ -13,24 +13,24 @@
 
 			<div class='menu-bar'>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>الصف</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
+						<div class='menu-content-wrapper'>
 							<a href='{{ linkPrefex }}/1' class='menu-btn'>الأول</a>
 							<a href='{{ linkPrefex }}/2' class='menu-btn'>الثاني</a>
 						</div>
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>رصد الدور الأول</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
-							<div class='sub-menu'>
-								<span class='sub-menu-title'>التيرم الأول</span>
-								<div class='sub-menu-content'>
-									<div class='wrapper'>
+						<div class='menu-content-wrapper'>
+							<div class='menu left-slide-menu'>
+								<span class='menu-title'>التيرم الأول</span>
+								<div class='menu-content'>
+									<div class='menu-content-wrapper'>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/evaluation/fs' class='menu-btn'>التقويمات</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/practical/fs' class='menu-btn'>العملي</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/written/fs' class='menu-btn'>التحريري</a>
@@ -38,10 +38,10 @@
 								</div>
 							</div>
 
-							<div class='sub-menu'>
-								<span class='sub-menu-title'>التيرم الثاني</span>
-								<div class='sub-menu-content'>
-									<div class='wrapper'>
+							<div class='menu left-slide-menu'>
+								<span class='menu-title'>التيرم الثاني</span>
+								<div class='menu-content'>
+									<div class='menu-content-wrapper'>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/evaluation/ss' class='menu-btn'>التقويمات</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/practical/ss' class='menu-btn'>العملي</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/written/ss' class='menu-btn'>التحريري</a>
@@ -53,20 +53,20 @@
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>الشهادات</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
+						<div class='menu-content-wrapper'>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss' class='menu-btn'>نصف العام</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss' class='menu-btn'>آخر العام</a>
 						</div>
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>الشيتات</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
+						<div class='menu-content-wrapper'>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/fs' class='menu-btn' class='menu-btn'>نصف العام</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/ss' class='menu-btn'>آخر العام</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/success' class='menu-btn'>ناجح</a>
@@ -75,24 +75,24 @@
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>كشوف</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
-							<div class='sub-menu'>
-								<span class='sub-menu-title'>العشرة الأوائل</span>
-								<div class='sub-menu-content'>
-									<div class='wrapper'>
+						<div class='menu-content-wrapper'>
+							<div class='menu left-slide-menu'>
+								<span class='menu-title'>العشرة الأوائل</span>
+								<div class='menu-content'>
+									<div class='menu-content-wrapper'>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/top-ten/fs' class='menu-btn'>التيرم الأول</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/top-ten/ss' class='menu-btn'>آخر العام</a>
 									</div>
 								</div>
 							</div>
 
-							<div class='sub-menu'>
-								<span class='sub-menu-title'>نتيجة إجمالية</span>
-								<div class='sub-menu-content'>
-									<div class='wrapper'>
+							<div class='menu left-slide-menu'>
+								<span class='menu-title'>نتيجة إجمالية</span>
+								<div class='menu-content'>
+									<div class='menu-content-wrapper'>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/fs' class='menu-btn'>التيرم الأول</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/ss' class='menu-btn'>آخر العام</a>
 										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/second-round' class='menu-btn'>بعد الدور الثاني</a>
@@ -106,10 +106,10 @@
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title'>إحصاءات</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
+						<div class='menu-content-wrapper'>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/fs' class='menu-btn'>التيرم الأول</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/ss' class='menu-btn'>آخر العام</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/second-round' class='menu-btn'>بعد الدور الثاني</a>
@@ -117,10 +117,10 @@
 					</div>
 				</div>
 
-				<div class='menu'>
+				<div class='menu drop-down-menu'>
 					<span class='menu-title last'>الدور الثاني</span>
 					<div class='menu-content'>
-						<div class='wrapper'>
+						<div class='menu-content-wrapper'>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>كشوف المناداة</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>دليل الدور الثاني</a>
 							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>توقيع الدور الثاني</a>

@@ -1,0 +1,82 @@
+/* STYLE */
+
+.page-data {
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.menu-bar,
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+.menu {
+  text-align: center;
+
+  .menu-title,
+  .menu-btn {
+    width: 120px;
+    display: block;
+    color: #5d5d5a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .menu-btn,
+  .menu .menu-title {
+    width: 150px;
+  }
+
+  .menu .menu-title,
+  .menu-btn {
+    background-color: rgb(241, 196, 15);
+  }
+
+  .menu:hover .menu-title,
+  .menu-btn:hover {
+    background-color: #e67e22;
+    color: #FFF;
+  }
+
+  .menu-content {
+    display: none;
+    position: absolute;
+    z-index: 2;
+  }
+
+  &:hover>.menu-content {
+    display: block;
+  }
+
+  &:hover>.menu-title {
+    background-color: rgb(241, 196, 15);
+    color: #5d5d5a;
+  }
+
+  &.drop-down-menu {
+    >.menu-content {
+      padding-top: 5px;
+      top: 100%;
+    }
+  }
+
+  &.left-slide-menu>.menu-content {
+    top: 0;
+    right: 100%;
+    padding-right: 5px;
+  }
+
+  &.right-slide-menu>.menu-content {
+    top: 0;
+    left: 100%;
+    padding-left: 5px;
+  }
+
+  .menu-content-wrapper {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  }
+}
