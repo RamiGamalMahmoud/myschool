@@ -9,21 +9,22 @@
 {% block body %}
 
 	<nav class="admin-nav">
-		<div class="user dropdown">
-			<span class="dropdown-btn btn">
+		<div class="menu drop-down-menu">
+			<span class="menu-title">
 				<i class="fa fa-user"></i>
 				<span class="user-name">{{ fullName }}</span>
 				<i class="fa fa-angle-down"></i>
 			</span>
-			<ul class="dropdown-content">
-				<li>
-					<a href="/logout" class="btn">
+			<div class="menu-content">
+				<div class="menu-content-wrapper">
+					<a href="/logout" class="menu-btn">
 						<i class="fa fa-sign-out"></i>
 						تسجيل الخروج
 					</a>
-				</li>
-			</ul>
+				</div>
+			</div>
 		</div>
+
 		<ul class="admin-links">
 			<li>
 				<a href="/admin/users/" class="btn">
