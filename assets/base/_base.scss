@@ -1,16 +1,18 @@
 .table {
+  $red: #f3558e;
+  $yellow: #faee1c;
 
   td,
   th {
 
     &.warning {
-      color: #ff5959;
-      background-color: #e3f02cb2;
+      color: $danger;
+      background-color: $warning;
     }
 
     &.danger {
-      color: #e3f02cb2;
-      background-color: #ff5959;
+      color: $danger;
+      background-color: $pink;
     }
   }
 }
