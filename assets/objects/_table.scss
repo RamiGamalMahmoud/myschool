@@ -3,13 +3,18 @@ $table-border-color: #AAA;
 .table {
 
   overflow: hidden;
-  border: 2px solid $table-border-color;
+  border: 1px solid $table-border-color;
   border-collapse: collapse;
+  text-align: center;
 
   th,
   td {
     padding: 5px;
-    border-left: 1px solid $table-border-color;
+
+    &:not(:last-of-type) {
+      border-left: 1px solid $table-border-color;
+
+    }
   }
 
   th {

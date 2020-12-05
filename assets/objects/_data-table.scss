@@ -2,14 +2,17 @@ $table-border-color: #AAA;
 
 .data-table {
 
+  width: fit-content;
+  max-width: 100%;
+
   .table-head,
   .table-body {
     overflow: auto;
 
-  }
+    .head-space-holder+tr {
+      border-top: none;
+    }
 
-  .table-head table {
-    border-top: none;
   }
 
   .table-body {
@@ -18,5 +21,4 @@ $table-border-color: #AAA;
     }
   }
 
-  border-radius: 5px;
 }
