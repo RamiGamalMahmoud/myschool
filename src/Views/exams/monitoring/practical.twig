@@ -2,16 +2,18 @@
 	<div class="section-header">
 		<div class="section-header-name">
 			<div>
+				<span class="class-name">{{ gradeName }}</span>
+				<span>|</span>
 				<span class="table-name">{{ tableName }}</span>
 			</div>
 		</div>
 		<div class="section-header-data monitoring-summary">
-			<table>
+			<table class="table">
 				<thead>
-					<tr>
-						<th class="head-space-holder cell-size-1"></th>
-						<th class="head-space-holder cell-size-1"></th>
-						<th class="head-space-holder cell-size-1"></th>
+					<tr class="head-space-holder">
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,47 +31,59 @@
 			</table>
 		</div>
 	</div>
+
 	<div class="data-table practical-table">
 		<div class="table-head">
-			<table>
+			<table class="table">
 				<thead>
+					<tr class="head-space-holder">
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+						<th class="student-name-size"></th>
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+					</tr>
 					<tr>
-						<th class="cell-size-1 rotated-head serial" rowspan="2">
+						<th class="rotated-head serial" rowspan="2">
 							<span>مسلسل</span>
 						</th>
-						<th class="cell-size-1 rotated-head sitting" rowspan="2">
+						<th class="rotated-head sitting" rowspan="2">
 							<span>رقم الجلوس</span>
 						</th>
-						<th class="cell-size-3 std-name" rowspan="2">
+						<th class="std-name" rowspan="2">
 							<span>اسم الطالب</span>
 						</th>
-						<th class="cell-size-1 rotated-head class-number" rowspan="2">
+						<th class="rotated-head class-number" rowspan="2">
 							<span>الفصل</span>
 						</th>
-						<th class="cell-size-1 rotated-head" rowspan="1">
+						<th class="rotated-head" rowspan="1">
 							<span>العلوم</span>
 						</th>
-						<th class="cell-size-1 rotated-head" rowspan="1">
+						<th class="rotated-head" rowspan="1">
 							<span>الحاسب الآلي</span>
 						</th>
 					</tr>
 					<tr>
-						{% for deg in degrees %}
-							<th>{{ deg }}</th>
-						{% endfor %}
+						{# {% for deg in degrees %}<th>{{ deg }}</th>{% endfor %} #}
+						<th>14</th>
+						<th>14</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
+
 		<div class="table-body">
-			<table>
+			<table class="table">
 				<thead>
-					<th class="head-space-holder cell-size-1 rotated-head serial"></th>
-					<th class="head-space-holder cell-size-1 rotated-head sitting"></th>
-					<th class="head-space-holder cell-size-3 std-name"></th>
-					<th class="head-space-holder cell-size-1 rotated-head class-number"></th>
-					<th class="head-space-holder cell-size-1 rotated-head"></th>
-					<th class="head-space-holder cell-size-1 rotated-head"></th>
+					<tr class="head-space-holder">
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+						<th class="student-name-size"></th>
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+						<th class="cell-size-1"></th>
+					</tr>
 				</thead>
 				<tbody>
 					{% for entity in entities %}
