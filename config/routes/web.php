@@ -22,8 +22,8 @@ Route::get('admin/{other}/*.*', CONTROLLRES . 'Admin\\AdminController@reRoute');
 Route::get('users', CONTROLLRES . 'Users\\UsersController@index');
 
 /**
-* EXAMS HTTP GET ROUTES
-*/
+ * EXAMS HTTP GET ROUTES
+ */
 
 Route::get('exams', CONTROLLRES . 'Exams\\ExamsController@index');
 

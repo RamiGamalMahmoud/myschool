@@ -1,58 +1,66 @@
 {% extends parentTemplate  %}
 
 {% block childCSS %}
-<link rel="stylesheet" href="/css/students/content.css">
+	<link rel="stylesheet" href="/css/students/content.css">
 {% endblock childCSS %}
 
 {% block content %}
-<div class="sidbar">
-    <div class="slide-menu">
-        <span class="btn deopdown-btn">الصف</span>
-        <ul class="select-grade slide-menu-content">
-            <li><a class="btn" href="{{ linkPrefex }}/view/1">الصف الأول</a></li>
-            <li><a class="btn" href="{{ linkPrefex }}/view/2">الصف الثاني</a></li>
-            <li><a class="btn" href="{{ linkPrefex }}/view/3">الصف الثالث</a></li>
-            <li><a class="btn" href="{{ linkPrefex }}/view/all">كل الطلبة</a></li>
-        </ul>
-    </div>
+	<div class="sidbar">
+		<div class="slide-menu">
+			<span class="btn deopdown-btn">الصف</span>
+			<ul class="select-grade slide-menu-content">
+				<li>
+					<a class="btn" href="{{ linkPrefex }}/view/1">الصف الأول</a>
+				</li>
+				<li>
+					<a class="btn" href="{{ linkPrefex }}/view/2">الصف الثاني</a>
+				</li>
+				<li>
+					<a class="btn" href="{{ linkPrefex }}/view/3">الصف الثالث</a>
+				</li>
+				<li>
+					<a class="btn" href="{{ linkPrefex }}/view/all">كل الطلبة</a>
+				</li>
+			</ul>
+		</div>
 
-    <div class="slide-menu">
-        <span class="btn deopdown-btn">الفصل</span>
+		<div class="slide-menu">
+			<span class="btn deopdown-btn">الفصل</span>
 
-        <ul class="select-class slide-menu-content">
-            {% if maxClassesNumber > 0 %}
+			<ul class="select-class slide-menu-content">
+				{% if maxClassesNumber > 0 %}
 
-            {% for classNumber in range(1, maxClassesNumber) %}
-            <li>
-                <a class="btn" href='{{ linkPrefex }}/view/{{ grade }}/class/{{ classNumber }}'>
-                    {{ classNumber }}
-                </a>
-            </li>
-            {% endfor %}
-            <li>
-                <a class='btn' href='{{ linkPrefex }}/view/class/{{ all }}'>كل الصف</a>
-            </li>
-            {% endif %}
-        </ul>
+					{% for classNumber in range(1, maxClassesNumber) %}
+						<li>
+							<a class="btn" href='{{ linkPrefex }}/view/{{ grade }}/class/{{ classNumber }}'>
+								{{ classNumber }}
+							</a>
+						</li>
+					{% endfor %}
+					<li>
+						<a class='btn' href='{{ linkPrefex }}/view/class/{{ all }}'>كل الصف</a>
+					</li>
+				{% endif %}
+			</ul>
 
-    </div>
-    <a href="{{ linkPrefex }}/add" class="btn" style="border-top: 5px solid #FFF;"><i class="fa fa-plus"
-            style="margin-left: 5px;"></i>طالب جديد</a>
+		</div>
+		<a href="{{ linkPrefex }}/add" class="btn" style="border-top: 5px solid #FFF;">
+			<i class="fa fa-plus" style="margin-left: 5px;"></i>طالب جديد</a>
 
-</div>
+	</div>
 
-{% block section %}
+	{% block section %}
 
-{% if sectionName %}
+		{% if sectionName %}
 
-{% include sectionName %}
+			{% include sectionName %}
 
-{% endif %}
+		{% endif %}
 
-{% endblock section %}
+	{% endblock section %}
 
 {% endblock content %}
 
 {% block js %}
-<script src="/js/students/app.js" type="module" ></script>
+	<script src="/js/students/app.js" type="module"></script>
 {% endblock js %}

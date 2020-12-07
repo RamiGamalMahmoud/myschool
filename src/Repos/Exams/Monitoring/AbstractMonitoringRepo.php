@@ -15,6 +15,7 @@ abstract class AbstractMonitoringRepo implements IRepo
   protected int $gradeNumber;
 
   public abstract function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess);
+
   public function saveDegree($studentId, $dataName, $dataValue)
   {
     $query = new Query();
