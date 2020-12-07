@@ -33,6 +33,8 @@ Route::get('exams/\d*/{section}/*.*', CONTROLLRES . 'Exams\\ExamsController@reRo
 
 Route::get('monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\MonitoringController@index');
 
+Route::get('sheets/{semester}', CONTROLLRES . 'Exams\\Sheets\\SheetsController@index');
+
 /**
  * HTTP POST METHOD ROUTES
  */
