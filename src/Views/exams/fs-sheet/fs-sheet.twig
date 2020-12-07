@@ -1,10 +1,13 @@
 <div class="section">
-	<div class="data-table fs" style="width: 100%">
-		<div class="table-head" style="width: 100%;">
-			<table>
+	<div class="data-table fs">
+		<div class="table-head">
+			<table class="table">
 				<thead>
+					<tr class="head-space-holder">
+						{% include "exams/fs-sheet/table-body-header.twig" %}
+					</tr>
 					<tr>
-						{% include "exams/fs-sheet/table-head.twig" %}
+						{% include "exams/fs-sheet/table-head-level-1.twig" %}
 					</tr>
 					<tr>
 						{% include "exams/fs-sheet/columns-names.twig" %}
@@ -19,10 +22,10 @@
 			</table>
 		</div>
 
-		<div class="table-body" style="width: 100%;">
-			<table>
+		<div class="table-body">
+			<table class="table">
 				<thead>
-					<tr>
+					<tr class="head-space-holder">
 						{% include "exams/fs-sheet/table-body-header.twig" %}
 					</tr>
 				</thead>
