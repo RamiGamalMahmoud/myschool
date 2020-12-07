@@ -15,8 +15,8 @@
 
 	</head>
 	<body>
-		{% block body %}{% endblock body %}
-
-		{% block js %}{% endblock js %}
-	</body>
-</html>
+		<div class="content"> {% block admin %}{% endblock admin%}{% block content %}{% endblock content %}
+			</div>
+			{% block js %}{% endblock js %}
+		</body>
+	</html>

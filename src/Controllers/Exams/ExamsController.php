@@ -14,8 +14,17 @@ class ExamsController extends BaseController
   public function __construct(IRequest $request, $params)
   {
     parent::__construct($request, $params);
-    $linkPrefex = isset($params['linkPrefex']) ? $params['linkPrefex'] . '/exams' : '/exams';
-    $this->context['linkPrefex'] = $linkPrefex;
+    if ($params === null) {
+      $this->context = [
+        'linkPrefex' => '/exams',
+        'parentTemplate' => 'base.twig'
+      ];
+    } else {
+      $this->context['linkPrefex'] = $params['linkPrefex'] . '/exams';
+    }
+
+
+
     $this->view = 'exams/exams.twig';
   }
 

@@ -6,7 +6,7 @@
 {% endblock title %}
 
 
-{% block body %}
+{% block admin %}
 
 	<nav class="admin-nav">
 		<div class="menu drop-down-menu">
@@ -53,16 +53,7 @@
 		</ul>
 	</nav>
 	<div class="nav-holder"></div>
-	{{ name }}
-	<div class="content">
 
-		{% block content %}{% endblock content %}
-
-		{% if contentTemplate %}
-			{% include contentTemplate %}
-		{% endif %}
-
-	</div>
-{% endblock body %}
+{% endblock admin %}
 
 {% block js %}{% endblock js %}
