@@ -9,9 +9,9 @@ class DBConfig implements IDBConfig
   private const DB_NAME   = 'school_management';
   private const DRIVER   = 'mysql';
   private const HOST     = 'localhost';
-  private const PASSWORD = '';
+  private const PASSWORD = '1234';
   private const PORT     = 3306;
-  private const USER_NAME = 'root';
+  private const USER_NAME = 'rami';
 
   public static function getConnectionString(): string
   {
