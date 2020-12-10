@@ -7,12 +7,14 @@ use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\IRequest;
 use Simple\Core\Dispatcher;
+use Simple\Core\Session;
 use SM\Controllers\BaseController;
 
 class ExamsController extends BaseController
 {
   public function __construct(IRequest $request, $params)
   {
+    Session::start();
     parent::__construct($request, $params);
     if ($params === null) {
       $this->context = [
@@ -23,6 +25,7 @@ class ExamsController extends BaseController
       $this->context['linkPrefex'] = $params['linkPrefex'] . '/exams';
     }
 
+    $this->context['fullName'] = Session::get('fullName');
 
 
     $this->view = 'exams/exams.twig';

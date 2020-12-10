@@ -29,7 +29,13 @@
 						{% include "exams/fs-sheet/columns-sizes.twig" %}
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					{% for entity in entities %}
+						<tr>
+							{% include "exams/fs-sheet/data.twig" %}
+						</tr>
+					{% endfor %}
+				</tbody>
 			</table>
 		</div>
 	</div>
