@@ -1,0 +1,22 @@
+.sheet {
+  .table {
+    td {
+      font-size: 0.9em;
+    }
+
+  }
+
+  .table-head {
+    max-width: calc(100% - 17px);
+    overflow: hidden;
+  }
+
+  .table-body {
+    height: calc(100vh - 260px);
+    margin-top: 10px;
+
+    .table {
+      border-top: 1px solid #000;
+    }
+  }
+}
