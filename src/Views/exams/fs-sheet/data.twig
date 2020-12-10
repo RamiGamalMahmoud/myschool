@@ -1,0 +1,153 @@
+<td>
+	{{ entity.studentId }}
+</td>
+<td>
+	{{ entity.sittingNumber }}
+</td>
+<td>
+	{{ entity.studentName }}
+</td>
+<td>
+	{{ entity.classNumber }}
+</td>
+<td class={{ entity.enrollmentStatus == "معيد" ? "warning" : "" }}>
+	{{ entity.enrollmentStatus }}
+</td>
+<td>
+	{{ entity.grade }}
+</td>
+<td class={{ entity.fse_arabic >= 0 ?: "warning" }}>
+	{{ entity.fse_arabic < 0 ? "غ" : entity.fse_arabic }}
+</td>
+<td class={{ entity.fsw_arabic >= 0 ?: "warning" }}>
+	{{ entity.fsw_arabic < 0 ? "غ" : entity.fsw_arabic }}
+</td>
+<td class={{ entity.net_total_arabic >= 0 ?: "warning" }}>
+	{{ entity.net_total_arabic < 0 ? "غ" : entity.net_total_arabic }}
+</td>
+<td class={{ entity.grade_arabic == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_arabic < 0 ? "غ" : entity.grade_arabic }}
+</td>
+<td class={{ entity.fse_english >= 0 ?: "warning" }}>
+	{{ entity.fse_english < 0 ? "غ" : entity.fse_english }}
+</td>
+<td class={{ entity.fsw_english >= 0 ?: "warning" }}>
+	{{ entity.fsw_english < 0 ? "غ" : entity.fsw_english }}
+</td>
+<td class={{ entity.net_total_english >= 0 ?: "warning" }}>
+	{{ entity.net_total_english < 0 ? "غ" : entity.net_total_english }}
+</td>
+<td class={{ entity.grade_english == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_english < 0 ? "غ" : entity.grade_english }}
+</td>
+<td class={{ entity.fse_social >= 0 ?: "warning" }}>
+	{{ entity.fse_social < 0 ? "غ" : entity.fse_social }}
+</td>
+<td class={{ entity.fsw_social >= 0 ?: "warning" }}>
+	{{ entity.fsw_social < 0 ? "غ" : entity.fsw_social }}
+</td>
+<td class={{ entity.net_total_socials >= 0 ?: "warning" }}>
+	{{ entity.net_total_socials < 0 ? "غ" : entity.net_total_socials }}
+</td>
+<td class={{ entity.grade_socials == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_socials < 0 ? "غ" : entity.grade_socials }}
+</td>
+<td class={{ entity.fse_math >= 0 ?: "warning" }}>
+	{{ entity.fse_math < 0 ? "غ" : entity.fse_math }}
+</td>
+<td class={{ entity.fsw_aljebra >= 0 ?: "warning" }}>
+	{{ entity.fsw_aljebra < 0 ? "غ" : entity.fsw_aljebra }}
+</td>
+<td class={{ entity.fsw_geometry >= 0 ?: "warning" }}>
+	{{ entity.fsw_geometry < 0 ? "غ" : entity.fsw_geometry }}
+</td>
+<td class={{ entity.net_total_math >= 0 ?: "warning" }}>
+	{{ entity.net_total_math < 0 ? "غ" : entity.net_total_math }}
+</td>
+<td class={{ entity.grade_math == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_math < 0 ? "غ" : entity.grade_math }}
+</td>
+<td class={{ entity.fse_sciences >= 0 ?: "warning" }}>
+	{{ entity.fse_sciences < 0 ? "غ" : entity.fse_sciences }}
+</td>
+<td class={{ entity.fsp_sciences >= 0 ?: "warning" }}>
+	{{ entity.fsp_sciences < 0 ? "غ" : entity.fsp_sciences }}
+</td>
+<td class={{ entity.fsw_sciences >= 0 ?: "warning" }}>
+	{{ entity.fsw_sciences < 0 ? "غ" : entity.fsw_sciences }}
+</td>
+<td class={{ entity.net_total_sciences >= 0 ?: "warning" }}>
+	{{ entity.net_total_sciences < 0 ? "غ" : entity.net_total_sciences }}
+</td>
+<td class={{ entity.grade_sciences == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_sciences < 0 ? "غ" : entity.grade_sciences }}
+</td>
+<td class={{ entity.formal_total >= 0 ?: "warning" }}>
+	{{ entity.formal_total < 0 ? "غ" : entity.formal_total }}
+</td>
+<td class={{ entity.formal_total_grade == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.formal_total_grade < 0 ? "غ" : entity.formal_total_grade }}
+</td>
+<td class={{ entity.net_total_activity_1 >= 0 ?: "warning" }}>
+	{{ entity.net_total_activity_1 < 0 ? "غ" : entity.net_total_activity_1 }}
+</td>
+<td class={{ entity.grade_activity_1 == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_activity_1 < 0 ? "غ" : entity.grade_activity_1 }}
+</td>
+<td class={{ entity.net_total_activity_2 >= 0 ?: "warning" }}>
+	{{ entity.net_total_activity_2 < 0 ? "غ" : entity.net_total_activity_2 }}
+</td>
+<td class={{ entity.grade_activity_2 == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_activity_2 < 0 ? "غ" : entity.grade_activity_2 }}
+</td>
+<td class={{ entity.fse_religion >= 0 ?: "warning" }}>
+	{{ entity.fse_religion < 0 ? "غ" : entity.fse_religion }}
+</td>
+<td class={{ entity.fsw_religion >= 0 ?: "warning" }}>
+	{{ entity.fsw_religion < 0 ? "غ" : entity.fsw_religion }}
+</td>
+<td class={{ entity.net_total_religion >= 0 ?: "warning" }}>
+	{{ entity.net_total_religion < 0 ? "غ" : entity.net_total_religion }}
+</td>
+<td class={{ entity.grade_religion == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_religion < 0 ? "غ" : entity.grade_religion }}
+</td>
+<td class={{ entity.fse_computer >= 0 ?: "warning" }}>
+	{{ entity.fse_computer < 0 ? "غ" : entity.fse_computer }}
+</td>
+<td class={{ entity.fsp_computer >= 0 ?: "warning" }}>
+	{{ entity.fsp_computer < 0 ? "غ" : entity.fsp_computer }}
+</td>
+<td class={{ entity.fsw_computer >= 0 ?: "warning" }}>
+	{{ entity.fsw_computer < 0 ? "غ" : entity.fsw_computer }}
+</td>
+<td class={{ entity.net_total_computer >= 0 ?: "warning" }}>
+	{{ entity.net_total_computer < 0 ? "غ" : entity.net_total_computer }}
+</td>
+<td class={{ entity.grade_computer == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_computer < 0 ? "غ" : entity.grade_computer }}
+</td>
+<td class={{ entity.fse_draw >= 0 ?: "warning" }}>
+	{{ entity.fse_draw < 0 ? "غ" : entity.fse_draw }}
+</td>
+<td class={{ entity.fsw_draw >= 0 ?: "warning" }}>
+	{{ entity.fsw_draw < 0 ? "غ" : entity.fsw_draw }}
+</td>
+<td class={{ entity.net_total_draw >= 0 ?: "warning" }}>
+	{{ entity.net_total_draw < 0 ? "غ" : entity.net_total_draw }}
+</td>
+<td class={{ entity.grade_draw == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_draw < 0 ? "غ" : entity.grade_draw }}
+</td>
+<td class={{ entity.net_total_sports >= 0 ?: "warning" }}>
+	{{ entity.net_total_sports < 0 ? "غ" : entity.net_total_sports }}
+</td>
+<td class={{entity.grade_sports == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.grade_sports < 0 ? "غ" : entity.grade_sports }}
+</td>
+<td>
+	{{ entity.finalGrade < 0 ? "غ" : entity.finalGrade }}
+</td>
+<td>
+	{{ entity.secondRoundSubjects }}
+</td>
