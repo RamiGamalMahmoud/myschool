@@ -1,32 +1,32 @@
 {
-    "name": "rami-gamal/schl",
-    "description": "simple web applicaton for school",
-    "type": "project",
-    "license": "GPL",
-    "authors": [
-        {
-            "name": "rami-gamal",
-            "email": "rami.gamal.mahmoud@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "path",
-            "url" : "C:\\xampp\\htdocs\\myschool\\lib\\Simple"
-        }
-    ],
-    "require": {
-        "twig/twig": "3.x-dev",
-        "rami/simple": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "SM\\": "src/",
-            "config\\": "config/"
-        }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.4@dev"
+  "name": "rami-gamal/schl",
+  "description": "simple web applicaton for school",
+  "type": "project",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "rami-gamal",
+      "email": "rami.gamal.mahmoud@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "C:\\xampp\\htdocs\\myschool\\lib\\Simple"
+    }
+  ],
+  "require": {
+    "twig/twig": "3.x-dev",
+    "rami-gamal/simple": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SM\\": "src/",
+      "config\\": "config/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.4@dev"
+  }
 }
