@@ -8,4 +8,3 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 $app = new Simple(ROUTES_FOLDER);
 
 $app->run();
-

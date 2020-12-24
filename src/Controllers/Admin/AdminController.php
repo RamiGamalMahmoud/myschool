@@ -13,44 +13,44 @@ use SM\Controllers\BaseController;
 class AdminController extends BaseController
 {
 
-  public function __construct(IRequest $request)
-  {
-    Session::start();
-    parent::__construct($request, []);
-    $this->context['fullName'] = Session::get('fullName');
-    $this->view = 'admin/admin.twig';
-  }
-  public function index()
-  {
-    $this->render($this->context);
-  }
+    public function __construct(IRequest $request)
+    {
+        Session::start();
+        parent::__construct($request, []);
+        $this->context['fullName'] = Session::get('fullName');
+        $this->view = 'admin/admin.twig';
+    }
+    public function index()
+    {
+        $this->render($this->context);
+    }
 
-  public function render($context)
-  {
-    View::render($this->view, $context);
-  }
+    public function render($context)
+    {
+        View::render($this->view, $context);
+    }
 
-  public function showUsers()
-  {
-    $this->context['contentTemplate'] = 'admin/users.twig';
-    $usersData = $this->model->read();
-    $this->context['data'] = $usersData;
-    $this->render($this->context);
-  }
+    public function showUsers()
+    {
+        $this->context['contentTemplate'] = 'admin/users.twig';
+        $usersData = $this->model->read();
+        $this->context['data'] = $usersData;
+        $this->render($this->context);
+    }
 
-  public function reRoute()
-  {
-    $parentContext = [
-      'fullName' => $this->context['fullName'],
-      'parentTemplate' => $this->view,
-      'linkPrefex' => '/admin'
-    ];
+    public function reRoute()
+    {
+        $parentContext = [
+            'fullName' => $this->context['fullName'],
+            'parentTemplate' => $this->view,
+            'linkPrefex' => '/admin'
+        ];
 
-    $newPath = explode('/', $this->request->getPath(), 2)[1];
+        $newPath = explode('/', $this->request->getPath(), 2)[1];
 
-    $newRequest = new Request($newPath);
-    $router = new Router($newRequest, ROUTES_FOLDER);
+        $newRequest = new Request($newPath);
+        $router = new Router($newRequest, ROUTES_FOLDER);
 
-    Dispatcher::dispatche($router->route(), $newRequest, $parentContext);
-  }
+        Dispatcher::dispatche($router->route(), $newRequest, $parentContext);
+    }
 }

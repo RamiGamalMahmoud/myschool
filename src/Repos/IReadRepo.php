@@ -9,6 +9,6 @@ use SM\Entities\Entity;
  */
 interface IReadRepo
 {
-  function getAll();
-  function getById($id);
+    function getAll();
+    function getById($id);
 }

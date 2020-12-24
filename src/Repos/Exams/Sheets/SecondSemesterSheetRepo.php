@@ -9,22 +9,22 @@ use Simple\Core\DataAccess\Query;
 
 class SecondSemesterSheetRepo implements IReadRepo
 {
-  protected IDataAccess $dataAccess;
-  protected string $dbTable;
-  protected int $gradeNumber;
+    protected IDataAccess $dataAccess;
+    protected string $dbTable;
+    protected int $gradeNumber;
 
-  public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
-  {
-    $this->dataAccess = $dataAccess;
-    $this->gradeNumber = $gradeNumber;
-    $this->dbTable = $semester . '_sheet_view';
-  }
+    public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
+    {
+        $this->dataAccess = $dataAccess;
+        $this->gradeNumber = $gradeNumber;
+        $this->dbTable = $semester . '_sheet_view';
+    }
 
-  public function getAll()
-  {
-  }
+    public function getAll()
+    {
+    }
 
-  public function getById($id)
-  {
-  }
+    public function getById($id)
+    {
+    }
 }

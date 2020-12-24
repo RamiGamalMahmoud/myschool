@@ -6,3 +6,9 @@ indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
+
+[*.{js, html, twig, css, scss}]
+indent_size = 2
+
+[*.{php, htaccess}]
+indent_size = 4

@@ -9,13 +9,13 @@ use Simple\Core\Session;
  */
 class SessionUserData
 {
-  /**
-   * Get the user name from sessions
-   * @return string ther user name
-   */
-  public function getUserName()
-  {
-    Session::start();
-    return Session::get('fullName');
-  }
+    /**
+     * Get the user name from sessions
+     * @return string ther user name
+     */
+    public function getUserName()
+    {
+        Session::start();
+        return Session::get('fullName');
+    }
 }

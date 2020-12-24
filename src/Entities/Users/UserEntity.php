@@ -2,27 +2,27 @@
 
 namespace SM\Entities\Users;
 
-use SM\Entities\BaseEntity;
+use SM\Entities\Entity;
 
-class UserEntity extends BaseEntity
+class UserEntity extends Entity
 {
-  public function getUserId()
-  {
-    return $this->get('userId');
-  }
+    public function getUserId()
+    {
+        return $this->get('userId');
+    }
 
-  public function getUserName()
-  {
-    return $this->get('userName');
-  }
+    public function getUserName()
+    {
+        return $this->get('userName');
+    }
 
-  public function getFullName()
-  {
-    return $this->get('fullName');
-  }
+    public function getFullName()
+    {
+        return $this->get('fullName');
+    }
 
-  public function getGroupId()
-  {
-    return $this->get('groupeId');
-  }
+    public function getGroupId()
+    {
+        return $this->get('groupeId');
+    }
 }
