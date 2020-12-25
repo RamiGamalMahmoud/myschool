@@ -6,7 +6,7 @@ define('ROOT', str_replace('/', DS, dirname($_SERVER['DOCUMENT_ROOT'])) . DS);
 
 define('APP_PATH', ROOT . 'src' . DS);
 
-define('VIEWS_PATH', APP_PATH . DS . 'Views');
+define('VIEWS_PATH', ROOT . DS . 'resources' . DS . 'templates');
 
 define('CONFIG_DIR', ROOT . 'config');
 
