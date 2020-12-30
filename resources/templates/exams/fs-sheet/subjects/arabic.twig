@@ -1,0 +1,28 @@
+{% if entity.arabic.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.arabic.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.arabic.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.arabic.written.value}}</td>
+{% endif %}
+
+{% if entity.arabic.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.arabic.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.arabic.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.arabic.grade.grade == 'F' %}
+		<td class="danger">{{entity.arabic.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.arabic.grade.grade}}</td>
+	{% endif %}
+{% endif %}

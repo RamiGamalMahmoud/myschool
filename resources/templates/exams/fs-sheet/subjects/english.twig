@@ -1,0 +1,28 @@
+{% if entity.english.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.english.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.english.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.english.written.value}}</td>
+{% endif %}
+
+{% if entity.english.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.english.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.english.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.english.grade.grade == 'F' %}
+		<td class="danger">{{entity.english.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.english.grade.grade}}</td>
+	{% endif %}
+{% endif %}

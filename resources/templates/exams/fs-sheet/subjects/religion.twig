@@ -1,0 +1,28 @@
+{% if entity.religion.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.religion.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.religion.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.religion.written.value}}</td>
+{% endif %}
+
+{% if entity.religion.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.religion.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.religion.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.religion.grade.grade == 'F' %}
+		<td class="danger">{{entity.religion.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.religion.grade.grade}}</td>
+	{% endif %}
+{% endif %}

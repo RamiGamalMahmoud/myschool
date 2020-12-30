@@ -1,0 +1,18 @@
+<td>
+	{{ entity.studentData.studentId }}
+</td>
+<td>
+	{{ entity.studentData.sittingNumber }}
+</td>
+<td>
+	{{ entity.studentData.studentName }}
+</td>
+<td>
+	{{ entity.studentData.classNumber }}
+</td>
+<td class={{ entity.studentData.enrollmentStatus == "معيد" ? "warning" : "" }}>
+	{{ entity.studentData.enrollmentStatus }}
+</td>
+<td>
+	{{ entity.studentData.gradeNumber }}
+</td>

@@ -1,0 +1,34 @@
+{% if entity.sciences.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.sciences.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.sciences.practical.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.practical.value}}</td>
+{% endif %}
+
+{% if entity.sciences.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.written.value}}</td>
+{% endif %}
+
+{% if entity.sciences.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.sciences.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.sciences.grade.grade == 'F' %}
+		<td class="danger">{{entity.sciences.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.sciences.grade.grade}}</td>
+	{% endif %}
+{% endif %}

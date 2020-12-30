@@ -1,0 +1,6 @@
+<td class={{ entity.formal_total >= 0 ?: "warning" }}>
+	{{ entity.formal_total < 0 ? "غ" : entity.formal_total }}
+</td>
+<td class={{ entity.formal_total_grade == "دون المستوى" ? "danger" : "" }}>
+	{{ entity.formal_total_grade < 0 ? "غ" : entity.formal_total_grade }}
+</td>
