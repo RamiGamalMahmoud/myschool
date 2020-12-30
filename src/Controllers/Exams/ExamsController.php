@@ -2,80 +2,59 @@
 
 namespace SM\Controllers\Exams;
 
-use Simple\Core\View;
 use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\IRequest;
 use Simple\Core\Dispatcher;
+use SM\Views\Exams\ExamsView;
 use SM\Services\SessionUserData;
-use SM\Controllers\BaseController;
 
-class ExamsController extends BaseController
+class ExamsController
 {
-    public function __construct(IRequest $request, $params)
+    /**
+     * @var array
+     */
+    protected ?array $viewContext;
+
+    /**
+     * @var \Simple\Core\Request
+     */
+    protected IRequest $request;
+
+    /**
+     * @var string
+     */
+    protected ExamsView $view;
+
+    public function __construct(IRequest $request, $params = null)
     {
-        parent::__construct($request, $params);
+        $this->request = $request;
+        $this->viewContext = $params;
 
         $currentUser = new SessionUserData();
-        $this->context['fullName'] = $currentUser->getUserName();
-
-        if ($params === null) {
-            $this->context['linkPrefex'] = '/exams';
-            $this->context['parentTemplate'] = 'base.twig';
-        } else {
-            $this->context['linkPrefex'] = $params['linkPrefex'] . '/exams';
-        }
-
-        $this->view = 'exams/exams.twig';
+        $this->view = new ExamsView($params);
+        $this->view->setContextItem('fullName', $currentUser->getUserName());
     }
 
     /**
      * Display the default state of the exams page
      * 
-     * Calls the updateGradeData method and then render the view
+     * Calls the getGradeNumber method and then render the view
      */
     public function index()
     {
-        $this->updateGradeData();
-        $this->render($this->context);
+        $this->view->setContextItem('gradeNumber', $this->getGradeNumber()['gradeNumber']);
+        $this->view->render();
     }
 
     /**
-     * Updates $gradeNumber and $gradeName
-     * 
-     * Check if the grade number segement has been set
-     * then update the grade number and the grade name
-     * @return void
+     * Extract ghe grade number from the path string
+     * @return null|array
      */
-    private function updateGradeData()
+    private function getGradeNumber()
     {
         @$gradeNumber = $this->request->getSegment(1);
-        if ($gradeNumber) {
-            $this->context['gradeNumber'] = $gradeNumber;
-            $this->context['gradeName'] = $this->getGradeName($gradeNumber);
-        }
-    }
-
-    /**
-     * Gets the grade name the $gradeNumber
-     * 
-     * @param int $gradeNumber
-     * @return string the grade name
-     */
-    private function getGradeName($gradeNumber)
-    {
-        if ($gradeNumber == 1) {
-            return 'الصف الأول';
-        } elseif ($gradeNumber == 2) {
-            return 'الصف الثاني';
-        }
-
-        return 'صف غير محدد';
-    }
-
-    public function render(array $context)
-    {
-        View::render($this->view, $context);
+        return $gradeNumber === null ? null : ['gradeNumber' => $gradeNumber];
     }
 
     /**
@@ -86,14 +65,19 @@ class ExamsController extends BaseController
      */
     public function reRoute()
     {
-        $this->updateGradeData();
-        $request = new Request($this->getNewPath());
+        $request = new Request($this->extractNewpath());
         $router = new Router($request, ROUTES_FOLDER);
-        $this->context['child'] = Dispatcher::dispatche($router->route(), $request, $this->context);
-        $this->render($this->context);
+        $this->view->setContextItem('child', Dispatcher::dispatche($router->route(), $request, $this->getGradeNumber()));
+        $this->view->setContextItem('gradeNumber', $this->getGradeNumber()['gradeNumber']);
+        $this->view->render();
     }
 
-    protected function getNewPath()
+    /**
+     * Remove first and second segement from request then return that path
+     * 
+     * @return string
+     */
+    protected function extractNewpath()
     {
         return implode('/', array_slice($this->request->getSegments(), 2));
     }

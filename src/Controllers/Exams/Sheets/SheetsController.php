@@ -2,25 +2,35 @@
 
 namespace SM\Controllers\Exams\Sheets;
 
-use SM\Repos\IReadRepo;
+use Exception;
 use config\DBConfig;
-use Simple\Core\View;
 use Simple\Core\IRequest;
-use Simple\Helpers\Functions;
-use SM\Controllers\BaseController;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
+use SM\Views\Exams\Sheets\FirstSemesterSheetView;
+use SM\Repos\Exams\Sheets\IFirstSemesterSheetRepo;
 use SM\Repos\Exams\Sheets\SecondSemesterSheetRepo;
 
-class SheetsController extends BaseController
+class SheetsController
 {
-    private IReadRepo $repo;
+    private IFirstSemesterSheetRepo $repo;
+
+    /**
+     * @var \Simple\Core\Request 
+     */
+    protected IRequest $request;
+
+    /**
+     * @var FirstSemesterSheetView
+     */
+    protected FirstSemesterSheetView $view;
 
     public function __construct(IRequest $request, $params)
     {
-        parent::__construct($request, $params);
-        $this->view = 'exams/fs-sheet/fs-sheet.twig';
+        $this->request = $request;
+
+        $this->view = new FirstSemesterSheetView($request->getSegment(1), $params);
         $this->repo = $this->getRepo($params['gradeNumber'], $this->getSemester(), new MySQLAccess(new DBConfig()));
     }
 
@@ -31,17 +41,7 @@ class SheetsController extends BaseController
      */
     public function index()
     {
-        $this->context['entities'] = $this->show();
-        return $this->loadView($this->context);
-    }
-
-    /**
-     * Loads view template
-     * @return string
-     */
-    public function loadView(array $context)
-    {
-        return View::load($this->view, $context);
+        return $this->view->load($this->showAll());
     }
 
     /**
@@ -51,6 +51,15 @@ class SheetsController extends BaseController
      * @return array 
      */
     public function show($id = '')
+    {
+        throw new Exception('not implemented');
+    }
+
+    /**
+     * Show all entities
+     * @return array
+     */
+    public function showAll()
     {
         return $this->repo->getAll();
     }
