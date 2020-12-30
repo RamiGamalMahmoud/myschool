@@ -2,14 +2,11 @@
 
 namespace SM\Repos\Exams\Sheets;
 
-use SM\Repos\IReadRepo;
-use SM\Entities\Entity;
 use Simple\Core\DataAccess\Query;
 use Simple\Core\DataAccess\IDataAccess;
-use Simple\Helpers\Functions;
-use SM\Entities\Exams\Sheets\FirstSemesterEntity;
+use SM\Entities\Exams\Sheets\FirstSemesterSheetEntity;
 
-class FirstSemesterSheetRepo implements IReadRepo
+class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
 {
 
     protected IDataAccess $dataAccess;
@@ -20,11 +17,12 @@ class FirstSemesterSheetRepo implements IReadRepo
     {
         $this->dataAccess = $dataAccess;
         $this->gradeNumber = $gradeNumber;
-        $this->dbTable = $semester . '_sheet_view';
+        $this->dbTable = $semester . '_degs';
     }
 
     /**
      * Get All Data from the data source
+     * @return array
      */
     public function getAll()
     {
@@ -33,10 +31,12 @@ class FirstSemesterSheetRepo implements IReadRepo
             ->from($this->dbTable)
             ->where($this->dbTable . '.grade', '=', $this->gradeNumber);
         $data = $this->dataAccess->getAll($query);
+        $fs_degs_settings = include_once FS_DEGS_SETTINGS;
+
         $entities = [];
-        foreach ($data as $entity) {
-            array_push($entities, new FirstSemesterEntity($entity));
-        }
+        $entities = array_map(function ($entity) use ($fs_degs_settings) {
+            return new FirstSemesterSheetEntity($fs_degs_settings, $entity);
+        }, $data);
 
         return $entities;
     }
