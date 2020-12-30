@@ -1,7 +1,5 @@
 <?php
 
-use PHPUnit\TextUI\XmlConfiguration\MoveAttributesFromRootToCoverage;
-
 if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 
 /**
