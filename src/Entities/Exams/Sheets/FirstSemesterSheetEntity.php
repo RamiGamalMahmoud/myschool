@@ -29,8 +29,8 @@ class FirstSemesterSheetEntity extends Entity
     private FSSubject $draw;
     private FSActivitySubject $sports;
 
-    private float $formalTotal;
-    private float $baseTotal;
+    private Degree $formalTotal;
+    private Degree $baseTotal;
     private string $studentGrade;
     private array $weaknessSubjects;
 
@@ -154,12 +154,12 @@ class FirstSemesterSheetEntity extends Entity
         // $this->calcTotal();
     }
 
-    public function getFormalTotal(): float
+    public function getFormalTotal(): Degree
     {
         return $this->formalTotal;
     }
 
-    public function getBaseTotal(): float
+    public function getBaseTotal(): Degree
     {
         return $this->baseTotal;
     }
