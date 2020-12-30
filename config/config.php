@@ -24,6 +24,8 @@ define('ROUTES', ROOT . DS . 'config' . DS . 'routes' . DS . 'routes.php');
 
 define('VIEWS_AUTO_RELOAD', true);
 
+define('FS_DEGS_SETTINGS', CONFIG_DIR . DS . 'subjects-degs' . DS . 'fs-degs-settings.php');
+
 define('DB_CONFIG', CONFIG_DIR . DS . 'database.php');
 
 /**
