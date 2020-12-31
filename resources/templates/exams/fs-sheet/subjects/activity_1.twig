@@ -10,36 +10,13 @@
 	<td>{{entity.activity_1.netDegree.value}}</td>
 {% endif %}
 
-{% if entity.activity_2.grade.isAbsence %}
+{% if entity.activity_1.grade.isAbsence %}
 	{% include absence %}
 {% else %}
-	{% if entity.activity_2.grade.grade == 'F' %}
-		<td class="danger">{{entity.activity_2.grade.grade}}</td>
+	{% if entity.activity_1.grade.grade == 'F' %}
+		<td class="danger">{{entity.activity_1.grade.grade}}</td>
 	{% else %}
 
-		<td>{{entity.activity_2.grade.grade}}</td>
-	{% endif %}
-{% endif %}
-
-{# {% if entity.activity_2.evaluation.isAbsence %}
-	{% include absence %}
-{% else %}
-	<td>{{ entity.activity_2.evaluation.value }}</td>
-{% endif %} #}
-
-{% if entity.activity_2.netDegree.isAbsence %}
-	{% include absence %}
-{% else %}
-	<td>{{entity.activity_2.netDegree.value}}</td>
-{% endif %}
-
-{% if entity.activity_2.grade.isAbsence %}
-	{% include absence %}
-{% else %}
-	{% if entity.activity_2.grade.grade == 'F' %}
-		<td class="danger">{{entity.activity_2.grade.grade}}</td>
-	{% else %}
-
-		<td>{{entity.activity_2.grade.grade}}</td>
+		<td>{{entity.activity_1.grade.grade}}</td>
 	{% endif %}
 {% endif %}

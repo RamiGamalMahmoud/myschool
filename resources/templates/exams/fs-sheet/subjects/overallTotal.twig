@@ -1,0 +1,16 @@
+{% if entity.overallTotal.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.overallTotal.total.value }}</td>
+{% endif %}
+
+{% if entity.overallTotal.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.overallTotal.grade.grade == 'F' %}
+		<td class="danger">{{entity.overallTotal.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.overallTotal.grade.grade}}</td>
+	{% endif %}
+{% endif %}

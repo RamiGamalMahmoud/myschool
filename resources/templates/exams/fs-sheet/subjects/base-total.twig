@@ -1,6 +1,16 @@
-<td class={{ entity.formal_total >= 0 ?: "warning" }}>
-	{{ entity.formal_total < 0 ? "غ" : entity.formal_total }}
-</td>
-<td class={{ entity.formal_total_grade == "دون المستوى" ? "danger" : "" }}>
-	{{ entity.formal_total_grade < 0 ? "غ" : entity.formal_total_grade }}
-</td>
+{% if entity.baseTotal.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.baseTotal.total.value }}</td>
+{% endif %}
+
+{% if entity.baseTotal.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.baseTotal.grade.grade == 'F' %}
+		<td class="danger">{{entity.baseTotal.grade.grade}}</td>
+	{% else %}
+
+		<td>{{entity.baseTotal.grade.grade}}</td>
+	{% endif %}
+{% endif %}

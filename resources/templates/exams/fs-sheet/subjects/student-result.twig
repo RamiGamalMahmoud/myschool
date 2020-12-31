@@ -1,6 +1,12 @@
+{% if entity.studentState.state == 'FAILED' %}
+	<td class="danger">{{ entity.studentState.state }}</td>
+{% else %}
+	<td class="success">{{ entity.studentState.state }}</td>
+{% endif %}
+
+
 <td>
-	{{ entity.finalGrade < 0 ? "غ" : entity.finalGrade }}
-</td>
-<td>
-	{{ entity.secondRoundSubjects }}
+	{% for subject in entity.studentState.weaknessSubjects %}
+		{{ subject.getSubjectName }}
+	{% endfor %}
 </td>
