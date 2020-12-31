@@ -32,10 +32,10 @@ class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
             ->where($this->dbTable . '.grade', '=', $this->gradeNumber);
         $data = $this->dataAccess->getAll($query);
         $fs_degs_settings = include_once FS_DEGS_SETTINGS;
-
+        FirstSemesterSheetEntity::setDegsSettings($fs_degs_settings);
         $entities = [];
         $entities = array_map(function ($entity) use ($fs_degs_settings) {
-            return new FirstSemesterSheetEntity($fs_degs_settings, $entity);
+            return new FirstSemesterSheetEntity($entity);
         }, $data);
 
         return $entities;
