@@ -46,25 +46,6 @@ class DegsCalculator
         }, 0);
 
         return $total;
-        if (empty($degs)) {
-            throw new InvalidArgumentException('Degress array should not be empty');
-        }
-
-        if (!self::isAllAssigned($degs)) {
-            return null;
-        }
-
-        $acceptedDegs = self::getAcceptedDegs($degs);
-
-        if (empty($acceptedDegs)) {
-            return null;
-        }
-
-        $total = array_reduce($acceptedDegs, function ($carry, $item) {
-            return $carry + $item->getValue();
-        }, 0);
-
-        return $total;
     }
 
     /**
@@ -108,17 +89,15 @@ class DegsCalculator
      * Get the subject grade.
      * @param float $max the max degree
      * @param float $degree the student degree
-     * @return string
+     * @return null|string
      * @throws \Exception
      */
-    public static function getGrade(float $max, ?float $degree)
+    public static function getGrade(float $max, ?float $degree): ?string
     {
         if ($degree === null) return null;
         $percent = $degree / $max * 100;
 
-        if ($degree < 0) {
-            return 'ABS';
-        } elseif ($percent < 50) {
+        if ($percent < 50) {
             return 'F';
         } elseif ($percent < 65) {
             return 'D';
