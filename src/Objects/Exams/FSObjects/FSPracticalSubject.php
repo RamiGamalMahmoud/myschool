@@ -17,12 +17,6 @@ class FSPracticalSubject extends AbstractFSSubject
         $this->written = new Degree($maxWrittenValue, DegsCalculator::calcTotal($degs));
     }
 
-    public function __construct(float $min, float $subjectPercent)
-    {
-        $this->min = $min;
-        $this->subjectPercent = $subjectPercent;
-    }
-
     /**
      * Setting the subject degrees
      * @param \SM\Objects\Degree $evaluation

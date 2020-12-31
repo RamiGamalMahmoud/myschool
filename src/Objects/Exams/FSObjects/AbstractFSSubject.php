@@ -9,6 +9,8 @@ use SM\Helpers\DegsCalculator;
 
 abstract class AbstractFSSubject
 {
+    protected string $subjectName;
+
     protected Degree $evaluation;
     protected Degree $written;
 
@@ -50,8 +52,9 @@ abstract class AbstractFSSubject
         }
     }
 
-    public function __construct(float $min, float $subjectPercent)
+    public function __construct(float $min, float $subjectPercent, string $subjectName)
     {
+        $this->subjectName = $subjectName;
         if ($subjectPercent > 100) {
             throw new Exception('Subject Degree value is grater than 100%');
         }
@@ -96,6 +99,11 @@ abstract class AbstractFSSubject
         // } else {
         //     return DegsCalculator::getGrade($this->subjectPercent, $this->getNetDegree()->getValue());
         // }
+    }
+
+    public function getSubjectName(): string
+    {
+        return $this->subjectName;
     }
 
     /**

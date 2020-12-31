@@ -8,10 +8,11 @@ use SM\Objects\Exams\Degree;
 
 class FSActivitySubject
 {
-    private Degree $evaluation;
+    protected string $subjectName;
+    protected Degree $evaluation;
 
-    private float $min;
-    private float $subjectPercent;
+    protected float $min;
+    protected float $subjectPercent;
     protected Degree $netDegree;
     protected Grade $grade;
 
@@ -37,8 +38,9 @@ class FSActivitySubject
         }
     }
 
-    public function __construct(float $min, float $subjectPercent)
+    public function __construct(float $min, float $subjectPercent, string $subjectName)
     {
+        $this->subjectName = $subjectName;
         $this->min = $min;
         $this->subjectPercent = $subjectPercent;
     }
@@ -72,6 +74,11 @@ class FSActivitySubject
     public function getEvaluationDegree(): Degree
     {
         return $this->evaluation;
+    }
+
+    public function getSubjectName(): string
+    {
+        return $this->subjectName;
     }
 
     public function toArray(): array
