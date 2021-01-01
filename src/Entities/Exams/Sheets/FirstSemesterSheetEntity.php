@@ -2,8 +2,6 @@
 
 namespace SM\Entities\Exams\Sheets;
 
-use Exception;
-use Simple\Helpers\Functions;
 use SM\Entities\Entity;
 use SM\Helpers\DegsCalculator;
 use SM\Objects\Exams\Degree;
@@ -11,12 +9,11 @@ use SM\Objects\Exams\FSObjects\FSActivitySubject;
 use SM\Objects\Exams\FSObjects\FSMathSubject;
 use SM\Objects\Exams\FSObjects\FSPracticalSubject;
 use SM\Objects\Exams\FSObjects\FSSubject;
-use SM\Objects\Exams\Grade;
 use SM\Objects\Exams\Student;
 use SM\Objects\Exams\StudentState;
 use SM\Objects\Exams\Total;
 
-class FirstSemesterSheetEntity extends Entity
+class FirstSemesterSheetEntity
 {
 
     use FirstSemesterSheetTrait;
