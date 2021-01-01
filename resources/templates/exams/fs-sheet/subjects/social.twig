@@ -10,6 +10,12 @@
 	<td>{{entity.socials.written.value}}</td>
 {% endif %}
 
+{% if entity.socials.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.socials.total.value}}</td>
+{% endif %}
+
 {% if entity.socials.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

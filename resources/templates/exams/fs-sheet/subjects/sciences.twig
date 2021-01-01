@@ -16,6 +16,12 @@
 	<td>{{entity.sciences.written.value}}</td>
 {% endif %}
 
+{% if entity.sciences.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.total.value}}</td>
+{% endif %}
+
 {% if entity.sciences.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

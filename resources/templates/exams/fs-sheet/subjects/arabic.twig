@@ -10,6 +10,12 @@
 	<td>{{entity.arabic.written.value}}</td>
 {% endif %}
 
+{% if entity.arabic.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.arabic.total.value}}</td>
+{% endif %}
+
 {% if entity.arabic.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

@@ -16,6 +16,12 @@
 	<td>{{entity.computer.written.value}}</td>
 {% endif %}
 
+{% if entity.computer.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.computer.total.value}}</td>
+{% endif %}
+
 {% if entity.computer.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

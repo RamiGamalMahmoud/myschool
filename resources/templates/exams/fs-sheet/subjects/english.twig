@@ -10,6 +10,12 @@
 	<td>{{entity.english.written.value}}</td>
 {% endif %}
 
+{% if entity.english.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.english.total.value}}</td>
+{% endif %}
+
 {% if entity.english.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

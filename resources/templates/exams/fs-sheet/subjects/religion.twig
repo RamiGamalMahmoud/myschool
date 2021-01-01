@@ -10,6 +10,12 @@
 	<td>{{entity.religion.written.value}}</td>
 {% endif %}
 
+{% if entity.religion.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.religion.total.value}}</td>
+{% endif %}
+
 {% if entity.religion.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}

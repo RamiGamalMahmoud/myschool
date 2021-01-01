@@ -16,6 +16,12 @@
 	<td>{{entity.math.geometry.value}}</td>
 {% endif %}
 
+{% if entity.math.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.total.value}}</td>
+{% endif %}
+
 {% if entity.math.netDegree.isAbsence %}
 	{% include absence %}
 {% else %}
