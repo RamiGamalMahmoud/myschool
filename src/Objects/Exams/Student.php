@@ -6,13 +6,13 @@ use Exception;
 
 class Student
 {
-    private string $_studentId;
-    private string $_studentName;
-    private string $_nationalId;
-    private int    $_sittingNumber;
-    private string $_enrollmentStatus;
-    private int    $_classNumber;
-    private string $_grade;
+    private ?string $_studentId;
+    private ?string $_studentName;
+    private ?string $_nationalId;
+    private ?int    $_sittingNumber;
+    private ?string $_enrollmentStatus;
+    private ?int    $_classNumber;
+    private ?string $_grade;
 
     public function __construct(array $data)
     {
@@ -29,37 +29,37 @@ class Student
         $this->_grade            = $data['grade'];
     }
 
-    public function getStudentId(): string
+    public function getStudentId(): ?string
     {
         return $this->_studentId;
     }
 
-    public function getStudentName(): string
+    public function getStudentName(): ?string
     {
         return $this->_studentName;
     }
 
-    public function getNationalId(): string
+    public function getNationalId(): ?string
     {
         return $this->_nationalId;
     }
 
-    public function getSittingNumber(): int
+    public function getSittingNumber(): ?int
     {
         return $this->_sittingNumber;
     }
 
-    public function getStudentEnrollmentStatus(): string
+    public function getStudentEnrollmentStatus(): ?string
     {
         return $this->_enrollmentStatus;
     }
 
-    public function getClassNumber(): int
+    public function getClassNumber(): ?int
     {
         return $this->_classNumber;
     }
 
-    public function getGradeNumber(): int
+    public function getGradeNumber(): ?int
     {
         return $this->_grade;
     }
