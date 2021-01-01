@@ -1,0 +1,26 @@
+<td dataname="studentId">{{ entity.studentId }}</td>
+<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
+<td dataname="studentName">{{ entity.studentName }}</td>
+<td dataname="classNumber">{{ entity.classNumber }}</td>
+<td contenteditable="true" class={{ entity.arabic >= 0 ?: "warning" }} dataname="arabic">
+	{{ entity.arabic < 0 ? "غ" : entity.arabic }}</td>
+<td contenteditable="true" class={{ entity.english >= 0 ?: "warning" }} dataname="english">
+	{{ entity.english < 0 ? "غ" : entity.english }}</td>
+<td contenteditable="true" class={{ entity.socialStudies >= 0 ?: "warning" }} dataname="socialStudies">
+	{{ entity.socialStudies < 0 ? "غ" : entity.socialStudies }}</td>
+<td contenteditable="true" class={{ entity.math >= 0 ?: "warning" }} dataname="math">
+	{{ entity.math < 0 ? "غ" : entity.math }}</td>
+<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="sciences">
+	{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
+<td contenteditable="true" class={{ entity.activity_1 >= 0 ?: "warning" }} dataname="activity_1">
+	{{ entity.activity_1 < 0 ? "غ" : entity.activity_1 }}</td>
+<td contenteditable="true" class={{ entity.activity_2 >= 0 ?: "warning" }} dataname="activity_2">
+	{{ entity.activity_2 < 0 ? "غ" : entity.activity_2 }}</td>
+<td contenteditable="true" class={{ entity.religion >= 0 ?: "warning" }} dataname="religion">
+	{{ entity.religion < 0 ? "غ" : entity.religion }}</td>
+<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="computer">
+	{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
+<td contenteditable="true" class={{ entity.draw >= 0 ?: "warning" }} dataname="draw">
+	{{ entity.draw < 0 ? "غ" : entity.draw }}</td>
+<td contenteditable="true" class={{ entity.sports >= 0 ?: "warning" }} dataname="sports">
+	{{ entity.sports < 0 ? "غ" : entity.sports }}</td>

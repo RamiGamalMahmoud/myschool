@@ -1,0 +1,7 @@
+<td dataname="studentId">{{ entity.studentId }}</td>
+<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
+<td dataname="studentName">{{ entity.studentName }}</td>
+<td dataname="classNumber">{{ entity.classNumber }}</td>
+
+<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="sciences">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
+<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="computer">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>

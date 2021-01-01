@@ -1,173 +1,47 @@
 <div class="section">
 	<div class="section-header">
 		<div class="section-header-name">
-			<div>
-				<span class="class-name">{{ gradeName }}</span>
-				<span>|</span>
-				<span class="table-name">{{ tableName }}</span>
-			</div>
+			{% include "exams/monitoring/monitoring.twig" %}
 		</div>
 		<div class="section-header-data monitoring-summary">
-			<table class="table">
-				<thead>
-					<tr class="head-space-holder">
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr rowname="monitoring">
-						<td>رصد</td>
-						<td colname="arabic"></td>
-						<td colname="english"></td>
-						<td colname="socialStudies"></td>
-						<td colname="aljebra"></td>
-						<td colname="geometry"></td>
-						<td colname="sciences"></td>
-						<td colname="religion"></td>
-						<td colname="computer"></td>
-						<td colname="draw"></td>
-					</tr>
-					<tr rowname="absence">
-						<td>غياب</td>
-						<td colname="arabic"></td>
-						<td colname="english"></td>
-						<td colname="socialStudies"></td>
-						<td colname="aljebra"></td>
-						<td colname="geometry"></td>
-						<td colname="sciences"></td>
-						<td colname="religion"></td>
-						<td colname="computer"></td>
-						<td colname="draw"></td>
-					</tr>
-				</tbody>
-			</table>
+			{% include "exams/monitoring/written/summary-table.twig" %}
 		</div>
 	</div>
 
 	<div class="data-table written-table">
+
 		<div class="table-head">
 			<table class="table">
 				<thead>
 					<tr class="head-space-holder">
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="student-name-size"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
+						{% include "exams/monitoring/written/columns-sizes.twig" %}
 					</tr>
 					<tr>
-						<th class="rotated-head serial" rowspan="2">
-							<span>مسلسل</span>
-						</th>
-						<th class="rotated-head sitting" rowspan="2">
-							<span>رقم الجلوس</span>
-						</th>
-						<th class="cell-size-3 std-name" rowspan="2">
-							<span>اسم الطالب</span>
-						</th>
-						<th class="rotated-head class-number" rowspan="2">
-							<span>الفصل</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>اللغة العربية</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>اللغة الإنجليزية</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>الدراسات</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>الجبر</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>الهندسة</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>العلوم</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>التربية الدينية</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>الحاسب الآلي</span>
-						</th>
-						<th class="rotated-head" rowspan="1">
-							<span>التربية الفنية</span>
-						</th>
+						{% include "exams/monitoring/written/columns-names.twig" %}
 					</tr>
 					<tr>
-						{# {% for deg in degrees %}<th>{{ deg }}</th>{% endfor %} #}
-						<th>70</th>
-						<th>70</th>
-						<th>70</th>
-						<th>35</th>
-						<th>35</th>
-						<th>56</th>
-						<th>70</th>
-						<th>56</th>
-						<th>70</th>
+						{% include "exams/monitoring/written/header-degrees.twig" %}
 					</tr>
 				</thead>
 			</table>
 		</div>
+
 		<div class="table-body">
 			<table class="table">
 				<thead>
 					<tr class="head-space-holder">
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="student-name-size"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
-						<th class="cell-size-1"></th>
+						{% include "exams/monitoring/written/columns-sizes.twig" %}
 					</tr>
 				</thead>
 				<tbody>
 					{% for entity in entities %}
 						<tr>
-							<td dataname="studentId">{{ entity.studentId }}</td>
-							<td dataname="sittingNumber">{{ entity.sittingNumber }}</td>
-							<td dataname="studentName">{{ entity.studentName }}</td>
-							<td dataname="classNumber">{{ entity.classNumber }}</td>
-
-							<td contenteditable="true" class={{ entity.arabic >= 0 ?: "warning" }} dataname="arabic">{{ entity.arabic < 0 ? "غ" : entity.arabic }}</td>
-							<td contenteditable="true" class={{ entity.english >= 0 ?: "warning" }} dataname="english">{{ entity.english < 0 ? "غ" : entity.english }}</td>
-							<td contenteditable="true" class={{ entity.socialStudies >= 0 ?: "warning" }} dataname="socialStudies">{{ entity.socialStudies < 0 ? "غ" : entity.socialStudies }}</td>
-							<td contenteditable="true" class={{ entity.aljebra >= 0 ?: "warning" }} dataname="aljebra">{{ entity.aljebra < 0 ? "غ" : entity.aljebra }}</td>
-							<td contenteditable="true" class={{ entity.geometry >= 0 ?: "warning" }} dataname="geometry">{{ entity.geometry < 0 ? "غ" : entity.geometry }}</td>
-							<td contenteditable="true" class={{ entity.sciences >= 0 ?: "warning" }} dataname="sciences">{{ entity.sciences < 0 ? "غ" : entity.sciences }}</td>
-							<td contenteditable="true" class={{ entity.religion >= 0 ?: "warning" }} dataname="religion">{{ entity.religion < 0 ? "غ" : entity.religion }}</td>
-							<td contenteditable="true" class={{ entity.computer >= 0 ?: "warning" }} dataname="computer">{{ entity.computer < 0 ? "غ" : entity.computer }}</td>
-							<td contenteditable="true" class={{ entity.draw >= 0 ?: "warning" }} dataname="draw">{{ entity.draw < 0 ? "غ" : entity.draw }}</td>
+							{% include "exams/monitoring/written/data.twig" %}
 						</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
+
 	</div>
 </div>
