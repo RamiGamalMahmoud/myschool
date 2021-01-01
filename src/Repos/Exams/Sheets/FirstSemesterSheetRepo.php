@@ -4,7 +4,6 @@ namespace SM\Repos\Exams\Sheets;
 
 use Simple\Core\DataAccess\Query;
 use Simple\Core\DataAccess\IDataAccess;
-use Simple\Helpers\Functions;
 use SM\Entities\Exams\Sheets\FirstSemesterSheetEntity;
 
 class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
@@ -35,6 +34,7 @@ class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
      */
     public function getById($id): array
     {
+        return [];
     }
 
     public function getPassedStudents(): array
@@ -52,8 +52,9 @@ class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
         $query = new Query();
         $query->select($this->getDBColumns())
             ->from($this->dbTable)
-            ->where($this->dbTable . '.grade', '=', $this->gradeNumber)->limit(1);
+            ->where($this->dbTable . '.grade', '=', $this->gradeNumber);
         $data = $this->dataAccess->getAll($query);
+
         $fs_degs_settings = include_once FS_DEGS_SETTINGS;
         FirstSemesterSheetEntity::setDegsSettings($fs_degs_settings);
         $entities = [];
