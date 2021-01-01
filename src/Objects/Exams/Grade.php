@@ -2,15 +2,18 @@
 
 namespace SM\Objects\Exams;
 
+use Simple\Helpers\Functions;
 use SM\Helpers\DegsCalculator;
 
 class Grade
 {
     private ?string $_grade;
     private ?bool $_isAbsence;
+    private bool $_isAssigned;
 
     public function __construct(Degree $degree)
     {
+        $this->_isAssigned = $degree->isAssigned();
         if ($degree->isAssigned() === true) {
             $this->_isAbsence = $degree->isAbsence();
             if ($this->_isAbsence) {
@@ -32,5 +35,10 @@ class Grade
     public function isAbsence()
     {
         return $this->_isAbsence;
+    }
+
+    public function isAssigned()
+    {
+        return $this->_isAssigned;
     }
 }
