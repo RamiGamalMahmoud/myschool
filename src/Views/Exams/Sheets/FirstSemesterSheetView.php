@@ -12,7 +12,13 @@ class FirstSemesterSheetView
 
     public function __construct(string $sheetType, ?array $params)
     {
-        $this->template = 'exams/fs-sheet/fs-sheet.twig';
+        if ($sheetType === 'fs') {
+            $this->template = 'exams/fs-sheet/fs-sheet.twig';
+        } elseif ($sheetType === 'ss') {
+            $this->template = 'exams/ss-sheet/ss-sheet.twig';
+        } else {
+            //! ERROR
+        }
     }
 
     public function load(array $context)

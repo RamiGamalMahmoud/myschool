@@ -7,6 +7,7 @@ use config\DBConfig;
 use Simple\Core\IRequest;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\MySQLAccess;
+use Simple\Helpers\Functions;
 use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
 use SM\Views\Exams\Sheets\FirstSemesterSheetView;
 use SM\Repos\Exams\Sheets\IFirstSemesterSheetRepo;
@@ -41,7 +42,16 @@ class SheetsController
      */
     public function index()
     {
-        return $this->view->load($this->showAll());
+        $status = $this->request->getSegment(2);
+        if ($status === 'all') {
+            return $this->view->load($this->showAll());
+        } elseif ($status === 'passed') {
+            return $this->view->load($this->repo->getPassedStudents());
+        } elseif ($status === 'failed') {
+            return $this->view->load($this->repo->getFailedStudents());
+        } else {
+            // error page
+        }
     }
 
     /**
