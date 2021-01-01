@@ -6,7 +6,7 @@ use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\Query;
 use SM\Entities\Exams\PracticalEntity;
 
-class PracticalRepo extends AbstractMonitoringRepo
+class PracticalRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
 {
     public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
     {

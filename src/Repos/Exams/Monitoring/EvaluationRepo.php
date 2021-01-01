@@ -7,7 +7,7 @@ use Simple\Core\DataAccess\Query;
 use SM\Entities\Entity;
 use SM\Entities\Exams\EvaluationEntity;
 
-class EvaluationRepo extends AbstractMonitoringRepo
+class EvaluationRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
 {
     public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
     {
