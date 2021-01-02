@@ -5,17 +5,16 @@ namespace SM\Controllers\Exams\Sheets;
 use Exception;
 use config\DBConfig;
 use Simple\Core\IRequest;
+use SM\Repos\Exams\Sheets\ISheetRepo;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\MySQLAccess;
-use Simple\Helpers\Functions;
 use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
 use SM\Views\Exams\Sheets\FirstSemesterSheetView;
-use SM\Repos\Exams\Sheets\IFirstSemesterSheetRepo;
 use SM\Repos\Exams\Sheets\SecondSemesterSheetRepo;
 
 class SheetsController
 {
-    private IFirstSemesterSheetRepo $repo;
+    private ISheetRepo $repo;
 
     /**
      * @var \Simple\Core\Request 

@@ -6,7 +6,7 @@ use Simple\Core\DataAccess\Query;
 use Simple\Core\DataAccess\IDataAccess;
 use SM\Entities\Exams\Sheets\FirstSemesterSheetEntity;
 
-class FirstSemesterSheetRepo implements IFirstSemesterSheetRepo
+class FirstSemesterSheetRepo implements ISheetRepo
 {
 
     protected IDataAccess $dataAccess;

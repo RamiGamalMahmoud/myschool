@@ -2,7 +2,7 @@
 
 namespace SM\Repos\Exams\Sheets;
 
-interface IFirstSemesterSheetRepo
+interface ISheetRepo
 {
     function getAll(): array;
     function getById($id): array;
