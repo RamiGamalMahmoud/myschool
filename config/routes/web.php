@@ -35,6 +35,8 @@ Route::get('monitoring/{table}/{semester}', CONTROLLRES . 'Exams\\MonitoringCont
 
 Route::get('sheets/{semester}/{status}', CONTROLLRES . 'Exams\\Sheets\\SheetsController@index');
 
+Route::get('certificates/{semester}/{status}',  CONTROLLRES . 'Exams\\Certificates\\CertificatesController@index');
+
 /**
  * HTTP POST METHOD ROUTES
  */
