@@ -2,20 +2,60 @@
 
 namespace SM\Entities\Exams;
 
-use SM\Entities\Entity;
-use SM\Entities\TStudentPublicData;
+use SM\Objects\Exams\Degree;
+use SM\Objects\Exams\Student;
 
-class PracticalEntity extends Entity
+class PracticalEntity
 {
-    use TStudentPublicData;
+    private Degree $arabic;
+    private Degree $english;
+    private Degree $socials;
+    private Degree $math;
+    private Degree $sciences;
+    private Degree $activity_1;
+    private Degree $activity_2;
+    private Degree $religion;
+    private Degree $computer;
+    private Degree $draw;
+    private Degree $sports;
 
-    public function getSciences()
+    private Student $student;
+
+
+    public function __construct(array $data)
     {
-        return $this->get('sciences');
+        $this->init($data);
     }
 
-    public function getComputer()
+    public function init(array $data)
     {
-        return $this->get('computer');
+        $this->student = new Student([
+            'studentId' => $data['studentId'],
+            'sittingNumber' => $data['sittingNumber'],
+            'studentName' => $data['studentName'],
+            'classNumber' => $data['classNumber'],
+            'enrollmentStatus' => null,
+            'grade' => null
+        ]);
+
+        $this->sciences = new Degree(30, $data['sciences']);
+        $this->computer = new Degree(30, $data['computer']);
+
+        $this->toArray();
+    }
+
+    public function toArray()
+    {
+        return [
+            'studentData' => $this->student->toArray(),
+            'sciences' => [
+                'value' => $this->sciences->getValue(),
+                'isAbsence' => $this->sciences->isAbsence()
+            ],
+            'computer' => [
+                'value' => $this->computer->getValue(),
+                'isAbsence' => $this->computer->isAbsence()
+            ]
+        ];
     }
 }

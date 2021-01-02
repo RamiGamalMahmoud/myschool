@@ -19,7 +19,10 @@ class MonitoringView
 
     public function load($data)
     {
-        $this->context['entities'] = $data;
+        $entities = array_map(function ($entity) {
+            return $entity->toArray();
+        }, $data);
+        $this->context['entities'] = $entities;
         return View::load($this->template, $this->context);
     }
 

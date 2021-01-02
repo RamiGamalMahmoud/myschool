@@ -2,55 +2,93 @@
 
 namespace SM\Entities\Exams;
 
-use SM\Entities\Entity;
-use SM\Entities\TStudentPublicData;
+use SM\Objects\Exams\Degree;
+use SM\Objects\Exams\Student;
 
-class WrittenEntity extends Entity
+class WrittenEntity
 {
-    use TStudentPublicData;
+    private Degree $arabic;
+    private Degree $english;
+    private Degree $socials;
+    private Degree $aljebra;
+    private Degree $geometry;
+    private Degree $sciences;
+    private Degree $religion;
+    private Degree $computer;
+    private Degree $draw;
 
-    public function getArabic()
+    private Student $student;
+
+
+    public function __construct(array $data)
     {
-        return $this->get('arabic');
+        $this->init($data);
     }
 
-    public function getEnglish()
+    public function init(array $data)
     {
-        return $this->get('english');
+        $this->student = new Student([
+            'studentId' => $data['studentId'],
+            'sittingNumber' => $data['sittingNumber'],
+            'studentName' => $data['studentName'],
+            'classNumber' => $data['classNumber'],
+            'enrollmentStatus' => null,
+            'grade' => null
+        ]);
+
+        $this->arabic = new Degree(70, $data['arabic']);
+        $this->english = new Degree(70, $data['english']);
+        $this->socials = new Degree(70, $data['socialStudies']);
+        $this->aljebra = new Degree(35, $data['aljebra']);
+        $this->geometry = new Degree(35, $data['geometry']);
+        $this->sciences = new Degree(56, $data['sciences']);
+        $this->religion = new Degree(70, $data['religion']);
+        $this->computer = new Degree(56, $data['computer']);
+        $this->draw = new Degree(70, $data['draw']);
+
+        $this->toArray();
     }
 
-    public function getSocialStudies()
+    public function toArray()
     {
-        return $this->get('socialStudies');
-    }
-
-    public function getAljebra()
-    {
-        return $this->get('aljebra');
-    }
-
-    public function getGeometry()
-    {
-        return $this->get('geometry');
-    }
-
-    public function getSciences()
-    {
-        return $this->get('sciences');
-    }
-
-    public function getReligion()
-    {
-        return $this->get('religion');
-    }
-
-    public function getComputer()
-    {
-        return $this->get('computer');
-    }
-
-    public function getDraw()
-    {
-        return $this->get('draw');
+        return [
+            'studentData' => $this->student->toArray(),
+            'arabic' => [
+                'value' => $this->arabic->getValue(),
+                'isAbsence' => $this->arabic->isAbsence()
+            ],
+            'english' => [
+                'value' => $this->english->getValue(),
+                'isAbsence' => $this->english->isAbsence()
+            ],
+            'socials' => [
+                'value' => $this->socials->getValue(),
+                'isAbsence' => $this->socials->isAbsence()
+            ],
+            'aljebra' => [
+                'value' => $this->aljebra->getValue(),
+                'isAbsence' => $this->aljebra->isAbsence()
+            ],
+            'geometry' => [
+                'value' => $this->geometry->getValue(),
+                'isAbsence' => $this->geometry->isAbsence()
+            ],
+            'sciences' => [
+                'value' => $this->sciences->getValue(),
+                'isAbsence' => $this->sciences->isAbsence()
+            ],
+            'religion' => [
+                'value' => $this->religion->getValue(),
+                'isAbsence' => $this->religion->isAbsence()
+            ],
+            'computer' => [
+                'value' => $this->computer->getValue(),
+                'isAbsence' => $this->computer->isAbsence()
+            ],
+            'draw' => [
+                'value' => $this->draw->getValue(),
+                'isAbsence' => $this->draw->isAbsence()
+            ]
+        ];
     }
 }
