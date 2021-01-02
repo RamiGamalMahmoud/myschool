@@ -1,0 +1,195 @@
+<div class="certifecate">
+
+	<div class="certifecate-head">
+		<h4 class="title">
+			<span>شهادة بدرجات
+				<span>{{ generaldata.semester }}</span>
+				<span>{{ generaldata.gradeName }}</span>
+				الإعدادي
+			</span>
+		</h4>
+		<h4 class="release">
+			<span>للعام الدراسي
+				<span>{{ generaldata.schoolYear }}</span>
+			</span>
+		</h4>
+	</div>
+
+	<div class="student-data">
+		<div class="student-name-container">
+			<span class="student-name-lbl">اسم الطالب</span>
+			<span class="student-name">{{ studentdata.studentName }}</span>
+		</div>
+		<div class="sitting-number-container">
+			<span class="sitting-number-lbl">رقم الجلوس</span>
+			<span class="sitting-number">{{ studentdata.sittingNumber }}</span>
+		</div>
+	</div>
+
+	{# data table #}
+	<div class="degrees">
+		<div class="sutbjects-head">
+			<div class="right-part">
+				<span class="subject-name-lbl">المادة</span>
+				<span class="max-value-lbl">النهاة العظمى</span>
+				<span class="min-value-lbl">النهاية الصغرى</span>
+			</div>
+			<div class="left-part">
+				<div class="subject">
+					<span class="subject-name">عربي</span>
+					<span class="max-deg">{{ maxdeg[0] }}</span>
+					<span class="min-deg">{{ mindeg[0] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">انجليزي</span>
+					<span class="max-deg">{{ maxdeg[1] }}</span>
+					<span class="min-deg">{{ mindeg[1] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">الدراسات</span>
+					<span class="max-deg">{{ maxdeg[2] }}</span>
+					<span class="min-deg">{{ mindeg[2] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">الرياضيات</span>
+					<span class="max-deg">{{ maxdeg[3] }}</span>
+					<span class="min-deg">{{ mindeg[3] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">العلوم</span>
+					<span class="max-deg">{{ maxdeg[4] }}</span>
+					<span class="min-deg">{{ mindeg[4] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name small-font">مجموع أساسي</span>
+					<span class="max-deg">{{ maxdeg[5] }}</span>
+					<span class="min-deg">{{ mindeg[5] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">{{ subjectstitle[0] }}</span>
+					<span class="max-deg">{{ maxdeg[6] }}</span>
+					<span class="min-deg">{{ mindeg[6] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">{{ subjectstitle[1] }}</span>
+					<span class="max-deg">{{ maxdeg[7] }}</span>
+					<span class="min-deg">{{ mindeg[7] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name small-font">المجموع الكلي</span>
+					<span class="max-deg">{{ maxdeg[8] }}</span>
+					<span class="min-deg">{{ mindeg[8] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">دين</span>
+					<span class="max-deg">{{ maxdeg[9] }}</span>
+					<span class="min-deg">{{ mindeg[9] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">الحاسب</span>
+					<span class="max-deg">{{ maxdeg[10] }}</span>
+					<span class="min-deg">{{ mindeg[10] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name">رسم</span>
+					<span class="max-deg">{{ maxdeg[11] }}</span>
+					<span class="min-deg">{{ mindeg[11] }}</span>
+				</div>
+				<div class="subject">
+					<span class="subject-name small-font">التربية الرياضية</span>
+					<span class="max-deg">{{ maxdeg[12] }}</span>
+					<span class="min-deg">{{ mindeg[12] }}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="subjects-data">
+			<div class="right-part">
+				<span class="student-deg-lbl">درجة الطالب</span>
+				<span class="student-grade-lbl">التقدير</span>
+			</div>
+			<div class="left-part">
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.arabic }}</span>
+					<span class="student-grade">{{ studentgrade.arabic }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.english }}</span>
+					<span class="student-grade">{{ studentgrade.english }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.socials }}</span>
+					<span class="student-grade">{{ studentgrade.socials }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.math }}</span>
+					<span class="student-grade">{{ studentgrade.math }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.sciences }}</span>
+					<span class="student-grade">{{ studentgrade.sciences }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.total }}</span>
+					<span class="student-grade">{{ studentgrade.total }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.activity_1 }}</span>
+					<span class="student-grade">{{ studentgrade.activity_1 }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.activity_2 }}</span>
+					<span class="student-grade">{{ studentgrade.activity_2 }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg"></span>
+					<span class="student-grade"></span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.religion }}</span>
+					<span class="student-grade">{{ studentgrade.religion }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.computer }}</span>
+					<span class="student-grade">{{ studentgrade.computer }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.draw }}</span>
+					<span class="student-grade">{{ studentgrade.draw }}</span>
+				</div>
+				<div class="subject-degree">
+					<span class="student-deg">{{ studentdeg.sports }}</span>
+					<span class="student-grade">{{ studentgrade.sports }}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="final-state">
+			<div class="right-part">
+				<span class="student-state">{{ studentdeg.finalGrade }}</span>
+			</div>
+			<div class="left-part">
+				<span class="second-round-subjects">{{ studentgrade.secondRoundSubjects }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="certifecate-footer">
+
+		<div class="footer-part control-cheaf">
+			<span class="lbl">رئيس الكنترول</span>
+			<span class="value">Rami Gamal</span>
+		</div>
+
+		<div class="footer-part student-rank">
+			<span class="lbl">الترتيب</span>
+			<span class="value"></span>
+		</div>
+
+		<div class="footer-part school-head">
+			<span class="lbl">مدير المدرسة</span>
+			<span class="value"></span>
+		</div>
+	</div>
+
+</div>
