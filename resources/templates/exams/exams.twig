@@ -76,8 +76,28 @@
 					<span class='menu-title'>الشهادات</span>
 					<div class='menu-content'>
 						<div class='menu-content-wrapper'>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss' class='menu-btn'>نصف العام</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss' class='menu-btn'>آخر العام</a>
+							<div class="menu left-slide-menu">
+								<span class="menu-title">نصف العام</span>
+								<div class="menu-content">
+									<div class="menu-content-wrapper">
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="menu left-slide-menu">
+								<span class="menu-title">آخر العام</span>
+								<div class="menu-content">
+									<div class="menu-content-wrapper">
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/all' class='menu-btn'>كل الطلبة</a>
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/passed' class='menu-btn'>الناجحون</a>
+										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/failed' class='menu-btn'>لهم دور ثان</a>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
