@@ -34,10 +34,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% set serial = 1 %}
 					{% for entity in entities %}
 						<tr>
 							{% include "exams/monitoring/evaluation/data.twig" %}
 						</tr>
+						{% set serial = serial + 1 %}
 					{% endfor %}
 				</tbody>
 			</table>
