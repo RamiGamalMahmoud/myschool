@@ -1,18 +1,27 @@
-<td>
-	{{ entity.studentData.studentId }}
+<td dataname="studentId" studentid="{{ entity.studentData.studentId }}">
+	{{ serial }}
 </td>
+
 <td>
 	{{ entity.studentData.sittingNumber }}
 </td>
+
 <td>
 	{{ entity.studentData.studentName }}
 </td>
+
 <td>
 	{{ entity.studentData.classNumber }}
 </td>
-<td class={{ entity.studentData.enrollmentStatus == "معيد" ? "warning" : "" }}>
-	{{ entity.studentData.enrollmentStatus }}
-</td>
+
+{% if entity.studentData.enrollmentStatus == "معيد" %}
+	<td class="warning" }}>
+		{{ entity.studentData.enrollmentStatus }}
+	</td>
+{% else %}
+	<td>{{ entity.studentData.enrollmentStatus }}</td>
+{% endif %}
+
 <td>
 	{{ entity.studentData.gradeNumber }}
 </td>
