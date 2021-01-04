@@ -1,6 +1,10 @@
 <div class="right-part">
-	<span class="student-state">{{ studentdeg.finalGrade }}</span>
+	<span class="student-state">{{ entity.studentState.state }}</span>
 </div>
 <div class="left-part">
-	<span class="second-round-subjects">{{ studentgrade.secondRoundSubjects }}</span>
+	<span class="second-round-subjects">
+		{% for subject in entity.studentState.weaknessSubjects %}
+			{{ subject.getSubjectName }}
+		{% endfor %}
+	</span>
 </div>
