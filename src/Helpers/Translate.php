@@ -13,9 +13,24 @@ class Translate
 
     public static function getSubjectName(string $subjectName): string
     {
-        if (in_array($subjectName, self::$local)) {
-            return self::$local[$subjectName];
+        $local = self::$local['subject-names'];
+        if (in_array($subjectName, array_keys($local))) {
+            return $local[$subjectName];
         }
         return $subjectName;
+    }
+
+    public static function getStudentGrade(string $gradeName): string
+    {
+        return self::$local['studentGrade'][$gradeName];
+    }
+
+    public static function getStudentState(string $state, string $semester): string
+    {
+        if ($state === 'PASSED') {
+            return self::$local['examStatus'][$state];
+        }
+
+        return self::$local['examStatus'][$state][$semester];
     }
 }
