@@ -8,7 +8,7 @@ class StudentState
     private ?array $_weaknessSubjects;
     private bool $_isFullAssigned;
 
-    public function __construct($semester, array $subjects)
+    public function __construct(array $subjects)
     {
         $assigned = array_filter($subjects, function ($subject) {
             if ($subject->getGrade()->isAssigned()) {
