@@ -2,7 +2,7 @@
 
 namespace SM\Helpers;
 
-class Translator
+class Translate
 {
     private static array $local;
 
