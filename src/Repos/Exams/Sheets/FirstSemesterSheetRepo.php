@@ -6,18 +6,19 @@ use Simple\Core\DataAccess\Query;
 use Simple\Core\DataAccess\IDataAccess;
 use SM\Entities\Exams\Sheets\FirstSemesterSheetEntity;
 
-class FirstSemesterSheetRepo implements ISheetRepo
+class FirstSemesterSheetRepo implements
+    ISheetRepo
 {
 
     protected IDataAccess $dataAccess;
     protected string $dbTable;
     protected int $gradeNumber;
 
-    public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
+    public function __construct(int $gradeNumber, IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
         $this->gradeNumber = $gradeNumber;
-        $this->dbTable = $semester . '_degs';
+        $this->dbTable = 'fs_degs';
     }
 
     /**

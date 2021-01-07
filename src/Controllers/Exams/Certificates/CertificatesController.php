@@ -50,7 +50,7 @@ class CertificatesController
     {
         $dataAccess = new MySQLAccess(new DBConfig());
         if ($semester === 'fs') {
-            return new FirstSemesterSheetRepo($semester, $gradeNumber, $dataAccess);
+            return new FirstSemesterSheetRepo($gradeNumber, $dataAccess);
         } elseif ($semester === 'ss') {
             return new SecondSemesterSheetRepo($semester, $gradeNumber, $dataAccess);
         } else {
