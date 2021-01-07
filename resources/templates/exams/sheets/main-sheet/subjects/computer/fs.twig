@@ -1,0 +1,17 @@
+{% if entity.computer.fs.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.computer.fs.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.computer.fs.practicalExam.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.computer.fs.practicalExam.value}}</td>
+{% endif %}
+
+{% if entity.computer.fs.writtenExam.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.computer.fs.writtenExam.value}}</td>
+{% endif %}

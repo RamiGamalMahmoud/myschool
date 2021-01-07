@@ -1,0 +1,23 @@
+{% if entity.math.ss.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.math.ss.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.math.ss.aljebra.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.ss.aljebra.value}}</td>
+{% endif %}
+
+{% if entity.math.ss.geometry.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.ss.geometry.value}}</td>
+{% endif %}
+
+{% if entity.math.ss.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.ss.written.value}}</td>
+{% endif %}

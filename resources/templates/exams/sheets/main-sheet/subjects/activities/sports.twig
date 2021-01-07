@@ -1,0 +1,29 @@
+{% if entity.sports.fs.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.sports.fs.value }}</td>
+{% endif %}
+
+{% if entity.sports.ss.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.sports.ss.value }}</td>
+{% endif %}
+
+{# total #}
+{% if entity.sports.subjectResult.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.sports.subjectResult.total.value }}</td>
+{% endif %}
+
+{# grade #}
+{% if  entity.sports.subjectResult.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.sports.subjectResult.grade.value == 'F' %}
+		<td class="danger">{{  entity.sports.subjectResult.grade.value }}</td>
+	{% else %}
+		<td>{{  entity.sports.subjectResult.grade.value }}</td>
+	{% endif %}
+{% endif %}

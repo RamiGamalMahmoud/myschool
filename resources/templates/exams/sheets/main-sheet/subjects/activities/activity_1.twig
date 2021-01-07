@@ -1,0 +1,36 @@
+{% if entity.activity_1.fs.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.activity_1.fs.value }}</td>
+{% endif %}
+
+{% if entity.activity_1.ss.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.activity_1.ss.value }}</td>
+{% endif %}
+
+{# total #}
+{% if entity.activity_1.subjectResult.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.activity_1.subjectResult.total.value }}</td>
+{% endif %}
+
+{# netDegree #}
+{% if entity.activity_1.subjectResult.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.activity_1.subjectResult.netDegree.value }}</td>
+{% endif %}
+
+{# grade #}
+{% if  entity.activity_1.subjectResult.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.activity_1.subjectResult.grade.value == 'F' %}
+		<td class="danger">{{  entity.activity_1.subjectResult.grade.value }}</td>
+	{% else %}
+		<td>{{  entity.activity_1.subjectResult.grade.value }}</td>
+	{% endif %}
+{% endif %}

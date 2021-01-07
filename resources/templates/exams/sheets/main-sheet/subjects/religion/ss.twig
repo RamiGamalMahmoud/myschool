@@ -1,0 +1,11 @@
+{% if entity.religion.ss.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.religion.ss.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.religion.ss.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.religion.ss.written.value}}</td>
+{% endif %}

@@ -1,0 +1,11 @@
+{% if entity.draw.ss.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.draw.ss.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.draw.ss.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.draw.ss.written.value}}</td>
+{% endif %}

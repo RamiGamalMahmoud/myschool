@@ -1,0 +1,59 @@
+<td dataname="studentId" studentid="{{ entity.studentData.studentId }}">
+	{{ serial }}
+</td>
+
+<td>
+	{{ entity.studentData.sittingNumber }}
+</td>
+
+<td>
+	{{ entity.studentData.studentName }}
+</td>
+
+<td>
+	{{ entity.studentData.classNumber }}
+</td>
+
+<td>
+	{{ entity.studentData.gradeNumber }}
+</td>
+
+<td>
+	{{ entity.studentData.sex }}
+</td>
+
+{% if entity.studentData.enrollmentStatus == "معيد" %}
+	<td class="warning" }}>
+		{{ entity.studentData.enrollmentStatus }}
+	</td>
+{% else %}
+	<td>{{ entity.studentData.enrollmentStatus }}</td>
+{% endif %}
+
+<td>
+	{{ entity.studentData.religion }}
+</td>
+
+<td>
+	{{ entity.studentData.pirthDate }}
+</td>
+
+<td>
+	{{ entity.studentData.pirthDay }}
+</td>
+
+<td>
+	{{ entity.studentData.pirthMonth }}
+</td>
+
+<td>
+	{{ entity.studentData.pirthYear }}
+</td>
+
+<td>
+	{{ entity.studentData.firstSemesterSecretNumber }}
+</td>
+
+<td>
+	{{ entity.studentData.secondSemesterSecretNumber }}
+</td>

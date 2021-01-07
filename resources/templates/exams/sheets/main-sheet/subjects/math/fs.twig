@@ -1,0 +1,17 @@
+{% if entity.math.fs.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.math.fs.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.math.fs.aljebra.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.fs.aljebra.value}}</td>
+{% endif %}
+
+{% if entity.math.fs.geometry.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.fs.geometry.value}}</td>
+{% endif %}

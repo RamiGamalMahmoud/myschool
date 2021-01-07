@@ -1,0 +1,11 @@
+{% if entity.draw.fs.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.draw.fs.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.draw.fs.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.draw.fs.written.value}}</td>
+{% endif %}

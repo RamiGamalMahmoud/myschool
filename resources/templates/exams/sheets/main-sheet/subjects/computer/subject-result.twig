@@ -1,0 +1,21 @@
+{% if entity.computer.subjectResult.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.computer.subjectResult.total.value}}</td>
+{% endif %}
+
+{% if entity.computer.subjectResult.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.computer.subjectResult.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.computer.subjectResult.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.computer.subjectResult.grade.value == 'F' %}
+		<td class="danger">{{entity.computer.subjectResult.grade.value}}</td>
+	{% else %}
+		<td>{{entity.computer.subjectResult.grade.value}}</td>
+	{% endif %}
+{% endif %}

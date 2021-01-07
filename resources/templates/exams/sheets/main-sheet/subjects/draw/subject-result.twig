@@ -1,0 +1,21 @@
+{% if entity.draw.subjectResult.total.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.draw.subjectResult.total.value}}</td>
+{% endif %}
+
+{% if entity.draw.subjectResult.netDegree.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.draw.subjectResult.netDegree.value}}</td>
+{% endif %}
+
+{% if entity.draw.subjectResult.grade.isAbsence %}
+	{% include absence %}
+{% else %}
+	{% if entity.draw.subjectResult.grade.value == 'F' %}
+		<td class="danger">{{entity.draw.subjectResult.grade.value}}</td>
+	{% else %}
+		<td>{{entity.draw.subjectResult.grade.value}}</td>
+	{% endif %}
+{% endif %}

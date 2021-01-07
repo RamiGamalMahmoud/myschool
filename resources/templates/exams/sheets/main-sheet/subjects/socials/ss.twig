@@ -1,0 +1,11 @@
+{% if entity.socials.ss.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.socials.ss.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.socials.ss.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.socials.ss.written.value}}</td>
+{% endif %}

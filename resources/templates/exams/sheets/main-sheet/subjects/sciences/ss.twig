@@ -1,0 +1,24 @@
+{% if entity.sciences.ss.evaluation.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{ entity.sciences.ss.evaluation.value }}</td>
+{% endif %}
+
+{% if entity.sciences.ss.practicalExam.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.ss.practicalExam.value}}</td>
+{% endif %}
+
+{% if entity.sciences.ss.writtenExam.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.sciences.ss.writtenExam.value}}</td>
+{% endif %}
+
+
+{% if entity.math.ss.written.isAbsence %}
+	{% include absence %}
+{% else %}
+	<td>{{entity.math.ss.written.value}}</td>
+{% endif %}
