@@ -2,29 +2,72 @@
 
 namespace SM\Repos\Exams\Sheets;
 
-use SM\Repos\IReadRepo;
-use SM\Entities\Entity;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\Query;
+use Simple\Helpers\Functions;
+use SM\Entities\Exams\Sheets\MainSheetEntity;
 
-class SecondSemesterSheetRepo implements IReadRepo
+class MainSheetRepo implements
+    ISheetRepo
 {
     protected IDataAccess $dataAccess;
     protected string $dbTable;
     protected int $gradeNumber;
 
-    public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
+    public function __construct(int $gradeNumber, IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
         $this->gradeNumber = $gradeNumber;
-        $this->dbTable = $semester . '_sheet_view';
+        $this->dbTable = 'main_sheet_degs';
     }
 
-    public function getAll()
+    function getAll(): array
     {
+        return $this->getAllStudents();
     }
 
-    public function getById($id)
+    function getById($id): array
     {
+        return [];
+    }
+
+    public function getPassedStudents(): array
+    {
+        return $this->getAllStudents('PASSED');
+    }
+
+    public function getFailedStudents(): array
+    {
+        return $this->getAllStudents('FAILED');
+    }
+
+    private function getAllStudents(string $status = null)
+    {
+        $query = new Query();
+        $query->select($this->getDBColumns())
+            ->from($this->dbTable)
+            ->where($this->dbTable . '.grade', '=', $this->gradeNumber)->limit(2);
+        $data = $this->dataAccess->getAll($query);
+
+        $fs_degs_settings = include_once FS_DEGS_SETTINGS;
+        MainSheetEntity::setDegsSettings($fs_degs_settings);
+        $entities = [];
+        foreach ($data as $entity) {
+            // array_push($entities, new MainSheetEntity($entity));
+            $student = new MainSheetEntity($entity);
+
+            if ($status === null) {
+                array_push($entities, $student);
+            } elseif ($student->getStudentState()->getState() === $status) {
+                array_push($entities, $student);
+            }
+        }
+        return $entities;
+    }
+
+    private function getDBColumns()
+    {
+        $columns = require_once __DIR__ . DS . 'SSColumns.php';
+        return $columns;
     }
 }
