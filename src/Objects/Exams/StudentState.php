@@ -49,9 +49,16 @@ class StudentState
 
     public function toArray()
     {
+        if ($this->_weaknessSubjects !== null) {
+            $subjects = array_map(function ($subject) {
+                return $subject->getSubjectName();
+            }, $this->_weaknessSubjects);
+        } else {
+            $subjects = [];
+        }
         return [
             'state' => $this->_studentState,
-            'weaknessSubjects' => $this->_weaknessSubjects
+            'weaknessSubjects' => $subjects
         ];
     }
 }
