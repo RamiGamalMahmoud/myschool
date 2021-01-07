@@ -6,11 +6,13 @@ use Exception;
 use config\DBConfig;
 use Simple\Core\IRequest;
 use SM\Repos\Exams\Sheets\ISheetRepo;
+use SM\Views\Exams\Sheets\ISheetView;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
+use SM\Repos\Exams\Sheets\MainSheetRepo;
 use SM\Views\Exams\Sheets\FirstSemesterSheetView;
-use SM\Repos\Exams\Sheets\SecondSemesterSheetRepo;
+use SM\Views\Exams\Sheets\MainSheetView;
 
 class SheetsController
 {
@@ -24,13 +26,13 @@ class SheetsController
     /**
      * @var FirstSemesterSheetView
      */
-    protected FirstSemesterSheetView $view;
+    protected ISheetView $view;
 
     public function __construct(IRequest $request, $params)
     {
         $this->request = $request;
 
-        $this->view = new FirstSemesterSheetView($request->getSegment(1), $params);
+        $this->view = $this->createView($this->request->getSegment(1), $params);
         $this->repo = $this->getRepo($params['gradeNumber'], $this->getSemester(), new MySQLAccess(new DBConfig()));
     }
 
@@ -84,12 +86,23 @@ class SheetsController
     {
         switch ($semester) {
             case 'fs':
-                return new FirstSemesterSheetRepo($semester, $gradeNumber, $dataAccess);
+                return new FirstSemesterSheetRepo($gradeNumber, $dataAccess);
                 break;
 
             case 'ss':
-                return new SecondSemesterSheetRepo($semester, $gradeNumber, $dataAccess);
+                return new MainSheetRepo($gradeNumber, $dataAccess);
                 break;
+        }
+    }
+
+    private function createView(string $semester, ?array $params): ISheetView
+    {
+        if ($semester === 'fs') {
+            return new FirstSemesterSheetView($params);
+        } elseif ($semester === 'ss') {
+            return new MainSheetView($params);
+        } else {
+            throw new Exception();
         }
     }
 
