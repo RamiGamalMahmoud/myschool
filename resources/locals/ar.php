@@ -23,9 +23,11 @@ return [
         'stayer' => 'معيد'
     ],
     'examStatus' => [
-        'weak' => 'ضغيف',
-        'succeeded' => 'ناجح',
-        'stayer' => 'باق للإعادة'
+        'PASSED' => 'ناجح',
+        'FAILED' => [
+            'fs' => 'ضعيف',
+            'ss' => 'له دور ثاني'
+        ]
     ],
     'studentReligion' => [
         'muslem' => 'مسلم',
