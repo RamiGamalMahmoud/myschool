@@ -1,15 +1,12 @@
-{% if entity.studentState.state == 'FAILED' %}
-	<td class="danger">له دور ثاني في</td>
+{% if entity.studentState.isPassed %}
+	<td>{{ entity.studentState.state }}</td>
+
 {% else %}
-	<td class="success">ناجح</td>
+	<td class="danger">{{ entity.studentState.state }}</td>
 {% endif %}
 
-{% if entity.studentState.state == 'FAILED' %}
-	<td class="danger">
-		{% for subject in entity.studentState.weaknessSubjects %}
-			{{ subject.getSubjectName }}
-		{% endfor %}
-	</td>
-{% else %}
-	<td></td>
-{% endif %}
+<td>
+	{% for subject in entity.studentState.weaknessSubjects %}
+		{{ subject }}
+	{% endfor %}
+</td>

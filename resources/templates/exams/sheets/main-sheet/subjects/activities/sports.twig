@@ -21,7 +21,7 @@
 {% if  entity.sports.subjectResult.grade.isAbsence %}
 	{% include absence %}
 {% else %}
-	{% if entity.sports.subjectResult.grade.value == 'F' %}
+	{% if entity.sports.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{  entity.sports.subjectResult.grade.value }}</td>
 	{% else %}
 		<td>{{  entity.sports.subjectResult.grade.value }}</td>

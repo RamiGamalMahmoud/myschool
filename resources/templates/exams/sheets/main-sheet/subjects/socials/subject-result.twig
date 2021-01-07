@@ -13,7 +13,7 @@
 {% if entity.socials.subjectResult.grade.isAbsence %}
 	{% include absence %}
 {% else %}
-	{% if entity.socials.subjectResult.grade.value == 'F' %}
+	{% if entity.socials.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{entity.socials.subjectResult.grade.value}}</td>
 	{% else %}
 		<td>{{entity.socials.subjectResult.grade.value}}</td>

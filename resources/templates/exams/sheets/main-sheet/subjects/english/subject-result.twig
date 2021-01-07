@@ -13,7 +13,7 @@
 {% if entity.english.subjectResult.grade.isAbsence %}
 	{% include absence %}
 {% else %}
-	{% if entity.english.subjectResult.grade.value == 'F' %}
+	{% if entity.english.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{entity.english.subjectResult.grade.value}}</td>
 	{% else %}
 		<td>{{entity.english.subjectResult.grade.value}}</td>
