@@ -39,7 +39,7 @@ class Degree
 
         if ($degree === null) {
             $this->assigned = false;
-            $this->absence = false;
+            $this->absence = null;
             $this->value = null;
         } elseif ($degree < 0) {
             $this->assigned = true;
