@@ -3,22 +3,16 @@
 namespace SM\Views\Exams\Sheets;
 
 use Simple\Core\View;
-use Simple\Helpers\Functions;
 
-class FirstSemesterSheetView
+class FirstSemesterSheetView implements
+    ISheetView
 {
     private string $template;
     private ?array $context;
 
-    public function __construct(string $sheetType, ?array $params)
+    public function __construct(?array $params)
     {
-        if ($sheetType === 'fs') {
-            $this->template = 'exams/fs-sheet/fs-sheet.twig';
-        } elseif ($sheetType === 'ss') {
-            $this->template = 'exams/ss-sheet/ss-sheet.twig';
-        } else {
-            //! ERROR
-        }
+        $this->template = 'exams/fs-sheet/fs-sheet.twig';
     }
 
     public function load(array $context)
