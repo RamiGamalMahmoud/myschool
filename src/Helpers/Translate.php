@@ -13,6 +13,9 @@ class Translator
 
     public static function getSubjectName(string $subjectName): string
     {
-        return self::$local[$subjectName];
+        if (in_array($subjectName, self::$local)) {
+            return self::$local[$subjectName];
+        }
+        return $subjectName;
     }
 }
