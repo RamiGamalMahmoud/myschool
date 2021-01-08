@@ -1,32 +1,34 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.activity_2.fs.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.fs.value) }}
 {% else %}
 	<td>{{ entity.activity_2.fs.value }}</td>
 {% endif %}
 
 {% if entity.activity_2.ss.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.ss.value) }}
 {% else %}
 	<td>{{ entity.activity_2.ss.value }}</td>
 {% endif %}
 
 {# total #}
 {% if entity.activity_2.subjectResult.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.subjectResult.total.value) }}
 {% else %}
 	<td>{{ entity.activity_2.subjectResult.total.value }}</td>
 {% endif %}
 
 {# netDegree #}
 {% if entity.activity_2.subjectResult.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.subjectResult.netDegree.value) }}
 {% else %}
 	<td>{{ entity.activity_2.subjectResult.netDegree.value }}</td>
 {% endif %}
 
 {# grade #}
 {% if  entity.activity_2.subjectResult.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.subjectResult.grade.value) }}
 {% else %}
 	{% if entity.activity_2.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{  entity.activity_2.subjectResult.grade.value }}</td>

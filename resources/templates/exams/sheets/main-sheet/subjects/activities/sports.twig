@@ -1,25 +1,27 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.sports.fs.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.fs.value) }}
 {% else %}
 	<td>{{ entity.sports.fs.value }}</td>
 {% endif %}
 
 {% if entity.sports.ss.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.ss.value) }}
 {% else %}
 	<td>{{ entity.sports.ss.value }}</td>
 {% endif %}
 
 {# total #}
 {% if entity.sports.subjectResult.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.subjectResult.total.value) }}
 {% else %}
 	<td>{{ entity.sports.subjectResult.total.value }}</td>
 {% endif %}
 
 {# grade #}
 {% if  entity.sports.subjectResult.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.subjectResult.grade.value) }}
 {% else %}
 	{% if entity.sports.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{  entity.sports.subjectResult.grade.value }}</td>

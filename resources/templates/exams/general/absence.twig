@@ -1,0 +1,3 @@
+{% macro absenceCell(value, editable = false) %}
+	<td class="warning" {% if editable %} contenteditable="true" {% endif %}>{{ value }}</td>
+{% endmacro %}

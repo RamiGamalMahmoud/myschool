@@ -1,17 +1,19 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.math.subjectResult.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.subjectResult.total.value) }}
 {% else %}
 	<td>{{entity.math.subjectResult.total.value}}</td>
 {% endif %}
 
 {% if entity.math.subjectResult.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.subjectResult.netDegree.value) }}
 {% else %}
 	<td>{{entity.math.subjectResult.netDegree.value}}</td>
 {% endif %}
 
 {% if entity.math.subjectResult.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.subjectResult.grade.value) }}
 {% else %}
 	{% if entity.math.subjectResult.grade.isPassed != true %}
 		<td class="danger">{{entity.math.subjectResult.grade.value}}</td>

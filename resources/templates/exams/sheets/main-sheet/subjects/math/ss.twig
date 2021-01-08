@@ -1,23 +1,26 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.math.ss.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.ss.evaluation.value) }}
 {% else %}
 	<td>{{ entity.math.ss.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.math.ss.aljebra.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.ss.aljebra.value) }}
 {% else %}
 	<td>{{entity.math.ss.aljebra.value}}</td>
 {% endif %}
 
 {% if entity.math.ss.geometry.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.ss.geometry.value) }}
 {% else %}
 	<td>{{entity.math.ss.geometry.value}}</td>
 {% endif %}
 
+
 {% if entity.math.ss.written.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.ss.written.value) }}
 {% else %}
 	<td>{{entity.math.ss.written.value}}</td>
 {% endif %}

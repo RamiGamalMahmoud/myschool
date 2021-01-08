@@ -1,24 +1,26 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.sciences.ss.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.ss.evaluation.value) }}
 {% else %}
 	<td>{{ entity.sciences.ss.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.sciences.ss.practicalExam.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.ss.practicalExam.value) }}
 {% else %}
 	<td>{{entity.sciences.ss.practicalExam.value}}</td>
 {% endif %}
 
 {% if entity.sciences.ss.writtenExam.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.ss.writtenExam.value) }}
 {% else %}
 	<td>{{entity.sciences.ss.writtenExam.value}}</td>
 {% endif %}
 
 
-{% if entity.math.ss.written.isAbsence %}
-	{% include absence %}
+{% if entity.sciences.ss.written.isAbsence %}
+	{{ absence.absenceCell(entity.sciences.ss.written.value) }}
 {% else %}
-	<td>{{entity.math.ss.written.value}}</td>
+	<td>{{entity.sciences.ss.written.value}}</td>
 {% endif %}

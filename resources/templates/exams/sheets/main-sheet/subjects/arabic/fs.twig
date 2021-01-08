@@ -1,11 +1,13 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.arabic.fs.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.arabic.fs.evaluation.value) }}
 {% else %}
 	<td>{{ entity.arabic.fs.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.arabic.fs.written.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.arabic.fs.written.value) }}
 {% else %}
 	<td>{{entity.arabic.fs.written.value}}</td>
 {% endif %}

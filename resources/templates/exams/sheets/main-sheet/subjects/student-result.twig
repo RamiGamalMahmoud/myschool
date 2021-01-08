@@ -5,8 +5,10 @@
 	<td class="danger">{{ entity.studentState.state }}</td>
 {% endif %}
 
-<td>
-	{% for subject in entity.studentState.weaknessSubjects %}
-		{{ subject }}
-	{% endfor %}
-</td>
+{% if entity.studentState.weaknessSubjects == '' %}
+	<td class="weakness-subjects"></td>
+{% else %}
+	<td class="weakness-subjects danger">
+		{{ entity.studentState.weaknessSubjects }}
+	</td>
+{% endif %}
