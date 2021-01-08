@@ -49,11 +49,6 @@ class MainSheetView implements
         $this->context['entities'] = $entities;
     }
 
-    private function getObject($item): MainSheetEntity
-    {
-        return $item;
-    }
-
     private function translateStudentData($data): array
     {
         $result['studentId'] = Numbers::convertNumbers($data['studentId']);
