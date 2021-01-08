@@ -2,6 +2,7 @@
 
 namespace SM\Views\Exams\Sheets;
 
+use PHPUnit\TextUI\ResultPrinter;
 use Simple\Core\View;
 use Simple\Helpers\Functions;
 use SM\Entities\Exams\Sheets\MainSheetEntity;
@@ -26,8 +27,6 @@ class MainSheetView implements
 
     public function setEntities(array $data)
     {
-        // Functions::dump($data[0]->toArray());
-        // exit;
         $entities = array_map(function ($entity) {
             $translated['studentData']  = $this->translateStudentData($entity->getStudentData()->toArray());
             $translated['arabic'] = $this->translateSubjet($entity->getArabicSubject()->toArray());
@@ -36,7 +35,11 @@ class MainSheetView implements
             $translated['math'] = $this->translateMathSubject($entity->getMathSubject()->toArray());
             $translated['sciences'] = $this->translatePracticalSubject($entity->getSciencesSubject()->toArray());
             $translated['studentState'] = $this->translateStudentState($entity->getStudentState()->toArray());
-
+            $translated['baseTotal'] = $this->translateTotal($entity->getBaseTotal()->toArray());
+            $translated['activity_1'] = $this->translateActivity($entity->getActivity_1()->toArray());
+            $translated['activity_2'] = $this->translateActivity($entity->getActivity_2()->toArray());
+            $translated['sports'] = $this->translateActivity($entity->getSportsSubject()->toArray());
+            $translated['overallTotal'] = $this->translateTotal($entity->getOverallTotal()->toArray());
             $translated['religion'] = $this->translateSubjet($entity->getReligionSubject()->toArray());
             $translated['computer'] = $this->translatePracticalSubject($entity->getComputerSubject()->toArray());
             $translated['draw'] = $this->translateSubjet($entity->getDrawSubject()->toArray());
@@ -67,6 +70,16 @@ class MainSheetView implements
         $result['pirthYear'] = Numbers::convertNumbers($data['pirthYear']);
         $result['firstSemesterSecretNumber'] = Numbers::convertNumbers($data['firstSemesterSecretNumber']);
         $result['secondSemesterSecretNumber'] = Numbers::convertNumbers($data['secondSemesterSecretNumber']);
+        return $result;
+    }
+
+    private function translateActivity(array $activity): array
+    {
+        $result = [
+            'fs' => $this->translateDegree($activity['fs']),
+            'ss' => $this->translateDegree($activity['ss']),
+            'subjectResult' => $this->translateSubjectResult($activity['subjectResult'])
+        ];
         return $result;
     }
 
@@ -133,26 +146,34 @@ class MainSheetView implements
             return Translate::getSubjectName($subject);
         }, $studentState['weaknessSubjects']);
 
+        $subjects = implode(' | ', $weaknessSubjects);
+
         $result = [
             'isPassed' => $isPassed,
             'state' => Translate::getStudentState($studentState['state'], 'ss'),
-            'weaknessSubjects' => $weaknessSubjects
+            'weaknessSubjects' => $subjects
         ];
         return $result;
     }
 
     private function translateDegree(array $degree): array
     {
+        $isAbsence = $degree['isAbsence'];
+        if ($isAbsence) {
+            $value = Translate::getStudentGrade('ABS');
+        } else {
+            $value = Numbers::convertNumbers($degree['value']);
+        }
         $result = [
-            'isAbsence' => $degree['isAbsence'],
-            'value' => Numbers::convertNumbers($degree['value'])
+            'isAbsence' => $isAbsence,
+            'value' => $value
         ];
         return $result;
     }
 
     private function translateStudentGrade(array $grade): array
     {
-        $isPassed = $grade['value'] === 'F';
+        $isPassed = $grade['value'] !== 'F';
         $result = [
             'isPassed' => $isPassed,
             'isAbsence' => $grade['isAbsence'],
@@ -161,12 +182,22 @@ class MainSheetView implements
         return $result;
     }
 
+    private function translateTotal(array $total): array
+    {
+        $result = [
+            'total' => $this->translateDegree($total['total']),
+            'grade' => $this->translateStudentGrade($total['grade'])
+        ];
+        return $result;
+    }
+
     private function translateSubjectResult(array $subjectResult): array
     {
-        $result = [];
-        $result['total'] = $this->translateDegree($subjectResult['total']);
-        $result['netDegree'] = $this->translateDegree($subjectResult['netDegree']);
-        $result['grade'] = $this->translateStudentGrade($subjectResult['grade']);
+        $result = [
+            'total' => $this->translateDegree($subjectResult['total']),
+            'netDegree' => $this->translateDegree($subjectResult['netDegree']),
+            'grade' => $this->translateStudentGrade($subjectResult['grade'])
+        ];
         return $result;
     }
 }
