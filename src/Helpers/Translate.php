@@ -11,7 +11,7 @@ class Translate
         self::$local = $local;
     }
 
-    public static function getSubjectName(string $subjectName): string
+    public static function getSubjectName(?string $subjectName): string
     {
         $local = self::$local['subject-names'];
         if (in_array($subjectName, array_keys($local))) {
@@ -20,13 +20,20 @@ class Translate
         return $subjectName;
     }
 
-    public static function getStudentGrade(string $gradeName): string
+    public static function getStudentGrade(?string $gradeName): string
     {
-        return self::$local['studentGrade'][$gradeName];
+        if (empty($gradeName) || $gradeName === null) {
+            return '';
+        }
+        $local = self::$local['studentGrade'];
+        if (in_array($gradeName, array_keys($local))) {
+            return self::$local['studentGrade'][$gradeName];
+        }
     }
 
-    public static function getStudentState(string $state, string $semester): string
+    public static function getStudentState(?string $state, string $semester): string
     {
+        if ($state === null) return '';
         if ($state === 'PASSED') {
             return self::$local['examStatus'][$state];
         }
