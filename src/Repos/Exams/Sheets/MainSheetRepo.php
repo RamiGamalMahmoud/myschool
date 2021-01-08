@@ -4,7 +4,6 @@ namespace SM\Repos\Exams\Sheets;
 
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\Query;
-use Simple\Helpers\Functions;
 use SM\Entities\Exams\Sheets\MainSheetEntity;
 
 class MainSheetRepo implements
@@ -46,14 +45,13 @@ class MainSheetRepo implements
         $query = new Query();
         $query->select($this->getDBColumns())
             ->from($this->dbTable)
-            ->where($this->dbTable . '.grade', '=', $this->gradeNumber)->limit(2);
+            ->where($this->dbTable . '.grade', '=', $this->gradeNumber);
         $data = $this->dataAccess->getAll($query);
 
         $fs_degs_settings = include_once FS_DEGS_SETTINGS;
         MainSheetEntity::setDegsSettings($fs_degs_settings);
         $entities = [];
         foreach ($data as $entity) {
-            // array_push($entities, new MainSheetEntity($entity));
             $student = new MainSheetEntity($entity);
 
             if ($status === null) {
