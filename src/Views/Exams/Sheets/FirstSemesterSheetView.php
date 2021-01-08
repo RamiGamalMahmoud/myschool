@@ -12,7 +12,7 @@ class FirstSemesterSheetView implements
 
     public function __construct(?array $params)
     {
-        $this->template = 'exams/fs-sheet/fs-sheet.twig';
+        $this->template = 'exams/sheets/fs-sheet/fs-sheet.twig';
     }
 
     public function load(array $context)

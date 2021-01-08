@@ -1,22 +1,22 @@
-<div class="section sheet fs-sheet">
-	<div class="data-table fs-sheet">
+<div class="section sheet sheets/fs-sheet">
+	<div class="data-table sheets/fs-sheet">
 		<div class="table-head">
 			<table class="table">
 				<thead>
 					<tr class="head-space-holder">
-						{% include "exams/fs-sheet/columns-sizes.twig" %}
+						{% include "exams/sheets/fs-sheet/columns-sizes.twig" %}
 					</tr>
 					<tr>
-						{% include "exams/fs-sheet/header/global-columns-names.twig" %}
+						{% include "exams/sheets/fs-sheet/header/global-columns-names.twig" %}
 					</tr>
 					<tr>
-						{% include "exams/fs-sheet/header/columns-names.twig" %}
+						{% include "exams/sheets/fs-sheet/header/columns-names.twig" %}
 					</tr>
 					<tr>
-						{% include "exams/fs-sheet/header/max-degs.twig" %}
+						{% include "exams/sheets/fs-sheet/header/max-degs.twig" %}
 					</tr>
 					<tr>
-						{% include "exams/fs-sheet/header/min-degs.twig" %}
+						{% include "exams/sheets/fs-sheet/header/min-degs.twig" %}
 					</tr>
 				</thead>
 			</table>
@@ -26,14 +26,14 @@
 			<table class="table">
 				<thead>
 					<tr class="head-space-holder">
-						{% include "exams/fs-sheet/columns-sizes.twig" %}
+						{% include "exams/sheets/fs-sheet/columns-sizes.twig" %}
 					</tr>
 				</thead>
 				<tbody>
 					{% set serial = 1 %}
 					{% for entity in entities %}
 						<tr>
-							{% include "exams/fs-sheet/data.twig" %}
+							{% include "exams/sheets/fs-sheet/data.twig" %}
 						</tr>
 						{% set serial = serial + 1 %}
 					{% endfor %}
