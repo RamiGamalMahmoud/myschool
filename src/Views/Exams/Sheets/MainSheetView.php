@@ -2,10 +2,7 @@
 
 namespace SM\Views\Exams\Sheets;
 
-use PHPUnit\TextUI\ResultPrinter;
 use Simple\Core\View;
-use Simple\Helpers\Functions;
-use SM\Entities\Exams\Sheets\MainSheetEntity;
 use SM\Helpers\Numbers;
 use SM\Helpers\Translate;
 
@@ -44,7 +41,6 @@ class MainSheetView implements
             $translated['computer'] = $this->translatePracticalSubject($entity->getComputerSubject()->toArray());
             $translated['draw'] = $this->translateSubjet($entity->getDrawSubject()->toArray());
             return $translated;
-            // return $entity->toArray();
         }, $data);
         $this->context['entities'] = $entities;
     }
