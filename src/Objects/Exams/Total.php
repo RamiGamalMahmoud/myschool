@@ -27,12 +27,12 @@ class Total
     {
         return [
             'total' => [
-                'value' => $this->getTotal()->getValue(),
-                'isAbsence' => $this->getTotal()->isAbsence()
+                'isAbsence' => $this->getTotal()->isAbsence(),
+                'value' => $this->getTotal()->getValue()
             ],
             'grade' => [
-                'grade' => $this->getGrade()->grade(),
-                'isAbsence' => $this->getGrade()->isAbsence()
+                'isAbsence' => $this->getGrade()->isAbsence(),
+                'value' => $this->getGrade()->grade()
             ]
         ];
     }
