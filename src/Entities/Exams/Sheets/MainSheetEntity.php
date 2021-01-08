@@ -2,7 +2,9 @@
 
 namespace SM\Entities\Exams\Sheets;
 
+use SM\Helpers\DegsCalculator;
 use SM\Objects\Exams\StudentState;
+use SM\Objects\Exams\Total;
 
 class MainSheetEntity extends AbstractMainSheet
 {
@@ -23,7 +25,7 @@ class MainSheetEntity extends AbstractMainSheet
         self::$maxBaseTotal += self::$DEGS_SETTINGS["math"]["ss-percent"];
         self::$maxBaseTotal += self::$DEGS_SETTINGS["sciences"]["ss-percent"];
 
-        self::$maxOverallTotal = self::$maxBaseTotal + 2 * self::$DEGS_SETTINGS["activities"]["ss-percent"];
+        self::$maxOverallTotal = self::$maxBaseTotal + (2 * self::$DEGS_SETTINGS["activities"]["ss-percent"]);
     }
 
     private function calcStdentState()
@@ -45,6 +47,27 @@ class MainSheetEntity extends AbstractMainSheet
         $this->studentState = new StudentState($subjects);
     }
 
+    private function calcTotals()
+    {
+        $baseSubjects = [
+            $this->getArabicSubject()->getNetDegree(),
+            $this->getEnglishSubject()->getNetDegree(),
+            $this->getSocialsSubject()->getNetDegree(),
+            $this->getMathSubject()->getNetDegree(),
+            $this->getSciencesSubject()->getNetDegree()
+        ];
+
+        $activites = [
+            $this->getActivity_1()->getNetDegree(),
+            $this->getActivity_2()->getNetDegree()
+        ];
+
+        $fullSubjects = array_merge($activites, $baseSubjects);
+
+        $this->baseTotal = new Total(self::$maxBaseTotal, DegsCalculator::calcTotal($baseSubjects));
+        $this->overallTotal = new Total(self::$maxOverallTotal, DegsCalculator::calcTotal($fullSubjects));
+    }
+
     public static function setDegsSettings(array $degsSettings)
     {
         parent::setDegsSettings($degsSettings);
@@ -55,6 +78,17 @@ class MainSheetEntity extends AbstractMainSheet
     {
         $this->init($data);
         $this->calcStdentState();
+        $this->calcTotals();
+    }
+
+    public function getBaseTotal(): Total
+    {
+        return $this->baseTotal;
+    }
+
+    public function getOverallTotal(): Total
+    {
+        return $this->overallTotal;
     }
 
     public function toArray(): array
@@ -66,8 +100,10 @@ class MainSheetEntity extends AbstractMainSheet
             'socials' => $this->_socials->toArray(),
             'math' => $this->_math->toArray(),
             'sciences' => $this->_sciences->toArray(),
+            'baseTotal' => $this->getBaseTotal()->toArray(),
             'activity_1' => $this->_activity_1->toArray(),
             'activity_2' => $this->_activity_2->toArray(),
+            'overallTotal' => $this->getOverallTotal()->toArray(),
             'religion' => $this->_religion->toArray(),
             'computer' => $this->_computer->toArray(),
             'draw' => $this->_draw->toArray(),

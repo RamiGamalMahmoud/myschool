@@ -13,6 +13,7 @@ use SM\Objects\Exams\Sheets\SSObjects\Semester\MathSemester;
 use SM\Objects\Exams\Sheets\SSObjects\Semester\PracticalSemester;
 use SM\Objects\Exams\Sheets\SSObjects\Semester\Semester;
 use SM\Objects\Exams\StudentState;
+use SM\Objects\Exams\Total;
 
 abstract class AbstractMainSheet
 {
@@ -38,6 +39,8 @@ abstract class AbstractMainSheet
 
     protected FinalActivitySubject $_sports;
 
+    protected Total $overallTotal;
+    protected Total $baseTotal;
     protected StudentState $studentState;
 
     protected function init(array $data)
