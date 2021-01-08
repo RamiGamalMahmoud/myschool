@@ -1,11 +1,13 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.baseTotal.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.baseTotal.total.value) }}
 {% else %}
 	<td>{{ entity.baseTotal.total.value }}</td>
 {% endif %}
 
 {% if entity.baseTotal.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.baseTotal.grade.value) }}
 {% else %}
 	{% if entity.baseTotal.grade.grade == 'F' %}
 		<td class="danger">{{entity.baseTotal.grade.grade}}</td>

@@ -1,29 +1,31 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.draw.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.evaluation.value) }}
 {% else %}
 	<td>{{ entity.draw.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.draw.written.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.written.value) }}
 {% else %}
 	<td>{{entity.draw.written.value}}</td>
 {% endif %}
 
 {% if entity.draw.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.total.value) }}
 {% else %}
 	<td>{{entity.draw.total.value}}</td>
 {% endif %}
 
 {% if entity.draw.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.netDegree.value) }}
 {% else %}
 	<td>{{entity.draw.netDegree.value}}</td>
 {% endif %}
 
 {% if entity.draw.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.grade.value) }}
 {% else %}
 	{% if entity.draw.grade.grade == 'F' %}
 		<td class="danger">{{entity.draw.grade.grade}}</td>

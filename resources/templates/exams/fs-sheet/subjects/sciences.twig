@@ -1,35 +1,37 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.sciences.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.evaluation.value) }}
 {% else %}
 	<td>{{ entity.sciences.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.sciences.practical.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.practical.value) }}
 {% else %}
 	<td>{{entity.sciences.practical.value}}</td>
 {% endif %}
 
 {% if entity.sciences.written.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.written.value) }}
 {% else %}
 	<td>{{entity.sciences.written.value}}</td>
 {% endif %}
 
 {% if entity.sciences.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.total.value) }}
 {% else %}
 	<td>{{entity.sciences.total.value}}</td>
 {% endif %}
 
 {% if entity.sciences.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.netDegree.value) }}
 {% else %}
 	<td>{{entity.sciences.netDegree.value}}</td>
 {% endif %}
 
 {% if entity.sciences.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.grade.value) }}
 {% else %}
 	{% if entity.sciences.grade.grade == 'F' %}
 		<td class="danger">{{entity.sciences.grade.grade}}</td>

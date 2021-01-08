@@ -1,11 +1,13 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.sports.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.netDegree.value) }}
 {% else %}
 	<td>{{entity.sports.netDegree.value}}</td>
 {% endif %}
 
 {% if entity.sports.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.grade.value) }}
 {% else %}
 	{% if entity.sports.grade.grade == 'F' %}
 		<td class="danger">{{entity.sports.grade.grade}}</td>

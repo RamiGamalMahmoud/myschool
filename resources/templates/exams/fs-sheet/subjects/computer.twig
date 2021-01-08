@@ -1,35 +1,37 @@
+{% import "exams/general/absence.twig" as absence %}
+
 {% if entity.computer.evaluation.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.evaluation.value) }}
 {% else %}
 	<td>{{ entity.computer.evaluation.value }}</td>
 {% endif %}
 
 {% if entity.computer.practical.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.practical.value) }}
 {% else %}
 	<td>{{entity.computer.practical.value}}</td>
 {% endif %}
 
 {% if entity.computer.written.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.written.value) }}
 {% else %}
 	<td>{{entity.computer.written.value}}</td>
 {% endif %}
 
 {% if entity.computer.total.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.total.value) }}
 {% else %}
 	<td>{{entity.computer.total.value}}</td>
 {% endif %}
 
 {% if entity.computer.netDegree.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.netDegree.value) }}
 {% else %}
 	<td>{{entity.computer.netDegree.value}}</td>
 {% endif %}
 
 {% if entity.computer.grade.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.grade.value) }}
 {% else %}
 	{% if entity.computer.grade.grade == 'F' %}
 		<td class="danger">{{entity.computer.grade.grade}}</td>
