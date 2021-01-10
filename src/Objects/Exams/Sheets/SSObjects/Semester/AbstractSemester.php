@@ -10,6 +10,7 @@ abstract class AbstractSemester
     protected Degree $_evaluation;
     protected Degree $_written;
     protected Degree $_total;
+    protected bool $_isAssigned;
 
     protected static function calcWrittenDegree(array $degs): Degree
     {
@@ -52,5 +53,10 @@ abstract class AbstractSemester
     public function getTotal()
     {
         return $this->_total;
+    }
+
+    public function isAssigned(): bool
+    {
+        return $this->getTotal()->isAssigned();
     }
 }
