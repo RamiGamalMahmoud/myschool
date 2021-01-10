@@ -3,8 +3,6 @@
 namespace SM\Helpers;
 
 use Exception;
-use InvalidArgumentException;
-use PhpParser\Node\Expr\FuncCall;
 use Simple\Helpers\Functions;
 use SM\Objects\Exams\Degree;
 
@@ -17,23 +15,13 @@ class DegsCalculator
      */
     public static function calcTotal(array $degs) //: ?float
     {
-
-        // filter not assigned degs
-        $assignedDegs = array_filter($degs, function ($deg) {
-            if ($deg->isAssigned()) {
-                return $deg;
-            }
-        });
-
-        // filter abscense degs
-        if (empty($assignedDegs)) {
+        if (!self::isAllAssigned($degs)) {
             return null;
         }
 
-        $notAbscense = array_filter($assignedDegs, function ($deg) {
-            if (!$deg->isAbsence()) {
-                return $deg;
-            }
+        // filter abscense degs
+        $notAbscense = array_filter($degs, function ($deg) {
+            return !$deg->isAbsence();
         });
 
         if (empty($notAbscense)) {
@@ -55,16 +43,11 @@ class DegsCalculator
      */
     public static function isAllAssigned(array $degs)
     {
-        $isAllAssigned = true;
+        $result = array_reduce($degs, function ($carry, $deg) {
+            return $carry && $deg->isAssigned();
+        }, true);
 
-        foreach ($degs as $deg) {
-            if (!$deg instanceof Degree) {
-                throw new Exception("Degree should be instance of " . Degree::class . " found " . gettype($deg));
-            }
-            $isAllAssigned &= $deg->isAssigned();
-        }
-
-        return $isAllAssigned;
+        return $result;
     }
 
     /**
