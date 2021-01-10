@@ -54,7 +54,7 @@ class ExamsController
     private function getGradeNumber()
     {
         @$gradeNumber = $this->request->getSegment(1);
-        return $gradeNumber === null ? null : ['gradeNumber' => $gradeNumber];
+        return $gradeNumber === null ? ['gradeNumber' => null] : ['gradeNumber' => $gradeNumber];
     }
 
     /**
