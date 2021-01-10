@@ -1,4 +1,4 @@
-{% set absence = 'exams/general/absence-cell-editable.twig' %}
+{% import "exams/general/absence.twig" as absence %}
 
 <td dataname="studentId" studentid="{{ entity.studentData.studentId }}">{{ serial }}</td>
 <td dataname="sittingNumber">{{ entity.studentData.sittingNumber }}</td>
@@ -7,67 +7,67 @@
 
 
 {% if entity.arabic.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.arabic.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.arabic.value }}</td>
 {% endif %}
 
 {% if entity.english.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.english.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.english.value }}</td>
 {% endif %}
 
 {% if entity.socials.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.socials.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.socials.value }}</td>
 {% endif %}
 
 {% if entity.math.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.math.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.math.value }}</td>
 {% endif %}
 
 {% if entity.sciences.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.sciences.value }}</td>
 {% endif %}
 
 {% if entity.activity_1.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_1.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.activity_1.value }}</td>
 {% endif %}
 
 {% if entity.activity_2.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.activity_2.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.activity_2.value }}</td>
 {% endif %}
 
 {% if entity.religion.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.religion.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.religion.value }}</td>
 {% endif %}
 
 {% if entity.computer.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.computer.value }}</td>
 {% endif %}
 
 {% if entity.draw.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.draw.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.draw.value }}</td>
 {% endif %}
 
 {% if entity.sports.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sports.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.sports.value }}</td>
 {% endif %}

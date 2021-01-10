@@ -1,4 +1,4 @@
-{% set absence = 'exams/general/absence-cell-editable.twig' %}
+{% import "exams/general/absence.twig" as absence %}
 
 <td dataname="studentId" studentid="{{ entity.studentData.studentId }}">{{ serial }}</td>
 <td dataname="sittingNumber">{{ entity.studentData.sittingNumber }}</td>
@@ -6,13 +6,13 @@
 <td dataname="classNumber">{{ entity.studentData.classNumber }}</td>
 
 {% if entity.sciences.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.sciences.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.sciences.value }}</td>
 {% endif %}
 
 {% if entity.computer.isAbsence %}
-	{% include absence %}
+	{{ absence.absenceCell(entity.computer.value, true) }}
 {% else %}
 	<td contenteditable="true">{{ entity.computer.value }}</td>
 {% endif %}
