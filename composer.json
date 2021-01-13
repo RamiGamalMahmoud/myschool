@@ -1,8 +1,8 @@
 {
-  "name": "rami-gamal/schl",
+  "name": "rami-gamal/myschool",
   "description": "simple web applicaton for school",
   "type": "project",
-  "license": "MIT",
+  "license": "GPL",
   "authors": [
     {
       "name": "rami-gamal",
@@ -10,7 +10,12 @@
     }
   ],
   "minimum-stability": "dev",
-  "repositories": [],
+  "repositories": [
+    {
+      "type": "path",
+      "url": "E:\\work-space\\programing\\web\\php\\packages\\Simple"
+    }
+  ],
   "require": {
     "rami-gamal/simple": "*"
   },
