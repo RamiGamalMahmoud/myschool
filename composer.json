@@ -2,7 +2,7 @@
   "name": "rami-gamal/schl",
   "description": "simple web applicaton for school",
   "type": "project",
-  "license": "GPL",
+  "license": "MIT",
   "authors": [
     {
       "name": "rami-gamal",
@@ -10,14 +10,8 @@
     }
   ],
   "minimum-stability": "dev",
-  "repositories": [
-    {
-      "type": "path",
-      "url": "C:\\xampp\\htdocs\\myschool\\lib\\Simple"
-    }
-  ],
+  "repositories": [],
   "require": {
-    "twig/twig": "3.x-dev",
     "rami-gamal/simple": "*"
   },
   "autoload": {
