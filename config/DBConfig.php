@@ -13,27 +13,27 @@ class DBConfig implements IDBConfig
     private const PORT     = 3306;
     private const USER_NAME = 'root';
 
-    public static function getConnectionString(): string
+    public function getConnectionString(): string
     {
         return self::DRIVER . ':host=' . self::HOST . ';dbname=' . self::DB_NAME;
     }
 
-    public static function getOptinos(): array
+    public function getOptinos(): array
     {
         return [];
     }
 
-    public static function getUserName(): string
+    public function getUserName(): string
     {
         return self::USER_NAME;
     }
 
-    public static function getPassword(): string
+    public function getPassword(): string
     {
         return self::PASSWORD;
     }
 
-    public static function getPort(): int
+    public function getPort(): int
     {
         return self::PORT;
     }
