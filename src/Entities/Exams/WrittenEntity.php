@@ -28,17 +28,17 @@ class WrittenEntity
     public function init(array $data)
     {
         $this->student = new Student([
-            'studentId' => $data['studentId'],
-            'sittingNumber' => $data['sittingNumber'],
-            'studentName' => $data['studentName'],
-            'classNumber' => $data['classNumber'],
+            'studentId' => $data['id'],
+            'sittingNumber' => $data['sitting_number'],
+            'studentName' => $data['name'],
+            'classNumber' => $data['class_number'],
             'enrollmentStatus' => null,
             'grade' => null
         ]);
 
         $this->arabic = new Degree(70, $data['arabic']);
         $this->english = new Degree(70, $data['english']);
-        $this->socials = new Degree(70, $data['socialStudies']);
+        $this->socials = new Degree(70, $data['social_studies']);
         $this->aljebra = new Degree(35, $data['aljebra']);
         $this->geometry = new Degree(35, $data['geometry']);
         $this->sciences = new Degree(56, $data['sciences']);

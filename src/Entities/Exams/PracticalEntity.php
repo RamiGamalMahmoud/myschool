@@ -30,10 +30,10 @@ class PracticalEntity
     public function init(array $data)
     {
         $this->student = new Student([
-            'studentId' => $data['studentId'],
-            'sittingNumber' => $data['sittingNumber'],
-            'studentName' => $data['studentName'],
-            'classNumber' => $data['classNumber'],
+            'studentId' => $data['id'],
+            'sittingNumber' => $data['sitting_number'],
+            'studentName' => $data['name'],
+            'classNumber' => $data['class_number'],
             'enrollmentStatus' => null,
             'grade' => null
         ]);

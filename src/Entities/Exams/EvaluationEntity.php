@@ -30,17 +30,17 @@ class EvaluationEntity
     public function init(array $data)
     {
         $this->student = new Student([
-            'studentId' => $data['studentId'],
-            'sittingNumber' => $data['sittingNumber'],
-            'studentName' => $data['studentName'],
-            'classNumber' => $data['classNumber'],
+            'studentId' => $data['id'],
+            'sittingNumber' => $data['sitting_number'],
+            'studentName' => $data['name'],
+            'classNumber' => $data['class_number'],
             'enrollmentStatus' => null,
             'grade' => null
         ]);
 
         $this->arabic = new Degree(30, $data['arabic']);
         $this->english = new Degree(30, $data['english']);
-        $this->socials = new Degree(30, $data['socialStudies']);
+        $this->socials = new Degree(30, $data['social_studies']);
         $this->math = new Degree(30, $data['math']);
         $this->sciences = new Degree(30, $data['sciences']);
         $this->activity_1 = new Degree(100, $data['activity_1']);
@@ -48,7 +48,7 @@ class EvaluationEntity
         $this->religion = new Degree(30, $data['religion']);
         $this->computer = new Degree(30, $data['computer']);
         $this->draw = new Degree(30, $data['draw']);
-        $this->sports = new Degree(20, $data['sports']);
+        $this->sports = new Degree(20, $data['sport']);
 
         $this->toArray();
     }

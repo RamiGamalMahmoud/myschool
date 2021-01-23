@@ -24,13 +24,13 @@ class EvaluationRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
     public function getAll()
     {
         $columns = [
-            'students_data.studentId',
-            'students_data.studentId AS sittingNumber',
-            'students_data.studentName',
-            'students_data.classNumber',
+            'students_data.id',
+            'students_data.id AS sitting_number',
+            'students_data.name',
+            'students_data.class_number',
             $this->dbTable . '.arabic',
             $this->dbTable . '.english',
-            $this->dbTable . '.socialStudies',
+            $this->dbTable . '.social_studies',
             $this->dbTable . '.math',
             $this->dbTable . '.sciences',
             $this->dbTable . '.activity_1',
@@ -38,13 +38,13 @@ class EvaluationRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
             $this->dbTable . '.religion',
             $this->dbTable . '.computer',
             $this->dbTable . '.draw',
-            $this->dbTable . '.sports'
+            $this->dbTable . '.sport'
         ];
         $query = new Query();
         $query->select($columns)
             ->from('students_data')
             ->leftJoin($this->dbTable)
-            ->on('students_data.studentId', $this->dbTable . '.studentId')
+            ->on('students_data.id', $this->dbTable . '.student_id')
             ->where('students_data.grade', '=', $this->gradeNumber);
 
         $data = $this->dataAccess->getAll($query);
