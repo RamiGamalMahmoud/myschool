@@ -1,9 +1,7 @@
 <?php
 
-use Simple\Core\Request;
 use Simple\Core\Route;
 use SM\Controllers\Error;
-use SM\Controllers\Login;
 use SM\Controllers\Logout;
 use SM\Controllers\IndexController;
 use SM\Controllers\Admin\AdminController;
@@ -11,6 +9,7 @@ use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\Exams\ExamsController;
 use SM\Controllers\Exams\MonitoringController;
 use SM\Controllers\Exams\Sheets\SheetsController;
+use SM\Controllers\LoginController;
 use SM\Controllers\Users\UsersController;
 use SM\MiddleWares\Auth;
 
@@ -18,7 +17,7 @@ use SM\MiddleWares\Auth;
  * HTTP GET METHOD ROUTES
  */
 
-Route::get('login', [Login::class, 'login']);
+Route::get('login', [LoginController::class, 'showLogin']);
 
 Route::get('logout', [Logout::class, 'logout']);
 
@@ -53,7 +52,7 @@ Route::get('certificates/{semester}/{status}',  [CertificatesController::class, 
  * HTTP POST METHOD ROUTES
  */
 
-Route::post('login', [Login::class, 'authenticate']);
+Route::post('login', [LoginController::class, 'doLogin']);
 
 ### Admin Routes
 
