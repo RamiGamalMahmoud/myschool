@@ -2,12 +2,11 @@
 
 namespace SM\Controllers\Admin;
 
-use Simple\Core\Dispatcher;
-use Simple\Core\Request;
 use Simple\Core\IRequest;
-use Simple\Core\Router;
 use Simple\Core\Session;
+use Simple\Core\Simple;
 use Simple\Core\View;
+use Simple\EXceptions\RoutingException;
 use SM\Controllers\BaseController;
 
 class AdminController extends BaseController
@@ -47,10 +46,10 @@ class AdminController extends BaseController
         ];
 
         $newPath = explode('/', $this->request->getPath(), 2)[1];
-
-        $newRequest = new Request($newPath);
-        $router = new Router($newRequest, ROUTES_FOLDER);
-
-        Dispatcher::dispatche($router->route(), $newRequest, $parentContext);
+        try {
+            Simple::resolve($newPath, $parentContext);
+        } catch (RoutingException $e) {
+        }
+        return;
     }
 }

@@ -2,10 +2,9 @@
 
 namespace SM\Controllers\Exams;
 
-use Simple\Core\Router;
-use Simple\Core\Request;
 use Simple\Core\IRequest;
-use Simple\Core\Dispatcher;
+use Simple\Core\Simple;
+use Simple\EXceptions\RoutingException;
 use SM\Views\Exams\ExamsView;
 use SM\Services\SessionUserData;
 
@@ -65,9 +64,14 @@ class ExamsController
      */
     public function reRoute()
     {
-        $request = new Request($this->extractNewpath());
-        $router = new Router($request, ROUTES_FOLDER);
-        $this->view->setContextItem('child', Dispatcher::dispatche($router->route(), $request, $this->getGradeNumber()));
+
+        $path = $this->extractNewpath();
+
+        try {
+            $this->view->setContextItem('child', Simple::resolve($path, $this->getGradeNumber()));
+        } catch (RoutingException $e) {
+        }
+
         $this->view->setContextItem('gradeNumber', $this->getGradeNumber()['gradeNumber']);
         $this->view->render();
     }

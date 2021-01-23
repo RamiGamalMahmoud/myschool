@@ -1,9 +1,14 @@
 <?php
 
 use Simple\Core\Simple;
+use Simple\Exceptions\RoutingException;
 
 require_once '../bootstrap/bootstrap.php';
 
-$app = new Simple(ROUTES_FOLDER);
+Simple::init(ROUTES_FOLDER);
 
-$app->run();
+try {
+    Simple::run();
+} catch (RoutingException $e) {
+    header('location: /error');
+}
