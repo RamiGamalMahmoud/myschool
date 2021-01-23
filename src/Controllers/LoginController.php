@@ -2,35 +2,52 @@
 
 namespace SM\Controllers;
 
-use Simple\Core\IRequest;
+use Simple\Core\Redirect;
+use Simple\Core\Request;
 use Simple\Core\Session;
 use SM\MiddleWares\Auth;
 use Simple\Core\View;
 
-class Login
+class LoginController
 {
-    public function login()
+    public function showLogin()
     {
         View::render('login.twig');
     }
 
-    public function authenticate(IRequest $request)
+    public function doLogin(Request $request)
     {
-        if (Auth::authenticate($request)) {
-            $location = Session::get('userType');
-            $user = [
-                'fullName' => Session::get('fullName'),
-                'userName' => Session::get('userName'),
-                'userType' => Session::get('userType')
-            ];
+        $params = $request->getRequestBody()['post'];
+        $userName = isset($params['userName']) && !empty($params['userName']) ? $params['userName'] : false;
+        $password = isset($params['password']) && !empty($params['password']) ? $params['password'] : false;
 
-            if ($request->getRequestType() === 'api') {
-                echo json_encode($user);
-            } else {
-                header('location: /' . $location);
-            }
-        } else {
-            return false;
+        if (!$userName) {
+            $this->displayErrors();
         }
+
+        if (!$password) {
+            $this->displayErrors();
+        }
+
+        $userData = Auth::authenticate($userName, $password);
+        if (!empty($userData)) {
+            $this->logUser($userData);
+            Redirect::to('/');
+        } else {
+            $this->displayErrors();
+        }
+    }
+
+    private function displayErrors()
+    {
+        View::render('login.twig');
+    }
+
+    private function logUser(array $userData)
+    {
+        foreach ($userData as $key => $value) {
+            Session::set($key, $value);
+        }
+        var_dump($_SESSION);
     }
 }
