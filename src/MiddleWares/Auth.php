@@ -30,7 +30,7 @@ class Auth
      */
     public static function authenticate($userName, $password)
     {
-        $repo = new UsersRepo(new MySQLAccess(new DBConfig()));
+        $repo = new UsersRepo(new MySQLAccess());
         $user = $repo->getByNameAndPassword($userName, $password);
         if ($user !== null) {
             return [

@@ -8,7 +8,7 @@ if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', str_replace('/', DS, dirname($_SERVER['DOCUMENT_ROOT'])) . DS);
 
 /**
- * THE APPLICATION SROUCE DIRECTORY
+ * THE APPLICATION SOURCE DIRECTORY
  */
 define('APP_PATH', ROOT . 'src' . DS);
 

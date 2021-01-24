@@ -55,7 +55,7 @@ class MonitoringController
 
     private function getRepo(string $monitoringType, int $gradeNumber, string $semester)
     {
-        $dataAccess = new MySQLAccess(new DBConfig());
+        $dataAccess = new MySQLAccess();
         switch ($monitoringType) {
             case 'evaluation':
                 return new EvaluationRepo($semester, $gradeNumber, $dataAccess);

@@ -22,7 +22,7 @@ class UsersController extends BaseController
 
         $this->view = 'users/users.twig';
 
-        $this->usersRepo = new UsersRepo(new MySQLAccess(new DBConfig()));
+        $this->usersRepo = new UsersRepo(new MySQLAccess());
 
         parent::__construct($request, $params);
     }

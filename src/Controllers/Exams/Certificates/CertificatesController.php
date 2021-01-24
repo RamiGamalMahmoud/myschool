@@ -48,7 +48,7 @@ class CertificatesController
      */
     private function createRepo(string $semester, int $gradeNumber): ISheetRepo
     {
-        $dataAccess = new MySQLAccess(new DBConfig());
+        $dataAccess = new MySQLAccess();
         if ($semester === 'fs') {
             return new FirstSemesterSheetRepo($gradeNumber, $dataAccess);
         } elseif ($semester === 'ss') {

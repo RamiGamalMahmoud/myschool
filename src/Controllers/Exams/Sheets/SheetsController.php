@@ -33,7 +33,7 @@ class SheetsController
         $this->request = $request;
 
         $this->view = $this->createView($this->request->getSegment(1), $params);
-        $this->repo = $this->getRepo($params['gradeNumber'], $this->getSemester(), new MySQLAccess(new DBConfig()));
+        $this->repo = $this->getRepo($params['gradeNumber'], $this->getSemester(), new MySQLAccess());
     }
 
     /**
