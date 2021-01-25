@@ -8,7 +8,7 @@ export default class DataTable {
     this.isScrollable = this.table.getAttribute('scrollable') || false;
   }
 
-  init(ajaxLink = null, callback = null) {
+  init(link = null, callback = null) {
 
     this.addScrolling();
 
@@ -27,17 +27,18 @@ export default class DataTable {
         cell.parentElement.classList.add('active-row');
       });
 
-      cell.addEventListener('focus', function () {
-        let range = document.createRange();
-        range.selectNodeContents(this);
+      cell.addEventListener('focus', function (ev) {
 
         let selection = window.getSelection();
+        let range = document.createRange();
+
         selection.removeAllRanges();
+        range.selectNodeContents(this);
         selection.addRange(range);
       });
 
-      if (ajaxLink !== null) {
-        cell.addEventListener('blur', saveChanges(cell, ajaxLink, callback));
+      if (link !== null) {
+        cell.addEventListener('blur', saveChanges(cell, link, callback));
       }
       cell.addEventListener('blur', function () {
         cell.classList.remove('active-cell');
@@ -55,39 +56,63 @@ export default class DataTable {
   }
 }
 
-const saveChanges = function (cell, ajaxLink, callback = null) {
+const saveChanges = (cell, link, callback = null) => {
   return () => {
     if (cell.getAttribute('dirty') == "true") {
 
       // The data objet that will be sint via POST request
       let data = {
         id: '',
-        dataName: '',
-        dataValue: ''
+        subjectName: '',
+        degree: ''
       }
+
       // initialize the data object
-      data.dataName = cell.getAttribute('dataName');
-      data.id = cell.parentElement.querySelector('[dataname="studentId"]').textContent;
-      data.dataValue = cell.textContent;
+      let table = document.getElementById('monitoring-table');
+      let head = table.querySelector('.table-head .table tr:nth-of-type(2)');
+      let index = cell.cellIndex;
+      let subjectName = head.children[index].getAttribute('subject-name');
+      let degree = cell.textContent;
+
+      if (degree === '') {
+        alert('empty');
+        degree = null;
+      } else if (isNaN(parseFloat(degree))) {
+        degree = -1;
+      }
+
+      data.id = cell.parentElement.querySelector('[studentId]').getAttribute('studentId');
+      data.degree = degree;
+      data.subjectName = subjectName;
 
       let xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          cell.setAttribute('dirty', false);
-          cell.textContent = this.responseText;
-
-          // Call the callback function
-          if (typeof (callback) === 'function' && callback !== null) {
-            callback(cell);
+        if (this.readyState === 4) {
+          if (this.status == 200) {
+            console.log(data);
+            console.log(this.responseText);
+            let deg = JSON.parse(this.responseText)['degree'];
+            if (deg < 0) {
+              cell.textContent = 'غ';
+              cell.classList.add('warning');
+            } else {
+              cell.textContent = deg;
+              cell.classList.remove('warning');
+            }
+            cell.textContent = deg < 0 ? 'غ' : deg;
+            cell.classList.remove('danger');
+            cell.setAttribute('dirty', false);
+          } else {
+            alert(JSON.parse(this.responseText)['message']);
+            cell.textContent = cell.getAttribute('old-value');
+            cell.setAttribute('old-value', cell.textContent);
+            cell.classList.add('danger');
           }
-        } else {
-          cell.textContent = cell.getAttribute('old-value');
-          cell.setAttribute('old-value', cell.textContent);
-          cell.classList.add('error');
         }
       };
+
       // Sending the POST request
-      xhr.open('POST', ajaxLink, true);
+      xhr.open('POST', link, true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify(data));
     }
@@ -128,6 +153,7 @@ const keyDownHandler = function (keyCode, cell, ev) {
    * The left and right keys
    */
   if (keyCode == 37 || keyCode == 39) {
+    ev.preventDefault();
     if (keyCode == 37 && cell.nextElementSibling != null) cell.nextElementSibling.focus();
     if (keyCode == 39 && cell.previousElementSibling != null) cell.previousElementSibling.focus();
   }
@@ -137,6 +163,7 @@ const keyDownHandler = function (keyCode, cell, ev) {
    */
   else if (keyCode == 38 || keyCode == 40) {
 
+    ev.preventDefault();
     for (let i = 0; i < currentRow.childElementCount; i++) {
       if (cell == currentRow.children[i]) {
         currentIndex = i;
