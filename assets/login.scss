@@ -1,6 +1,7 @@
-@import 'common/colors';
-@import 'common/buttons';
-@import 'common/base';
+@import 'base/reset';
+@import 'variables/colors';
+@import 'objects/buttons';
+@import 'base/base';
 
 body {
   background-image: url('/img/login-img.jpg');
