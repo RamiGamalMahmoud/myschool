@@ -5,7 +5,7 @@ namespace SM\Controllers;
 use Simple\Core\View;
 use stdClass;
 
-class Error
+class ErrorController
 {
     public static function error()
     {
