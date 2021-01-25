@@ -4,7 +4,6 @@ use Simple\Core\Route;
 use SM\Controllers\Logout;
 use SM\Controllers\IndexController;
 use SM\Controllers\Admin\AdminController;
-use SM\Controllers\ErrorController;
 use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\Exams\ExamsController;
 use SM\Controllers\Exams\MonitoringController;
@@ -21,14 +20,9 @@ Route::get('login', [LoginController::class, 'showLogin']);
 
 Route::get('logout', [Logout::class, 'logout']);
 
-Route::get('error', [ErrorController::class, 'error']);
-
 Route::get('/', [IndexController::class, 'index'], ['isAuthenticated']);
 
-
 Route::get('admin', [AdminController::class, 'index'], ['isAuthenticated', 'authorize']);
-
-Route::get('admin/{other}/*.*', [AdminController::class, 'reRoute']);
 
 Route::get('users', [UsersController::class, 'index']);
 
@@ -41,8 +35,6 @@ Route::get('exams', [ExamsController::class, 'index']);
 Route::get('exams/{gradeNumber}', [ExamsController::class, 'index']);
 
 Route::get('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'index']);
-
-Route::get('monitoring/{table}/{semester}', [MonitoringController::class, 'index']);
 
 Route::get('sheets/{gradeNumber}/{semester}/{status}', [SheetsController::class, 'index']);
 
