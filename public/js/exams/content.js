@@ -1,7 +1,7 @@
 // number from english to indi converter
 import DataTable from '/js/lib/datatable.js';
 
-const datatable = new DataTable(document.querySelector('.data-table'));
+const datatable = new DataTable(document.getElementById('monitoring-table'));
 
 /**
  * Prepare the link that will be used with the ajax calls
