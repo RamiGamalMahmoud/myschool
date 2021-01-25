@@ -1,10 +1,10 @@
 <?php
 
 use Simple\Core\Route;
-use SM\Controllers\Error;
 use SM\Controllers\Logout;
 use SM\Controllers\IndexController;
 use SM\Controllers\Admin\AdminController;
+use SM\Controllers\ErrorController;
 use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\Exams\ExamsController;
 use SM\Controllers\Exams\MonitoringController;
@@ -21,7 +21,7 @@ Route::get('login', [LoginController::class, 'showLogin']);
 
 Route::get('logout', [Logout::class, 'logout']);
 
-Route::get('error', [Error::class, 'error']);
+Route::get('error', [ErrorController::class, 'error']);
 
 Route::get('/', [IndexController::class, 'index'], ['isAuthenticated']);
 
