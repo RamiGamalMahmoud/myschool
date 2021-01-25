@@ -35,7 +35,7 @@ define('CONFIG_FILE', CONFIG_DIR . DS . 'config.php');
 /**
  * THE ROUTES DIRECTORY
  */
-define('ROUTES_FOLDER', CONFIG_DIR . DS . 'routes' . DS);
+define('ROUTES_FOLDER', ROOT . DS . 'routes' . DS);
 
 /**
  * THE WEB ROUTES FILE
