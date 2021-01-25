@@ -4,7 +4,7 @@ namespace SM\Views\Exams\Sheets;
 
 interface ISheetView
 {
-    function __construct(?array $params);
-    function load(array $context);
+    function __construct(int $gradeNumber);
+    function render(array $context);
     function setEntities(array $entities);
 }

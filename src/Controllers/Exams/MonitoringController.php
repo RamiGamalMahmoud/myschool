@@ -3,26 +3,29 @@
 namespace SM\Controllers\Exams;
 
 use Exception;
-use config\DBConfig;
+use Simple\Core\Router;
 use Simple\Core\Request;
+use Simple\Core\Response;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Repos\Exams\Monitoring\WrittenRepo;
 use SM\Repos\Exams\Monitoring\PracticalRepo;
 use SM\Repos\Exams\Monitoring\EvaluationRepo;
 use SM\Views\Exams\Monitoring\MonitoringView;
 use SM\Repos\Exams\Monitoring\IMonitoringRepo;
+use SM\Exceptions\ExamsExceptions\DegreeException;
+use SM\Exceptions\ExamsExceptions\StudentIdNotFoundException;
 
 class MonitoringController
 {
     /**
-     * @var array $context Array represents the data that will be used in the view template
-     */
-    protected ?array $context;
-
-    /**
      * @var \Simple\Core\Request $request 
      */
     protected Request $request;
+
+    /**
+     * @var \Simple\Core\Router
+     */
+    protected Router $router;
 
     /**
      * @var int
@@ -39,18 +42,17 @@ class MonitoringController
      */
     private MonitoringView $view;
 
-    public function __construct(Request $request, $params)
+    public function __construct(Request $request, Router $router)
     {
         $this->request = $request;
-        $this->context = $params;
+        $this->router = $router;
 
-        $monitoringType = $this->request->getSegment(1);
-        $semester = $this->request->getSegment(2);
-        $gradeNumber = $params['gradeNumber'];
+        $this->gradeNumber = $this->router->get('gradeNumber');
+        $this->semester = $this->router->get('semester');
+        $this->monitoringType = $this->router->get('monitoringType');
 
-        $this->gradeNumber = $gradeNumber;
-        $this->view = new MonitoringView($this->gradeNumber, $monitoringType, $semester);
-        $this->repo = $this->getRepo($monitoringType, $this->gradeNumber, $semester);
+        $this->view = new MonitoringView($this->gradeNumber, $this->monitoringType, $this->semester);
+        $this->repo = $this->getRepo($this->monitoringType, $this->gradeNumber, $this->semester);
     }
 
     private function getRepo(string $monitoringType, int $gradeNumber, string $semester)
@@ -74,8 +76,8 @@ class MonitoringController
      */
     public function index()
     {
-        $this->context['entities'] = $this->showAll();
-        return $this->view->load($this->context['entities']);
+        $context['entities'] = $this->showAll();
+        $this->view->render($context['entities']);
     }
 
     /**
@@ -97,11 +99,16 @@ class MonitoringController
     /**
      * save the monitored degree
      */
-    public function save()
+    public function store()
     {
         $data = $this->request->getAjaxData();
-        if ($this->repo->save($data->id, $data->dataName, $data->dataValue) > 0) {
-            echo $data->dataValue;
+        try {
+            $this->repo->save($data->id, $data->subjectName, $data->degree);
+            Response::json(['degree' => $data->degree], 200);
+        } catch (StudentIdNotFoundException $idException) {
+            Response::json(['message' => $idException->getMessage()], 400);
+        } catch (DegreeException $degreeException) {
+            Response::json(['message' => $degreeException->getMessage()], 400);
         }
         exit();
     }

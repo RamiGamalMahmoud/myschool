@@ -9,6 +9,11 @@ use SM\Entities\Exams\EvaluationEntity;
 
 class EvaluationRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
 {
+    protected function isValidDegree(string $subjectName, float $degree)
+    {
+        return $this->checkDegree('evaluation', $subjectName, $degree);
+    }
+
     public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;

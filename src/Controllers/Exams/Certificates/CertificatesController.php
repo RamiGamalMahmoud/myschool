@@ -2,18 +2,27 @@
 
 namespace SM\Controllers\Exams\Certificates;
 
-use config\DBConfig;
 use Exception;
-use Simple\Core\DataAccess\MySQLAccess;
+use Simple\Core\Router;
 use Simple\Core\Request;
-use Simple\Helpers\Functions;
-use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
 use SM\Repos\Exams\Sheets\ISheetRepo;
-use SM\Repos\Exams\Sheets\SecondSemesterSheetRepo;
+use Simple\Core\DataAccess\MySQLAccess;
+use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
 use SM\Views\Exams\Certificates\CertificatesView;
+use SM\Repos\Exams\Sheets\SecondSemesterSheetRepo;
 
 class CertificatesController
 {
+    /**
+     * @var \Simple\Core\Request
+     */
+    private Request $request;
+
+    /**
+     * @var \Simple\Core\Router
+     */
+    private Router $router;
+
     /**
      * @var int
      */
@@ -70,11 +79,13 @@ class CertificatesController
         return new CertificatesView($semester, $gradeNumber);
     }
 
-    public function __construct(Request $request, $params)
+    public function __construct(Request $request, Router $router)
     {
-        $this->gradeNumber = $params['gradeNumber'];
-        $this->semester = $request->getSegment(1);
-        $this->status = $request->getSegment(2);
+        $this->router = $router;
+        $this->request = $request;
+        $this->gradeNumber = $this->router->get('gradeNumber');
+        $this->semester = $this->router->get('semester');
+        $this->status = $this->router->get('status');
 
         try {
             $this->repo = $this->createRepo($this->semester, $this->gradeNumber);
@@ -98,11 +109,11 @@ class CertificatesController
     {
         $status = $this->status;
         if ($status === 'all') {
-            return $this->view->load($this->showAll());
+            $this->view->render($this->showAll());
         } elseif ($status === 'passed') {
-            return $this->view->load($this->repo->getPassedStudents());
+            $this->view->render($this->repo->getPassedStudents());
         } elseif ($status === 'failed') {
-            return $this->view->load($this->repo->getFailedStudents());
+            $this->view->render($this->repo->getFailedStudents());
         } else {
             // error page
         }

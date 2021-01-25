@@ -8,6 +8,11 @@ use SM\Entities\Exams\PracticalEntity;
 
 class PracticalRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
 {
+    protected function isValidDegree(string $subjectName, float $degree)
+    {
+        return $this->checkDegree('practical', $subjectName, $degree);
+    }
+
     public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;

@@ -10,15 +10,15 @@ class FirstSemesterSheetView implements
     private string $template;
     private ?array $context;
 
-    public function __construct(?array $params)
+    public function __construct(int $gradeNumber)
     {
         $this->template = 'exams/sheets/fs-sheet/fs-sheet.twig';
     }
 
-    public function load(array $context)
+    public function render(array $context)
     {
         $this->setEntities($context);
-        return View::load($this->template, $this->context);
+        View::render($this->template, $this->context);
     }
 
     public function setEntities(array $entities)

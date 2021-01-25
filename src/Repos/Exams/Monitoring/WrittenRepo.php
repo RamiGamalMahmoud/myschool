@@ -9,6 +9,11 @@ use SM\Entities\Exams\WrittenEntity;
 
 class WrittenRepo extends AbstractMonitoringRepo  implements IMonitoringRepo
 {
+    protected function isValidDegree(string $subjectName, float $degree)
+    {
+        return $this->checkDegree('written', $subjectName, $degree);
+    }
+
     public function __construct(string $semester, int $gradeNumber, IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;

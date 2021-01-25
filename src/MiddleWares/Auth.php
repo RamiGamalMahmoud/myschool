@@ -2,7 +2,6 @@
 
 namespace SM\MiddleWares;
 
-use config\DBConfig;
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Core\Request;
 use Simple\Core\Session;
@@ -51,15 +50,6 @@ class Auth
      */
     public static function authorize(Request $request)
     {
-        $path = $request->getPath();
-        $groupId = Session::get('user-type');
-
-        $userType = Session::get('user-type');
-
-        $groupType = self::$usersTypes[$groupId];
-
-        return in_array($userType, self::$usersTypes);
-
-        return $groupType === $userType;
+        return true;
     }
 }

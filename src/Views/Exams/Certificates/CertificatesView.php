@@ -12,7 +12,7 @@ class CertificatesView
     private string $template;
     private ?array $context;
 
-    public function __construct(string $semester, $gradeNumber)
+    public function __construct(string $semester, int $gradeNumber)
     {
         $certificateHeader = [
             'semester' => Semester::semesterName($semester),
@@ -28,10 +28,10 @@ class CertificatesView
         }
     }
 
-    public function load(array $context)
+    public function render(array $context)
     {
         $this->setEntities($context);
-        return View::load($this->template, $this->context);
+        View::render($this->template, $this->context);
     }
 
     public function setEntities(array $entities)

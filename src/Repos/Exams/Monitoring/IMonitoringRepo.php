@@ -7,5 +7,5 @@ interface IMonitoringRepo
     function getAll();
     function getById($id);
     function remove($id);
-    function save($studentId, $dataName, $dataValue);
+    function save($studentId, $subjectName, $degree);
 }

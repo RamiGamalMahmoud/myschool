@@ -3,37 +3,49 @@
 namespace SM\Controllers\Exams\Sheets;
 
 use Exception;
-use config\DBConfig;
+use Simple\Core\Router;
 use Simple\Core\IRequest;
 use SM\Repos\Exams\Sheets\ISheetRepo;
 use SM\Views\Exams\Sheets\ISheetView;
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\MySQLAccess;
-use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
 use SM\Repos\Exams\Sheets\MainSheetRepo;
-use SM\Views\Exams\Sheets\FirstSemesterSheetView;
 use SM\Views\Exams\Sheets\MainSheetView;
+use SM\Repos\Exams\Sheets\FirstSemesterSheetRepo;
+use SM\Views\Exams\Sheets\FirstSemesterSheetView;
 
 class SheetsController
 {
+    /**
+     * @var \SM\Repos\Exams\Sheets\ISheetRepo
+     */
     private ISheetRepo $repo;
 
     /**
      * @var \Simple\Core\Request 
      */
-    protected IRequest $request;
+    private IRequest $request;
+
+    /**
+     * @var Simple\Core\Router
+     */
+    private Router $router;
 
     /**
      * @var FirstSemesterSheetView
      */
-    protected ISheetView $view;
+    private ISheetView $view;
 
-    public function __construct(IRequest $request, $params)
+    public function __construct(IRequest $request, Router $router)
     {
         $this->request = $request;
+        $this->router = $router;
 
-        $this->view = $this->createView($this->request->getSegment(1), $params);
-        $this->repo = $this->getRepo($params['gradeNumber'], $this->getSemester(), new MySQLAccess());
+        $semester = $this->router->get('semester');
+        $gradeNumber = $this->router->get('gradeNumber');
+
+        $this->view = $this->createView($gradeNumber, $semester);
+        $this->repo = $this->getRepo($gradeNumber, $semester, new MySQLAccess());
     }
 
     /**
@@ -43,13 +55,13 @@ class SheetsController
      */
     public function index()
     {
-        $status = $this->request->getSegment(2);
+        $status = $this->router->get('status');
         if ($status === 'all') {
-            return $this->view->load($this->showAll());
+            $this->view->render($this->showAll());
         } elseif ($status === 'passed') {
-            return $this->view->load($this->repo->getPassedStudents());
+            $this->view->render($this->repo->getPassedStudents());
         } elseif ($status === 'failed') {
-            return $this->view->load($this->repo->getFailedStudents());
+            $this->view->render($this->repo->getFailedStudents());
         } else {
             // error page
         }
@@ -95,23 +107,14 @@ class SheetsController
         }
     }
 
-    private function createView(string $semester, ?array $params): ISheetView
+    private function createView(int $gradeNumber, string $semester): ISheetView
     {
         if ($semester === 'fs') {
-            return new FirstSemesterSheetView($params);
+            return new FirstSemesterSheetView($gradeNumber);
         } elseif ($semester === 'ss') {
-            return new MainSheetView($params);
+            return new MainSheetView($gradeNumber);
         } else {
             throw new Exception();
         }
-    }
-
-    /**
-     * Exatract the semester from the request object
-     * @return int
-     */
-    private function getSemester()
-    {
-        return $this->request->getSegment(1);
     }
 }
