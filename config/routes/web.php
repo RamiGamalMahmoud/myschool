@@ -38,15 +38,15 @@ Route::get('users', [UsersController::class, 'index']);
 
 Route::get('exams', [ExamsController::class, 'index']);
 
-Route::get('exams/\d*', [ExamsController::class, 'index']);
+Route::get('exams/{gradeNumber}', [ExamsController::class, 'index']);
 
-Route::get('exams/\d*/{section}/*.*', [ExamsController::class, 'reRoute']);
+Route::get('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'index']);
 
 Route::get('monitoring/{table}/{semester}', [MonitoringController::class, 'index']);
 
-Route::get('sheets/{semester}/{status}', [SheetsController::class, 'index']);
+Route::get('sheets/{gradeNumber}/{semester}/{status}', [SheetsController::class, 'index']);
 
-Route::get('certificates/{semester}/{status}',  [CertificatesController::class, 'index']);
+Route::get('certificates/{gradeNumber}/{semester}/{status}',  [CertificatesController::class, 'index']);
 
 /**
  * HTTP POST METHOD ROUTES
@@ -54,15 +54,10 @@ Route::get('certificates/{semester}/{status}',  [CertificatesController::class, 
 
 Route::post('login', [LoginController::class, 'doLogin']);
 
-### Admin Routes
-
-Route::post('admin/{other}/*.*', [AdminController::class, 'reRoute']);
 
 ### Exams Routes
 
-Route::post('exams/\d*/{section}/*.*', [ExamsController::class, 'reRoute']);
-
-Route::post('monitoring/{table}/{semester}', [ExamsController::class, 'save']);
+Route::post('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'store']);
 
 /**
  * MIDDLEWARES ROUTES
