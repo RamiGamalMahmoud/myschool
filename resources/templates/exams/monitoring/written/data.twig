@@ -1,61 +1,13 @@
-{% import "exams/general/absence.twig" as absence %}
+{% import "exams/monitoring/components/monitoring-cell.twig" as monitoringCell %}
 
-<td dataname="studentId" studentid="{{ entity.studentData.studentId }}">{{ serial }}</td>
-<td dataname="sittingNumber">{{ entity.studentData.sittingNumber }}</td>
-<td dataname="studentName">{{ entity.studentData.studentName }}</td>
-<td dataname="classNumber">{{ entity.studentData.classNumber }}</td>
+{% include "exams/monitoring/components/student-data.twig" %}
 
-
-{% if entity.arabic.isAbsence %}
-	{{ absence.absenceCell(entity.arabic.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.arabic.value }}</td>
-{% endif %}
-
-{% if entity.english.isAbsence %}
-	{{ absence.absenceCell(entity.english.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.english.value }}</td>
-{% endif %}
-
-{% if entity.socials.isAbsence %}
-	{{ absence.absenceCell(entity.socials.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.socials.value }}</td>
-{% endif %}
-
-{% if entity.aljebra.isAbsence %}
-	{{ absence.absenceCell(entity.aljebra.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.aljebra.value }}</td>
-{% endif %}
-
-{% if entity.geometry.isAbsence %}
-	{{ absence.absenceCell(entity.geometry.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.geometry.value }}</td>
-{% endif %}
-
-{% if entity.sciences.isAbsence %}
-	{{ absence.absenceCell(entity.sciences.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.sciences.value }}</td>
-{% endif %}
-
-{% if entity.religion.isAbsence %}
-	{{ absence.absenceCell(entity.religion.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.religion.value }}</td>
-{% endif %}
-
-{% if entity.computer.isAbsence %}
-	{{ absence.absenceCell(entity.computer.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.computer.value }}</td>
-{% endif %}
-
-{% if entity.draw.isAbsence %}
-	{{ absence.absenceCell(entity.draw.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.draw.value }}</td>
-{% endif %}
+{{ monitoringCell.monitoringCell(entity.arabic) }}
+{{ monitoringCell.monitoringCell(entity.english) }}
+{{ monitoringCell.monitoringCell(entity.socials) }}
+{{ monitoringCell.monitoringCell(entity.aljebra) }}
+{{ monitoringCell.monitoringCell(entity.geometry) }}
+{{ monitoringCell.monitoringCell(entity.sciences) }}
+{{ monitoringCell.monitoringCell(entity.religion) }}
+{{ monitoringCell.monitoringCell(entity.computer) }}
+{{ monitoringCell.monitoringCell(entity.draw) }}

@@ -1,49 +1,54 @@
-<div class="section">
-	<div class="section-header">
-		<div class="section-header-name">
-			{% include "exams/monitoring/monitoring.twig" %}
-		</div>
-		<div class="section-header-data monitoring-summary">
-			{% include "exams/monitoring/written/summary-table.twig" %}
-		</div>
-	</div>
+{% extends "exams/exams.twig" %}
 
-	<div class="data-table written-table">
+{% block child %}
 
-		<div class="table-head">
-			<table class="table">
-				<thead>
-					<tr class="head-space-holder">
-						{% include "exams/monitoring/written/columns-sizes.twig" %}
-					</tr>
-					<tr>
-						{% include "exams/monitoring/written/columns-names.twig" %}
-					</tr>
-					<tr>
-						{% include "exams/monitoring/written/header-degrees.twig" %}
-					</tr>
-				</thead>
-			</table>
+	<div class="section">
+		<div class="section-header">
+			<div class="section-header-name">
+				{% include "exams/monitoring/monitoring.twig" %}
+			</div>
+			<div class="section-header-data monitoring-summary">
+				{% include "exams/monitoring/written/summary-table.twig" %}
+			</div>
 		</div>
 
-		<div class="table-body">
-			<table class="table">
-				<thead>
-					<tr class="head-space-holder">
-						{% include "exams/monitoring/written/columns-sizes.twig" %}
-					</tr>
-				</thead>
-				<tbody>
-					{% set serial = 1 %}
-					{% for entity in entities %}
-						<tr>
-							{% include "exams/monitoring/written/data.twig" %}
+		<div class="data-table" id="monitoring-table">
+
+			<div class="table-head">
+				<table class="table">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "exams/monitoring/written/columns-sizes.twig" %}
 						</tr>
-						{% set serial = serial + 1 %}
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+						<tr>
+							{% include "exams/monitoring/written/columns-names.twig" %}
+						</tr>
+						<tr>
+							{% include "exams/monitoring/written/header-degrees.twig" %}
+						</tr>
+					</thead>
+				</table>
+			</div>
 
+			<div class="table-body">
+				<table class="table">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "exams/monitoring/written/columns-sizes.twig" %}
+						</tr>
+					</thead>
+					<tbody>
+						{% set serial = 1 %}
+						{% for entity in entities %}
+							<tr>
+								{% include "exams/monitoring/written/data.twig" %}
+							</tr>
+							{% set serial = serial + 1 %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
 	</div>
-</div>
+{% endblock %}

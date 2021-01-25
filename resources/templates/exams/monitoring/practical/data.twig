@@ -1,18 +1,6 @@
-{% import "exams/general/absence.twig" as absence %}
+{% import "exams/monitoring/components/monitoring-cell.twig" as monitoringCell %}
 
-<td dataname="studentId" studentid="{{ entity.studentData.studentId }}">{{ serial }}</td>
-<td dataname="sittingNumber">{{ entity.studentData.sittingNumber }}</td>
-<td dataname="studentName">{{ entity.studentData.studentName }}</td>
-<td dataname="classNumber">{{ entity.studentData.classNumber }}</td>
+{% include "exams/monitoring/components/student-data.twig" %}
 
-{% if entity.sciences.isAbsence %}
-	{{ absence.absenceCell(entity.sciences.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.sciences.value }}</td>
-{% endif %}
-
-{% if entity.computer.isAbsence %}
-	{{ absence.absenceCell(entity.computer.value, true) }}
-{% else %}
-	<td contenteditable="true">{{ entity.computer.value }}</td>
-{% endif %}
+{{ monitoringCell.monitoringCell(entity.sciences) }}
+{{ monitoringCell.monitoringCell(entity.computer) }}

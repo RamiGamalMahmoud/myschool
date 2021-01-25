@@ -1,50 +1,54 @@
-{% set me = "exams/sheets/main-sheet" %}
-<div class="section sheet main-sheet">
-	<div class="data-table main-sheet">
+{% extends "exams/exams.twig" %}
 
-		<div class="table-head">
-			<table class="table">
-				<thead>
-					<tr class="head-space-holder">
-						{% include "#{me}/columns-sizes.twig" %}
-					</tr>
-					<tr>
-						{% include "#{me}/header/global-columns-names.twig" %}
-					</tr>
-					<tr>
-						{% include "#{me}/header/columns-names-header.twig" %}
-					</tr>
-					<tr>
-						{% include "#{me}/header/columns-names.twig" %}
-					</tr>
-					<tr>
-						{% include "#{me}/header/max-degs.twig" %}
-					</tr>
-					<tr>
-						{% include "#{me}/header/min-degs.twig" %}
-					</tr>
-				</thead>
-			</table>
-		</div>
+{% block child %}
+	{% set me = "exams/sheets/main-sheet" %}
+	<div class="section sheet main-sheet">
+		<div class="data-table main-sheet">
 
-		<div class="table-body" style="height: calc(100vh - 283px);">
-			<table class="table" style="width: 5200px">
-				<thead>
-					<tr class="head-space-holder">
-						{% include "#{me}/columns-sizes.twig" %}
-					</tr>
-				</thead>
-				<tbody>
-					{% set serial = 1 %}
-					{% for entity in entities %}
-						<tr>
-							{% include "#{me}/data.twig" %}
+			<div class="table-head">
+				<table class="table">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "#{me}/columns-sizes.twig" %}
 						</tr>
-						{% set serial = serial + 1 %}
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+						<tr>
+							{% include "#{me}/header/global-columns-names.twig" %}
+						</tr>
+						<tr>
+							{% include "#{me}/header/columns-names-header.twig" %}
+						</tr>
+						<tr>
+							{% include "#{me}/header/columns-names.twig" %}
+						</tr>
+						<tr>
+							{% include "#{me}/header/max-degs.twig" %}
+						</tr>
+						<tr>
+							{% include "#{me}/header/min-degs.twig" %}
+						</tr>
+					</thead>
+				</table>
+			</div>
 
+			<div class="table-body" style="height: calc(100vh - 283px);">
+				<table class="table" style="width: 5200px">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "#{me}/columns-sizes.twig" %}
+						</tr>
+					</thead>
+					<tbody>
+						{% set serial = 1 %}
+						{% for entity in entities %}
+							<tr>
+								{% include "#{me}/data.twig" %}
+							</tr>
+							{% set serial = serial + 1 %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
 	</div>
-</div>
+{% endblock %}

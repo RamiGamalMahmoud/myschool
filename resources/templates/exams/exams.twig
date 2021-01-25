@@ -1,4 +1,4 @@
-{% extends parentTemplate %}
+{% extends 'base.twig' %}
 
 {% block content %}
 
@@ -36,8 +36,8 @@
 					<span class='menu-title'>الصف</span>
 					<div class='menu-content'>
 						<div class='menu-content-wrapper'>
-							<a href='{{ linkPrefex }}/1' class='menu-btn'>الأول</a>
-							<a href='{{ linkPrefex }}/2' class='menu-btn'>الثاني</a>
+							<a href='/exams/1' class='menu-btn'>الأول</a>
+							<a href='/exams/2' class='menu-btn'>الثاني</a>
 						</div>
 					</div>
 				</div>
@@ -50,9 +50,9 @@
 								<span class='menu-title'>التيرم الأول</span>
 								<div class='menu-content'>
 									<div class='menu-content-wrapper'>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/evaluation/fs' class='menu-btn'>التقويمات</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/practical/fs' class='menu-btn'>العملي</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/written/fs' class='menu-btn'>التحريري</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/evaluation/fs' class='menu-btn'>التقويمات</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/practical/fs' class='menu-btn'>العملي</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/written/fs' class='menu-btn'>التحريري</a>
 									</div>
 								</div>
 							</div>
@@ -61,9 +61,9 @@
 								<span class='menu-title'>التيرم الثاني</span>
 								<div class='menu-content'>
 									<div class='menu-content-wrapper'>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/evaluation/ss' class='menu-btn'>التقويمات</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/practical/ss' class='menu-btn'>العملي</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/monitoring/written/ss' class='menu-btn'>التحريري</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/evaluation/ss' class='menu-btn'>التقويمات</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/practical/ss' class='menu-btn'>العملي</a>
+										<a href='/monitoring/{{ gradeNumber ? : 1 }}/written/ss' class='menu-btn'>التحريري</a>
 									</div>
 								</div>
 							</div>
@@ -80,9 +80,9 @@
 								<span class="menu-title">نصف العام</span>
 								<div class="menu-content">
 									<div class="menu-content-wrapper">
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
 									</div>
 								</div>
 							</div>
@@ -91,9 +91,9 @@
 								<span class="menu-title">آخر العام</span>
 								<div class="menu-content">
 									<div class="menu-content-wrapper">
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/all' class='menu-btn'>كل الطلبة</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/passed' class='menu-btn'>الناجحون</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/certificates/ss/failed' class='menu-btn'>لهم دور ثان</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/all' class='menu-btn'>كل الطلبة</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/passed' class='menu-btn'>الناجحون</a>
+										<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/failed' class='menu-btn'>لهم دور ثان</a>
 									</div>
 								</div>
 							</div>
@@ -111,9 +111,9 @@
 								<span class="menu-title">نصف العام</span>
 								<div class="menu-content">
 									<div class="menu-content-wrapper">
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
 									</div>
 								</div>
 							</div>
@@ -122,9 +122,9 @@
 								<span class="menu-title">آخر العام</span>
 								<div class="menu-content">
 									<div class="menu-content-wrapper">
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/ss/all' class='menu-btn'>كل الطلبة</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/ss/passed' class='menu-btn'>الناجحون</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/sheets/ss/failed' class='menu-btn'>لهم دور ثان</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/ss/all' class='menu-btn'>كل الطلبة</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/ss/passed' class='menu-btn'>الناجحون</a>
+										<a href='/sheets/{{ gradeNumber ? : 1 }}/ss/failed' class='menu-btn'>لهم دور ثان</a>
 									</div>
 								</div>
 							</div>
@@ -141,8 +141,8 @@
 								<span class='menu-title'>العشرة الأوائل</span>
 								<div class='menu-content'>
 									<div class='menu-content-wrapper'>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/top-ten/fs' class='menu-btn'>التيرم الأول</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/top-ten/ss' class='menu-btn'>آخر العام</a>
+										<a href='/statements/{{ gradeNumber ? : 1 }}/top-ten/fs' class='menu-btn'>التيرم الأول</a>
+										<a href='/statements/{{ gradeNumber ? : 1 }}/top-ten/ss' class='menu-btn'>آخر العام</a>
 									</div>
 								</div>
 							</div>
@@ -151,15 +151,15 @@
 								<span class='menu-title'>نتيجة إجمالية</span>
 								<div class='menu-content'>
 									<div class='menu-content-wrapper'>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/fs' class='menu-btn'>التيرم الأول</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/ss' class='menu-btn'>آخر العام</a>
-										<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/overall-result/second-round' class='menu-btn'>بعد الدور الثاني</a>
+										<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/fs' class='menu-btn'>التيرم الأول</a>
+										<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/ss' class='menu-btn'>آخر العام</a>
+										<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/second-round' class='menu-btn'>بعد الدور الثاني</a>
 									</div>
 								</div>
 							</div>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/success' class='menu-btn'>ناجحون دور أول و ثان</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/failer' class='menu-btn'>راسب و باق للإعادة</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statements/mehany' class='menu-btn'>محول مهني</a>
+							<a href='/statements/{{ gradeNumber ? : 1 }}/success' class='menu-btn'>ناجحون دور أول و ثان</a>
+							<a href='/statements/{{ gradeNumber ? : 1 }}/failer' class='menu-btn'>راسب و باق للإعادة</a>
+							<a href='/statements/{{ gradeNumber ? : 1 }}/mehany' class='menu-btn'>محول مهني</a>
 						</div>
 					</div>
 				</div>
@@ -168,9 +168,9 @@
 					<span class='menu-title'>إحصاءات</span>
 					<div class='menu-content'>
 						<div class='menu-content-wrapper'>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/fs' class='menu-btn'>التيرم الأول</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/ss' class='menu-btn'>آخر العام</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}/statistics/second-round' class='menu-btn'>بعد الدور الثاني</a>
+							<a href='/statistics/{{ gradeNumber ? : 1 }}/fs' class='menu-btn'>التيرم الأول</a>
+							<a href='/statistics/{{ gradeNumber ? : 1 }}/ss' class='menu-btn'>آخر العام</a>
+							<a href='/statistics/{{ gradeNumber ? : 1 }}/second-round' class='menu-btn'>بعد الدور الثاني</a>
 						</div>
 					</div>
 				</div>
@@ -179,9 +179,9 @@
 					<span class='menu-title'>الدور الثاني</span>
 					<div class='menu-content'>
 						<div class='menu-content-wrapper'>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>كشوف المناداة</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>دليل الدور الثاني</a>
-							<a href='{{ linkPrefex }}/{{ gradeNumber ? : 1 }}' class='menu-btn'>توقيع الدور الثاني</a>
+							<a href='/second-round/{{ gradeNumber ? : 1 }}/call' class='menu-btn'>كشوف المناداة</a>
+							<a href='/second-round/{{ gradeNumber ? : 1 }}/daleel' class='menu-btn'>دليل الدور الثاني</a>
+							<a href='/second-round/{{ gradeNumber ? : 1 }}/sign' class='menu-btn'>توقيع الدور الثاني</a>
 						</div>
 					</div>
 				</div>
@@ -198,9 +198,7 @@
 			</div>
 		</div>
 
-		{% if child %}
-			{% include template_from_string(child) %}
-		{% endif %}
+		{% block child %}{% endblock %}
 	</div>
 
 {% endblock content %}

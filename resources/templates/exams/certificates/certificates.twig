@@ -1,5 +1,9 @@
-<div class="certificates">
-	{% for entity in entities %}
-		{% include "exams/certificates/certificate.twig" %}
-	{% endfor %}
-</div>
+{% extends "exams/exams.twig" %}
+
+{% block child %}
+	<div class="certificates">
+		{% for entity in entities %}
+			{% include "exams/certificates/certificate.twig" %}
+		{% endfor %}
+	</div>
+{% endblock %}
