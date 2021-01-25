@@ -1,0 +1,7 @@
+{% macro monitoringCell(item) %}
+	{% if item.isAbsence %}
+		<td class="warning" contenteditable="true">{{ item.value }}</td>
+	{% else %}
+		<td contenteditable="true">{{ item.value }}</td>
+	{% endif %}
+{% endmacro %}
