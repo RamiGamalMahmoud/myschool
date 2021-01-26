@@ -8,6 +8,8 @@ class User
     private $id;
     private string $userName;
     private string $fullName;
+    private string $groupName;
+    private string $privileges;
     private int $groupId;
 
     public function __construct(array $data)
@@ -16,6 +18,8 @@ class User
         $this->userName = $data['user_name'];
         $this->fullName = $data['full_name'];
         $this->groupId = $data['group_id'];
+        $this->groupName = $data['group_name'];
+        $this->privileges = $data['privileges'];
     }
     public function getUserId()
     {
@@ -35,5 +39,15 @@ class User
     public function getGroupId()
     {
         return $this->groupId;
+    }
+
+    public function getGroupName()
+    {
+        return $this->groupName;
+    }
+
+    public function getPrivileges()
+    {
+        return $this->privileges;
     }
 }
