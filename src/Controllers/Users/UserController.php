@@ -6,13 +6,14 @@ use Simple\Core\View;
 use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\Session;
-use SM\Repos\Users\UsersRepo;
+use SM\Repos\Users\UserRepo;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Exceptions\AuthorizationException;
+use SM\Repos\Users\IUserRepo;
 
-class UsersController
+class UserController
 {
-    private UsersRepo $usersRepo;
+    private IUserRepo $usersRepo;
 
     public function __construct(Request $request, Router $router)
     {
@@ -22,7 +23,7 @@ class UsersController
 
         $this->view = 'users/users.twig';
 
-        $this->usersRepo = new UsersRepo(new MySQLAccess());
+        $this->usersRepo = new UserRepo(new MySQLAccess());
     }
 
     /**

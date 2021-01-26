@@ -9,7 +9,7 @@ use SM\Controllers\Exams\ExamsController;
 use SM\Controllers\Exams\MonitoringController;
 use SM\Controllers\Exams\Sheets\SheetsController;
 use SM\Controllers\LoginController;
-use SM\Controllers\Users\UsersController;
+use SM\Controllers\Users\UserController;
 use SM\MiddleWares\Auth;
 
 /**
@@ -28,7 +28,7 @@ Route::get('/', [IndexController::class, 'index'], ['isAuthenticated']);
 
 Route::get('admin', [AdminController::class, 'index'], ['isAuthenticated', 'authorize']);
 
-Route::get('admin/users', [UsersController::class, 'index']);
+Route::get('admin/users', [UserController::class, 'index']);
 
 /**
  * EXAMS HTTP GET ROUTES

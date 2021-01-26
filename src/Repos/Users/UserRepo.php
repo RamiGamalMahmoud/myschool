@@ -8,7 +8,7 @@ use Simple\Core\DataAccess\Query;
 use SM\Entities\Entity;
 use SM\Entities\Users\User;
 
-class UsersRepo implements IRepo
+class UserRepo implements IUserRepo
 {
     private IDataAccess $dataAccess;
     private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
