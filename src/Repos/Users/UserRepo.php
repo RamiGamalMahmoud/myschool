@@ -11,6 +11,7 @@ use SM\Entities\Users\User;
 class UserRepo implements IUserRepo
 {
     private IDataAccess $dataAccess;
+    //rami
     private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
     public function __construct(IDataAccess $dataAccess)
     {
