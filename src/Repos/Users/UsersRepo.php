@@ -11,6 +11,7 @@ use SM\Entities\Users\User;
 class UsersRepo implements IRepo
 {
     private IDataAccess $dataAccess;
+    private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
     public function __construct(IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
@@ -23,9 +24,16 @@ class UsersRepo implements IRepo
     public function getAll()
     {
         $query = new Query();
-        $query->select(['id', 'user_name', 'full_name', 'group_id'])
-            ->from('users');
-        return $this->dataAccess->getAll($query);
+        $query->select($this->columns)
+            ->from('users')
+            ->join('groups')
+            ->on('users.group_id', 'groups.id')
+            ->orderBy(['user_name', 'group_id']);
+        $data = $this->dataAccess->getAll($query);
+        $entities = array_map(function ($user) {
+            return new User($user);
+        }, $data);
+        return $entities;
     }
 
     public function create(Entity $entity)
@@ -50,8 +58,10 @@ class UsersRepo implements IRepo
     public function getByNameAndPassword(string $userName, string $password): ?User
     {
         $query = new Query();
-        $query->select(['id', 'user_name', 'full_name', 'group_id'])
+        $query->select($this->columns)
             ->from('users')
+            ->join('groups')
+            ->on('users.group_id', 'groups.id')
             ->where('user_name', '=', $userName)
             ->andWhere('password', '=', $password)
             ->limit(1);
