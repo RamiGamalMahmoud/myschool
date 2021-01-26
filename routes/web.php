@@ -22,9 +22,13 @@ Route::get('logout', [Logout::class, 'logout']);
 
 Route::get('/', [IndexController::class, 'index'], ['isAuthenticated']);
 
+/**
+ * ADMIN HTTP GET ROUTES
+ */
+
 Route::get('admin', [AdminController::class, 'index'], ['isAuthenticated', 'authorize']);
 
-Route::get('users', [UsersController::class, 'index']);
+Route::get('admin/users', [UsersController::class, 'index']);
 
 /**
  * EXAMS HTTP GET ROUTES
