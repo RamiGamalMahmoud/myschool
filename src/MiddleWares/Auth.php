@@ -9,23 +9,22 @@ use SM\Repos\Users\UsersRepo;
 
 class Auth
 {
-    private static array $usersTypes = [
-        'admin',
-        'exams',
-        'student',
-        'employee',
-        'employeesAffairs',
-        'studentAffairs'
-    ];
-
+    /**
+     * Checks if the user has logged in
+     * 
+     * @return bool
+     */
     public function isAuthenticated()
     {
         return Session::has('user-id');
     }
+
     /**
-     * Check if the user is logged in
-     * @param Simple\Core\Request $request the request object
-     * @return array
+     * Check user name and password from database
+     * 
+     * @param string $userName
+     * @param string $password
+     * @return array user data
      */
     public static function authenticate($userName, $password)
     {
@@ -36,7 +35,9 @@ class Auth
                 'user-id' => $user->getUserId(),
                 'user-name' => $user->getUserName(),
                 'user-full-name' => $user->getFullName(),
-                'user-type' => self::$usersTypes[$user->getGroupId()]
+                'group-name' => $user->getGroupName(),
+                'group-id' => $user->getGroupId(),
+                'user-privileges' => $user->getPrivileges()
             ];
         }
         return [];
