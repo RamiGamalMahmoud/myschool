@@ -8,7 +8,7 @@ class IndexController
 {
     public function index()
     {
-        $location = Session::get('user-type');
+        $location = Session::get('group-name');
         header('location: /' . $location);
     }
 }
