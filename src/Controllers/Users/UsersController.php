@@ -2,29 +2,27 @@
 
 namespace SM\Controllers\Users;
 
-use Exception;
-use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Core\View;
+use Simple\Core\Router;
+use Simple\Core\Request;
 use Simple\Core\Session;
-use SM\Controllers\BaseController;
 use SM\Repos\Users\UsersRepo;
-use config\DBConfig;
+use Simple\Core\DataAccess\MySQLAccess;
+use SM\Exceptions\AuthorizationException;
 
-class UsersController extends BaseController
+class UsersController
 {
     private UsersRepo $usersRepo;
-    public function __construct($request, $params)
+
+    public function __construct(Request $request, Router $router)
     {
-        Session::start();
-        if (Session::get('userType') !== 'admin') {
-            throw new Exception('You are not authorized !');
+        if (Session::get('group-name') !== 'admin') {
+            throw new AuthorizationException();
         }
 
         $this->view = 'users/users.twig';
 
         $this->usersRepo = new UsersRepo(new MySQLAccess());
-
-        parent::__construct($request, $params);
     }
 
     /**
@@ -33,12 +31,13 @@ class UsersController extends BaseController
      */
     public function index()
     {
-        $this->context['data'] = $this->usersRepo->getAll();
+        $users = $this->usersRepo->getAll();
+        $this->context['data'] = $users;
         $this->render($this->context);
     }
 
     public function render($context)
     {
-        View::render($this->view, $context);
+        View::render('users/users.twig', $context);
     }
 }
