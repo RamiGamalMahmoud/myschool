@@ -13,8 +13,17 @@ use SM\Repos\Users\IUserRepo;
 
 class UserController
 {
+    /**
+     * @var \SM\Repos\Users\IUserRepo
+     */
     private IUserRepo $usersRepo;
 
+    /**
+     * Contructing the object
+     * 
+     * @param \Simple\Core\Request $request
+     * @param \Simple\Core\Router
+     */
     public function __construct(Request $request, Router $router)
     {
         if (Session::get('group-name') !== 'admin') {
@@ -37,6 +46,11 @@ class UserController
         $this->render($this->context);
     }
 
+    /**
+     * Rendering the template
+     * 
+     * @param array $context
+     */
     public function render($context)
     {
         View::render('users/users.twig', $context);
