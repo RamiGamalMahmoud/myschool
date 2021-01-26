@@ -2,11 +2,10 @@
 
 namespace SM\Repos\Users;
 
-use Simple\Core\DataAccess\IDataAccess;
-use SM\Repos\IRepo;
-use Simple\Core\DataAccess\Query;
 use SM\Entities\Entity;
 use SM\Entities\Users\User;
+use Simple\Core\DataAccess\Query;
+use Simple\Core\DataAccess\IDataAccess;
 
 class UserRepo implements IUserRepo
 {
