@@ -47,6 +47,17 @@ class ErrorController
         self::render();
     }
 
+    public static function authorizationError()
+    {
+        self::$context = [
+            'code' => 401,
+            'message' => 'authorization failed',
+            'description' => 'you are not authorized to access this url'
+        ];
+        http_response_code(401);
+        self::render();
+    }
+
     public static function api()
     {
         http_response_code(404);
