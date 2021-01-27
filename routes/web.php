@@ -30,6 +30,12 @@ Route::get('admin', [AdminController::class, 'index'], ['isAuthenticated', 'auth
 
 Route::get('admin/users', [UserController::class, 'index']);
 
+Route::get('admin/users/edit/{id}', [UserController::class, 'edit']);
+
+Route::get('admin/users/delete/{id}', [UserController::class, 'remove']);
+
+Route::get('admin/users/block/{id}', [UserController::class, 'blockUser']);
+
 /**
  * EXAMS HTTP GET ROUTES
  */
@@ -50,6 +56,11 @@ Route::get('certificates/{gradeNumber}/{semester}/{status}',  [CertificatesContr
 
 Route::post('login', [LoginController::class, 'doLogin']);
 
+/**
+ * ADMIN ROUTES
+ */
+
+Route::post('admin/users/edit/{id}', [UserController::class, 'update']);
 
 ### Exams Routes
 
