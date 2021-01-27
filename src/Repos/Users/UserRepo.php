@@ -2,18 +2,17 @@
 
 namespace SM\Repos\Users;
 
-use SM\Entities\Entity;
 use SM\Entities\Users\User;
 use Simple\Core\DataAccess\Query;
 use Simple\Core\DataAccess\IDataAccess;
 use SM\Exceptions\EntityNotFoundException;
-use TypeError;
 
 class UserRepo implements IUserRepo
 {
     private IDataAccess $dataAccess;
-    //rami
+
     private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
+
     public function __construct(IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
@@ -50,12 +49,17 @@ class UserRepo implements IUserRepo
         return $entities;
     }
 
-    public function create(Entity $entity)
+    public function create(User $user)
     {
     }
 
-    public function edit(Entity $entity)
+    public function update(User $user)
     {
+        $query = new Query();
+        $query->update('users')
+            ->set(['user_name' => $user->getUserName(), 'group_id' => $user->getGroupId(), 'privileges' => $user->getPrivileges()])
+            ->where('id', '=', $user->getUserId());
+        return $this->dataAccess->run($query);
     }
 
     public function remove($id)

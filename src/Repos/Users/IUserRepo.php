@@ -2,12 +2,12 @@
 
 namespace SM\Repos\Users;
 
-use SM\Entities\Entity;
+use SM\Entities\Users\User;
 
 interface IUserRepo
 {
-    function create(Entity $entity);
-    function edit(Entity $entity);
+    function create(User $user);
+    function update(User $user);
     function getAll();
     function getById($id);
     function remove($id);
