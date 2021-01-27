@@ -9,15 +9,33 @@ use SM\Exceptions\EntityNotFoundException;
 
 class UserRepo implements IUserRepo
 {
+    /**
+     * @var \Simple\Core\DataAccess\IDataAccess
+     */
     private IDataAccess $dataAccess;
 
+    /**
+     * @var array
+     */
     private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
 
+    /**
+     * Constructor
+     * 
+     * @param \Simple\Core\DataAccess\IDataAccess
+     */
     public function __construct(IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
     }
 
+    /**
+     * Get user by id
+     * 
+     * @param mixed $id
+     * @return \SM\Entities\Users\User
+     * @throws \SM\Exceptions\EntityNotFoundException
+     */
     public function getById($id): ?User
     {
         $query = new Query();
@@ -34,6 +52,11 @@ class UserRepo implements IUserRepo
         return new User($user);
     }
 
+    /**
+     * Get all users
+     * 
+     * @return array
+     */
     public function getAll()
     {
         $query = new Query();
@@ -49,10 +72,20 @@ class UserRepo implements IUserRepo
         return $entities;
     }
 
+    /**
+     * Create user
+     * 
+     * @param \SM\Entities\Users\User
+     */
     public function create(User $user)
     {
     }
 
+    /**
+     * Update user
+     * 
+     * @param \SM\Entities\Users\User
+     */
     public function update(User $user)
     {
         $query = new Query();
@@ -62,6 +95,11 @@ class UserRepo implements IUserRepo
         return $this->dataAccess->run($query);
     }
 
+    /**
+     * Delete user
+     * 
+     * @param mixed $id
+     */
     public function remove($id)
     {
     }
