@@ -165,6 +165,7 @@ class UserController
         $user->setUserName($data['user-name']);
         $user->setGroupId($data['group']);
         $user->setPrivileges($data['privileges']);
+        $user->setIsActive($data['is-active']);
         return $user;
     }
 }

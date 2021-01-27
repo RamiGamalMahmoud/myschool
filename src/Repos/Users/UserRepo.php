@@ -90,7 +90,7 @@ class UserRepo implements IUserRepo
     {
         $query = new Query();
         $query->update('users')
-            ->set(['user_name' => $user->getUserName(), 'group_id' => $user->getGroupId(), 'privileges' => $user->getPrivileges()])
+            ->set(['user_name' => $user->getUserName(), 'group_id' => $user->getGroupId(), 'privileges' => $user->getPrivileges(), 'is_active' => $user->getIsActive()])
             ->where('id', '=', $user->getUserId());
         return $this->dataAccess->run($query);
     }
