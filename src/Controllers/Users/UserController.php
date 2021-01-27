@@ -110,6 +110,11 @@ class UserController
         $this->view->showEdit($user);
     }
 
+    /**
+     * Get user groups
+     * 
+     * @return array
+     */
     private function getGroups()
     {
         $groupsRepo = $this->groupsRepo = new UserGroupRepo(new MySQLAccess());
@@ -123,6 +128,11 @@ class UserController
         return $translatedGroups;
     }
 
+    /**
+     * Get privileges
+     * 
+     * @return array
+     */
     private function getPrivileges()
     {
         $privileges = ['READ', 'WRITE'];
@@ -133,6 +143,12 @@ class UserController
         return $translatedPrivileges;
     }
 
+    /**
+     * Transform an array to user object
+     * 
+     * @param array $data
+     * @return \SM\Entities\Users\User
+     */
     private function arrayToUser(array $data): User
     {
         $user = $this->usersRepo->getById($data['user-id']);
