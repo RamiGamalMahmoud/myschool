@@ -17,7 +17,7 @@ class UserRepo implements IUserRepo
     /**
      * @var array
      */
-    private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'group_id', 'groups.group_name'];
+    private array $columns = ['users.id', 'user_name', 'full_name', 'privileges', 'is_active', 'group_id', 'groups.group_name'];
 
     /**
      * Constructor

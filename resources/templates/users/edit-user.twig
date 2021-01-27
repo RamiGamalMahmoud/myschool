@@ -35,10 +35,18 @@
 			<div class="group form-item-container">
 				<label class="lbl" for="privileges">الصلاحيات</label>
 				<select class="combo-box" name="privileges" id="group-id">
-        
-          {% for privilege in privileges %}
-            <option value="{{ privilege['key'] }}" {% if privilege['key'] == user.getPrivileges %} selected {% endif %}>{{ privilege['value'] }}</option>
-          {% endfor %}
+
+					{% for privilege in privileges %}
+						<option value="{{ privilege['key'] }}" {% if privilege['key'] == user.getPrivileges %} selected {% endif %}>{{ privilege['value'] }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="user-state">
+				<label class="lbl">حالة المستخدم</label>
+				<select class="combo-box {% if not user.getIsActive %} warning{% endif %}" name="is-active">
+					<option value="1" {% if user.getIsActive %} selected {% endif %}>نشط</option>
+					<option value="0" {% if not user.getIsActive %} class="danger" selected {% endif %}>غير نشط</option>
 				</select>
 			</div>
 			<input type="hidden" value="{{ user.getUserId }}" name="user-id">

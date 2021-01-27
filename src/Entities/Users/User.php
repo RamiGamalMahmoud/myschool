@@ -4,13 +4,13 @@ namespace SM\Entities\Users;
 
 class User
 {
-
     private $id;
     private string $userName;
     private string $fullName;
     private string $groupName;
     private string $privileges;
     private int $groupId;
+    private bool $isActive;
 
     public function __construct(array $data)
     {
@@ -20,6 +20,7 @@ class User
         $this->groupId = $data['group_id'];
         $this->groupName = $data['group_name'];
         $this->privileges = $data['privileges'];
+        $this->isActive = $data['is_active'];
     }
     public function getUserId()
     {
@@ -51,6 +52,11 @@ class User
         return $this->privileges;
     }
 
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
     public function setUserName(string $userName)
     {
         $this->userName = $userName;
@@ -66,6 +72,11 @@ class User
         $this->groupId = $groupId;
     }
 
+    public function setIsActive(bool $isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
     public function toArray()
     {
         return [
@@ -74,7 +85,8 @@ class User
             'full-name' => $this->getFullName(),
             'user-group-id' => $this->getGroupId(),
             'user-group-name' => $this->getGroupName(),
-            'user-privileges' => $this->getPrivileges()
+            'user-privileges' => $this->getPrivileges(),
+            'is-active' => $this->getIsActive()
         ];
     }
 }
