@@ -27,7 +27,7 @@
 				<label class="lbl" for="group">نوع المستخدم</label>
 				<select class="combo-box" name="group" id="group-name">
 					{% for type in types %}
-						<option value="{{ type.id }}">{{ type.group_name }}</option>
+						<option value="{{ type.id }}" {% if type.id == user.getGroupId %} selected {% endif %}>{{ type.group_name }}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -35,11 +35,13 @@
 			<div class="group form-item-container">
 				<label class="lbl" for="privileges">الصلاحيات</label>
 				<select class="combo-box" name="privileges" id="group-id">
-					<option value="READ">عرض</option>
-					<option value="WRITE">عرض و تعديل</option>
+        
+          {% for privilege in privileges %}
+            <option value="{{ privilege['key'] }}" {% if privilege['key'] == user.getPrivileges %} selected {% endif %}>{{ privilege['value'] }}</option>
+          {% endfor %}
 				</select>
 			</div>
-
+			<input type="hidden" value="{{ user.getUserId }}" name="user-id">
 			<div id="buttons-container" class="form-item-container">
 				<div class="content-wrapper">
 					<input class="btn success" type="submit" value="حفظ" id="submit">
