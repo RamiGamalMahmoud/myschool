@@ -6,6 +6,10 @@ class Translate
 {
     private static array $local;
 
+    private static function keyExists()
+    {
+    }
+
     public static function init(array $local)
     {
         self::$local = $local;
@@ -39,5 +43,23 @@ class Translate
         }
 
         return self::$local['examStatus'][$state][$semester];
+    }
+
+    public static function get(string $path, $value)
+    {
+        $keys = explode('.', $path);
+        $arr = self::$local;
+
+        foreach ($keys as $key) {
+            if (key_exists($key, $arr)) {
+                $arr = $arr[$key];
+            } else {
+                return $value;
+            }
+        }
+        if (key_exists($value, $arr)) {
+            return $arr[$value];
+        }
+        return $value;
     }
 }
