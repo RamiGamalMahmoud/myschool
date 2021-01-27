@@ -1,22 +1,10 @@
-.btn {
+.lbl {
   display: inline-block;
-  cursor: pointer;
-  color: #FFF;
   border-radius: 3px;
   font-weight: bold;
   padding: 5px 10px;
   font-size: 1rem;
   text-align: center;
-  border: none;
-
-  &:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  }
-
-  &:focus {
-    border: none;
-    outline: none;
-  }
 
   @import 'items-colors';
 

@@ -2,11 +2,12 @@
 
 namespace SM\Repos\Users;
 
-use Simple\Core\DataAccess\IDataAccess;
-use SM\Repos\IRepo;
-use Simple\Core\DataAccess\Query;
 use SM\Entities\Entity;
 use SM\Entities\Users\User;
+use Simple\Core\DataAccess\Query;
+use Simple\Core\DataAccess\IDataAccess;
+use SM\Exceptions\EntityNotFoundException;
+use TypeError;
 
 class UserRepo implements IUserRepo
 {
@@ -18,8 +19,20 @@ class UserRepo implements IUserRepo
         $this->dataAccess = $dataAccess;
     }
 
-    public function getById($id)
+    public function getById($id): ?User
     {
+        $query = new Query();
+        $query->select($this->columns)
+            ->from('users')
+            ->join('groups')
+            ->on('users.group_id', 'groups.id')
+            ->where('users.id', '=', $id)
+            ->limit(1);
+        $user = $this->dataAccess->get($query);
+        if (!$user) {
+            throw new EntityNotFoundException();
+        }
+        return new User($user);
     }
 
     public function getAll()

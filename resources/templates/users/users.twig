@@ -1,71 +1,72 @@
 {% extends 'admin/admin.twig' %}
 
-{% block content %}
+{% block users %}
 
-<div class="content">
-  <div class="data">
-    <div class="users-data data-table">
-      <div class="table-head">
-        <table class="table">
-          <thead>
-            <tr class="head-space-holder">
-              <th class="cell-size-2"></th>
-              <th class="cell-size-3"></th>
-              <th class="cell-size-3"></th>
-              <th class="cell-size-2"></th>
-              <th class="cell-size-2"></th>
-              <th class="cell-size-3"></th>
-            </tr>
-            <tr>
-              <th>مسلسل</th>
-              <th>اسم المستخدم</th>
-              <th>الاسم بالكامل</th>
-              <th>الوظيفة</th>
-              <th>المجموعة</th>
-              <th>خيارات</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
+	<div class="content">
+		<div class="data">
+			<div class="users-data data-table">
+				<div class="table-head">
+					<table class="table">
+						<thead>
+							<tr class="head-space-holder">
+								<th class="cell-size-2"></th>
+								<th class="cell-size-3"></th>
+								<th class="cell-size-3"></th>
+								<th class="cell-size-2"></th>
+								<th class="cell-size-2"></th>
+								<th class="cell-size-3"></th>
+							</tr>
+							<tr>
+								<th>مسلسل</th>
+								<th>اسم المستخدم</th>
+								<th>الاسم بالكامل</th>
+								<th>الوظيفة</th>
+								<th>المجموعة</th>
+								<th>خيارات</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 
-      <div class="table-body">
-        <table class="table">
-          <thead>
-            <tr class="head-space-holder">
-              <th class="cell-size-2"></th>
-              <th class="cell-size-3"></th>
-              <th class="cell-size-3"></th>
-              <th class="cell-size-2"></th>
-              <th class="cell-size-2"></th>
-              <th class="cell-size-3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% set serial = 1 %}
-            {% for entity in data %}
-            <tr>
-              <td user-id="{{ entity.userId }}">{{ serial }}</td>
-              <td>{{ entity.userName }}</td>
-              <td>{{ entity.fullName }}</td>
-              <td>{{ entity.moth ? '' : 'N/A' }}</td>
-              <td>{{ entity.groupId }}</td>
-              <td>
-                <a href='./edit' class='edit-user btn mdm success'>تعديل</a>
-                <a href='./delete' class='delete-user btn mdm danger'>حذف</a>
-                <a href='./block' class='block-user btn mdm warning'>تعطيل</a>
-              </td>
-            </tr>
-            {% set serial = serial + 1 %}
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
+				<div class="table-body">
+					<table class="table">
+						<thead>
+							<tr class="head-space-holder">
+								<th class="cell-size-2"></th>
+								<th class="cell-size-3"></th>
+								<th class="cell-size-3"></th>
+								<th class="cell-size-2"></th>
+								<th class="cell-size-2"></th>
+								<th class="cell-size-3"></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% set serial = 1 %}
+							{% for entity in data %}
+								<tr>
+									<td user-id="{{ entity.userId }}">{{ serial }}</td>
+									<td>{{ entity.userName }}</td>
+									<td>{{ entity.fullName }}</td>
+									<td>{{ entity.moth ? '' : 'N/A' }}</td>
+									<td>{{ entity.groupId }}</td>
+									<td class="options">
+										<a href="users/edit/{{entity.userId}}" class='edit-user btn mdm success'>تعديل</a>
+										<a href='users/delete/{{entity.userId}}' class='delete-user btn mdm danger'>حذف</a>
+										<a href='users/block/{{entity.userId}}' class='block-user btn mdm warning'>تعطيل</a>
+									</td>
+								</tr>
+								{% set serial = serial + 1 %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-
-    <a href='./add' class="add-user btn primary">
-      <i class="fa fa-plus"></i>مستخدم جديد</a>
-  </div>
-</div>
-
-{% endblock content %}
+			<a href='./add' class="add-user btn primary">
+				<i class="fa fa-plus"></i>مستخدم جديد</a>
+		</div>
+	</div>
+{% endblock users %}
+{% block js %}
+	<script src="/js/users/users.js"></script>
+{% endblock js %}

@@ -4,24 +4,61 @@ namespace SM\Controllers\Users;
 
 use Simple\Core\View;
 use Simple\Core\Router;
+use Simple\Helpers\Log;
 use Simple\Core\Request;
 use Simple\Core\Session;
+use SM\Views\User\UserView;
 use SM\Repos\Users\UserRepo;
+use SM\Repos\Users\IUserRepo;
+use SM\Repos\Users\UserGroupRepo;
+use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Exceptions\AuthorizationException;
-use SM\Repos\Users\IUserRepo;
+use SM\Exceptions\EntityNotFoundException;
+use SM\Repos\Users\UserGroupRepoInterface;
 
 class UserController
 {
+    /**
+     * @var \SM\Repos\Users\IUserRepo
+     */
     private IUserRepo $usersRepo;
 
+    /**
+     * @var \Simple\Core\Request
+     */
+    private Request $request;
+
+    /**
+     * @var \Simple\Core\Router
+     */
+    private Router $router;
+
+    /**
+     * @var \SM\Views\User\UserView
+     */
+    private UserView $view;
+
+    /**
+     * @var \SM\Repos\Users\UsersGroupRepoInterface
+     */
+    private UserGroupRepoInterface $groupsRepo;
+
+    /**
+     * Contructing the object
+     * 
+     * @param \Simple\Core\Request $request
+     * @param \Simple\Core\Router
+     */
     public function __construct(Request $request, Router $router)
     {
         if (Session::get('group-name') !== 'admin') {
             throw new AuthorizationException();
         }
 
-        $this->view = 'users/users.twig';
+        $this->request = $request;
+        $this->router = $router;
+        $this->view = new UserView();
 
         $this->usersRepo = new UserRepo(new MySQLAccess());
     }
@@ -33,12 +70,41 @@ class UserController
     public function index()
     {
         $users = $this->usersRepo->getAll();
-        $this->context['data'] = $users;
-        $this->render($this->context);
+        $this->view->setContextData($users);
+        $this->view->mainView();
     }
 
+    /**
+     * Rendering the template
+     * 
+     * @param array $context
+     */
     public function render($context)
     {
         View::render('users/users.twig', $context);
+    }
+
+    /**
+     * Edit current user
+     */
+    public function update()
+    {
+        Log::dump($this->request->getRequestBody()['post']);
+    }
+
+    /**
+     * Shows edit form
+     */
+    public function edit()
+    {
+        $userId = $this->router->get('id');
+        $groups = $this->groupsRepo = new UserGroupRepo(new MySQLAccess());
+        try {
+            $user = $this->usersRepo->getById($userId);
+        } catch (EntityNotFoundException $er) {
+            ErrorController::pageNotFound("user not found", "there is no user with id = '$userId'");
+        }
+        $this->view->addToContextData('types', $groups->getAll());
+        $this->view->showEdit($user);
     }
 }
