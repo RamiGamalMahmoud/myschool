@@ -2,43 +2,43 @@
 
 
 {% block title %}
-Admin
+	Admin
 {% endblock title %}
 
 
 {% block admin %}
 
-<nav class="admin-nav">
+	<nav class="admin-nav">
 
-  <ul class="admin-links">
-    <li>
-      <a href="/admin/users/" class="btn">
-        <i class="fa fa-users"></i>
-        إدارة المستخدمين
-      </a>
-    </li>
-    <li>
-      <a href="/students/" class="btn">
-        <i class="fa fa-child"></i>
-        شئون الطلبة
-      </a>
-    </li>
-    <li>
-      <a href="/employees/" class="btn">
-        <i class="fa fa-user-secret"></i>
-        شئون العاملين
-      </a>
-    </li>
-    <li>
-      <a href="/exams/" class="btn">
-        <i class="fa fa-graduation-cap"></i>
-        شئون الإمتحانات
-      </a>
-    </li>
-  </ul>
-</nav>
-<div class="nav-holder"></div>
+		<ul class="admin-links">
+			<li>
+				<a href="/admin/users/" class="btn">
+					<i class="fa fa-users"></i>
+					إدارة المستخدمين
+				</a>
+			</li>
+			<li>
+				<a href="/students/" class="btn">
+					<i class="fa fa-child"></i>
+					شئون الطلبة
+				</a>
+			</li>
+			<li>
+				<a href="/employees/" class="btn">
+					<i class="fa fa-user-secret"></i>
+					شئون العاملين
+				</a>
+			</li>
+			<li>
+				<a href="/exams/" class="btn">
+					<i class="fa fa-graduation-cap"></i>
+					شئون الإمتحانات
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="nav-holder"></div>
+
+	{{ block('users') }}
 
 {% endblock admin %}
-
-{% block js %}{% endblock js %}
