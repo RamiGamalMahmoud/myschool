@@ -65,4 +65,16 @@ class User
     {
         $this->groupId = $groupId;
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getUserId(),
+            'user-name' => $this->getUserName(),
+            'full-name' => $this->getFullName(),
+            'user-group-id' => $this->getGroupId(),
+            'user-group-name' => $this->getGroupName(),
+            'user-privileges' => $this->getPrivileges()
+        ];
+    }
 }
