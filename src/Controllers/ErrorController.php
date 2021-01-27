@@ -23,17 +23,19 @@ class ErrorController
         ];
         http_response_code(500);
         self::render();
+        exit;
     }
 
-    public static function pageNotFound()
+    public static function pageNotFound($message = '', $description = '')
     {
         self::$context = [
             'code' => 404,
-            'message' => 'page not found',
-            'description' => 'you are trying to visit page that not exist'
+            'message' => $message === '' ? 'page not found' : $message,
+            'description' => $description === '' ? 'you are trying to visit page that not exist' : $description
         ];
         http_response_code(404);
         self::render();
+        exit;
     }
 
     public static function resourcesRemoved()
@@ -45,6 +47,7 @@ class ErrorController
         ];
         http_response_code(410);
         self::render();
+        exit;
     }
 
     public static function authorizationError()
@@ -56,6 +59,7 @@ class ErrorController
         ];
         http_response_code(401);
         self::render();
+        exit;
     }
 
     public static function api()
