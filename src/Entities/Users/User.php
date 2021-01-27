@@ -50,4 +50,19 @@ class User
     {
         return $this->privileges;
     }
+
+    public function setUserName(string $userName)
+    {
+        $this->userName = $userName;
+    }
+
+    public function setPrivileges(string $privileges)
+    {
+        $this->privileges = $privileges;
+    }
+
+    public function setGroupId(int $groupId)
+    {
+        $this->groupId = $groupId;
+    }
 }
