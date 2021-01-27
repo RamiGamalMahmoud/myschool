@@ -53,5 +53,20 @@ return [
         'D' => 'مقبول',
         'F' => 'دون المستوى',
         'ABS' => 'غ'
+    ],
+
+    'groups' => [
+        'admin' => 'مسئول',
+        'control' => 'كنترول',
+        'employee' => 'موظف',
+        'employees_affairs' => 'شئون العاملين',
+        'guest' => 'ضيف',
+        'student' => 'طالب',
+        'students_affairs' => 'شئون الطلاب'
+    ],
+
+    'privileges' => [
+        'READ' => 'عرض',
+        'WRITE' => 'عرض و تعديل'
     ]
 ];
