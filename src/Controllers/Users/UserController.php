@@ -15,6 +15,7 @@ use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Exceptions\AuthorizationException;
 use SM\Exceptions\EntityNotFoundException;
+use SM\Helpers\Translate;
 use SM\Repos\Users\UserGroupRepoInterface;
 
 class UserController
@@ -89,7 +90,8 @@ class UserController
      */
     public function update()
     {
-        Log::dump($this->request->getRequestBody()['post']);
+        $postedUser = $this->request->getRequestBody()['post'];
+        Log::dump($postedUser);
     }
 
     /**
@@ -104,7 +106,31 @@ class UserController
         } catch (EntityNotFoundException $er) {
             ErrorController::pageNotFound("user not found", "there is no user with id = '$userId'");
         }
-        $this->view->addToContextData('types', $groups->getAll());
+        $this->view->addToContextData('privileges', $this->getPrivileges());
+        $this->view->addToContextData('types', $this->getGroups());
         $this->view->showEdit($user);
+    }
+
+    private function getGroups()
+    {
+        $groupsRepo = $this->groupsRepo = new UserGroupRepo(new MySQLAccess());
+        $groups = $groupsRepo->getAll();
+
+        $translatedGroups = array_map(function ($group) {
+            $group['group_name'] = Translate::get('groups', $group['group_name']);
+            return $group;
+        }, $groups);
+
+        return $translatedGroups;
+    }
+
+    private function getPrivileges()
+    {
+        $privileges = ['READ', 'WRITE'];
+        $translatedPrivileges = array_map(function ($privilege) {
+            $translated = Translate::get('privileges', $privilege);
+            return ['key' => $privilege, 'value' => $translated];
+        }, $privileges);
+        return $translatedPrivileges;
     }
 }
