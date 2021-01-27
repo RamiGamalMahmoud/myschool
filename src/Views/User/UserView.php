@@ -11,8 +11,6 @@ class UserView
 
     private string $mainTemplate = 'users/users.twig';
 
-    private string $parentTemplate = 'admin/admin.twig';
-
     private array $contextData;
 
     private function render()
