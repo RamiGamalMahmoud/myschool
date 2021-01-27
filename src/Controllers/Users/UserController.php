@@ -4,7 +4,6 @@ namespace SM\Controllers\Users;
 
 use Simple\Core\View;
 use Simple\Core\Router;
-use Simple\Helpers\Log;
 use Simple\Core\Request;
 use Simple\Core\Session;
 use SM\Views\User\UserView;
@@ -13,6 +12,7 @@ use SM\Repos\Users\IUserRepo;
 use SM\Repos\Users\UserGroupRepo;
 use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
+use SM\Entities\Users\User;
 use SM\Exceptions\AuthorizationException;
 use SM\Exceptions\EntityNotFoundException;
 use SM\Helpers\Translate;
@@ -90,8 +90,8 @@ class UserController
      */
     public function update()
     {
-        $postedUser = $this->request->getRequestBody()['post'];
-        Log::dump($postedUser);
+        $user = $this->arrayToUser($this->request->getRequestBody()['post']);
+        $result = $this->usersRepo->update($user);
     }
 
     /**
@@ -132,5 +132,14 @@ class UserController
             return ['key' => $privilege, 'value' => $translated];
         }, $privileges);
         return $translatedPrivileges;
+    }
+
+    private function arrayToUser(array $data): User
+    {
+        $user = $this->usersRepo->getById($data['user-id']);
+        $user->setUserName($data['user-name']);
+        $user->setGroupId($data['group']);
+        $user->setPrivileges($data['privileges']);
+        return $user;
     }
 }
