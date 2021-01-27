@@ -1,0 +1,12 @@
+.lbl {
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 1rem;
+  text-align: center;
+
+  @import 'items-colors';
+
+  @import 'item-sizes';
+}

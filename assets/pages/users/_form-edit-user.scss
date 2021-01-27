@@ -1,0 +1,38 @@
+.form-edit-user {
+  border: 2px solid black;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+
+  .combo-box {
+    width: 200px;
+  }
+
+  .lbl {
+    width: 125px;
+    height: 40px;
+    text-align: right;
+    line-height: 30px;
+  }
+
+  .form-title,
+  #user-id-container {
+    text-align: center;
+  }
+
+  #buttons-container {
+    padding-top: 20px;
+    margin: auto;
+
+    .content-wrapper {
+      width: fit-content;
+      margin: auto;
+    }
+
+    .btn {
+      width: 150px;
+      height: 35px;
+    }
+  }
+}
