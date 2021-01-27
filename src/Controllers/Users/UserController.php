@@ -12,6 +12,8 @@ use SM\Repos\Users\IUserRepo;
 use SM\Repos\Users\UserGroupRepo;
 use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
+use Simple\Core\Redirect;
+use Simple\Helpers\Log;
 use SM\Entities\Users\User;
 use SM\Exceptions\AuthorizationException;
 use SM\Exceptions\EntityNotFoundException;
@@ -71,7 +73,14 @@ class UserController
     public function index()
     {
         $users = $this->usersRepo->getAll();
-        $this->view->setContextData($users);
+        $translatedUsers = array_map(function ($user) {
+            $user = $user->toArray();
+            $user['user-group-name'] = Translate::get('groups', $user['user-group-name']);
+            $user['user-privileges'] = Translate::get('privileges', $user['user-privileges']);
+            return $user;
+        }, $users);
+
+        $this->view->addToContextData('users', $translatedUsers);
         $this->view->mainView();
     }
 
@@ -92,6 +101,7 @@ class UserController
     {
         $user = $this->arrayToUser($this->request->getRequestBody()['post']);
         $result = $this->usersRepo->update($user);
+        Redirect::to('/admin/users');
     }
 
     /**
