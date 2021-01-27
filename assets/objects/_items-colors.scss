@@ -1,0 +1,24 @@
+&.primary {
+  background-color: $primary;
+}
+
+&.info {
+  background-color: $info;
+}
+
+&.success {
+  background-color: $success;
+}
+
+&.warning {
+  background-color: $warning;
+  color: $danger;
+}
+
+&.danger {
+  background-color: $danger;
+}
+
+&.secondary {
+  background-color: $secondary;
+}
