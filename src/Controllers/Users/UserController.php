@@ -10,12 +10,12 @@ use Simple\Core\Session;
 use SM\Views\User\UserView;
 use SM\Repos\Users\UserRepo;
 use SM\Repos\Users\IUserRepo;
-use SM\Repos\Users\UsersGroupRepo;
+use SM\Repos\Users\UserGroupRepo;
 use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
 use SM\Exceptions\AuthorizationException;
 use SM\Exceptions\EntityNotFoundException;
-use SM\Repos\Users\UsersGroupRepoInterface;
+use SM\Repos\Users\UserGroupRepoInterface;
 
 class UserController
 {
@@ -42,7 +42,7 @@ class UserController
     /**
      * @var \SM\Repos\Users\UsersGroupRepoInterface
      */
-    private UsersGroupRepoInterface $groupsRepo;
+    private UserGroupRepoInterface $groupsRepo;
 
     /**
      * Contructing the object
@@ -98,7 +98,7 @@ class UserController
     public function edit()
     {
         $userId = $this->router->get('id');
-        $groups = $this->groupsRepo = new UsersGroupRepo(new MySQLAccess());
+        $groups = $this->groupsRepo = new UserGroupRepo(new MySQLAccess());
         try {
             $user = $this->usersRepo->getById($userId);
         } catch (EntityNotFoundException $er) {
