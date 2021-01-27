@@ -50,9 +50,9 @@
 									<td>{{ entity.moth ? '' : 'N/A' }}</td>
 									<td>{{ entity.groupId }}</td>
 									<td class="options">
-										<a href="edit/{{entity.userId}}" class='edit-user btn mdm success'>تعديل</a>
-										<a href='delete/{{entity.userId}}' class='delete-user btn mdm danger'>حذف</a>
-										<a href='block/{{entity.userId}}' class='block-user btn mdm warning'>تعطيل</a>
+										<a href="/admin/users/edit/{{entity.userId}}" class='edit-user btn mdm success'>تعديل</a>
+										<a href='/admin/users/delete/{{entity.userId}}' class='delete-user btn mdm danger'>حذف</a>
+										<a href='/admin/users/block/{{entity.userId}}' class='block-user btn mdm warning'>تعطيل</a>
 									</td>
 								</tr>
 								{% set serial = serial + 1 %}
