@@ -100,7 +100,6 @@ class UserController
     public function edit()
     {
         $userId = $this->router->get('id');
-        $groups = $this->groupsRepo = new UserGroupRepo(new MySQLAccess());
         try {
             $user = $this->usersRepo->getById($userId);
         } catch (EntityNotFoundException $er) {
