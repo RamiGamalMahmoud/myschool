@@ -7,55 +7,18 @@
   padding: 5px 10px;
   font-size: 1rem;
   text-align: center;
-
-  &.primary {
-    background-color: $primary;
-  }
-
-  &.info {
-    background-color: $info;
-  }
-
-  &.success {
-    background-color: $success;
-  }
-
-  &.warning {
-    background-color: $warning;
-  }
-
-  &.danger {
-    background-color: $danger;
-  }
-
-  &.secondary {
-    background-color: $secondary;
-  }
-
-  &.sm {
-    font-size: 0.5rem;
-  }
-
-  &.mdm {
-    font-size: 0.75rem;
-  }
-
-  &.lrg,
-  &.default {
-    font-size: 1rem;
-  }
-
-  &.xl {
-    font-size: 1.25rem;
-  }
+  border: none;
 
   &:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   }
 
-  .fa {
-    font-weight: normal;
-    font-size: 0.8em;
-    margin-left: 10px;
+  &:focus {
+    border: none;
+    outline: none;
   }
+
+  @import 'items-colors';
+
+  @import 'item-sizes';
 }
