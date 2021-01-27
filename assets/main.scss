@@ -2,10 +2,7 @@
 
 @import './base/reset';
 
-@import './objects/buttons';
-@import './objects/data-table';
-@import './objects/menu';
-@import './objects/table';
+@import './objects/objects';
 
 @import './base/base';
 
@@ -16,3 +13,5 @@
 @import './pages/students/students';
 
 @import './pages/users/users';
+
+@import './pages/users/form-edit-user';
