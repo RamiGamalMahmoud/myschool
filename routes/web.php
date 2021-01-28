@@ -4,6 +4,7 @@ use Simple\Core\Route;
 use SM\Controllers\Logout;
 use SM\Controllers\IndexController;
 use SM\Controllers\Admin\AdminController;
+use SM\Controllers\EmployeesAffairs\EmployeesAffairsController;
 use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\Exams\ExamsController;
 use SM\Controllers\Exams\MonitoringController;
@@ -35,6 +36,12 @@ Route::get('admin/users/edit/{id}', [UserController::class, 'edit']);
 Route::get('admin/users/delete/{id}', [UserController::class, 'remove']);
 
 Route::get('admin/users/block/{id}', [UserController::class, 'blockUser']);
+
+/**
+ * EMPLOYEES_AFFAIRS GET ROUTES
+ */
+
+Route::get('personnel', [EmployeesAffairsController::class, 'index']);
 
 /**
  * EXAMS HTTP GET ROUTES
