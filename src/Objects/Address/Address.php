@@ -55,8 +55,8 @@ class Address
     public function toArray(): array
     {
         return [
-            'governorate' => $this->getGovernorate(),
-            'city' => $this->getCity(),
+            'governorate' => $this->getGovernorate()->toArray(),
+            'city' => $this->getCity()->toArray(),
             'district' => $this->getDistrict(),
             'street' => $this->getStreet()
         ];
