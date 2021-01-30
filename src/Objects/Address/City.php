@@ -27,8 +27,8 @@ class City
     public function toArray()
     {
         return [
-            'city-id' => $this->getCityId(),
-            'city-name' => $this->getCityName()
+            'id' => $this->getCityId(),
+            'name' => $this->getCityName()
         ];
     }
 }

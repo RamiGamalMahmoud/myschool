@@ -27,8 +27,8 @@ class Governorate
     public function toArray()
     {
         return [
-            'governorate-id' => $this->getGovernorateId(),
-            'governorate-name' => $this->getGovernorateName()
+            'id' => $this->getGovernorateId(),
+            'name' => $this->getGovernorateName()
         ];
     }
 }
