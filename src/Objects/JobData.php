@@ -18,7 +18,7 @@ class JobData
     {
         $this->dateOfHiring = $dateOfHiring;
         $this->dateOfWorkReceived = $dateOfWorkReceived;
-        $this->employee_type = $employeeType;
+        $this->employeeType = $employeeType;
         $this->employeeStatus = $employeeStatus;
         $this->attitudeToWork = $attitudeToWork;
     }
