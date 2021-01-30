@@ -19,7 +19,7 @@ class EmployeesAffairsView
     /**
      * @var array $contextData
      */
-    private string $contextData;
+    private array $contextData;
 
     /**
      * Constructor
