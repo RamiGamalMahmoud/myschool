@@ -45,4 +45,17 @@ class EmployeesAffairsController
         $this->employeeRepo = new EmployeeRepo(new MySQLAccess());
         $this->view = new EmployeesAffairsView();
     }
+
+    /**
+     * 
+     */
+    public function index()
+    {
+        $employees = $this->employeeRepo->getAll();
+        $employees = array_map(function ($employee) {
+            return $employee->toArray();
+        }, $employees);
+        $this->view->addToContextData('employees', $employees);
+        $this->view->showMainView();
+    }
 }
