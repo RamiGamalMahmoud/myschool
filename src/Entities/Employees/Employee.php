@@ -72,11 +72,11 @@ class Employee
     {
         return [
             'id' => $this->id,
-            'personal-data' => $this->getPersonalData(),
-            'social-data' => $this->getSocialData(),
-            'job-data' => $this->getJobData(),
-            'address' => $this->getAddress(),
-            'phone' => $this->getPhone()
+            'personal-data' => $this->getPersonalData()->toArray(),
+            'social-data' => $this->getSocialData()->toArray(),
+            'job-data' => $this->getJobData()->toArray(),
+            'address' => $this->getAddress()->toArray(),
+            'phone' => $this->getPhone()->toArray()
         ];
     }
 }
