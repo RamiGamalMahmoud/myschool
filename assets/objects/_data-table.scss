@@ -2,7 +2,6 @@ $table-border-color: #AAA;
 
 .data-table {
 
-  width: fit-content;
   max-width: 100%;
 
   .table-head,
@@ -13,6 +12,10 @@ $table-border-color: #AAA;
       border-top: none;
     }
 
+  }
+
+  .table-head {
+    overflow: hidden;
   }
 
   .table-body {
