@@ -8,6 +8,7 @@ use Simple\Core\Router;
 use Simple\Helpers\Log;
 use SM\Repos\EmployeesAffairs\EmployeeRepo;
 use SM\Repos\EmployeesAffairs\EmployeeRepoInterface;
+use SM\Views\EmployeesAffairs\EmployeesAffairsView;
 
 class EmployeesAffairsController
 {
@@ -27,6 +28,11 @@ class EmployeesAffairsController
     private EmployeeRepoInterface $employeeRepo;
 
     /**
+     * @var \SM\Views\EmployeesAffairs\EmployeesAffairsView
+     */
+    private EmployeesAffairsView $view;
+
+    /**
      * Construstor
      * 
      * @param \Simple\Core\Request $request
@@ -37,5 +43,6 @@ class EmployeesAffairsController
         $this->request = $request;
         $this->router = $router;
         $this->employeeRepo = new EmployeeRepo(new MySQLAccess());
+        $this->view = new EmployeesAffairsView();
     }
 }
