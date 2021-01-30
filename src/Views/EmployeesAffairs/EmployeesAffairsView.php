@@ -34,7 +34,7 @@ class EmployeesAffairsView
     /**
      * Rndering the main view
      */
-    public function mainView()
+    public function showMainView()
     {
         View::render($this->mainTemplate, $this->contextData);
     }
