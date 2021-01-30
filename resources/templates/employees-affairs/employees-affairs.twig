@@ -3,42 +3,41 @@
 
 {% block content %}
 
-	<div class="content">
-		<div class="data">
-			<div class="employees data-table">
-				<div class="table-head">
-					<table class="table">
-						<thead>
-							<tr class="head-space-holder">
-								{% include "employees-affairs/components/columns-sizes.twig" %}
-							</tr>
-							<tr>
-								{% include "employees-affairs/components/columns-names.twig" %}
-							</tr>
-						</thead>
-					</table>
-				</div>
+	<div class="employees-data">
+		<div class="employees data-table">
+			<div class="table-head">
+				<table class="table">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "employees-affairs/components/columns-sizes.twig" %}
+						</tr>
+						<tr>
+							{% include "employees-affairs/components/columns-names.twig" %}
+						</tr>
+					</thead>
+				</table>
+			</div>
 
-				<div class="table-body">
-					<table class="table">
-						<thead>
-							<tr class="head-space-holder">
-								{% include "employees-affairs/components/columns-sizes.twig" %}
-							</tr>
-						</thead>
-						<tbody>
-							{% set serial = 1 %}
-							{% for employee in employees %}
-
-								{% set serial = serial + 1 %}
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
+			<div class="table-body">
+				<table class="table">
+					<thead>
+						<tr class="head-space-holder">
+							{% include "employees-affairs/components/columns-sizes.twig" %}
+						</tr>
+					</thead>
+					<tbody>
+						{% set serial = 1 %}
+						{% for employee in employees %}
+							{% include "employees-affairs/components/data.twig" %}
+							{% set serial = serial + 1 %}
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 
 			<a href='./add' class="add-employee btn primary">
-				<i class="fa fa-plus"></i>مستخدم جديد</a>
+				<i class="fa fa-plus"></i>إضافة موظف</a>
 		</div>
 	</div>
+	<script src="/js/employees/employees.js" type="module"></script>
 {% endblock content %}
