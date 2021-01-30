@@ -1,19 +1,6 @@
-<td>{{ serial }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
-<td>{{ employee[''] }}</td>
+<td employee-id="{{ employee['id'] }}">{{ serial }}</td>
+{% include "employees-affairs/components/personal-data.twig" with {'personalData' : employee['personal-data']} %}
+{% include "employees-affairs/components/job-data.twig" with {'jobData' : employee['job-data']} %}
+{% include "employees-affairs/components/phone.twig" with {'phone' : employee['phone']} %}
+{% include "employees-affairs/components/social-data.twig" with {'socialData' : employee['social-data']} %}
+{% include "employees-affairs/components/address.twig" with {'address' : employee['address']} %}
