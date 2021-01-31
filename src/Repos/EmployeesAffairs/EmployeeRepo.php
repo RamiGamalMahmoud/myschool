@@ -46,7 +46,10 @@ class EmployeeRepo implements EmployeeRepoInterface
             ->join('cities')
             ->on($this->table . '.city_id', 'cities.id')
             ->join('governorates')
-            ->on($this->table . '.governorate_id', 'governorates.id');
+            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->where('employee_status', '=', 'ORIGINAL')
+            ->andWhere('attitude_to_work', '=', 'ON_TOP_OF_WORK')
+            ->orderBy(['name']);
         $data = $this->dataAccess->getAll($query);
         $employees = array_map(function ($employee) {
             return PersonBuilder::makeEmployeeObject($employee);
