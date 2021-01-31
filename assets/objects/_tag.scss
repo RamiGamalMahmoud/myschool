@@ -1,0 +1,15 @@
+.tag {
+  font-size: 1em;
+
+  &.sm {
+    font-size: .4em;
+  }
+
+  &.mdm {
+    font-size: .5em;
+  }
+
+  &.lrg {
+    font-size: .7em;
+  }
+}
