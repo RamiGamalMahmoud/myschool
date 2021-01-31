@@ -4,11 +4,11 @@
 {% block content %}
 
 	<div class="employees-data">
+		<div class='menu-bar'>
+			{% include "employees-affairs/components/employees-menu-bar.twig" %}
+		</div>
 		<div class="page-header">
 			{% include "employees-affairs/components/page-header.twig" %}
-			<div class='menu-bar'>
-				{% include "employees-affairs/components/employees-menu-bar.twig" %}
-			</div>
 		</div>
 
 		<div class="employees data-table">
