@@ -35,7 +35,9 @@
 					<tbody>
 						{% set serial = 1 %}
 						{% for employee in employees %}
-							{% include "employees-affairs/components/data.twig" %}
+							<tr>
+								{% include "employees-affairs/components/data.twig" %}
+							</tr>
 							{% set serial = serial + 1 %}
 						{% endfor %}
 					</tbody>
