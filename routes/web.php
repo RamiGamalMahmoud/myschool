@@ -41,7 +41,7 @@ Route::get('admin/users/block/{id}', [UserController::class, 'blockUser']);
  * EMPLOYEES_AFFAIRS GET ROUTES
  */
 
-Route::get('personnel', [EmployeesAffairsController::class, 'index']);
+Route::get('employees-affairs', [EmployeesAffairsController::class, 'index']);
 
 /**
  * EXAMS HTTP GET ROUTES
