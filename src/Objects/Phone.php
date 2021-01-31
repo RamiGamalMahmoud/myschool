@@ -4,9 +4,9 @@ namespace SM\Objects;
 
 class Phone
 {
-    private string $fixed;
+    private ?string $fixed;
 
-    private string $mobile;
+    private ?string $mobile;
 
     public function __construct($fixed, $mobile)
     {

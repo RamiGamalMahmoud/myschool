@@ -6,9 +6,9 @@ class SocialData
 {
     private string $martialStatus;
 
-    private int $childrenCount;
+    private ?int $childrenCount;
 
-    public function __construct(string $martialStatus, int $childrenCount)
+    public function __construct(string $martialStatus, ?int $childrenCount)
     {
         $this->martialStatus = $martialStatus;
         $this->childrenCount = $childrenCount;
