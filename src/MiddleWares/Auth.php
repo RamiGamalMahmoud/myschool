@@ -5,7 +5,7 @@ namespace SM\MiddleWares;
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Core\Request;
 use Simple\Core\Session;
-use SM\Repos\Users\UsersRepo;
+use SM\Repos\Users\UserRepo;
 
 class Auth
 {
@@ -28,7 +28,7 @@ class Auth
      */
     public static function authenticate($userName, $password)
     {
-        $repo = new UsersRepo(new MySQLAccess());
+        $repo = new UserRepo(new MySQLAccess());
         $user = $repo->getByNameAndPassword($userName, $password);
         if ($user !== null) {
             return [
