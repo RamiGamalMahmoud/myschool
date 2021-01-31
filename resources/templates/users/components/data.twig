@@ -1,0 +1,12 @@
+<td user-id="{{ user['id'] }}">{{ serial }}</td>
+<td>{{ user['user-name'] }}</td>
+<td>{{ user['full-name'] }}</td>
+<td>{{ user.moth ? '' : 'N/A' }}</td>
+<td group-id="{{ user['user-group-id'] }}">{{ user['user-group-name'] }}</td>
+<td>{{ user['user-privileges']}}</td>
+<td {% if not user['is-active'] %} class="warning" {% endif %}>{{user['is-active']}}</td>
+<td class="options">
+	<a href="/admin/users/edit/{{user['id']}}" class='edit-user btn mdm success'>تعديل</a>
+	<a href="/admin/users/delete/{{user['id']}}" class='delete-user btn mdm danger'>حذف</a>
+	<a href="/admin/users/block/{{user['id']}}" class='block-user btn mdm warning'>تعطيل</a>
+</td>

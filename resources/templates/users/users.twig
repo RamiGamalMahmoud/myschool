@@ -9,24 +9,10 @@
 					<table class="table">
 						<thead>
 							<tr class="head-space-holder">
-								<th class="cell-size-2"></th>
-								<th class="cell-size-3"></th>
-								<th class="cell-size-3"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-3"></th>
+								{% include "users/components/columns-sizes.twig" %}
 							</tr>
 							<tr>
-								<th>مسلسل</th>
-								<th>اسم المستخدم</th>
-								<th>الاسم بالكامل</th>
-								<th>الوظيفة</th>
-								<th>المجموعة</th>
-								<th>الصلاحيات</th>
-								<th>الحالة</th>
-								<th>خيارات</th>
+								{% include "users/components/columns-names.twig" %}
 							</tr>
 						</thead>
 					</table>
@@ -36,32 +22,14 @@
 					<table class="table">
 						<thead>
 							<tr class="head-space-holder">
-								<th class="cell-size-2"></th>
-								<th class="cell-size-3"></th>
-								<th class="cell-size-3"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-2"></th>
-								<th class="cell-size-3"></th>
+								{% include "users/components/columns-sizes.twig" %}
 							</tr>
 						</thead>
 						<tbody>
 							{% set serial = 1 %}
 							{% for user in users %}
 								<tr>
-									<td user-id="{{ user['id'] }}">{{ serial }}</td>
-									<td>{{ user['user-name'] }}</td>
-									<td>{{ user['full-name'] }}</td>
-									<td>{{ user.moth ? '' : 'N/A' }}</td>
-									<td group-id="{{ user['user-group-id'] }}">{{ user['user-group-name'] }}</td>
-									<td>{{ user['user-privileges']}}</td>
-									<td {% if not user['is-active'] %} class="warning" {% endif %}>{{user['is-active']}}</td>
-									<td class="options">
-										<a href="/admin/users/edit/{{user['id']}}" class='edit-user btn mdm success'>تعديل</a>
-										<a href="/admin/users/delete/{{user['id']}}" class='delete-user btn mdm danger'>حذف</a>
-										<a href="/admin/users/block/{{user['id']}}" class='block-user btn mdm warning'>تعطيل</a>
-									</td>
+									{% include "users/components/data.twig" %}
 								</tr>
 								{% set serial = serial + 1 %}
 							{% endfor %}
