@@ -1,0 +1,31 @@
+.employees-data {
+
+  .page-title {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .displayed-content {
+    position: absolute;
+    top: 50%;
+    left: 32%;
+    transform: translateY(-50%);
+    background-color: $main-color;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    color: #FFF;
+    border-radius: 5px;
+  }
+
+  .employees.data-table {
+    .table-head {
+      max-width: calc(100% - 17px);
+    }
+
+    .table-body {
+      max-height: calc(100vh - 150px);
+      font-weight: bold;
+    }
+  }
+}
