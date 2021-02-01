@@ -1,0 +1,45 @@
+.combo-box,
+.text-box {
+  font-size: .8em;
+  margin: 0;
+}
+
+.text-box {
+  width: 250px;
+  text-align: right;
+}
+
+.combo-box {
+  width: 150px;
+  font-weight: bold;
+}
+
+.lbl {
+  width: 150px;
+  text-align: right;
+  display: block;
+}
+
+.lbl,
+.combo-box,
+.text-box {
+  height: 30px;
+}
+
+.form-row {
+  overflow: hidden;
+}
+
+.form-item-container {
+  float: right;
+  margin-right: 20px;
+}
+
+.form-row-content {
+  display: inline-block;
+  margin: auto;
+}
+
+fieldset {
+  width: 850px;
+}

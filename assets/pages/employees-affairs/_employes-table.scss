@@ -1,0 +1,10 @@
+.employees.data-table {
+  .table-head {
+    max-width: calc(100% - 17px);
+  }
+
+  .table-body {
+    max-height: calc(100vh - 150px);
+    font-weight: bold;
+  }
+}
