@@ -60,6 +60,26 @@ class EmployeesAffairsController
     }
 
     /**
+     * Show edit form
+     */
+    public function edit()
+    {
+        $id = $this->router->get('id');
+        $employee = $this->employeeRepo->getById($id);
+        $this->view->addToContextData('employee', $employee->toArray());
+        $this->view->showEditView();
+    }
+
+    /**
+     * Update employee
+     */
+    public function update()
+    {
+        $data = $this->request->getRequestBody();
+        Log::dump($data);
+    }
+
+    /**
      * Get employees by attributes
      */
     public function getBy()
