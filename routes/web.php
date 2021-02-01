@@ -73,6 +73,11 @@ Route::post('login', [LoginController::class, 'doLogin']);
 
 Route::post('admin/users/edit/{id}', [UserController::class, 'update']);
 
+/**
+ * EMPLOYEES ROUTES
+ */
+Route::post('employees-affairs/edit/{id}', [EmployeesAffairsController::class, 'update']);
+
 ### Exams Routes
 
 Route::post('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'store']);
