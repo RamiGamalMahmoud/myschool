@@ -7,43 +7,8 @@
 		<div class='menu-bar'>
 			{% include "employees-affairs/components/employees-menu-bar.twig" %}
 		</div>
-		<div class="page-header">
-			{% include "employees-affairs/components/page-header.twig" %}
-		</div>
 
-		<div class="employees data-table">
-			<div class="table-head">
-				<table class="table">
-					<thead>
-						<tr class="head-space-holder">
-							{% include "employees-affairs/components/columns-sizes.twig" %}
-						</tr>
-						<tr>
-							{% include "employees-affairs/components/columns-names.twig" %}
-						</tr>
-					</thead>
-				</table>
-			</div>
-
-			<div class="table-body">
-				<table class="table">
-					<thead>
-						<tr class="head-space-holder">
-							{% include "employees-affairs/components/columns-sizes.twig" %}
-						</tr>
-					</thead>
-					<tbody>
-						{% set serial = 1 %}
-						{% for employee in employees %}
-							<tr>
-								{% include "employees-affairs/components/data.twig" %}
-							</tr>
-							{% set serial = serial + 1 %}
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
+		{% block employeesContent %}{% endblock employeesContent %}
 	</div>
 	<script src="/js/employees/employees.js" type="module"></script>
 {% endblock content %}
