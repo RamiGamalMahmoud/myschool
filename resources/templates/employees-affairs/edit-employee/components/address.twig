@@ -1,0 +1,27 @@
+<div class="form-item-container governorate">
+	<label for="governorate" class="lbl">المحافظة</label>
+	<select name="governorate" id="governorate" class="combo-box">
+		{% for governorate in governorates %}
+			<option value="{{ governorate.id }}">{{ governorate.name }}</option>
+		{% endfor %}
+	</select>
+</div>
+
+<div class="form-item-container city">
+	<label for="city" class="lbl">المدينة</label>
+	<select name="city" id="city" class="combo-box">
+		{% for city in cities %}
+			<option value="{{ city.id }}">{{ city.name }}</option>
+		{% endfor %}
+	</select>
+</div>
+
+<div class="form-item-container district">
+	<label for="district" class="lbl">المنطقة أو القرية</label>
+	<input type="text" name="district" id="district" class="text-box">
+</div>
+
+<div class="form-item-container street">
+	<label for="street" class="lbl">الشارع</label>
+	<input type="text" name="street" id="street" class="text-box">
+</div>
