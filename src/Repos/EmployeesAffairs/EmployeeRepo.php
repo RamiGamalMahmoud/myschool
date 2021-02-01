@@ -56,4 +56,28 @@ class EmployeeRepo implements EmployeeRepoInterface
         }, $data);
         return $employees;
     }
+
+    /**
+     * Search employees by criteria
+     * 
+     * @param string $filterName
+     * @param string $filterValue
+     */
+    public function filterBy($name, $value): array
+    {
+        $query = new Query();
+        $query->select($this->columns)
+            ->from($this->table)
+            ->join('cities')
+            ->on($this->table . '.city_id', 'cities.id')
+            ->join('governorates')
+            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->where($name, '=', $value)
+            ->orderBy([$this->table . '.name']);
+        $data = $this->dataAccess->getAll($query);
+        $employees = array_map(function ($employee) {
+            return PersonBuilder::makeEmployeeObject($employee);
+        }, $data);
+        return $employees;
+    }
 }

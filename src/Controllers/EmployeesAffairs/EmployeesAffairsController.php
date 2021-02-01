@@ -58,4 +58,19 @@ class EmployeesAffairsController
         $this->view->addToContextData('employees', $employees);
         $this->view->showMainView();
     }
+
+    /**
+     * Get employees by attributes
+     */
+    public function getBy()
+    {
+        $name = $this->router->get('criteria');
+        $value = $this->router->get('value');
+        $employees = $this->employeeRepo->filterBy($name, $value);
+        $employees = array_map(function ($employee) {
+            return $employee->toArray();
+        }, $employees);
+        $this->view->addToContextData('employees', $employees);
+        $this->view->showMainView();
+    }
 }

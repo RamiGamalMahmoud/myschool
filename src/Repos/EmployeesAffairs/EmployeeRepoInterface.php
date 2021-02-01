@@ -8,4 +8,5 @@ interface EmployeeRepoInterface
 {
     public function getById($id);
     public function getAll(): array;
+    public function filterBy($name, $value): array;
 }
