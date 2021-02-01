@@ -1,0 +1,41 @@
+{% extends "employees-affairs/employees-affairs.twig" %}
+
+{% block employeesContent %}
+
+	<div class="page-header">
+		{% include "employees-affairs/employees-table/page-header.twig" %}
+	</div>
+	<div class="employees data-table">
+		<div class="table-head">
+			<table class="table">
+				<thead>
+					<tr class="head-space-holder">
+						{% include "employees-affairs/employees-table/columns-sizes.twig" %}
+					</tr>
+					<tr>
+						{% include "employees-affairs/employees-table/columns-names.twig" %}
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+		<div class="table-body">
+			<table class="table">
+				<thead>
+					<tr class="head-space-holder">
+						{% include "employees-affairs/employees-table/columns-sizes.twig" %}
+					</tr>
+				</thead>
+				<tbody>
+					{% set serial = 1 %}
+					{% for employee in employees %}
+						<tr>
+							{% include "employees-affairs/employees-table/data.twig" %}
+						</tr>
+						{% set serial = serial + 1 %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock employeesContent %}
