@@ -1,5 +1,8 @@
 .employees-data {
 
+  @import 'employes-table';
+  @import 'edit-employee-form';
+
   .page-title {
     position: relative;
     text-align: center;
@@ -18,14 +21,5 @@
     border-radius: 5px;
   }
 
-  .employees.data-table {
-    .table-head {
-      max-width: calc(100% - 17px);
-    }
 
-    .table-body {
-      max-height: calc(100vh - 150px);
-      font-weight: bold;
-    }
-  }
 }
