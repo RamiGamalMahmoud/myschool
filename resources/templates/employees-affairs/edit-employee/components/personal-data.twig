@@ -1,38 +1,50 @@
-<div class="form-item-container employee-name">
-	<label for="employee-name" class="lbl">اسم الموظف</label>
-	<input type="text" name="employee-name" id="employee-name" class="text-box">
-</div>
+<fieldset>
+	<legend>بيانات أساسية</legend>
 
-<div class="form-item-container national-id">
-	<label for="national-id" class="lbl">الرقم القومي</label>
-	<input type="text" name="national-id" id="national-id" class="text-box">
-</div>
+	<div class="form-row">
+		<div class="form-row-content">
+			<div class="form-item-container employee-name">
+				<label for="employee-name" class="lbl">اسم الموظف</label>
+				<input type="text" name="employee-name" id="employee-name" class="text-box">
+			</div>
 
-<div class="form-item-container pirthdate">
-	<label for="pirthdate" class="lbl">تاريخ الميلاد</label>
-	<input type="text" name="pirthdate" id="pirthdate" class="text-box">
-</div>
+			<div class="form-item-container national-id">
+				<label for="national-id" class="lbl">الرقم القومي</label>
+				<input type="text" name="national-id" id="national-id" class="text-box">
+			</div>
 
-<div class="form-item-container gender">
-	<label for="gender" class="lbl">النوع</label>
-	<select name="gender" id="gender" class="combo-box">
-		<option value="MALE">ذكر</option>
-		<option value="FEMALE">أنثى</option>
-	</select>
-</div>
+			<div class="form-item-container pirthdate">
+				<label for="pirthdate" class="lbl">تاريخ الميلاد</label>
+				<input type="date" name="pirthdate" id="pirthdate" class="text-box">
+			</div>
+		</div>
+	</div>
 
-<div class="form-item-container religion">
-	<label for="religion" class="lbl">الديانة</label>
-	<select name="religion" id="religion" class="combo-box">
-		<option value="MUSLIM">مسلم</option>
-		<option value="CHRISTIAN">مسيحي</option>
-	</select>
-</div>
+	<div class="form-row">
+		<div class="form-row-content">
+			<div class="form-item-container gender">
+				<label for="gender" class="lbl">النوع</label>
+				<select name="gender" id="gender" class="combo-box">
+					<option value="MALE">ذكر</option>
+					<option value="FEMALE">أنثى</option>
+				</select>
+			</div>
 
-<div class="form-item-container nationality">
-	<label for="nationality" class="lbl">الجنسية</label>
-	<select name="nationality" id="nationality" class="combo-box">
-		<option value="EGY">مصري</option>
-		<option value="NON-EGY">غير مصري</option>
-	</select>
-</div>
+			<div class="form-item-container religion">
+				<label for="religion" class="lbl">الديانة</label>
+				<select name="religion" id="religion" class="combo-box">
+					<option value="MUSLIM">مسلم</option>
+					<option value="CHRISTIAN">مسيحي</option>
+				</select>
+			</div>
+
+			<div class="form-item-container nationality">
+				<label for="nationality" class="lbl">الجنسية</label>
+				<select name="nationality" id="nationality" class="combo-box">
+					<option value="EGY">مصري</option>
+					<option value="NON-EGY">غير مصري</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</fieldset>
