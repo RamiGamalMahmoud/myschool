@@ -10,12 +10,12 @@ class EmployeesAffairsView
     /**
      * @var string $mainTemplate
      */
-    private string $mainTemplate = 'employees-affairs/employees-affairs.twig';
+    private string $mainTemplate = 'employees-affairs/employees-table/employees-table.twig';
 
     /**
      * @var string $editTemplate
      */
-    private string $editTemplate;
+    private string $editTemplate = 'employees-affairs/edit-employee/edit-employee.twig';
 
     /**
      * @var array $contextData
@@ -41,6 +41,14 @@ class EmployeesAffairsView
     }
 
     /**
+     * Shows edit employee form
+     */
+    public function showEditView()
+    {
+        View::render($this->editTemplate, $this->contextData);
+    }
+
+    /**
      * Sets the context data
      * 
      * @param array $data
@@ -54,9 +62,9 @@ class EmployeesAffairsView
      * Add item to the context data
      * 
      * @param array $name The item name
-     * @param array $data The data
+     * @param $data The data
      */
-    public function addToContextData(string $name, array $data)
+    public function addToContextData(string $name, $data)
     {
         $this->contextData[$name] = $data;
     }
