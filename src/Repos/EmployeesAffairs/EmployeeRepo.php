@@ -35,7 +35,16 @@ class EmployeeRepo implements EmployeeRepoInterface
 
     public function getById($id)
     {
-        return $this->getAll();
+        $query = new Query();
+        $query->select($this->columns)
+            ->from($this->table)
+            ->join('cities')
+            ->on($this->table . '.city_id', 'cities.id')
+            ->join('governorates')
+            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->where('employees.id', '=', $id);
+        $employee = $this->dataAccess->get($query);
+        return PersonBuilder::makeEmployeeObject($employee);
     }
 
     public function getAll(): array
