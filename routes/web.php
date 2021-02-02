@@ -13,6 +13,9 @@ use SM\Controllers\LoginController;
 use SM\Controllers\Users\UserController;
 use SM\MiddleWares\Auth;
 
+/**
+ * GET ROUTES
+ */
 Route::get('login', [LoginController::class, 'showLogin']);
 
 Route::get('logout', [Logout::class, 'logout']);
@@ -45,6 +48,9 @@ Route::get('sheets/{gradeNumber}/{semester}/{status}', [SheetsController::class,
 
 Route::get('certificates/{gradeNumber}/{semester}/{status}',  [CertificatesController::class, 'index']);
 
+/**
+ * POST ROUTES
+ */
 Route::post('login', [LoginController::class, 'doLogin']);
 
 Route::post('admin/users/edit/{id}', [UserController::class, 'update']);
@@ -53,6 +59,9 @@ Route::post('employees-affairs/edit/{id}', [EmployeesAffairsController::class, '
 
 Route::post('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'store']);
 
+/**
+ * MIDDLEWARE ROUTES
+ */
 Route::middleware('isAuthenticated', [Auth::class, 'isAuthenticated']);
 
 Route::middleware('authorize', [Auth::class, 'authorize']);
