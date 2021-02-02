@@ -1,29 +1,35 @@
 // number from english to indi converter
 import DataTable from '/js/lib/datatable.js';
 
-const datatable = new DataTable(document.getElementById('monitoring-table'));
+const monitoringTableElement = document.getElementById('monitoring-table');
+const sheetElement = document.getElementById('sheet');
 
-/**
- * Prepare the link that will be used with the ajax calls
- */
-var link = location.toString();
-// console.log(link);
-datatable.init(link, function (cell) {
-  if (cell.textContent < 0 || cell.textContent === 'غ') {
-    cell.textContent = 'غ';
-    cell.classList.add('warning');
-  } else {
-    cell.classList.remove('warning');
-  }
-});
+if (sheet !== null) {
+  const sheet = new DataTable(sheetElement);
+  sheet.init();
+}
 
-var parsed = (function () {
-  var string = location.search;
+if (monitoringTableElement !== null) {
+  const datatable = new DataTable(monitoringTableElement);
+
+  let url = location.toString();
+  datatable.init(url, function (cell) {
+    if (cell.textContent < 0 || cell.textContent === 'غ') {
+      cell.textContent = 'غ';
+      cell.classList.add('warning');
+    } else {
+      cell.classList.remove('warning');
+    }
+  });
+}
+
+let parsed = (function () {
+  let string = location.search;
   string = string.replace('?', '');
-  var parts = string.split('&');
-  var obj = {};
+  let parts = string.split('&');
+  let obj = {};
   parts.forEach((part) => {
-    var line = part.split('=');
+    let line = part.split('=');
     obj[line[0]] = line[1];
   })
   return obj;
@@ -61,8 +67,8 @@ let cols = {
 }
 
 const columnSummary = function (colName) {
-  var cells = document.querySelectorAll(`.data-table .table-body tr td[colname="${colName}"]`);
-  var absens = 0, empty = 0;
+  let cells = document.querySelectorAll(`.data-table .table-body tr td[colname="${colName}"]`);
+  let absens = 0, empty = 0;
   for (let i = 0; i < cells.length; i++) {
     if (cells[i].textContent === 'غ') {
       absens++;
@@ -82,7 +88,7 @@ const columnSummary = function (colName) {
 }
 
 if (document.querySelector('.monitoring-summary') != null) {
-  var colNames = [];
+  let colNames = [];
   if (parsed.view === 'practical') colNames = cols.practical;
   else if (parsed.view === 'evaluation') colNames = cols.evaluation;
   else if (parsed.view === 'written') colNames = cols.written;
