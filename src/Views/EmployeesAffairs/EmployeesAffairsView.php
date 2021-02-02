@@ -45,6 +45,35 @@ class EmployeesAffairsView
      */
     public function showEditView()
     {
+
+        $attitudes = [
+            'ON_TOP_OF_WORK' => 'على رأس العمل',
+            'DIED' => 'متوفى',
+            'PENSIONER' => 'معاش',
+            'SIXK_LEAVE' => 'أجازة مرضية',
+            'UNPAID_LEAVE' => 'أجازة بدون مرتب',
+            'CHILDCARE_LEAVE' => 'رعاية طفل',
+            'FIRED' => 'مفصول',
+            'LOANED' => 'إعارة',
+            'MATERNITY_LEAVE' => 'عامل',
+            'RESIGNED' => 'مستقيل',
+            'RECRUIT' => 'مجند',
+            'OUT_OF_WORK' => 'منقطع عن العمل'
+        ];
+        $employeeStatus = [
+            'ORIGINAL' => 'أصلي',
+            'DEPUTED' => 'منتدب',
+            'MOVED' => 'تم نقله'
+        ];
+        $employeeType = [
+            "MANAGEMENT" => 'إدارة مدرسية',
+            "TEACHER" => 'مدرس',
+            "EMPLOYEE" => 'إداري',
+            "WORKER" => 'عامل'
+        ];
+        $this->addToContextData('attitudes', $attitudes);
+        $this->addToContextData('employeeStatus', $employeeStatus);
+        $this->addToContextData('employeeType', $employeeType);
         View::render($this->editTemplate, $this->contextData);
     }
 
