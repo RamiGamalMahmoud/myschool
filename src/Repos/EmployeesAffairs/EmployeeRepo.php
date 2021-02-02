@@ -38,10 +38,10 @@ class EmployeeRepo implements EmployeeRepoInterface
         $query = new Query();
         $query->select($this->columns)
             ->from($this->table)
-            ->join('cities')
-            ->on($this->table . '.city_id', 'cities.id')
-            ->join('governorates')
-            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->join('city')
+            ->on($this->table . '.city_id', 'city.id')
+            ->join('governorate')
+            ->on($this->table . '.governorate_id', 'governorate.id')
             ->where('employees.id', '=', $id);
         $employee = $this->dataAccess->get($query);
         return PersonBuilder::makeEmployeeObject($employee);
@@ -52,10 +52,10 @@ class EmployeeRepo implements EmployeeRepoInterface
         $query = new Query();
         $query->select($this->columns)
             ->from($this->table)
-            ->join('cities')
-            ->on($this->table . '.city_id', 'cities.id')
-            ->join('governorates')
-            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->join('city')
+            ->on($this->table . '.city_id', 'city.id')
+            ->join('governorate')
+            ->on($this->table . '.governorate_id', 'governorate.id')
             ->where('employee_status', '=', 'ORIGINAL')
             ->andWhere('attitude_to_work', '=', 'ON_TOP_OF_WORK')
             ->orderBy(['name']);
@@ -77,10 +77,10 @@ class EmployeeRepo implements EmployeeRepoInterface
         $query = new Query();
         $query->select($this->columns)
             ->from($this->table)
-            ->join('cities')
-            ->on($this->table . '.city_id', 'cities.id')
-            ->join('governorates')
-            ->on($this->table . '.governorate_id', 'governorates.id')
+            ->join('city')
+            ->on($this->table . '.city_id', 'city.id')
+            ->join('governorate')
+            ->on($this->table . '.governorate_id', 'governorate.id')
             ->where($name, '=', $value)
             ->orderBy([$this->table . '.name']);
         $data = $this->dataAccess->getAll($query);
