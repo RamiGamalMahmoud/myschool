@@ -3,15 +3,15 @@
 	<div class="form-item-container martial-status">
 		<label for="martial-status" class="lbl">الحالة الإجتماعية</label>
 		<select name="martial-status" id="martial-status" class="combo-box">
-			<option value="SINGLE">أعزب</option>
-			<option value="MARRIED">متزوج</option>
-			<option value="WIDOWER">أرمل</option>
-			<option value="DIVORCED">مطلق</option>
+			<option value="SINGLE" {% if socialData['martial-status'] == "SIGNLE"%} selected {% endif %}>أعزب</option>
+			<option value="MARRIED" {% if socialData['martial-status'] == "MARRIED"%} selected {% endif %}>متزوج</option>
+			<option value="WIDOWER" {% if socialData['martial-status'] == "WIDOWER"%} selected {% endif %}>أرمل</option>
+			<option value="DIVORCED" {% if socialData['martial-status'] == "DIVORCED"%} selected {% endif %}>مطلق</option>
 		</select>
 	</div>
 
 	<div class="form-item-container children-count">
 		<label for="children-count" class="lbl">عدد الأبناء</label>
-		<input type="number" name="children-count" id="children-count" class="text-box">
+		<input type="number" name="children-count" id="children-count" class="text-box" value="{{ socialData['children-count'] }}">
 	</div>
 </fieldset>

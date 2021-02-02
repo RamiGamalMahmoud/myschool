@@ -6,7 +6,7 @@
 				<label for="governorate" class="lbl">المحافظة</label>
 				<select name="governorate" id="governorate" class="combo-box">
 					{% for governorate in governorates %}
-						<option value="{{ governorate.id }}">{{ governorate.name }}</option>
+						<option value="{{ governorate.id }}" {% if address['governorate']['id'] == governorate.id %} selected {% endif %}>{{ governorate.name }}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -15,7 +15,7 @@
 				<label for="city" class="lbl">المدينة</label>
 				<select name="city" id="city" class="combo-box">
 					{% for city in cities %}
-						<option value="{{ city.id }}">{{ city.name }}</option>
+						<option value="{{ city.id }}" {% if address['city']['id'] == city.id %} selected {% endif %}>{{ city.name }}</option>
 					{% endfor %}
 				</select>
 			</div>
