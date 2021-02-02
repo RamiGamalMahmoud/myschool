@@ -1,17 +1,18 @@
 <?php
 
 use Simple\Core\Route;
+use SM\MiddleWares\Auth;
 use SM\Controllers\Logout;
 use SM\Controllers\IndexController;
-use SM\Controllers\Admin\AdminController;
-use SM\Controllers\EmployeesAffairs\EmployeesAffairsController;
-use SM\Controllers\Exams\Certificates\CertificatesController;
-use SM\Controllers\Exams\ExamsController;
-use SM\Controllers\Exams\MonitoringController;
-use SM\Controllers\Exams\Sheets\SheetsController;
 use SM\Controllers\LoginController;
 use SM\Controllers\Users\UserController;
-use SM\MiddleWares\Auth;
+use SM\Controllers\Admin\AdminController;
+use SM\Controllers\Exams\ExamsController;
+use SM\Controllers\Address\AddressController;
+use SM\Controllers\Exams\MonitoringController;
+use SM\Controllers\Exams\Sheets\SheetsController;
+use SM\Controllers\Exams\Certificates\CertificatesController;
+use SM\Controllers\EmployeesAffairs\EmployeesAffairsController;
 
 /**
  * GET ROUTES
@@ -58,6 +59,8 @@ Route::post('admin/users/edit/{id}', [UserController::class, 'update']);
 Route::post('employees-affairs/edit/{id}', [EmployeesAffairsController::class, 'update']);
 
 Route::post('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'store']);
+
+Route::get('adderss/cities/by-governorate/{governorate}', [AddressController::class, 'getCitiesByGovernorateId']);
 
 /**
  * MIDDLEWARE ROUTES
