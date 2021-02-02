@@ -6,7 +6,18 @@ legend {
 }
 
 fieldset {
-  border: 2px solid $main-color;
-  border-radius: 10px;
+  border: 1px solid $main-color;
+  border-radius: 4px;
   margin: auto;
+  padding: 5px;
+
+  &:hover {
+    box-shadow: 0 0 3px $main-color;
+  }
+
+  &:hover>legend {
+    background-color: $main-color;
+    color: #FFF;
+    box-shadow: 0 0 5px $main-color;
+  }
 }

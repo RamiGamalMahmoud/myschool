@@ -43,3 +43,19 @@
 fieldset {
   width: 850px;
 }
+
+.buttons-container {
+  position: relative;
+
+  .content-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    .btn {
+      width: 200px;
+      height: 30px;
+    }
+  }
+}
