@@ -4,6 +4,7 @@ namespace SM\Controllers\Address;
 
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Core\Request;
+use Simple\Core\Response;
 use Simple\Core\Router;
 use SM\Services\Address\AddressService;
 
@@ -35,8 +36,6 @@ class AddressController
     {
         $governorateId = $this->router->get('governorate');
         $cities = $this->addressService->getCitiesByGovernorate($governorateId);
-        $data = json_encode($cities);
-        header('Content-Type: application/json');
-        echo $data;
+        Response::json($cities, 200);
     }
 }
