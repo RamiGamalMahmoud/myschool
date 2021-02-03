@@ -47,7 +47,7 @@ class EmployeesAffairsView
     /**
      * Shows edit employee form
      */
-    public function showEditView()
+    public function showEditView($employee)
     {
 
         $attitudes = [
@@ -78,6 +78,7 @@ class EmployeesAffairsView
         $this->addToContextData('attitudes', $attitudes);
         $this->addToContextData('employeeStatus', $employeeStatus);
         $this->addToContextData('employeeType', $employeeType);
+        $this->addToContextData('employee', $employee);
         View::render($this->editTemplate, $this->contextData);
     }
 
