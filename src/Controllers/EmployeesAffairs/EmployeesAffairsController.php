@@ -56,8 +56,7 @@ class EmployeesAffairsController
         $employees = array_map(function ($employee) {
             return $employee->toArray();
         }, $employees);
-        $this->view->addToContextData('employees', $employees);
-        $this->view->showMainView();
+        $this->view->showEmployeesTable($employees);
     }
 
     /**
@@ -87,17 +86,16 @@ class EmployeesAffairsController
     }
 
     /**
-     * Get employees by attributes
+     * Get employees by criteria
      */
     public function getBy()
     {
-        $name = $this->router->get('criteria');
-        $value = $this->router->get('value');
-        $employees = $this->employeeRepo->filterBy($name, $value);
+        $criteriaName = $this->router->get('criteria');
+        $criteriaValue = $this->router->get('value');
+        $employees = $this->employeeRepo->filterBy($criteriaName, $criteriaValue);
         $employees = array_map(function ($employee) {
             return $employee->toArray();
         }, $employees);
-        $this->view->addToContextData('employees', $employees);
-        $this->view->showMainView();
+        $this->view->showEmployeesTable($employees);
     }
 }

@@ -35,8 +35,9 @@ class EmployeesAffairsView
     /**
      * Rndering the main view
      */
-    public function showMainView()
+    public function showEmployeesTable($employees = [])
     {
+        $this->addToContextData('employees', $employees);
         View::render($this->mainTemplate, $this->contextData);
     }
 
