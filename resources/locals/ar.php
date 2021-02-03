@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'subject-names' => [
+    'subject-name' => [
         'arabic' => 'اللغة العربية',
         'english' => 'اللغة الإنجليزية',
         'socials' => 'الدراسات الإجتماعية',
@@ -14,7 +14,7 @@ return [
         'draw' => 'التربية الفنية',
         'sports' => 'التربية الرياضية'
     ],
-    'sex' => [
+    'gender' => [
         'male' => 'ذكر',
         'female' => 'أنثى'
     ],
@@ -30,9 +30,9 @@ return [
             'ss' => 'له دور ثاني'
         ]
     ],
-    'studentReligion' => [
-        'muslem' => 'مسلم',
-        'christian' => 'مسيحي'
+    'religion' => [
+        'MUSLIM' => 'مسلم',
+        'CHRISTIAN' => 'مسيحي'
     ],
     'semesterName' => [
         'fs' => 'الفصل الدراسي الأول',
@@ -55,18 +55,20 @@ return [
         'ABS' => 'غ'
     ],
 
-    'groups' => [
+    'group' => [
         'admin' => 'مسئول',
         'control' => 'كنترول',
         'employee' => 'موظف',
-        'employees_affairs' => 'شئون العاملين',
+        'employees-affairs' => 'شئون العاملين',
         'guest' => 'ضيف',
         'student' => 'طالب',
-        'students_affairs' => 'شئون الطلاب'
+        'students-affairs' => 'شئون الطلاب'
     ],
 
-    'privileges' => [
+    'privilege' => [
         'READ' => 'عرض',
         'WRITE' => 'عرض و تعديل'
-    ]
+    ],
+
+    '' => ''
 ];

@@ -6,18 +6,17 @@ use Simple\Core\View;
 use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\Session;
+use Simple\Core\Redirect;
+use SM\Helpers\Translate;
+use SM\Entities\Users\User;
 use SM\Views\User\UserView;
 use SM\Repos\Users\UserRepo;
 use SM\Repos\Users\IUserRepo;
 use SM\Repos\Users\UserGroupRepo;
 use SM\Controllers\ErrorController;
 use Simple\Core\DataAccess\MySQLAccess;
-use Simple\Core\Redirect;
-use Simple\Helpers\Log;
-use SM\Entities\Users\User;
 use SM\Exceptions\AuthorizationException;
 use SM\Exceptions\EntityNotFoundException;
-use SM\Helpers\Translate;
 use SM\Repos\Users\UserGroupRepoInterface;
 
 class UserController
@@ -75,8 +74,8 @@ class UserController
         $users = $this->usersRepo->getAll();
         $translatedUsers = array_map(function ($user) {
             $user = $user->toArray();
-            $user['user-group-name'] = Translate::get('groups', $user['user-group-name']);
-            $user['user-privileges'] = Translate::get('privileges', $user['user-privileges']);
+            $user['user-group-name'] = Translate::get('group', $user['user-group-name']);
+            $user['user-privileges'] = Translate::get('privilege', $user['user-privileges']);
             return $user;
         }, $users);
 
@@ -131,7 +130,7 @@ class UserController
         $groups = $groupsRepo->getAll();
 
         $translatedGroups = array_map(function ($group) {
-            $group['group_name'] = Translate::get('groups', $group['group_name']);
+            $group['group_name'] = Translate::get('group', $group['group_name']);
             return $group;
         }, $groups);
 
@@ -147,7 +146,7 @@ class UserController
     {
         $privileges = ['READ', 'WRITE'];
         $translatedPrivileges = array_map(function ($privilege) {
-            $translated = Translate::get('privileges', $privilege);
+            $translated = Translate::get('privilege', $privilege);
             return ['key' => $privilege, 'value' => $translated];
         }, $privileges);
         return $translatedPrivileges;

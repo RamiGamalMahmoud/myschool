@@ -17,7 +17,7 @@ class Translate
 
     public static function getSubjectName(?string $subjectName): string
     {
-        $local = self::$local['subject-names'];
+        $local = self::$local['subject-name'];
         if (in_array($subjectName, array_keys($local))) {
             return $local[$subjectName];
         }
