@@ -2,14 +2,14 @@
 
 namespace SM\Controllers\EmployeesAffairs;
 
-use Simple\Core\DataAccess\MySQLAccess;
-use Simple\Core\Request;
 use Simple\Core\Router;
 use Simple\Helpers\Log;
-use SM\Repos\EmployeesAffairs\EmployeeRepo;
-use SM\Repos\EmployeesAffairs\EmployeeRepoInterface;
+use Simple\Core\Request;
+use Simple\Core\DataAccess\MySQLAccess;
 use SM\Services\Address\AddressService;
+use SM\Repos\EmployeesAffairs\EmployeeRepo;
 use SM\Views\EmployeesAffairs\EmployeesAffairsView;
+use SM\Repos\EmployeesAffairs\EmployeeRepoInterface;
 
 class EmployeesAffairsController
 {
@@ -72,8 +72,7 @@ class EmployeesAffairsController
         $governorates = $addressService->getGovernorates();
         $this->view->addToContextData('cities', $cities);
         $this->view->addToContextData('governorates', $governorates);
-        $this->view->addToContextData('employee', $employee);
-        $this->view->showEditView();
+        $this->view->showEditView($employee);
     }
 
     /**
