@@ -3,7 +3,7 @@
 namespace SM\Views\EmployeesAffairs;
 
 use Simple\Core\View;
-use SM\Entities\Employees\Employee;
+use SM\Services\TranslateEmployeeData;
 
 class EmployeesAffairsView
 {
@@ -37,7 +37,10 @@ class EmployeesAffairsView
      */
     public function showEmployeesTable($employees = [])
     {
-        $this->addToContextData('employees', $employees);
+        $translatedData = array_map(function ($employee) {
+            return TranslateEmployeeData::translateEmployee($employee);
+        }, $employees);
+        $this->addToContextData('employees', $translatedData);
         View::render($this->mainTemplate, $this->contextData);
     }
 
