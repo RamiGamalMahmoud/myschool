@@ -15,8 +15,8 @@ return [
         'sports' => 'التربية الرياضية'
     ],
     'gender' => [
-        'male' => 'ذكر',
-        'female' => 'أنثى'
+        'MALE' => 'ذكر',
+        'FEMALE' => 'أنثى'
     ],
     'enrollementStauts' => [
         'fresh-man' => 'مستجد',
@@ -33,6 +33,10 @@ return [
     'religion' => [
         'MUSLIM' => 'مسلم',
         'CHRISTIAN' => 'مسيحي'
+    ],
+    'nationality' => [
+        'EGY' => 'مصري',
+        'NON_EGY' => 'غير مصري'
     ],
     'semesterName' => [
         'fs' => 'الفصل الدراسي الأول',
@@ -70,5 +74,40 @@ return [
         'WRITE' => 'عرض و تعديل'
     ],
 
-    '' => ''
+    'martial-status' => [
+        'SINGLE'   => 'أعزب',
+        'MARRIED'  => 'متزوج',
+        'WIDOWER'  => 'أرمل',
+        'DIVORCED' => 'مطلق'
+    ],
+
+    'job-data' => [
+
+        'attitude-to-work' => [
+            'ON_TOP_OF_WORK' => 'على رأس العمل',
+            'DIED' => 'متوفى',
+            'PENSIONER' => 'معاش',
+            'SIXK_LEAVE' => 'أجازة مرضية',
+            'UNPAID_LEAVE' => 'أجازة بدون مرتب',
+            'CHILDCARE_LEAVE' => 'رعاية طفل',
+            'FIRED' => 'مفصول',
+            'LOANED' => 'إعارة',
+            'MATERNITY_LEAVE' => 'عامل',
+            'RESIGNED' => 'مستقيل',
+            'RECRUIT' => 'مجند',
+            'OUT_OF_WORK' => 'منقطع عن العمل'
+        ],
+        'employee-status' => [
+            'ORIGINAL' => 'أصلي',
+            'DEPUTED' => 'منتدب',
+            'MOVED' => 'تم نقله'
+        ],
+
+        'employee-type' => [
+            "MANAGEMENT" => 'إدارة مدرسية',
+            "TEACHER" => 'مدرس',
+            "EMPLOYEE" => 'إداري',
+            "WORKER" => 'عامل'
+        ]
+    ]
 ];
