@@ -14,7 +14,16 @@ class TranslateEmployeeData
         $translateData['social-data'] = self::translateSocialData($employee['social-data']);
         $translateData['job-data'] = self::translateJobData($employee['job-data']);
         $translateData['address'] = $employee['address'];
+        $translateData['phone'] = self::translatePhone($employee['phone']);
         return $translateData;
+    }
+
+    public static function translatePhone(array $phone)
+    {
+        return [
+            'fixed'  => Translate::convertNumbers($phone['fixed']),
+            'mobile' => Translate::convertNumbers($phone['mobile'])
+        ];
     }
 
     public static function translatePersonalData(array $personalData): array
