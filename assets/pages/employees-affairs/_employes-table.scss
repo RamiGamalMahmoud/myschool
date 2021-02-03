@@ -1,10 +1,48 @@
 .employees.data-table {
   .table-head {
     max-width: calc(100% - 17px);
+
+    #columns-names {
+      height: 40px;
+    }
   }
 
   .table-body {
     max-height: calc(100vh - 150px);
     font-weight: bold;
+
+    .name-cell {
+      padding: 0;
+      padding-right: 20px;
+      text-align: right;
+      position: relative;
+
+      &.link {
+
+        a {
+          display: block;
+          padding: 5px;
+          padding-right: 0;
+        }
+
+        &:hover {
+
+          a {
+            color: #262bc7;
+          }
+
+          :after {
+            content: "✍️";
+            font-size: .6em;
+            position: absolute;
+            top: 50%;
+            right: 3px;
+            transform: translateY(-34%);
+            height: 87%;
+            width: 19px;
+          }
+        }
+      }
+    }
   }
 }
