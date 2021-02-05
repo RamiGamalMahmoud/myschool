@@ -22,7 +22,7 @@ class EmployeeRepo implements EmployeeRepoInterface
     /**
      * @var array $columns
      */
-    private array $columns = ['employees.id', 'name', 'national_id', 'pirthdate', 'district', 'date_of_hiring', 'date_of_work_received', 'gender', 'religion', 'martial_status', 'children_count', 'nationality', 'employee_status', 'employee_type', 'attitude_to_work', 'fixed_phone', 'mobile', 'employees.governorate_id', 'city_id', 'city_name', 'governorate_name'];
+    private array $columns = [];
 
     /**
      * Constructor
@@ -30,6 +30,7 @@ class EmployeeRepo implements EmployeeRepoInterface
     public function __construct(IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
+        $this->columns = require_once __DIR__ . DS . 'employee-table-columns.php';
         $this->table = 'employees';
     }
 
@@ -37,12 +38,8 @@ class EmployeeRepo implements EmployeeRepoInterface
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from($this->table)
-            ->join('city')
-            ->on($this->table . '.city_id', 'city.id')
-            ->join('governorate')
-            ->on($this->table . '.governorate_id', 'governorate.id')
-            ->where('employees.id', '=', $id);
+            ->from('employee_view')
+            ->where('id', '=', $id);
         $employee = $this->dataAccess->get($query);
         return PersonBuilder::makeEmployeeObject($employee);
     }
@@ -51,13 +48,8 @@ class EmployeeRepo implements EmployeeRepoInterface
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from($this->table)
-            ->join('city')
-            ->on($this->table . '.city_id', 'city.id')
-            ->join('governorate')
-            ->on($this->table . '.governorate_id', 'governorate.id')
-            ->where('employee_status', '=', 'ORIGINAL')
-            ->andWhere('attitude_to_work', '=', 'ON_TOP_OF_WORK')
+            ->from('employee_view')
+
             ->orderBy(['name']);
         $data = $this->dataAccess->getAll($query);
         $employees = array_map(function ($employee) {
