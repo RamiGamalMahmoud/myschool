@@ -9,11 +9,11 @@ class Address
 
     private Governorate $governorate;
 
-    private string $district;
+    private ?string $district;
 
-    private string $street;
+    private ?string $street;
 
-    public function __construct(Governorate $governorate, City $city, string $district, string $street)
+    public function __construct(Governorate $governorate, City $city, ?string $district, ?string $street)
     {
         $this->city = $city;
         $this->governorate = $governorate;
