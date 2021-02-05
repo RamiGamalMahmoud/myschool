@@ -92,8 +92,8 @@ class PersonBuilder
     {
         $city = self::makeCityObject();
         $governorate = self::makeGovernorateObject();
-        $district = '';
-        $street = '';
+        $district = self::$data['district'];
+        $street = self::$data['street'];
         $address = new Address($governorate, $city, $district, $street);
         return $address;
     }

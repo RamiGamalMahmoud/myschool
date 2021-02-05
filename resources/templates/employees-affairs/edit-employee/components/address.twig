@@ -25,13 +25,13 @@
 	<div class="form-row">
 		<div class="form-row-content">
 			<div class="form-item-container district">
-				<label for="district" class="lbl">المنطقة أو القرية</label>
-				<input type="text" name="district" id="district" class="text-box">
+				<label for="district" class="lbl">حي - منطقة - قرية</label>
+				<input type="text" name="district" id="district" class="text-box" value={{ address['district'] }}>
 			</div>
 
 			<div class="form-item-container street">
 				<label for="street" class="lbl">الشارع</label>
-				<input type="text" name="street" id="street" class="text-box">
+				<input type="text" name="street" id="street" class="text-box" value={{ address['street'] }}>
 			</div>
 
 			<div class="form-item-container house">
