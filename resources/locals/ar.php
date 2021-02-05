@@ -15,24 +15,24 @@ return [
         'sports' => 'التربية الرياضية'
     ],
     'gender' => [
-        'MALE' => 'ذكر',
-        'FEMALE' => 'أنثى'
+        'male' => 'ذكر',
+        'female' => 'أنثى'
     ],
     'enrollementStauts' => [
-        'fresh-man' => 'مستجد',
+        'fresh_man' => 'مستجد',
         'moved' => 'منقول',
         'stayer' => 'معيد'
     ],
-    'examStatus' => [
-        'PASSED' => 'ناجح',
-        'FAILED' => [
+    'exam_status' => [
+        'passed' => 'ناجح',
+        'failed' => [
             'fs' => 'ضعيف',
             'ss' => 'له دور ثاني'
         ]
     ],
     'religion' => [
-        'MUSLIM' => 'مسلم',
-        'CHRISTIAN' => 'مسيحي'
+        'muslim' => 'مسلم',
+        'christisn' => 'مسيحي'
     ],
     'nationality' => [
         'EGY' => 'مصري',
@@ -63,10 +63,10 @@ return [
         'admin' => 'مسئول',
         'control' => 'كنترول',
         'employee' => 'موظف',
-        'employees-affairs' => 'شئون العاملين',
+        'employees_affairs' => 'شئون العاملين',
         'guest' => 'ضيف',
         'student' => 'طالب',
-        'students-affairs' => 'شئون الطلاب'
+        'students_affairs' => 'شئون الطلاب'
     ],
 
     'privilege' => [
@@ -75,39 +75,39 @@ return [
     ],
 
     'martial-status' => [
-        'SINGLE'   => 'أعزب',
-        'MARRIED'  => 'متزوج',
-        'WIDOWER'  => 'أرمل',
-        'DIVORCED' => 'مطلق'
+        'single'   => 'أعزب',
+        'married'  => 'متزوج',
+        'widower'  => 'أرمل',
+        'divorced' => 'مطلق'
     ],
 
     'job-data' => [
 
         'attitude-to-work' => [
-            'ON_TOP_OF_WORK' => 'على رأس العمل',
-            'DIED' => 'متوفى',
-            'PENSIONER' => 'معاش',
-            'SIXK_LEAVE' => 'أجازة مرضية',
-            'UNPAID_LEAVE' => 'أجازة بدون مرتب',
-            'CHILDCARE_LEAVE' => 'رعاية طفل',
-            'FIRED' => 'مفصول',
-            'LOANED' => 'إعارة',
-            'MATERNITY_LEAVE' => 'عامل',
-            'RESIGNED' => 'مستقيل',
-            'RECRUIT' => 'مجند',
-            'OUT_OF_WORK' => 'منقطع عن العمل'
+            'on_top_of_work' => 'على رأس العمل',
+            'died' => 'متوفى',
+            'pensioner' => 'معاش',
+            'sick_leave' => 'أجازة مرضية',
+            'unpaid_leave' => 'أجازة بدون مرتب',
+            'childcare_leave' => 'رعاية طفل',
+            'fired' => 'مفصول',
+            'loaned' => 'إعارة',
+            'matetnity_leave' => 'عامل',
+            'resigned' => 'مستقيل',
+            'recruti' => 'مجند',
+            'out_of_work' => 'منقطع عن العمل'
         ],
         'employee-status' => [
-            'ORIGINAL' => 'أصلي',
-            'DEPUTED' => 'منتدب',
-            'MOVED' => 'تم نقله'
+            'totally_present' => 'أصلي',
+            'partially_present' => 'منتدب',
+            'not_present' => 'تم نقله'
         ],
 
         'employee-type' => [
-            "MANAGEMENT" => 'إدارة مدرسية',
-            "TEACHER" => 'مدرس',
-            "EMPLOYEE" => 'إداري',
-            "WORKER" => 'عامل'
+            "management" => 'إدارة مدرسية',
+            "teacher" => 'مدرس',
+            "employee" => 'إداري',
+            "worker" => 'عامل'
         ]
     ]
 ];
