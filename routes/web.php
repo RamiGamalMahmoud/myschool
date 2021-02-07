@@ -21,7 +21,7 @@ Route::get('login', [LoginController::class, 'showLogin']);
 
 Route::get('logout', [Logout::class, 'logout']);
 
-Route::get('/', [IndexController::class, 'index'], ['isAuthenticated']);
+Route::get('/', [IndexController::class, 'index']);
 
 Route::get('admin', [AdminController::class, 'index'], ['isAuthenticated', 'authorize']);
 
