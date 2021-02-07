@@ -14,7 +14,7 @@ class Auth
      * 
      * @return bool
      */
-    public function isAuthenticated()
+    public static function isAuthenticated()
     {
         return Session::has('user-id');
     }
