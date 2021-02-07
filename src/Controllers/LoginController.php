@@ -48,6 +48,5 @@ class LoginController
         foreach ($userData as $key => $value) {
             Session::set($key, $value);
         }
-        var_dump($_SESSION);
     }
 }
