@@ -2,6 +2,7 @@
 
 namespace SM\Controllers;
 
+use Simple\Core\Redirect;
 use Simple\Core\Session;
 
 class Logout
@@ -9,6 +10,6 @@ class Logout
     public static function Logout()
     {
         Session::destroy();
-        header('location: /login');
+        Redirect::to('/login');
     }
 }
