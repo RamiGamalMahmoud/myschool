@@ -1,10 +1,9 @@
-// number from english to indi converter
 import DataTable from '/js/lib/datatable.js';
 
 const monitoringTableElement = document.getElementById('monitoring-table');
 const sheetElement = document.getElementById('sheet');
 
-if (sheet !== null) {
+if (sheetElement !== null) {
   const sheet = new DataTable(sheetElement);
   sheet.init();
 }
