@@ -1,15 +1,18 @@
 <?php
 
-use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Core\View;
 use SM\Helpers\Translate;
+use Simple\Helpers\Config;
+use Simple\Core\DataAccess\MySQLAccess;
 
-require_once('../config/init.php');
-require_once('../config/config.php');
+require_once '../config/init.php';
+require_once '../config/config.php';
 
 require_once '../vendor/autoload.php';
 
 $database_config = require_once(DB_CONFIG);
+
+Config::load(CONFIG_DIR);
 
 MySQLAccess::config($database_config[DATABASE_DRIVER]);
 
