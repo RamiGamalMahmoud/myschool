@@ -5,7 +5,7 @@ if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 /**
  * THE APPLICATION ROOT
  */
-define('ROOT', str_replace('/', DS, dirname($_SERVER['DOCUMENT_ROOT'])) . DS);
+define('ROOT', str_replace('/', DS, dirname(__DIR__)) . DS);
 
 /**
  * THE APPLICATION SOURCE DIRECTORY
