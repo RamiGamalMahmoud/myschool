@@ -2,10 +2,9 @@
 
 namespace SM\MiddleWares;
 
-use Simple\Core\DataAccess\MySQLAccess;
-use Simple\Core\Request;
 use Simple\Core\Session;
 use SM\Repos\Users\UserRepo;
+use Simple\Core\DataAccess\MySQLAccess;
 
 class Auth
 {
@@ -49,7 +48,7 @@ class Auth
      * @param Simple\Core\Request $request the request object
      * @return bool
      */
-    public static function authorize(Request $request)
+    public static function authorize()
     {
         return true;
     }
