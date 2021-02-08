@@ -2,67 +2,68 @@
 
 namespace SM\Controllers;
 
+use Simple\Core\IErrorHandler;
 use Simple\Core\View;
 
-class ErrorController
+class ErrorController implements IErrorHandler
 {
-    private static array $context;
-    private static string $template = 'errors/error.twig';
+    private array $context;
+    private string $template = 'errors/error.twig';
 
-    public static function render()
+    public function render()
     {
-        View::render(self::$template, self::$context);
+        View::render($this->template, $this->context);
     }
 
-    public static function internalError()
+    public function internalError()
     {
-        self::$context = [
+        $this->context = [
             'code' => 500,
             'message' => 'internal server error',
             'description' => 'we are sorry, this is an internal server error'
         ];
         http_response_code(500);
-        self::render();
+        $this->render();
         exit;
     }
 
-    public static function pageNotFound($message = '', $description = '')
+    public function pageNotFound($message = '', $description = '')
     {
-        self::$context = [
+        $this->context = [
             'code' => 404,
             'message' => $message === '' ? 'page not found' : $message,
             'description' => $description === '' ? 'you are trying to visit page that not exist' : $description
         ];
         http_response_code(404);
-        self::render();
+        $this->render();
         exit;
     }
 
-    public static function resourcesRemoved()
+    public function resourcesRemoved()
     {
-        self::$context = [
+        $this->context = [
             'code' => 410,
             'message' => 'page not found',
             'description' => 'sorry, the resources you requested has been deleted'
         ];
         http_response_code(410);
-        self::render();
+        $this->render();
         exit;
     }
 
-    public static function authorizationError()
+    public function authorizationError()
     {
-        self::$context = [
+        $this->context = [
             'code' => 401,
             'message' => 'authorization failed',
             'description' => 'you are not authorized to access this url'
         ];
         http_response_code(401);
-        self::render();
+        $this->render();
         exit;
     }
 
-    public static function api()
+    public function api()
     {
         http_response_code(404);
         echo 'request url not exists';
