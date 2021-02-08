@@ -72,6 +72,9 @@ class EmployeesAffairsController
         $governorates = $addressService->getGovernorates();
         $this->view->addToContextData('cities', $cities);
         $this->view->addToContextData('governorates', $governorates);
+        $this->view->addToContextData('gender', ['male', 'female']);
+        $this->view->addToContextData('religion', ['muslim', 'christian']);
+        $this->view->addToContextData('employee-type', ['management', 'teacher', 'employee', 'worker']);
         $this->view->showEditView($employee);
     }
 
