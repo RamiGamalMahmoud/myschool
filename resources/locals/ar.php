@@ -92,9 +92,9 @@ return [
             'childcare_leave' => 'رعاية طفل',
             'fired' => 'مفصول',
             'loaned' => 'إعارة',
-            'matetnity_leave' => 'عامل',
+            'maternity_leave' => 'أجازة وضع',
             'resigned' => 'مستقيل',
-            'recruti' => 'مجند',
+            'recruit' => 'مجند',
             'out_of_work' => 'منقطع عن العمل'
         ],
         'employee-status' => [
