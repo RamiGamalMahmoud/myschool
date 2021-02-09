@@ -36,7 +36,7 @@ return [
     ],
     'nationality' => [
         'EGY' => 'مصري',
-        'NON_EGY' => 'غير مصري'
+        'NON-EGY' => 'غير مصري'
     ],
     'semesterName' => [
         'fs' => 'الفصل الدراسي الأول',
@@ -97,7 +97,7 @@ return [
             'recruit' => 'مجند',
             'out_of_work' => 'منقطع عن العمل'
         ],
-        'employee-status' => [
+        'presence-status' => [
             'totally_present' => 'أصلي',
             'partially_present' => 'منتدب',
             'not_present' => 'تم نقله'
