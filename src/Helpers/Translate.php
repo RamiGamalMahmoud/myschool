@@ -73,7 +73,7 @@ class Translate
     public static function convertDate($date)
     {
         $dateItems = array_reverse(explode('-', $date));
-        $_date = implode('-', $dateItems);
+        $_date = implode(' / ', $dateItems);
         return self::convertNumbers($_date);
     }
 }
