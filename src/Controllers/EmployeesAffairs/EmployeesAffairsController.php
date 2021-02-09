@@ -6,7 +6,6 @@ use Simple\Core\Router;
 use Simple\Helpers\Log;
 use Simple\Core\Request;
 use Simple\Core\DataAccess\MySQLAccess;
-use SM\Services\Address\AddressService;
 use SM\Repos\EmployeesAffairs\EmployeeRepo;
 use SM\Views\EmployeesAffairs\EmployeesAffairsView;
 use SM\Repos\EmployeesAffairs\EmployeeRepoInterface;
@@ -64,17 +63,9 @@ class EmployeesAffairsController
      */
     public function edit()
     {
-        $id = $this->router->get('id');
-        $employee = $this->employeeRepo->getById($id)->toArray();
-        $govId = $employee['address']['governorate']['id'];
-        $addressService = new AddressService(new MySQLAccess());
-        $cities = $addressService->getCitiesByGovernorate($govId);
-        $governorates = $addressService->getGovernorates();
-        $this->view->addToContextData('cities', $cities);
-        $this->view->addToContextData('governorates', $governorates);
-        $this->view->addToContextData('gender', ['male', 'female']);
-        $this->view->addToContextData('religion', ['muslim', 'christian']);
-        $this->view->addToContextData('employee-type', ['management', 'teacher', 'employee', 'worker']);
+        $employeeId = $this->router->get('id');
+        $employee = $this->employeeRepo->getById($employeeId)->toArray();
+
         $this->view->showEditView($employee);
     }
 
