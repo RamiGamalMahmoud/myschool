@@ -1,4 +1,6 @@
 notes/
+node_modules/
+resources/assets/
 tests/
 lib/
 vendor/
