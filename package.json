@@ -1,0 +1,23 @@
+{
+  "name": "myschool",
+  "version": "0.2.1",
+  "description": "",
+  "main": "file.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamiGamalMahmoud/myschool.git"
+  },
+  "author": "rami-gamal <rami.gamal.mahmoud@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RamiGamalMahmoud/myschool/issues"
+  },
+  "homepage": "https://github.com/RamiGamalMahmoud/myschool#readme",
+  "devDependencies": {
+    "twig-html-loader": "^0.1.8"
+  }
+}
