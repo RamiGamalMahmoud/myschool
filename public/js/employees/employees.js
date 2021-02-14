@@ -1,11 +1,11 @@
-import DataTable from '/js/lib/datatable.js';
+import DataTable from '../lib/datatable.js';
 
 const dataTableElement = document.querySelector('.employees.data-table');
 if (dataTableElement !== null) {
   const datatable = new DataTable(dataTableElement);
   datatable.init();
 }
-const govCombo = document.getElementById('governorate');
+const govCombo = document.getElementById('governorate-id');
 
 if (govCombo !== null) {
   govCombo.addEventListener('change', (ev) => {
@@ -21,7 +21,7 @@ function getCitiesByGovernorateId(governorateId) {
     if (this.readyState === 4) {
       if (this.status == 200) {
         let cities = JSON.parse(this.responseText);
-        let citiesElement = document.getElementById('city');
+        let citiesElement = document.getElementById('city-id');
         citiesElement.textContent = '';
         for (const city of cities) {
           let option = document.createElement('option');
