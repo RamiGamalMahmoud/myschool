@@ -24,3 +24,5 @@ MySQLAccess::connect();
 Translate::init(require_once '../resources/locals/ar.php');
 
 View::init(VIEWS_PATH, COMPILE_PATH, VIEWS_AUTO_RELOAD);
+
+date_default_timezone_set(Config::get('app.time_zone'));
