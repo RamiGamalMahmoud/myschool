@@ -12,11 +12,11 @@
 //         if(i < 1){
 //             dt.setAttribute('type', 'checkbox');
 //             td.innerHTML = '<input type="checkbox">'
-//             // td.appendChild('dt');
+//             td.appendChild('dt');
 //         }else{
 //             dt.setAttribute('type', 'text');
 //             td.innerHTML = '<input type="text">'
-//             // td.appendChild('dt');
+//             td.appendChild('dt');
 //         }
 //         newRow.appendChild(td);
 //     }

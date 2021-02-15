@@ -1,13 +1,15 @@
-let inputs = document.querySelectorAll('.login-form input:not(:last-child)');
+export default (function () {
+  let inputs = document.querySelectorAll('.login-form input:not(:last-child)');
 
-inputs.forEach((input) => {
+  inputs.forEach((input) => {
 
-  input.addEventListener('focus', () => {
-    input.setAttribute('text-data', input.getAttribute('placeholder'));
-    input.setAttribute('placeholder', '');
-  });
+    input.addEventListener('focus', () => {
+      input.setAttribute('text-data', input.getAttribute('placeholder'));
+      input.setAttribute('placeholder', '');
+    });
 
-  input.addEventListener('blur', () => {
-    input.setAttribute('placeholder', input.getAttribute('text-data'));
+    input.addEventListener('blur', () => {
+      input.setAttribute('placeholder', input.getAttribute('text-data'));
+    });
   });
 });
