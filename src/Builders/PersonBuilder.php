@@ -2,14 +2,11 @@
 
 namespace SM\Builders;
 
-use Simple\Helpers\Log;
-use SM\Entities\Employees\Employee;
-use SM\Entities\EmployeesAffairs\EmployeeStatus;
-use SM\Entities\EmployeesAffairs\SocialStatus;
 use SM\Objects\Phone;
 use SM\Objects\Address\City;
 use SM\Objects\PersonalData;
 use SM\Objects\Address\Address;
+use SM\Entities\Employees\Employee;
 use SM\Objects\Address\Governorate;
 
 class PersonBuilder
