@@ -3,6 +3,10 @@
 namespace SM\Views\EmployeesAffairs;
 
 use Simple\Core\View;
+use Simple\Helpers\Log;
+use SM\Services\Address\AddressService;
+use SM\Services\EmployeesAffairs\JobDataService;
+use SM\Services\EmployeesAffairs\SocialDataService;
 use SM\Services\TranslateEmployeeData;
 
 class EmployeesAffairsView
@@ -38,7 +42,11 @@ class EmployeesAffairsView
     public function showEmployeesTable($employees = [])
     {
         $translatedData = array_map(function ($employee) {
-            return TranslateEmployeeData::translateEmployee($employee);
+            return [
+                'employee' => TranslateEmployeeData::translateEmployee($employee['employee']),
+                'employee-status' => TranslateEmployeeData::translateEmployeeStatus($employee['employee-status']),
+                'social-status' => TranslateEmployeeData::translateSocialStatus($employee['social-status'])
+            ];
         }, $employees);
         $this->addToContextData('employees', $translatedData);
         View::render($this->mainTemplate, $this->contextData);
@@ -49,36 +57,48 @@ class EmployeesAffairsView
      */
     public function showEditView($employee)
     {
+        $govId = $employee['employee']['address']['governorate']['id'];
 
-        $attitudes = [
-            'ON_TOP_OF_WORK' => 'على رأس العمل',
-            'DIED' => 'متوفى',
-            'PENSIONER' => 'معاش',
-            'SIXK_LEAVE' => 'أجازة مرضية',
-            'UNPAID_LEAVE' => 'أجازة بدون مرتب',
-            'CHILDCARE_LEAVE' => 'رعاية طفل',
-            'FIRED' => 'مفصول',
-            'LOANED' => 'إعارة',
-            'MATERNITY_LEAVE' => 'عامل',
-            'RESIGNED' => 'مستقيل',
-            'RECRUIT' => 'مجند',
-            'OUT_OF_WORK' => 'منقطع عن العمل'
-        ];
-        $employeeStatus = [
-            'ORIGINAL' => 'أصلي',
-            'DEPUTED' => 'منتدب',
-            'MOVED' => 'تم نقله'
-        ];
+        $addressService = new AddressService();
+        $socialDataService = new SocialDataService();
+        $jobDataService = new JobDataService();
+
+        $allMartialStatuses = $socialDataService->getAllMartialStatus();
+        $allPresenceStatus = $jobDataService->getAllPresenceStatus();
+        $allAttitudes = $jobDataService->getAllAttitudes();
+
+        $allAttitudes = array_map(function ($attitude) {
+            return TranslateEmployeeData::translateAttitudeToWork($attitude);
+        }, $allAttitudes);
+
+        $allMartialStatuses = array_map(function ($martial) {
+            return TranslateEmployeeData::translateMartialStatus($martial);
+        }, $allMartialStatuses);
+
+        $allPresenceStatus = array_map(function ($presenceStatus) {
+            return TranslateEmployeeData::translatePresenceStatus($presenceStatus);
+        }, $allPresenceStatus);
+
         $employeeType = [
-            "MANAGEMENT" => 'إدارة مدرسية',
-            "TEACHER" => 'مدرس',
-            "EMPLOYEE" => 'إداري',
-            "WORKER" => 'عامل'
+            'management' => 'إدارة مدرسية',
+            'teacher' => 'مدرس',
+            'employee' => 'إداري',
+            'worker' => 'عامل'
         ];
-        $this->addToContextData('attitudes', $attitudes);
-        $this->addToContextData('employeeStatus', $employeeStatus);
+
+        $gender = [];
+        $religion = [];
+
+        $this->addToContextData('cities', $addressService->getCitiesByGovernorate($govId));
+        $this->addToContextData('governorates', $addressService->getGovernorates());
+        $this->addToContextData('martialStatuses', $allMartialStatuses);
+        $this->addToContextData('attitudes', $allAttitudes);
+        $this->addToContextData('presenceStatuses', $allPresenceStatus);
+        $this->addToContextData('gender', ['male', 'female']);
+        $this->addToContextData('religion', ['muslim', 'christian']);
         $this->addToContextData('employeeType', $employeeType);
         $this->addToContextData('employee', $employee);
+
         View::render($this->editTemplate, $this->contextData);
     }
 
