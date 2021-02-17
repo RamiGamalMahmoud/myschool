@@ -98,9 +98,9 @@ return [
             'out_of_work' => 'منقطع عن العمل'
         ],
         'presence-status' => [
-            'totally_present' => 'أصلي',
-            'partially_present' => 'منتدب',
-            'not_present' => 'تم نقله'
+            'totally_present' => 'موجود',
+            'partially_present' => 'موجود جزئيا',
+            'not_present' => 'غير متواجد'
         ],
 
         'employee-type' => [
