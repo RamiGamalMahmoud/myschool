@@ -2,9 +2,7 @@
 
 namespace SM\Services\Address;
 
-use Simple\Core\DataAccess\IDataAccess;
-use Simple\Core\DataAccess\Query;
-use SM\Objects\Address\Governorate;
+use Simple\Core\DataAccess\MySQLAccess;
 use SM\Repos\Address\CityRepo;
 use SM\Repos\Address\GovernorateRepo;
 
@@ -14,11 +12,9 @@ class AddressService
 
     private CityRepo $cityRepo;
 
-    private IDataAccess $dataAccess;
-
-    public function __construct(IDataAccess $dataAccess)
+    public function __construct()
     {
-        $this->dataAccess = $dataAccess;
+        $dataAccess = new MySQLAccess();
         $this->governorateRepo = new GovernorateRepo($dataAccess);
         $this->cityRepo = new CityRepo($dataAccess);
     }
