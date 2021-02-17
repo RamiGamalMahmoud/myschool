@@ -14,10 +14,6 @@ class Employee
 
     private PersonalData $personalData;
 
-    private SocialData $socialData;
-
-    private JobData $jobData;
-
     private Address $address;
 
     private Phone $phone;
@@ -25,15 +21,11 @@ class Employee
     public function __construct(
         $id,
         PersonalData $personalData,
-        SocialData $socialData,
-        JobData $jobData,
         Address $address,
         Phone $phone
     ) {
         $this->id = $id;
         $this->personalData = $personalData;
-        $this->socialData = $socialData;
-        $this->jobData = $jobData;
         $this->address = $address;
         $this->phone = $phone;
     }
@@ -46,16 +38,6 @@ class Employee
     public function getPersonalData(): PersonalData
     {
         return $this->personalData;
-    }
-
-    public function getSocialData(): SocialData
-    {
-        return $this->socialData;
-    }
-
-    public function getJobData(): JobData
-    {
-        return $this->jobData;
     }
 
     public function getAddress(): Address
@@ -73,8 +55,6 @@ class Employee
         return [
             'id' => $this->id,
             'personal-data' => $this->getPersonalData()->toArray(),
-            'social-data' => $this->getSocialData()->toArray(),
-            'job-data' => $this->getJobData()->toArray(),
             'address' => $this->getAddress()->toArray(),
             'phone' => $this->getPhone()->toArray()
         ];
