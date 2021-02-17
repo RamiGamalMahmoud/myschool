@@ -4,6 +4,7 @@ namespace SM\Services;
 
 use SM\Entities\EmployeesAffairs\AttitudeToWork;
 use SM\Entities\EmployeesAffairs\MartialStatus;
+use SM\Entities\EmployeesAffairs\PresenceStatus;
 use SM\Helpers\Translate;
 
 class TranslateEmployeeData
@@ -13,8 +14,6 @@ class TranslateEmployeeData
         $translateData = [];
         $translateData['id'] = $employee['id'];
         $translateData['personal-data'] = self::translatePersonalData($employee['personal-data']);
-        $translateData['social-data'] = self::translateSocialData($employee['social-data']);
-        $translateData['job-data'] = self::translateJobData($employee['job-data']);
         $translateData['address'] = $employee['address'];
         $translateData['phone'] = self::translatePhone($employee['phone']);
         return $translateData;
@@ -45,39 +44,39 @@ class TranslateEmployeeData
             'nationality' => [
                 'key' => $personalData['nationality'],
                 'value' => Translate::get('nationality', $personalData['nationality'])
+            ],
+            'date-of-hiring' => Translate::convertDate($personalData['date-of-hiring']),
+            'date-of-work-received' => Translate::convertDate($personalData['date-of-work-received']),
+            'employee-type' => [
+                'key' => $personalData['employee-type'],
+                'value' => Translate::get('job-data.employee-type', $personalData['employee-type'])
             ]
         ];
         return $translateData;
     }
 
-    public static function translateSocialData(array $socialData): array
+    public static function translateSocialStatus(array $socialStatus): array
     {
         $translateData = [
             'martial-status' => [
-                'key' => $socialData['martial-status'],
-                'value' => Translate::get('martial-status', $socialData['martial-status'])
+                'key' => $socialStatus['martial-status'],
+                'value' => Translate::get('martial-status', $socialStatus['martial-status'])
             ],
-            'children-count' => Translate::convertNumbers($socialData['children-count'])
+            'children-count' => Translate::convertNumbers($socialStatus['children-count'])
         ];
         return $translateData;
     }
 
-    public static function translateJobData(array $jobData): array
+    public static function translateEmployeeStatus(array $employeeStatus): array
     {
         $translateData = [
-            'date-of-hiring' => Translate::convertDate($jobData['date-of-hiring']),
-            'date-of-work-received' => Translate::convertDate($jobData['date-of-work-received']),
-            'employee-type' => [
-                'key' => $jobData['employee-type'],
-                'value' => Translate::get('job-data.employee-type', $jobData['employee-type'])
-            ],
-            'employee-status' => [
-                'key' => $jobData['employee-status'],
-                'value' => Translate::get('job-data.employee-status', $jobData['employee-status'])
+            'presence-status' => [
+                'key' => $employeeStatus['presence-status'],
+                'value' => Translate::get('job-data.presence-status', $employeeStatus['presence-status'])
             ],
             'attitude-to-work' => [
-                'key' => $jobData['attitude-to-work'],
-                'value' => Translate::get('job-data.attitude-to-work', $jobData['attitude-to-work'])
+                'key' => $employeeStatus['attitude-to-work'],
+                'value' => Translate::get('job-data.attitude-to-work', $employeeStatus['attitude-to-work'])
             ]
         ];
         return $translateData;
@@ -98,6 +97,15 @@ class TranslateEmployeeData
             'id' => $attitudeToWork->getId(),
             'key' => $attitudeToWork->getAttitude(),
             'value' => Translate::get('job-data.attitude-to-work', $attitudeToWork->getAttitude())
+        ];
+    }
+
+    public static function translatePresenceStatus(PresenceStatus $presenceStatus)
+    {
+        return [
+            'id' => $presenceStatus->getId(),
+            'key' => $presenceStatus->getStatus(),
+            'value' => Translate::get('job-data.presence-status', $presenceStatus->getStatus())
         ];
     }
 }
