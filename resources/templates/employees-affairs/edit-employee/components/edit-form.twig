@@ -1,13 +1,20 @@
+{% set personalData = employee['employee']['personal-data'] %}
+{% set socialStatus = employee['social-status'] %}
+{% set employeeStatus = employee['employee-status'] %}
+{% set phone = employee['employee']['phone'] %}
+{% set address = employee['employee']['address'] %}
+
+
 <form method="POST">
-	{% include "employees-affairs/edit-employee/components/personal-data.twig" with {'personalData' : employee['personal-data']} %}
+	{% include "employees-affairs/edit-employee/components/personal-data.twig" %}
 
-	{% include "employees-affairs/edit-employee/components/social-data.twig" with {'socialData' : employee['social-data']}%}
+	{% include "employees-affairs/edit-employee/components/social-data.twig" %}
 
-	{% include "employees-affairs/edit-employee/components/job-data.twig" with {'jobData' : employee['job-data']} %}
+	{% include "employees-affairs/edit-employee/components/job-data.twig" %}
 
-	{% include "employees-affairs/edit-employee/components/phone.twig"  with {'phone': employee['phone']} %}
+	{% include "employees-affairs/edit-employee/components/phone.twig" %}
 
-	{% include "employees-affairs/edit-employee/components/address.twig"  with {'address' : employee['address']}  %}
+	{% include "employees-affairs/edit-employee/components/address.twig" %}
 
 	{% include "employees-affairs/edit-employee/components/buttons.twig" %}
 </form>

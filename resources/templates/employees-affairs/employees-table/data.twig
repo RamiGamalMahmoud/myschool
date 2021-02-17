@@ -1,6 +1,6 @@
-<td employee-id="{{ employee['id'] }}">{{ serial }}</td>
-{% include "employees-affairs/employees-table/personal-data.twig" with {'personalData' : employee['personal-data']} %}
-{% include "employees-affairs/employees-table/job-data.twig" with {'jobData' : employee['job-data']} %}
-{% include "employees-affairs/employees-table/phone.twig" with {'phone' : employee['phone']} %}
-{% include "employees-affairs/employees-table/social-data.twig" with {'socialData' : employee['social-data']} %}
-{% include "employees-affairs/employees-table/address.twig" with {'address' : employee['address']} %}
+<td employee-id="{{ employee['employee']['id'] }}">{{ serial }}</td>
+{% include "employees-affairs/employees-table/personal-data.twig" with {'personalData' : employee['employee']['personal-data']} %}
+{% include "employees-affairs/employees-table/job-data.twig" with {'jobData' : employee['employee-status']} %}
+{% include "employees-affairs/employees-table/phone.twig" with {'phone' : employee['employee']['phone']} %}
+{% include "employees-affairs/employees-table/social-data.twig" with {'socialData' : employee['social-status']} %}
+{% include "employees-affairs/employees-table/address.twig" with {'address' : employee['employee']['address']} %}

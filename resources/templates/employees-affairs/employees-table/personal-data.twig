@@ -1,5 +1,5 @@
 <td class="name-cell link">
-	<a href="/employees-affairs/edit/{{ employee['id'] }}">
+	<a href="/employees-affairs/edit/{{ employee['employee']['id'] }}">
 		{{ personalData['name'] }}
 	</a>
 </td>
@@ -8,3 +8,6 @@
 <td>{{ personalData['gender']['value'] }}</td>
 <td>{{ personalData['religion']['value'] }}</td>
 <td>{{ personalData['nationality']['value'] }}</td>
+<td>{{ personalData['employee-type']['value'] }}</td>
+<td>{{ personalData['date-of-hiring'] }}</td>
+<td>{{ personalData['date-of-work-received'] }}</td>

@@ -1,12 +1,17 @@
-<fieldset>
+<fieldset id="phone">
 	<legend>بيانات الإتصال</legend>
-	<div class="form-item-container fixed-phone">
-		<label for="fixed-phone" class="lbl">تليفون أرضي</label>
-		<input type="phone" name="fixed-phone" id="fixed-phone" class="text-box" value="{{ phone['fixed'] }}">
-	</div>
+	{% include "employees-affairs/edit-employee/components/is-dirty.twig" with { status: 0, name: "phone[is-dirty]" }%}
+	<div class="form-row">
 
-	<div class="form-item-container mobile">
-		<label for="mobile" class="lbl">تليفون محمول</label>
-		<input type="phone" name="mobile" id="mobile" class="text-box" value="{{ phone['mobile'] }}">
+		<div class="form-item-container fixed-phone">
+			<label for="fixed-phone" class="lbl">تليفون أرضي</label>
+			<input type="phone" name="phone[fixed-phone]" id="fixed-phone" class="text-box resetable" value="{{ phone['fixed'] }}">
+		</div>
+
+		<div class="form-item-container mobile">
+			<label for="mobile" class="lbl">تليفون محمول</label>
+			<input type="phone" name="phone[mobile]" id="mobile" class="text-box resetable" value="{{ phone['mobile'] }}">
+		</div>
 	</div>
+	{% include "employees-affairs/edit-employee/components/fieldset-buttons.twig" %}
 </fieldset>

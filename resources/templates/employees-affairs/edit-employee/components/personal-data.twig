@@ -1,21 +1,22 @@
-<fieldset>
+<fieldset id="presonal-data">
 	<legend>بيانات أساسية</legend>
-
+	<input type="hidden" id="employee-id" name="id" value="{{ employee['employee']['id'] }}">
+	{% include "employees-affairs/edit-employee/components/is-dirty.twig" with { status: 0, name: "personal-data[is-dirty]" }%}
 	<div class="form-row">
 		<div class="form-row-content">
 			<div class="form-item-container employee-name">
-				<label for="employee-name" class="lbl">اسم الموظف</label>
-				<input type="text" name="employee-name" id="employee-name" class="text-box" value="{{ personalData['name'] }}">
+				<label for="name" class="lbl">اسم الموظف</label>
+				<input type="text" name="personal-data[name]" id="name" class="text-box resetable" value="{{ personalData['name'] }}">
 			</div>
 
 			<div class="form-item-container national-id">
 				<label for="national-id" class="lbl">الرقم القومي</label>
-				<input type="text" name="national-id" id="national-id" class="text-box" value="{{ personalData['national-id'] }}">
+				<input type="text" name="personal-data[national-id]" id="national-id" class="text-box resetable" value="{{ personalData['national-id'] }}">
 			</div>
 
 			<div class="form-item-container pirthdate">
 				<label for="pirthdate" class="lbl">تاريخ الميلاد</label>
-				<input type="date" name="pirthdate" id="pirthdate" class="text-box" value="{{ personalData['pirthdate'] }}">
+				<input type="date" name="personal-data[pirthdate]" id="pirthdate" class="text-box resetable" value="{{ personalData['pirthdate'] }}">
 			</div>
 		</div>
 	</div>
@@ -24,27 +25,53 @@
 		<div class="form-row-content">
 			<div class="form-item-container gender">
 				<label for="gender" class="lbl">النوع</label>
-				<select name="gender" id="gender" class="combo-box">
-					<option value="MALE" {% if personalData['gender'] == 'MALE'%} selected {% endif %}>ذكر</option>
-					<option value="FEMALE" {% if personalData['gender'] == 'FEMALE'%} selected {% endif %}>أنثى</option>
+				<select name="personal-data[gender]" id="gender" class="combo-box resetable">
+					<option value="male" {% if personalData['gender'] == 'male'%} selected {% endif %}>ذكر</option>
+					<option value="female" {% if personalData['gender'] == 'female'%} selected {% endif %}>أنثى</option>
 				</select>
 			</div>
 
 			<div class="form-item-container religion">
 				<label for="religion" class="lbl">الديانة</label>
-				<select name="religion" id="religion" class="combo-box">
-					<option value="MUSLIM" {% if personalData['religion'] == 'MUSLIM'%} selected {% endif %}>مسلم</option>
-					<option value="CHRISTIAN" {% if personalData['religion'] == 'CHRISTIAN'%} selected {% endif %}>مسيحي</option>
+				<select name="personal-data[religion]" id="religion" class="combo-box resetable">
+					<option value="muslim" {% if personalData['religion'] == 'muslim'%} selected {% endif %}>مسلم</option>
+					<option value="christian" {% if personalData['religion'] == 'christian'%} selected {% endif %}>مسيحي</option>
 				</select>
 			</div>
 
 			<div class="form-item-container nationality">
 				<label for="nationality" class="lbl">الجنسية</label>
-				<select name="nationality" id="nationality" class="combo-box">
+				<select name="personal-data[nationality]" id="nationality" class="combo-box resetable">
 					<option value="EGY" {% if personalData['nationality'] == 'EGY'%} selected {% endif %}>مصري</option>
 					<option value="NON-EGY" {% if personalData['nationality'] != 'EGY'%} selected {% endif %}>غير مصري</option>
 				</select>
 			</div>
 		</div>
 	</div>
+
+	<div class="form-row">
+		<div class="form-row-content">
+			<div class="form-item-container date-of-hiring">
+				<label for="date-of-hiring" class="lbl">تاريخ التعيين</label>
+				<input type="date" name="personal-data[date-of-hiring]" id="date-of-hiring" class="text-box resetable" value="{{ personalData['date-of-hiring'] }}">
+			</div>
+
+			<div class="form-item-container date-of-work-received">
+				<label for="date-of-work-received" class="lbl">تاريخ استلام العمل</label>
+				<input type="date" name="personal-data[date-of-work-received]" id="date-of-work-received" class="text-box resetable" value="{{ personalData['date-of-work-received'] }}">
+			</div>
+		</div>
+
+		<div class="form-item-container job-type">
+			<label for="employee-type" class="lbl">الوظيفة</label>
+			<select name="personal-data[employee-type]" id="employee-type" class="combo-box resetable">
+				{% for key, value in employeeType %}
+					<option value="{{ key }}" {% if personalData['employee-type'] == key %} selected {% endif %}>{{ value }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+	</div>
+
+	{% include "employees-affairs/edit-employee/components/fieldset-buttons.twig" %}
 </fieldset>

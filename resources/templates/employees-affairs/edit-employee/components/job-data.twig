@@ -1,46 +1,29 @@
-<fieldset>
+<fieldset id="employee-status">
 	<legend>بيانات وظيفية</legend>
+	{% include "employees-affairs/edit-employee/components/is-dirty.twig" with { status: 0, name: "employee-status[is-dirty]" }%}
 	<div class="form-row">
 		<div class="form-row-content">
-			<div class="form-item-container job-type">
-				<label for="job-type" class="lbl">نوع الوظيفة</label>
-				<select name="job-type" id="job-type" class="combo-box">
-					{% for key, value in employeeType %}
-						<option value="{{ key }}" {% if jobData['employee-type'] == key %} selected {% endif %}>{{ value }}</option>
-					{% endfor %}
-				</select>
-			</div>
+
 
 			<div class="form-item-container attitude-to-work">
 				<label for="attitude-to-work" class="lbl">الموقف من العمل</label>
-				<select name="attitude-to-work" id="attitude-to-work" class="combo-box">
-					{% for key, value in attitudes %}
-						<option value="{{ key }}" {% if jobData['attitude-to-work'] == key %} selected {% endif %}>{{ value }}</option>
+				<select name="employee-status[attitude-to-work]" id="attitude-to-work" class="combo-box resetable">
+					{% for attitude in attitudes %}
+						<option value="{{ attitude['id'] }}" {% if employeeStatus['attitude-to-work'] == attitude['key'] %} selected {% endif %}>{{ attitude['value'] }}</option>
 					{% endfor %}
 				</select>
 			</div>
 
-			<div class="form-item-container employee_status">
-				<label for="employee_status" class="lbl">حالة التواجد بالمدرسة</label>
-				<select name="employee_status" id="employee_status" class="combo-box">
-					{% for key, value in employeeStatus %}
-						<option value="{{ key }}" {% if jobData['employee-status'] == key %} selected {% endif %}>{{ value }}</option>
+			<div class="form-item-container employee-status">
+				<label for="presence-status" class="lbl">حالة التواجد بالمدرسة</label>
+				<select name="employee-status[presence-status]" id="presence-status" class="combo-box resetable">
+					{% for presenceStatus in presenceStatuses %}
+						<option value="{{ presenceStatus['id'] }}" {% if employeeStatus['presence-status'] == presenceStatus['key'] %} selected {% endif %}>{{ presenceStatus['value'] }}</option>
 					{% endfor %}
 				</select>
 			</div>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="form-row-content">
-			<div class="form-item-container date_of_hiring">
-				<label for="date_of_hiring" class="lbl">تاريخ التعيين</label>
-				<input type="date" name="date_of_hiring" id="date_of_hiring" class="text-box" value="{{ jobData['date-of-hiring'] }}">
-			</div>
 
-			<div class="form-item-container date_of_work_received">
-				<label for="date_of_work_received" class="lbl">تاريخ استلام العمل</label>
-				<input type="date" name="date_of_work_received" id="date_of_work_received" class="text-box" value="{{ jobData['date-of-work-received'] }}">
-			</div>
-		</div>
-	</div>
+	{% include "employees-affairs/edit-employee/components/fieldset-buttons.twig" %}
 </fieldset>
