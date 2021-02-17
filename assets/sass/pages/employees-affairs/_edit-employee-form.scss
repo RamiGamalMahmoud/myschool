@@ -41,7 +41,20 @@
 }
 
 fieldset {
+  position: relative;
   width: 850px;
+}
+
+.fieldset-buttons {
+
+  position: absolute;
+  top: 0;
+  left: 15px;
+}
+
+.reset-btn {
+  visibility: hidden;
+  font-size: .7rem;
 }
 
 .buttons-container {
