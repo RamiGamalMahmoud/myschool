@@ -30,6 +30,15 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         $this->dataAccess = $dataAccess;
     }
 
+    public function getIdsWhere($name, $value)
+    {
+        $query = new Query();
+        $query->select(['employee_id AS id'])
+            ->from('filter_employee_status')
+            ->where($name, '=', $value);
+        return $this->dataAccess->getAll($query);
+    }
+
     public function getByEmployeeId($employeeId): array
     {
         $query = new Query();

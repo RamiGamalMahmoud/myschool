@@ -8,6 +8,7 @@ use Simple\Core\Redirect;
 use SM\Builders\PersonBuilder;
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Helpers\Log;
+use SM\Controllers\ErrorController;
 use SM\Repos\EmployeesAffairs\EmployeeRepo;
 use SM\Repos\EmployeesAffairs\IEmployeeRepo;
 use SM\Entities\EmployeesAffairs\SocialStatus;
@@ -136,11 +137,20 @@ class EmployeesAffairsController
      */
     public function getBy()
     {
+        $filterType = $this->router->get('filter_type');
         $criteriaName = $this->router->get('criteria');
         $criteriaValue = $this->router->get('value');
-        $employees = $this->employeeRepo->filterBy($criteriaName, $criteriaValue);
+        $employeeService = new EmployeeService();
+        $employees = $employeeService->filterBy($filterType, $criteriaName, $criteriaValue);
+        if (empty($employees)) {
+            Redirect::to('/employees-affairs');
+        }
         $employees = array_map(function ($employee) {
-            return $employee->toArray();
+            return [
+                'employee' => $employee['employee']->toArray(),
+                'employee-status' => $employee['employee-status']->toArray(),
+                'social-status' => $employee['social-status']->toArray()
+            ];
         }, $employees);
         $this->view->showEmployeesTable($employees);
     }

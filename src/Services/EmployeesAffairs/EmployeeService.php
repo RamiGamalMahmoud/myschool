@@ -30,6 +30,14 @@ class EmployeeService
         $this->socialStatusRepo = new SocialStatusRepo($dataAccess);
     }
 
+    public function getAllByIds(array $ids)
+    {
+        $employees = array_map(function ($id) {
+            return $this->getById($id['id']);
+        }, $ids);
+        return $employees;
+    }
+
     public function getAll()
     {
         $ids = $this->employeeRepo->getAllIds();
@@ -63,6 +71,23 @@ class EmployeeService
 
         if ($isSocialStatusDirty) {
             $this->socialStatusRepo->create($socialStatus);
+        }
+    }
+
+    public function filterBy($filterType, $criteria, $value): array
+    {
+        switch ($filterType) {
+            case 'personal_data':
+                return $this->getAllByIds($this->employeeRepo->getIdsWhere($criteria, $value));
+                break;
+            case 'employee_status':
+                return $this->getAllByIds($this->employeeStatusRepo->getIdsWhere($criteria, $value));
+                break;
+            case 'social_status':
+                return $this->getAllByIds($this->socialStatusRepo->getIdsWhere($criteria, $value));
+                break;
+            default:
+                return [];
         }
     }
 }

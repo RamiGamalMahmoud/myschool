@@ -79,6 +79,16 @@ class EmployeeRepo implements IEmployeeRepo
         return $employees;
     }
 
+    public function getIdsWhere($name, $value)
+    {
+        $query = new Query();
+        $query->select(['id'])
+            ->from('employee')
+            ->where($name, '=', $value)
+            ->orderBy(['name']);
+        return $this->dataAccess->getAll($query);
+    }
+
     /**
      * Search employees by criteria
      * 
@@ -89,7 +99,7 @@ class EmployeeRepo implements IEmployeeRepo
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from('employee_view')
+            ->from($this->table)
 
             ->where($name, '=', $value)
             ->orderBy(['name']);
@@ -111,6 +121,5 @@ class EmployeeRepo implements IEmployeeRepo
 
     public function update(Employee $employee)
     {
-        
     }
 }
