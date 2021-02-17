@@ -2,14 +2,15 @@
 
 namespace SM\Builders;
 
+use Simple\Helpers\Log;
 use SM\Entities\Employees\Employee;
+use SM\Entities\EmployeesAffairs\EmployeeStatus;
+use SM\Entities\EmployeesAffairs\SocialStatus;
 use SM\Objects\Phone;
-use SM\Objects\SocialData;
 use SM\Objects\Address\City;
 use SM\Objects\PersonalData;
 use SM\Objects\Address\Address;
 use SM\Objects\Address\Governorate;
-use SM\Objects\JobData;
 
 class PersonBuilder
 {
@@ -17,6 +18,11 @@ class PersonBuilder
 
     public static function setData(array $data)
     {
+        foreach ($data as $key => $value) {
+            $newKey = str_replace('_', '-', $key);
+            unset($data[$key]);
+            $data[$newKey] = $value;
+        }
         self::$data = $data;
     }
 
@@ -25,76 +31,57 @@ class PersonBuilder
         self::setData($data);
         $id = self::$data['id'];
         $personalData = self::makePersonalDataObject();
-        $socialData = self::makeSocialDataObject();
-        $jobData = self::makeJobDataObject();
         $address = self::makeAddressObject();
         $phone = self::makePhoneObject();
-        $employee = new Employee($id, $personalData, $socialData, $jobData, $address, $phone);
+        $employee = new Employee($id, $personalData, $address, $phone);
         return $employee;
-    }
-
-    private static function makeJobDataObject(): JobData
-    {
-        $dateOfHiring = self::$data['date_of_hiring'];
-        $dateOfWorkReceived = self::$data['date_of_work_received'];
-        $employeeType = self::$data['employee_type'];
-        $employeeStatus = self::$data['employee_status'];
-        $attitudeToWork = self::$data['attitude_to_work'];
-        $jobData = new JobData($dateOfHiring, $dateOfWorkReceived, $employeeType, $employeeStatus, $attitudeToWork);
-        return $jobData;
     }
 
     private static function makePersonalDataObject(): PersonalData
     {
-        $name        = self::$data['name'];
-        $nationalId  = self::$data['national_id'];
-        $pirthdate   = self::$data['pirthdate'];
-        $gender      = self::$data['gender'];
-        $religion    = self::$data['religion'];
-        $nationality = self::$data['nationality'];
-        $personalData = new PersonalData($name, $nationalId, $pirthdate, $gender, $religion, $nationality);
+        $personalData = new PersonalData(
+            self::$data['name'],
+            self::$data['national-id'],
+            self::$data['pirthdate'],
+            self::$data['gender'],
+            self::$data['religion'],
+            self::$data['nationality'],
+            self::$data['employee-type'],
+            self::$data['date-of-hiring'],
+            self::$data['date-of-work-received']
+        );
         return $personalData;
     }
 
     private static function makePhoneObject(): Phone
     {
-        $fixed  = self::$data['fixed_phone'];
-        $mobile = self::$data['mobile'];
-        $phone = new Phone($fixed, $mobile);
+        $phone = new Phone(self::$data['fixed-phone'], self::$data['mobile']);
         return $phone;
     }
 
     private static function makeCityObject(): City
     {
-        $id   = self::$data['city_id'];
-        $name = self::$data['city_name'];
-        $city = new City($id, $name);
+        $city = new City(self::$data['city-id'], self::$data['city-name']);
         return $city;
     }
 
     private static function makeGovernorateObject(): Governorate
     {
-        $id   = self::$data['governorate_id'];
-        $name = self::$data['governorate_name'];
-        $governorate = new Governorate($id, $name);
+        $governorate = new Governorate(
+            self::$data['governorate-id'],
+            self::$data['governorate-name']
+        );
         return $governorate;
-    }
-
-    private static function makeSocialDataObject(): SocialData
-    {
-        $maritialStatus = self::$data['martial_status'];
-        $childrenCount = self::$data['children_count'];
-        $socialData = new SocialData($maritialStatus, $childrenCount);
-        return $socialData;
     }
 
     private static function makeAddressObject(): Address
     {
-        $city = self::makeCityObject();
-        $governorate = self::makeGovernorateObject();
-        $district = self::$data['district'];
-        $street = self::$data['street'];
-        $address = new Address($governorate, $city, $district, $street);
+        $address = new Address(
+            self::makeGovernorateObject(),
+            self::makeCityObject(),
+            self::$data['district'],
+            self::$data['street']
+        );
         return $address;
     }
 }
