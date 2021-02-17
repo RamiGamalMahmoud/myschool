@@ -4,10 +4,11 @@ namespace SM\Repos\EmployeesAffairs;
 
 use Simple\Core\DataAccess\IDataAccess;
 use Simple\Core\DataAccess\Query;
+use Simple\Helpers\Log;
 use SM\Builders\PersonBuilder;
 use SM\Entities\Employees\Employee;
 
-class EmployeeRepo implements EmployeeRepoInterface
+class EmployeeRepo implements IEmployeeRepo
 {
     /**
      * @var \Simple\Core\DataAccess\IDataAccess $dataAccess
@@ -22,7 +23,28 @@ class EmployeeRepo implements EmployeeRepoInterface
     /**
      * @var array $columns
      */
-    private array $columns = [];
+    private array $columns = [
+        'id',
+        'name',
+        'national_id',
+        'pirthdate',
+        'gender',
+        'religion',
+        'nationality',
+        'employee_type',
+        'date_of_hiring',
+        'date_of_work_received',
+        'fixed_phone',
+        'mobile',
+        'governorate_name',
+        'governorate_id ',
+        'city_name',
+        'city_id ',
+        'district',
+        'street',
+        'code',
+        'insurance_number'
+    ];
 
     /**
      * Constructor
@@ -30,15 +52,14 @@ class EmployeeRepo implements EmployeeRepoInterface
     public function __construct(IDataAccess $dataAccess)
     {
         $this->dataAccess = $dataAccess;
-        $this->columns = require_once __DIR__ . DS . 'employee-table-columns.php';
-        $this->table = 'employees';
+        $this->table = 'employee_view';
     }
 
     public function getById($id)
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from('employee_view')
+            ->from($this->table)
             ->where('id', '=', $id);
         $employee = $this->dataAccess->get($query);
         return PersonBuilder::makeEmployeeObject($employee);
@@ -48,7 +69,7 @@ class EmployeeRepo implements EmployeeRepoInterface
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from('employee_view')
+            ->from($this->table)
 
             ->orderBy(['name']);
         $data = $this->dataAccess->getAll($query);
@@ -68,17 +89,28 @@ class EmployeeRepo implements EmployeeRepoInterface
     {
         $query = new Query();
         $query->select($this->columns)
-            ->from($this->table)
-            ->join('city')
-            ->on($this->table . '.city_id', 'city.id')
-            ->join('governorate')
-            ->on($this->table . '.governorate_id', 'governorate.id')
+            ->from('employee_view')
+
             ->where($name, '=', $value)
-            ->orderBy([$this->table . '.name']);
+            ->orderBy(['name']);
         $data = $this->dataAccess->getAll($query);
         $employees = array_map(function ($employee) {
             return PersonBuilder::makeEmployeeObject($employee);
         }, $data);
         return $employees;
+    }
+
+    public function getAllIds(): array
+    {
+        $query = new Query();
+        $query->select(['id'])
+            ->from('employee')
+            ->orderBy(['id']);
+        return $this->dataAccess->getAll($query);
+    }
+
+    public function update(Employee $employee)
+    {
+        
     }
 }

@@ -4,9 +4,11 @@ namespace SM\Repos\EmployeesAffairs;
 
 use SM\Entities\Employees\Employee;
 
-interface EmployeeRepoInterface
+interface IEmployeeRepo
 {
     public function getById($id);
+    public function getAllIds(): array;
     public function getAll(): array;
     public function filterBy($name, $value): array;
+    public function update(Employee $employee);
 }
