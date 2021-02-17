@@ -35,7 +35,7 @@ Route::get('admin/users/block/{id}', [UserController::class, 'blockUser']);
 
 Route::get('employees-affairs', [EmployeesAffairsController::class, 'index']);
 
-Route::get('employees-affairs/show/{criteria}/{value}', [EmployeesAffairsController::class, 'getBy']);
+Route::get('employees-affairs/filter/{filter_type}/{criteria}/{value}', [EmployeesAffairsController::class, 'getBy']);
 
 Route::get('employees-affairs/edit/{id}', [EmployeesAffairsController::class, 'edit']);
 
