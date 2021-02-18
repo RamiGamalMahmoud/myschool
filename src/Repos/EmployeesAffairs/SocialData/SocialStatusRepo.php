@@ -15,7 +15,14 @@ class SocialStatusRepo implements ISocialStatusRepo
 
     private string $table = 'social_status';
 
-    private array $columns = ['id', 'employee_id', 'martial_status', 'martial_status_id ', 'children_count', 'update_date'];
+    private array $columns = [
+        'id',
+        'employee_id',
+        'martial_status',
+        'martial_status_id ',
+        'children_count',
+        'update_date'
+    ];
 
     public function __construct(IDataAccess $dataAccess)
     {
