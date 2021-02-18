@@ -4,10 +4,13 @@ namespace SM\Services\EmployeesAffairs;
 
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Helpers\Log;
+use SM\Builders\PersonBuilder;
 use SM\Entities\Employees\Employee;
 use SM\Entities\EmployeesAffairs\EmployeeStatus;
 use SM\Entities\EmployeesAffairs\SocialStatus;
+use SM\Repos\EmployeesAffairs\EmployeeDataRepo;
 use SM\Repos\EmployeesAffairs\EmployeeRepo;
+use SM\Repos\EmployeesAffairs\IEmployeeDataRepo;
 use SM\Repos\EmployeesAffairs\IEmployeeRepo;
 use SM\Repos\EmployeesAffairs\JobData\EmployeeStatusRepo;
 use SM\Repos\EmployeesAffairs\JobData\IEmployeeStatusRepo;
@@ -18,6 +21,8 @@ class EmployeeService
 {
     private IEmployeeRepo $employeeRepo;
 
+    private IEmployeeDataRepo $employeeDataRepo;
+
     private IEmployeeStatusRepo $employeeStatusRepo;
 
     private ISocialStatusRepo $socialStatusRepo;
@@ -26,6 +31,7 @@ class EmployeeService
     {
         $dataAccess = new MySQLAccess();
         $this->employeeRepo = new EmployeeRepo($dataAccess);
+        $this->employeeDataRepo = new EmployeeDataRepo($dataAccess);
         $this->employeeStatusRepo = new EmployeeStatusRepo($dataAccess);
         $this->socialStatusRepo = new SocialStatusRepo($dataAccess);
     }
@@ -40,20 +46,40 @@ class EmployeeService
 
     public function getAll()
     {
-        $ids = $this->employeeRepo->getAllIds();
-        $employees = array_map(function ($id) {
-            return $this->getById($id['id']);
-        }, $ids);
+        $data = $this->employeeDataRepo->getAll();
+        $employees = array_map(function ($item) {
+            return $this->prepareData($item);
+        }, $data);
         return $employees;
+    }
+
+    public function prepareData($data)
+    {
+        return [
+            'employee' => PersonBuilder::makeEmployeeObject($data),
+            'employee-status' => new EmployeeStatus(
+                $data['last_employee_status_id'],
+                $data['id'],
+                $data['attitude_to_work_id'],
+                $data['attitude_to_work'],
+                $data['presence_status_id'],
+                $data['presence_status'],
+                $data['last_employee_status_update_date']
+            ),
+            'social-status' => new SocialStatus(
+                $data['last_social_status_id'],
+                $data['id'],
+                $data['martial_status'],
+                $data['martial_status_id'],
+                $data['children_count'],
+                $data['last_social_status_update_date']
+            )
+        ];
     }
 
     public function getById($id)
     {
-        return [
-            'employee' => $this->employeeRepo->getById($id),
-            'employee-status' => $this->employeeStatusRepo->getLastEmployeeStatus($id),
-            'social-status' => $this->socialStatusRepo->getLastEmployeeStatus($id)
-        ];
+        return $this->prepareData($this->employeeDataRepo->getById($id));
     }
 
     public function saveEmployee(
@@ -76,18 +102,8 @@ class EmployeeService
 
     public function filterBy($filterType, $criteria, $value): array
     {
-        switch ($filterType) {
-            case 'personal_data':
-                return $this->getAllByIds($this->employeeRepo->getIdsWhere($criteria, $value));
-                break;
-            case 'employee_status':
-                return $this->getAllByIds($this->employeeStatusRepo->getIdsWhere($criteria, $value));
-                break;
-            case 'social_status':
-                return $this->getAllByIds($this->socialStatusRepo->getIdsWhere($criteria, $value));
-                break;
-            default:
-                return [];
-        }
+        return array_map(function ($employee) {
+            return $this->prepareData($employee);
+        }, $this->employeeDataRepo->gitBy($criteria, $value));
     }
 }
