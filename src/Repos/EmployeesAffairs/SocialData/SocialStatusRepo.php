@@ -15,7 +15,7 @@ class SocialStatusRepo implements ISocialStatusRepo
 
     private string $table = 'social_status';
 
-    private array $columns = ['id', 'employee_id', 'martial_status', 'martial_status_id ', 'children_count', 'date'];
+    private array $columns = ['id', 'employee_id', 'martial_status', 'martial_status_id ', 'children_count', 'update_date'];
 
     public function __construct(IDataAccess $dataAccess)
     {
@@ -37,7 +37,7 @@ class SocialStatusRepo implements ISocialStatusRepo
         $query->select($this->columns)
             ->from($this->view)
             ->where('employee_id', '=', $employeeId)
-            ->orderBy(['date' => 'DESC'])
+            ->orderBy(['update_date' => 'DESC'])
             ->limit(1);
         $data = $this->dataAccess->get($query);
         return new SocialStatus(
@@ -46,7 +46,7 @@ class SocialStatusRepo implements ISocialStatusRepo
             $data['martial_status'],
             $data['martial_status_id'],
             $data['children_count'],
-            $data['date']
+            $data['update_date']
         );
     }
 
@@ -56,7 +56,7 @@ class SocialStatusRepo implements ISocialStatusRepo
         $query->select($this->columns)
             ->from($this->view)
             ->where('employee_id', '=', $id)
-            ->orderBy(['date' => 'DESC']);
+            ->orderBy(['update_date' => 'DESC']);
         $data = $this->dataAccess->getAll($query);
         $allStatuses = array_map(function ($status) {
             return new SocialStatus(
@@ -65,7 +65,7 @@ class SocialStatusRepo implements ISocialStatusRepo
                 $status['martial_status'],
                 $status['martial_status_id'],
                 $status['children_count'],
-                $status['date']
+                $status['update_date']
             );
         }, $data);
         return $allStatuses;
@@ -89,7 +89,7 @@ class SocialStatusRepo implements ISocialStatusRepo
                 'employee_id' => $socialStatus->getEmployeeId(),
                 'martial_status_id' => $socialStatus->getMartialStatusId(),
                 'children_count' => $socialStatus->getChildrenCount(),
-                'date' => $socialStatus->getUpdateDate()
+                'update_date' => $socialStatus->getUpdateDate()
             ]);
         return $this->dataAccess->run($query);
     }

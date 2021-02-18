@@ -22,7 +22,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         'attitude_to_work',
         'presence_status_id',
         'presence_status',
-        'date'
+        'update_date'
     ];
 
     public function __construct(IDataAccess $dataAccess)
@@ -45,7 +45,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         $query->select($this->columns)
             ->from($this->view)
             ->where('employee_id', '=', $employeeId)
-            ->orderBy(['date' => 'DESC']);
+            ->orderBy(['update_date' => 'DESC']);
         $data = $this->dataAccess->getAll($query);
         $employeeStatuses = array_map(function ($status) {
             return new EmployeeStatus(
@@ -55,7 +55,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
                 $status['attitude_to_work'],
                 $status['presence_status_id'],
                 $status['presence_status'],
-                $status['date']
+                $status['update_date']
             );
         }, $data);
         return $employeeStatuses;
@@ -67,7 +67,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         $query->select($this->columns)
             ->from($this->view)
             ->where('employee_id', '=', $employeeId)
-            ->orderBy(['date' => 'DESC'])
+            ->orderBy(['update_date' => 'DESC'])
             ->limit(1);
         $data = $this->dataAccess->get($query);
         return new EmployeeStatus(
@@ -77,7 +77,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
             $data['attitude_to_work'],
             $data['presence_status_id'],
             $data['presence_status'],
-            $data['date']
+            $data['update_date']
         );
     }
 
@@ -88,7 +88,7 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
             'employee_id' => $employeeStatus->getEmployeeId(),
             'attitude_to_work_id' => $employeeStatus->getAttitudeToWorkId(),
             'presence_status_id ' => $employeeStatus->getPresenceStatusId(),
-            'date' => $employeeStatus->getUpdateDate()
+            'update_date' => $employeeStatus->getUpdateDate()
         ];
         $query = new Query();
         $query->insertInto($this->table)
