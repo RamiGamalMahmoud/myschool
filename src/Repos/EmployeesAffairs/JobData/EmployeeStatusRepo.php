@@ -30,15 +30,6 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         $this->dataAccess = $dataAccess;
     }
 
-    public function getIdsWhere($name, $value)
-    {
-        $query = new Query();
-        $query->select(['employee_id AS id'])
-            ->from('filter_employee_status')
-            ->where($name, '=', $value);
-        return $this->dataAccess->getAll($query);
-    }
-
     public function getByEmployeeId($employeeId): array
     {
         $query = new Query();
@@ -59,26 +50,6 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
             );
         }, $data);
         return $employeeStatuses;
-    }
-
-    public function getLastEmployeeStatus($employeeId): EmployeeStatus
-    {
-        $query = new Query();
-        $query->select($this->columns)
-            ->from($this->view)
-            ->where('employee_id', '=', $employeeId)
-            ->orderBy(['update_date' => 'DESC'])
-            ->limit(1);
-        $data = $this->dataAccess->get($query);
-        return new EmployeeStatus(
-            $data['id'],
-            $data['employee_id'],
-            $data['attitude_to_work_id'],
-            $data['attitude_to_work'],
-            $data['presence_status_id'],
-            $data['presence_status'],
-            $data['update_date']
-        );
     }
 
     public function create(EmployeeStatus $employeeStatus)

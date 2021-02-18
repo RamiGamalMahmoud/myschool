@@ -22,34 +22,6 @@ class SocialStatusRepo implements ISocialStatusRepo
         $this->dataAccess = $dataAccess;
     }
 
-    public function getIdsWhere($name, $value)
-    {
-        $query = new Query();
-        $query->select(['employee_id AS id'])
-            ->from('filter_social_status')
-            ->where($name, '=', $value);
-        return $this->dataAccess->getAll($query);
-    }
-
-    public function getLastEmployeeStatus($employeeId): SocialStatus
-    {
-        $query = new Query();
-        $query->select($this->columns)
-            ->from($this->view)
-            ->where('employee_id', '=', $employeeId)
-            ->orderBy(['update_date' => 'DESC'])
-            ->limit(1);
-        $data = $this->dataAccess->get($query);
-        return new SocialStatus(
-            $data['id'],
-            $data['employee_id'],
-            $data['martial_status'],
-            $data['martial_status_id'],
-            $data['children_count'],
-            $data['update_date']
-        );
-    }
-
     public function getByEmployeeId($id): array
     {
         $query = new Query();
