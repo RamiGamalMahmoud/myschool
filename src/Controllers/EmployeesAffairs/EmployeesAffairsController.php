@@ -58,10 +58,10 @@ class EmployeesAffairsController
     public function index()
     {
         $presentStatus = $this->router->get('present_status');
-        if ($presentStatus === 'all') {
-            $this->showAll();
-        } elseif ($presentStatus === 'present') {
+        if ($presentStatus === 'present') {
             $this->showPresent();
+        } else {
+            $this->showAll();
         }
     }
 
