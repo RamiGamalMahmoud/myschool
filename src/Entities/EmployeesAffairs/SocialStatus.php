@@ -4,8 +4,6 @@ namespace SM\Entities\EmployeesAffairs;
 
 class SocialStatus
 {
-    private $id;
-
     private $employeeId;
 
     private $martialStatus;
@@ -17,24 +15,17 @@ class SocialStatus
     private $updateDate;
 
     public function __construct(
-        $id,
         $employeeId,
         $martialStatus,
         $martialStatusId,
         $childrenCount,
         $updateDate
     ) {
-        $this->id = $id;
         $this->employeeId = $employeeId;
         $this->martialStatus = $martialStatus;
         $this->martialStatusId = $martialStatusId;
         $this->childrenCount = $childrenCount;
         $this->updateDate = $updateDate;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function getEmployeeId()

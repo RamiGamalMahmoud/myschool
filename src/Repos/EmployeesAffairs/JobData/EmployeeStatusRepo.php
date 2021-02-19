@@ -16,7 +16,6 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
     private string $table = 'employee_status';
 
     private array $columns = [
-        'id',
         'employee_id',
         'attitude_to_work_id',
         'attitude_to_work',
@@ -40,7 +39,6 @@ class EmployeeStatusRepo implements IEmployeeStatusRepo
         $data = $this->dataAccess->getAll($query);
         $employeeStatuses = array_map(function ($status) {
             return new EmployeeStatus(
-                $status['id'],
                 $status['employee_id'],
                 $status['attitude_to_work_id'],
                 $status['attitude_to_work'],

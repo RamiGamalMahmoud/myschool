@@ -58,7 +58,6 @@ class EmployeeService
         return [
             'employee' => PersonBuilder::makeEmployeeObject($data),
             'employee-status' => new EmployeeStatus(
-                $data['last_employee_status_id'],
                 $data['id'],
                 $data['attitude_to_work_id'],
                 $data['attitude_to_work'],
@@ -67,7 +66,6 @@ class EmployeeService
                 $data['last_employee_status_update_date']
             ),
             'social-status' => new SocialStatus(
-                $data['last_social_status_id'],
                 $data['id'],
                 $data['martial_status'],
                 $data['martial_status_id'],

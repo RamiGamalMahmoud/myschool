@@ -16,7 +16,6 @@ class SocialStatusRepo implements ISocialStatusRepo
     private string $table = 'social_status';
 
     private array $columns = [
-        'id',
         'employee_id',
         'martial_status',
         'martial_status_id ',
@@ -39,7 +38,6 @@ class SocialStatusRepo implements ISocialStatusRepo
         $data = $this->dataAccess->getAll($query);
         $allStatuses = array_map(function ($status) {
             return new SocialStatus(
-                $status['id'],
                 $status['employee_id'],
                 $status['martial_status'],
                 $status['martial_status_id'],

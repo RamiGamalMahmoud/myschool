@@ -4,8 +4,6 @@ namespace SM\Entities\EmployeesAffairs;
 
 class EmployeeStatus
 {
-    private $id;
-
     private $employeeId;
 
     private $attitudeToWorkId;
@@ -19,7 +17,6 @@ class EmployeeStatus
     private $updateDate;
 
     public function __construct(
-        $id,
         $employeeId,
         $attitudeToWorkId,
         $attitudeToWork,
@@ -27,18 +24,12 @@ class EmployeeStatus
         $presenceStatus,
         $updateDate
     ) {
-        $this->id = $id;
         $this->employeeId = $employeeId;
         $this->attitudeToWorkId = $attitudeToWorkId;
         $this->attitudeToWork = $attitudeToWork;
         $this->presenceStatusId = $presenceStatusId;
         $this->presenceStatus = $presenceStatus;
         $this->updateDate = $updateDate;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function getEmployeeId()
