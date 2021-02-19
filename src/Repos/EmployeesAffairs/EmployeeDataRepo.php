@@ -20,7 +20,8 @@ class EmployeeDataRepo implements IEmployeeDataRepo
     {
         $query = new Query();
         $query->selectAll()
-            ->from($this->table);
+            ->from($this->table)
+            ->orderBy(['name']);
         return $this->dataAccess->getAll($query);
     }
 
@@ -38,7 +39,8 @@ class EmployeeDataRepo implements IEmployeeDataRepo
         $query = new Query();
         $query->selectAll()
             ->from($this->table)
-            ->where($key, '=', $value);
+            ->where($key, '=', $value)
+            ->orderBy(['name']);
         return $this->dataAccess->getAll($query);
     }
 }
