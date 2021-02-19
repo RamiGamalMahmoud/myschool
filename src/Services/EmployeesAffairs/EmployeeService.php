@@ -14,7 +14,11 @@ use SM\Repos\EmployeesAffairs\IEmployeeDataRepo;
 use SM\Repos\EmployeesAffairs\IEmployeeRepo;
 use SM\Repos\EmployeesAffairs\JobData\EmployeeStatusRepo;
 use SM\Repos\EmployeesAffairs\JobData\IEmployeeStatusRepo;
+use SM\Repos\EmployeesAffairs\JobData\ILastEmployeeStatusRepo;
+use SM\Repos\EmployeesAffairs\JobData\LastEmployeeStatusRepo;
+use SM\Repos\EmployeesAffairs\SocialData\ILastSocialStatusRepo;
 use SM\Repos\EmployeesAffairs\SocialData\ISocialStatusRepo;
+use SM\Repos\EmployeesAffairs\SocialData\LastSocialStatusRepo;
 use SM\Repos\EmployeesAffairs\SocialData\SocialStatusRepo;
 
 class EmployeeService
@@ -23,17 +27,23 @@ class EmployeeService
 
     private IEmployeeDataRepo $employeeDataRepo;
 
+    private ILastEmployeeStatusRepo $lastEmployeeStatusRepo;
+
     private IEmployeeStatusRepo $employeeStatusRepo;
 
     private ISocialStatusRepo $socialStatusRepo;
+
+    private ILastSocialStatusRepo $lastSocialStatusRepo;
 
     public function __construct()
     {
         $dataAccess = new MySQLAccess();
         $this->employeeRepo = new EmployeeRepo($dataAccess);
         $this->employeeDataRepo = new EmployeeDataRepo($dataAccess);
+        $this->lastEmployeeStatusRepo = new LastEmployeeStatusRepo($dataAccess);
         $this->employeeStatusRepo = new EmployeeStatusRepo($dataAccess);
         $this->socialStatusRepo = new SocialStatusRepo($dataAccess);
+        $this->lastSocialStatusRepo = new LastSocialStatusRepo($dataAccess);
     }
 
     public function getAllByIds(array $ids)
@@ -90,10 +100,12 @@ class EmployeeService
         $this->employeeRepo->update($employee);
 
         if ($isEmployeeStatusDirty) {
+            $this->lastEmployeeStatusRepo->update($employeeStatus);
             $this->employeeStatusRepo->create($employeeStatus);
         }
 
         if ($isSocialStatusDirty) {
+            $this->lastSocialStatusRepo->update($socialStatus);
             $this->socialStatusRepo->create($socialStatus);
         }
     }
