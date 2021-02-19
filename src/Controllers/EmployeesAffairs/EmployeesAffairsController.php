@@ -104,7 +104,6 @@ class EmployeesAffairsController
         $employee = PersonBuilder::makeEmployeeObject($personalData);
 
         $employeeStatus = new EmployeeStatus(
-            null,
             $employeeId,
             $data['employee-status']['attitude-to-work'],
             '',
@@ -114,7 +113,6 @@ class EmployeesAffairsController
         );
 
         $socialStatus = new SocialStatus(
-            null,
             $employeeId,
             '',
             $data['social-status']['martial-status'],
