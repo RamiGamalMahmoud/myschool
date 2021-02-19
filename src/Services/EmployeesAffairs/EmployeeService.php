@@ -63,6 +63,15 @@ class EmployeeService
         return $employees;
     }
 
+    public function getPresentEmployees()
+    {
+        $data = $this->employeeDataRepo->getAllPresent();
+        $employees = array_map(function ($item) {
+            return $this->prepareData($item);
+        }, $data);
+        return $employees;
+    }
+
     public function prepareData($data)
     {
         return [

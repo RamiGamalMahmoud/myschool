@@ -29,9 +29,9 @@ class EmployeesAffairsController
     private Router $router;
 
     /**
-     * @var \SM\Repos\EmployeesAffairs\IEmployeeRepo
+     * @var \SM\Services\EmployeesAffairs\EmployeeService
      */
-    private IEmployeeRepo $employeeRepo;
+    private EmployeeService $employeeService;
 
     /**
      * @var \SM\Views\EmployeesAffairs\EmployeesAffairsView
@@ -48,7 +48,7 @@ class EmployeesAffairsController
     {
         $this->request = $request;
         $this->router = $router;
-        $this->employeeRepo = new EmployeeRepo(new MySQLAccess());
+        $this->employeeService = new EmployeeService();
         $this->view = new EmployeesAffairsView();
     }
 
@@ -57,7 +57,20 @@ class EmployeesAffairsController
      */
     public function index()
     {
-        $this->showAll();
+        $this->showPresent();
+    }
+
+    public function showPresent()
+    {
+        $employees = $this->employeeService->getPresentEmployees();
+        $employees = array_map(function ($employee) {
+            return [
+                'employee' => $employee['employee']->toArray(),
+                'employee-status' => $employee['employee-status']->toArray(),
+                'social-status' => $employee['social-status']->toArray()
+            ];
+        }, $employees);
+        $this->view->showEmployeesTable($employees);
     }
 
     /**
@@ -65,8 +78,7 @@ class EmployeesAffairsController
      */
     public function showAll()
     {
-        $employeeService = new EmployeeService();
-        $employees = $employeeService->getAll();
+        $employees = $this->employeeService->getAll();
         $employees = array_map(function ($employee) {
             return [
                 'employee' => $employee['employee']->toArray(),
@@ -82,9 +94,8 @@ class EmployeesAffairsController
      */
     public function edit()
     {
-        $employeeService = new EmployeeService();
         $employeeId = $this->router->get('id');
-        $employee = $employeeService->getById($employeeId);
+        $employee = $this->employeeService->getById($employeeId);
         $employee['employee'] = $employee['employee']->toArray();
         $employee['employee-status'] = $employee['employee-status']->toArray();
         $employee['social-status'] = $employee['social-status']->toArray();
@@ -119,8 +130,7 @@ class EmployeesAffairsController
             $data['social-status']['children-count'],
             $updateDate
         );
-        $employeeService = new EmployeeService();
-        $employeeService->saveEmployee(
+        $this->employeeService->saveEmployee(
             $employee,
             $employeeStatus,
             boolVal($data['employee-status']['is-dirty']),
@@ -138,8 +148,7 @@ class EmployeesAffairsController
         $filterType = $this->router->get('filter_type');
         $criteriaName = $this->router->get('criteria');
         $criteriaValue = $this->router->get('value');
-        $employeeService = new EmployeeService();
-        $employees = $employeeService->filterBy($filterType, $criteriaName, $criteriaValue);
+        $employees = $this->employeeService->filterBy($filterType, $criteriaName, $criteriaValue);
         if (empty($employees)) {
             Redirect::to('/employees-affairs');
         }

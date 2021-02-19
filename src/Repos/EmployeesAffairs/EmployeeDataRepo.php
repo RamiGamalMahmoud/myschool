@@ -16,11 +16,28 @@ class EmployeeDataRepo implements IEmployeeDataRepo
         $this->dataAccess = $dataAccess;
     }
 
+    /**
+     * Fetch all employees
+     */
     public function getAll()
     {
         $query = new Query();
         $query->selectAll()
             ->from($this->table)
+            ->orderBy(['name']);
+        return $this->dataAccess->getAll($query);
+    }
+
+    /**
+     * Fetch present employeess
+     */
+    public function getAllPresent()
+    {
+        $query = new Query();
+        $query->selectAll()
+            ->from($this->table)
+            ->where('presence_status_id', '!=', '3')
+            ->andWhere('attitude_to_work_id', '=', '1')
             ->orderBy(['name']);
         return $this->dataAccess->getAll($query);
     }
