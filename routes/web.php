@@ -13,6 +13,7 @@ use SM\Controllers\Exams\MonitoringController;
 use SM\Controllers\Exams\Sheets\SheetsController;
 use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\EmployeesAffairs\EmployeesAffairsController;
+use SM\Controllers\StudentsAffairs\StudentsAffairsController;
 
 /**
  * GET ROUTES
@@ -52,6 +53,8 @@ Route::get('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringCo
 Route::get('sheets/{gradeNumber}/{semester}/{status}', [SheetsController::class, 'index']);
 
 Route::get('certificates/{gradeNumber}/{semester}/{status}',  [CertificatesController::class, 'index']);
+
+Route::get('students-affairs', [StudentsAffairsController::class, 'index']);
 
 /**
  * POST ROUTES
