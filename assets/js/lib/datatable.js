@@ -4,6 +4,7 @@ export default class DataTable {
     this.table = table;
     this.head = this.table.querySelector('.table-head');
     this.body = this.table.querySelector('.table-body');
+    this.tableBody = this.body.querySelector('.table tbody');
     this.cells = this.body.querySelectorAll('td');
     this.isScrollable = this.table.getAttribute('scrollable') || false;
   }
@@ -46,6 +47,38 @@ export default class DataTable {
       });
 
     });
+
+    let rows = this.body.querySelectorAll('table tbody tr');
+    let row = this.body.querySelector('table tbody tr');
+    row.focus();
+    Array.from(rows).forEach((row) => {
+      row.setAttribute('tabindex', '0');
+      row.addEventListener('keydown', (ev) => this.rowKeydownHandler(ev, row));
+      row.addEventListener('click', (ev) => this.rowKlickedHandler(ev));
+    });
+  }
+
+  rowKlickedHandler(ev) {
+    if (!ev.target.getAttribute('contenteditable'))
+      ev.target.parentNode.focus();
+  }
+
+  rowKeydownHandler(ev, row) {
+    // prevent arrows from scroll all the page
+    let nextRow = null;
+    if (ev.key === 'ArrowUp') { // arrow up
+      ev.preventDefault();
+      nextRow = row.previousSibling;
+      nextRow = nextRow !== null && nextRow.nodeName === '#text' ? nextRow.previousSibling : nextRow;
+    } else if (ev.key === 'ArrowDown') { // arrow down
+      ev.preventDefault();
+      nextRow = row.nextSibling;
+      nextRow = nextRow !== null && nextRow.nodeName === '#text' ? nextRow.nextSibling : nextRow;
+    }
+
+    if (nextRow) {
+      nextRow.focus();
+    }
   }
 
   addScrolling() {
@@ -53,6 +86,69 @@ export default class DataTable {
       this.body.scrollTo(this.body.scrollWidth, 0);
       this.body.addEventListener('scroll', () => this.head.scroll(this.body.scrollLeft, 0));
     }
+  }
+
+  /**
+   * Insert new row to the table
+   * @param array data 
+   */
+  addRow(data, event = null) {
+    let row = this.tableBody.insertRow(), cellContent;
+    row.setAttribute('tabindex', 0);
+
+    data.forEach(item => {
+      let cell = row.insertCell();
+      let events = item['events'];
+      if (events !== undefined) {
+        events.forEach(event => {
+          cell.addEventListener(event.eventName, event.callback);
+        })
+      }
+
+      // check if the element contains another element the create it
+      if (typeof item['cellContent'] === 'object' && item['cellContent'] !== null) {
+        cellContent = document.createElement(item['cellContent'].elementType);
+        cellContent.innerText = item.cellContent.text;
+        let attributes = item['cellContent']['attributes'];
+        let events = item['cellContent']['events'];
+        for (const attr in attributes) {
+          cellContent.setAttribute(attr, attributes[attr]);
+        }
+      } else {
+        cellContent = document.createTextNode(item['cellContent']);
+      }
+      cell.className = item['className'] === undefined ? '' : item['className'];
+      let cellAttributes = item['attributes'];
+      for (const attr in cellAttributes) {
+        cell.setAttribute(attr, cellAttributes[attr]);
+      }
+      cell.appendChild(cellContent);
+    });
+
+    row.addEventListener('keydown', (ev) => this.rowKeydownHandler(ev, row));
+    if (event !== null) {
+      row.addEventListener(event.eventName, event.callback);
+    }
+    return row;
+  }
+
+  clearRows() {
+    this.tableBody.innerHTML = '';
+  }
+
+  show() {
+    this.table.style.display = 'block';
+  }
+  hide() {
+    this.table.style.display = 'none';
+  }
+
+  getFirstRow() {
+    return this.tableBody.rows[0];
+  }
+
+  getRows() {
+    return this.tableBody.rows;
   }
 }
 
@@ -89,8 +185,6 @@ const saveChanges = (cell, link, callback = null) => {
       xhr.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status == 200) {
-            console.log(data);
-            console.log(this.responseText);
             let deg = JSON.parse(this.responseText)['degree'];
             if (deg < 0) {
               cell.textContent = 'غ';
