@@ -1,4 +1,4 @@
-import DataTable from '../../lib/datatable.js';
+import { SearchBox, DataTable } from '../../lib';
 
 export default function employeesTable() {
   const dataTableElement = document.querySelector('.employees.data-table');
