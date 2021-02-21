@@ -1,9 +1,13 @@
 import DataTable from './datatable';
 import Resetable from './resetable';
 import ResetableFieldset from './resetable-fieldset';
+import SearchBox from './search-box';
+import SearchResult from './search-result';
 
 export {
   DataTable,
   Resetable,
-  ResetableFieldset
+  ResetableFieldset,
+  SearchBox,
+  SearchResult
 };
