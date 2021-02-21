@@ -21,6 +21,12 @@ $table-border-color: #AAA;
   .table-body {
     table {
       border-top: none;
+
+      tbody tr:focus {
+        outline: none;
+        background-color: $secondary-color;
+        color: #FFF;
+      }
     }
   }
 
