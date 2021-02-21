@@ -28,6 +28,16 @@ class EmployeeDataRepo implements IEmployeeDataRepo
         return $this->dataAccess->getAll($query);
     }
 
+    public function getByEmployeeName($name)
+    {
+        $query = new Query();
+        $query->select(['id', 'name'])
+            ->from($this->table)
+            ->where('name', 'like', '%' . $name . '%')
+            ->orderBy(['name']);
+        return $this->dataAccess->getAll($query);
+    }
+
     /**
      * Fetch present employeess
      */

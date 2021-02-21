@@ -54,6 +54,11 @@ class EmployeeService
         return $employees;
     }
 
+    public function getByEmployeeName(string $employeeName)
+    {
+        return $this->employeeDataRepo->getByEmployeeName($employeeName);
+    }
+
     public function getAll()
     {
         $data = $this->employeeDataRepo->getAll();

@@ -5,6 +5,8 @@ namespace SM\Controllers\EmployeesAffairs;
 use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\Redirect;
+use Simple\Core\Response;
+use Simple\Helpers\Log;
 use SM\Builders\PersonBuilder;
 use SM\Entities\EmployeesAffairs\SocialStatus;
 use SM\Entities\EmployeesAffairs\EmployeeStatus;
@@ -58,6 +60,12 @@ class EmployeesAffairsController
         } else {
             $this->showAll();
         }
+    }
+
+    public function search($request)
+    {
+        $name = $request->getRequestBody()['get']['name'];
+        Response::json($this->employeeService->getByEmployeeName($name), 200);
     }
 
     public function showPresent()
