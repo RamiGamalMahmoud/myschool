@@ -1,0 +1,14 @@
+<header class="header">
+	<div class="header-section">
+		{% include "students-affairs/components/menus/profile.twig" %}
+	</div>
+	<div class="header-section">
+		<span>{{ contentTitle }}</span>
+	</div>
+	<div class="header-section">
+		{% include "students-affairs/components/menu-bar.twig" %}
+	</div>
+	<div class="header-section">
+		{% include(template_from_string("#{headerContent}")) %}
+	</div>
+</header>

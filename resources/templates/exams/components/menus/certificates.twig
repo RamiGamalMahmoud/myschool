@@ -1,0 +1,29 @@
+<div class='menu drop-down-menu'>
+	<span class='menu-title'>الشهادات</span>
+	<div class='menu-content'>
+		<div class='menu-content-wrapper'>
+			<div class="menu left-slide-menu">
+				<span class="menu-title">نصف العام</span>
+				<div class="menu-content">
+					<div class="menu-content-wrapper">
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/all' class='menu-btn' class='menu-btn'>كل الطلبة</a>
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/passed' class='menu-btn' class='menu-btn'>الناجحون</a>
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/fs/failed' class='menu-btn' class='menu-btn'>الضعاف</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="menu left-slide-menu">
+				<span class="menu-title">آخر العام</span>
+				<div class="menu-content">
+					<div class="menu-content-wrapper">
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/all' class='menu-btn'>كل الطلبة</a>
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/passed' class='menu-btn'>الناجحون</a>
+						<a href='/certificates/{{ gradeNumber ? : 1 }}/ss/failed' class='menu-btn'>لهم دور ثان</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

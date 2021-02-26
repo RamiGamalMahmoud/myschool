@@ -1,0 +1,25 @@
+{% set monthes = {
+  1: "يناير",
+  2:"فبراير",
+  3:"مارس",
+  4:"ابريل",
+  5:"مايو",
+  6:"يونيه",
+  7:"يوليو",
+  8:"أغسطس",
+  9:"سبتمبر",
+  10:"أكتوبر",
+  11:"نوفمبر",
+  12:"ديسمبر"
+} %}
+<div class="date-controls">
+	<form method="GET">
+		<select name="month" id="month" class="combo-box mdm">
+			{% for key, value in monthes %}
+				<option value="{{ key }}" {% if key == currentMonth %} selected {% endif %}>{{ value }}</option>
+			{% endfor %}
+			<input type="number" name="year" id="year" class="text-box" min="2000" style="width: 100px; text-align: center" value="{{ currentDate|date("Y") }}">
+		</select>
+		<input type="submit" class="btn" value="عرض">
+	</form>
+</div>

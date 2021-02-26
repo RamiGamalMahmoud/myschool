@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+{% set title = "شئون الطلبة" %}
+
+{% block header %}
+	{% include "students-affairs/components/header.twig" %}
+{% endblock %}
+
+{% block content %}
+	<div id="students-affairs" class="students-affairs">
+
+		{% block studentsContent %}{% endblock %}
+	</div>
+{% endblock %}

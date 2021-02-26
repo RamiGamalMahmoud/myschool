@@ -1,44 +1,13 @@
 {% extends "base.twig" %}
 
 
-{% block title %}
-	Admin
-{% endblock title %}
+{% set title = "Admin" %}
 
 
-{% block admin %}
+{% block header %}
+	{% include "admin/header.twig" %}
+{% endblock %}
 
-	<nav class="admin-nav">
-
-		<ul class="admin-links">
-			<li>
-				<a href="/admin/users/" class="btn">
-					<i class="fa fa-users"></i>
-					إدارة المستخدمين
-				</a>
-			</li>
-			<li>
-				<a href="/students-affairs/" class="btn">
-					<i class="fa fa-child"></i>
-					شئون الطلبة
-				</a>
-			</li>
-			<li>
-				<a href="/employees-affairs/" class="btn">
-					<i class="fa fa-user-secret"></i>
-					شئون العاملين
-				</a>
-			</li>
-			<li>
-				<a href="/exams/" class="btn">
-					<i class="fa fa-graduation-cap"></i>
-					شئون الإمتحانات
-				</a>
-			</li>
-		</ul>
-	</nav>
-	<div class="nav-holder"></div>
-
+{% block content %}
 	{% block users %}{% endblock %}
-
-{% endblock admin %}
+{% endblock content %}

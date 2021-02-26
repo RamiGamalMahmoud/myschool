@@ -1,0 +1,36 @@
+{% extends "students-affairs/main.twig" %}
+
+
+{% set headerContent %}
+{% include "students-affairs/absence-table/components/page-header.twig" %}
+{% endset %}
+{% set contentTitle = "غياب الطلبة" %}
+
+{% block studentsContent %}
+	<div id="absence-container">
+		<div class="data-table" id="absence-table">
+			<div class="table-head">
+				<table class="table">
+					<thead>
+						{% include "students-affairs/absence-table/components/columns-sizes.twig" %}
+						{% include "students-affairs/absence-table/components/columns-names.twig" %}
+					</thead>
+				</table>
+			</div>
+			<div class="table-body">
+				<table class="table">
+					<thead>
+						{% include "students-affairs/absence-table/components/columns-sizes.twig" %}
+					</thead>
+					<tbody>
+						{% set serial = 1 %}
+						{% for student in students %}
+							{% include "students-affairs/absence-table/components/data.twig" with {serial} %}
+							{% set serial = serial + 1 %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

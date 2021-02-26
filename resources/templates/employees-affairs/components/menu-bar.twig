@@ -1,0 +1,30 @@
+<div class='menu-bar'>
+
+	{% include "employees-affairs/components/menus/profile.twig" %}
+
+	<div class="menu">
+		<span class='menu-title'>عرض</span>
+		<div class='menu-content'>
+			<div class='menu-content-wrapper'>
+
+				<a href="/employees-affairs/show/present" class="menu-btn">المتواجدون</a>
+				<a href="/employees-affairs/show/all" class="menu-btn">الكل</a>
+
+				{% include "employees-affairs/components/menus/gender.twig" %}
+
+				{% include "employees-affairs/components/menus/religion.twig" %}
+
+				{% include "employees-affairs/components/menus/nationality.twig" %}
+
+				{% include "employees-affairs/components/menus/employee-type.twig" %}
+
+				{% include "employees-affairs/components/menus/attitude-to-work.twig" %}
+
+				{% include "employees-affairs/components/menus/employee-status.twig" %}
+
+				{% include "employees-affairs/components/menus/social-status.twig" %}
+
+			</div>
+		</div>
+	</div>
+</div>

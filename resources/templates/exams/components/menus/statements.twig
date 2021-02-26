@@ -1,0 +1,30 @@
+<div class='menu drop-down-menu'>
+	<span class='menu-title'>كشوف</span>
+	<div class='menu-content'>
+		<div class='menu-content-wrapper'>
+			<div class='menu left-slide-menu'>
+				<span class='menu-title'>العشرة الأوائل</span>
+				<div class='menu-content'>
+					<div class='menu-content-wrapper'>
+						<a href='/statements/{{ gradeNumber ? : 1 }}/top-ten/fs' class='menu-btn'>التيرم الأول</a>
+						<a href='/statements/{{ gradeNumber ? : 1 }}/top-ten/ss' class='menu-btn'>آخر العام</a>
+					</div>
+				</div>
+			</div>
+
+			<div class='menu left-slide-menu'>
+				<span class='menu-title'>نتيجة إجمالية</span>
+				<div class='menu-content'>
+					<div class='menu-content-wrapper'>
+						<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/fs' class='menu-btn'>التيرم الأول</a>
+						<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/ss' class='menu-btn'>آخر العام</a>
+						<a href='/statements/{{ gradeNumber ? : 1 }}/overall-result/second-round' class='menu-btn'>بعد الدور الثاني</a>
+					</div>
+				</div>
+			</div>
+			<a href='/statements/{{ gradeNumber ? : 1 }}/success' class='menu-btn'>ناجحون دور أول و ثان</a>
+			<a href='/statements/{{ gradeNumber ? : 1 }}/failer' class='menu-btn'>راسب و باق للإعادة</a>
+			<a href='/statements/{{ gradeNumber ? : 1 }}/mehany' class='menu-btn'>محول مهني</a>
+		</div>
+	</div>
+</div>

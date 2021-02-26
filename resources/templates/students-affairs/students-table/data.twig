@@ -1,0 +1,16 @@
+{% set studentId = student["student"].getId()  %}
+
+<td student-id="{{ studentId }}">{{ serial }}</td>
+<td class="text-right link-cell">
+	<a href="/students-affairs/student/edit/{{ studentId }}" class="link">{{ student["student"].getName() }}</a>
+</td>
+<td style="font-size: .6rem;">{{ student["class-room"].getGradeName() }}</td>
+<td style="font-size: 1rem;">{{ student["class-room"].getClassName() }}</td>
+<td>{{ student["student"].getEnrollmentStatus() }}</td>
+<td>{{ student["student"].getReligion() }}</td>
+<td>{{ student["student"].getNationalId() }}</td>
+<td>{{ student["student"].getGender() }}</td>
+<td>{{ student["student"].getPirthdate() }}</td>
+<td>{{ student["student"].getPirthDay() }}</td>
+<td>{{ student["student"].getPirthMonth() }}</td>
+<td>{{ student["student"].getPirthYear() }}</td>

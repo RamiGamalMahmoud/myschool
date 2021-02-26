@@ -1,0 +1,18 @@
+<tr>
+	<td student-id="{{ student['id'] }}">{{ serial }}</td>
+	<td class="sticky-right text-right">{{ student['name'] }}</td>
+	<td style="font-size: .6rem">{{ student['grade_name'] }}</td>
+	<td>{{ student['class_number'] }}</td>
+	{% for d in 1..daysInMonth %}
+		{% set mydate = "#{currentDate}-#{d}"|date('Y-m-d') %}
+		{% set absenceDates = student['absence_date'] %}
+		{% set cell = "<td class='absence-cell no-select'></td>" %}
+
+		{% for absenceDate in absenceDates %}
+			{% if mydate == absenceDate %}
+				{% set cell = "<td class='absence-cell danger  no-select'>x</td>" %}
+			{% endif %}
+		{% endfor %}
+		{% include(template_from_string("#{cell}")) %}
+	{% endfor %}
+</tr>

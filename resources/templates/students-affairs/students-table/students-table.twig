@@ -1,0 +1,37 @@
+{% extends "students-affairs/main.twig" %}
+
+{% set contentTitle = "بيانات الطلبة" %}
+
+
+{% block studentsContent %}
+
+	<div class="data-table" id="students-table">
+
+		<div class="table-head">
+			<table class="table">
+				<thead>
+					{% include "students-affairs/students-table/columns-sizes.twig" %}
+					{% include "students-affairs/students-table/columns-names.twig" %}
+				</thead>
+			</table>
+		</div>
+
+		<div class="table-body">
+			<table class="table">
+				<thead>
+					{% include "students-affairs/students-table/columns-sizes.twig" %}
+				</thead>
+				<tbody>
+					{% set serial = 1 %}
+					{% for student in students %}
+						<tr>
+							{% include "students-affairs/students-table/data.twig" with {serial} %}
+						</tr>
+						{% set serial = serial + 1 %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+{% endblock %}

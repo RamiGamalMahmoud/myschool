@@ -5,21 +5,21 @@
 			<table class="students-data data-header">
 				<thead>
 					<tr>
-						<th rowspan="2" dataname="studentId">مسلسل</th>
-						<th rowspan="2" dataname="studentName">اسم الطالب</th>
-						<th rowspan="2" dataname="classNumber">الفصل</th>
-						<th rowspan="2" dataname="grade">الصف</th>
-						<th rowspan="2" dataname="enrollmentStatus">حالة القيد</th>
-						<th rowspan="2" dataname="religion">الديانة</th>
-						<th rowspan="2" dataname="nationalId">الرقم القومي</th>
-						<th rowspan="2" dataname="sex">النوع</th>
-						<th rowspan="2" dataname="pirthDate">تاريخ الميلاد</th>
-						<th colspan="3" dataname="">السن</th>
+						<th rowspan="2" column-name="studentId">مسلسل</th>
+						<th rowspan="2" column-name="studentName">اسم الطالب</th>
+						<th rowspan="2" column-name="classNumber">الفصل</th>
+						<th rowspan="2" column-name="grade">الصف</th>
+						<th rowspan="2" column-name="enrollmentStatus">حالة القيد</th>
+						<th rowspan="2" column-name="religion">الديانة</th>
+						<th rowspan="2" column-name="nationalId">الرقم القومي</th>
+						<th rowspan="2" column-name="sex">النوع</th>
+						<th rowspan="2" column-name="pirthDate">تاريخ الميلاد</th>
+						<th colspan="3" column-name="">السن</th>
 					</tr>
 					<tr>
-						<th dataname="day">يوم</th>
-						<th dataname="month">شهر</th>
-						<th dataname="year">سنة</th>
+						<th column-name="day">يوم</th>
+						<th column-name="month">شهر</th>
+						<th column-name="year">سنة</th>
 					</tr>
 				</thead>
 			</table>
@@ -29,18 +29,18 @@
 				<tbody>
 					{% for row in data %}
 						<tr>
-							<td contenteditable='false' dataname='studentId'>{{ row.studentId }}</td>
-							<td contenteditable='true' dataname='studentName'>{{ row.studentName }}</td>
-							<td contenteditable='true' dataname='classNumber'>{{ row.classNumber }}</td>
-							<td contenteditable='true' dataname='grade'>{{ row.grade }}</td>
-							<td contenteditable='true' dataname='enrollmentStatus'>{{ row.enrollmentStatus }}</td>
-							<td contenteditable='true' dataname='religion'>{{ row.religion }}</td>
-							<td contenteditable='true' dataname='nationalId'>{{ row.nationalId }}</td>
-							<td contenteditable='false' dataname='sex'>{{ row.sex }}</td>
-							<td contenteditable='false' dataname='pirthDate'>{{ row.pirthDate }}</td>
-							<td contenteditable='false' dataname='day'>{{ row.day }}</td>
-							<td contenteditable='false' dataname='month'>{{ row.month }}</td>
-							<td contenteditable='false' dataname='year'>{{ row.year }}</td>
+							<td contenteditable='false' column-name='studentId'>{{ row.studentId }}</td>
+							<td contenteditable='true' column-name='studentName'>{{ row.studentName }}</td>
+							<td contenteditable='true' column-name='classNumber'>{{ row.classNumber }}</td>
+							<td contenteditable='true' column-name='grade'>{{ row.grade }}</td>
+							<td contenteditable='true' column-name='enrollmentStatus'>{{ row.enrollmentStatus }}</td>
+							<td contenteditable='true' column-name='religion'>{{ row.religion }}</td>
+							<td contenteditable='true' column-name='nationalId'>{{ row.nationalId }}</td>
+							<td contenteditable='false' column-name='sex'>{{ row.sex }}</td>
+							<td contenteditable='false' column-name='pirthDate'>{{ row.pirthDate }}</td>
+							<td contenteditable='false' column-name='day'>{{ row.day }}</td>
+							<td contenteditable='false' column-name='month'>{{ row.month }}</td>
+							<td contenteditable='false' column-name='year'>{{ row.year }}</td>
 						{% endfor %}
 					</tbody>
 				</tbody>

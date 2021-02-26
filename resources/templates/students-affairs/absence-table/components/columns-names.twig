@@ -1,0 +1,16 @@
+<tr id="column-names">
+	<th rowspan="2">مسلسل</th>
+	<th rowspan="2" class="sticky-right">اسم الطالب</th>
+	<th rowspan="2">الصف</th>
+	<th rowspan="2">الفصل</th>
+
+	{% for day in 1..daysInMonth %}
+		<th class="day-name">{{ day }}</th>
+	{% endfor %}
+</tr>
+<tr class="days-numbers-row">
+
+	{% for day in 1..daysInMonth %}
+		<th day-number="{{ day }}">{{ day }}</th>
+	{% endfor %}
+</tr>

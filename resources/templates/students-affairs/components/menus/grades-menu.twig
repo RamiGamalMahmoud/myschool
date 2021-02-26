@@ -1,0 +1,15 @@
+{% for grade in gradesData %}
+
+	<div class="menu left-slide-menu">
+		<a href="{{ link }}/{{ grade[0].getGradeNumber() }}" class="menu-title">{{ grade[0].getGradeName() }}</a>
+		<div class="menu-content">
+			<div class="menu-content-wrapper">
+				{% for classroom in grade %}
+					<a href="{{ link }}/{{ classroom.getGradeNumber() }}/{{ classroom.getClassNumber() }}" class="menu-btn">{{ classroom.getClassName() }}</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endfor %}
+<a href="{{ link }}-all" class="menu-btn">كل الطلاب</a>
