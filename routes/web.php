@@ -13,6 +13,9 @@ use SM\Controllers\Exams\MonitoringController;
 use SM\Controllers\Exams\Sheets\SheetsController;
 use SM\Controllers\Exams\Certificates\CertificatesController;
 use SM\Controllers\EmployeesAffairs\EmployeesAffairsController;
+use SM\Controllers\StudentsAffairs\AbsenceController;
+use SM\Controllers\StudentsAffairs\StudentAbsenceController;
+use SM\Controllers\StudentsAffairs\StudentDataController;
 use SM\Controllers\StudentsAffairs\StudentsAffairsController;
 
 /**
@@ -52,9 +55,39 @@ Route::get('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringCo
 
 Route::get('sheets/{gradeNumber}/{semester}/{status}', [SheetsController::class, 'index']);
 
-Route::get('certificates/{gradeNumber}/{semester}/{status}',  [CertificatesController::class, 'index']);
+Route::get('certificates/{gradeNumber}/{semester}/{status}', [CertificatesController::class, 'index']);
 
-Route::get('students-affairs', [StudentsAffairsController::class, 'index']);
+######################################## STUDENTS AFFAIRS ##############################################################
+
+Route::get(
+    'students-affairs',
+    [StudentsAffairsController::class, 'index']
+);
+
+Route::get(
+    'students-affairs/students-data/show-all',
+    [StudentDataController::class, 'showAll']
+);
+
+Route::get(
+    'students-affairs/students-data/show/{gradeNumber}',
+    [StudentDataController::class, 'showByGradeNumber']
+);
+
+Route::get(
+    'students-affairs/students-data/show/{gradeNumber}/{classNumber}',
+    [StudentDataController::class, 'showByClassNumber']
+);
+
+Route::get(
+    'students-affairs/absence/show/{gradeNumber}',
+    [StudentAbsenceController::class, 'showGradeAbsenceRegistrationTable']
+);
+
+Route::get(
+    'students-affairs/absence/show/{gradeNumber}/{classNumber}',
+    [StudentAbsenceController::class, 'showClassAbsenceRegistrationTable']
+);
 
 /**
  * POST ROUTES
@@ -68,6 +101,11 @@ Route::post('employees-affairs/edit/{id}', [EmployeesAffairsController::class, '
 Route::post('monitoring/{gradeNumber}/{monitoringType}/{semester}', [MonitoringController::class, 'store']);
 
 Route::get('adderss/cities/by-governorate/{governorate}', [AddressController::class, 'getCitiesByGovernorateId']);
+
+Route::post(
+    'students-affairs/absence/register/{studentId}',
+    [StudentAbsenceController::class, 'registerStudentAbsence']
+);
 
 /**
  * MIDDLEWARE ROUTES
