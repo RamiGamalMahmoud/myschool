@@ -1,4 +1,28 @@
 .header {
   width: 100%;
   background-color: $secondary-color;
+
+  form {
+
+    input,
+    select {
+      border: 1px solid #000;
+      height: 30px;
+      background-color: $secondary-color;
+      color: #FFF;
+      border-radius: 5px;
+      margin: 0 2px;
+    }
+
+    option {
+      background-color: white;
+      color: #000;
+    }
+  }
+
+  .header-section {
+    display: inline-block;
+    color: #FFF;
+    font-weight: bold;
+  }
 }
