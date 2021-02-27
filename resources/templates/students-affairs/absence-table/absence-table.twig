@@ -10,12 +10,14 @@
 	<div id="absence-container">
 		<div class="data-table" id="absence-table">
 			<div class="table-head">
-				<table class="table">
-					<thead>
-						{% include "students-affairs/absence-table/components/columns-sizes.twig" %}
-						{% include "students-affairs/absence-table/components/columns-names.twig" %}
-					</thead>
-				</table>
+				<div class="table-head-content">
+					<table class="table">
+						<thead>
+							{% include "students-affairs/absence-table/components/columns-sizes.twig" %}
+							{% include "students-affairs/absence-table/components/columns-names.twig" %}
+						</thead>
+					</table>
+				</div>
 			</div>
 			<div class="table-body">
 				<table class="table">
