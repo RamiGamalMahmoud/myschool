@@ -2,29 +2,24 @@
 
 namespace SM\Controllers;
 
-use Simple\Core\IRequest;
-use SM\Repos\IRepo;
+use Simple\Core\Request;
+use Simple\Core\Router;
 
 abstract class BaseController
 {
     /**
-     * @var array $context Array represents the data that will be used in the view template
+     * @var \Simple\Core\Request
      */
-    protected ?array $context;
+    protected Request $request;
 
     /**
-     * @var \Simple\Core\Request $request 
+     * @var \Simple\Core\Router
      */
-    protected IRequest $request;
+    protected Router $router;
 
-    /**
-     * @var string $view The template file
-     */
-    protected $view;
-
-    public function __construct(IRequest $request, $params = null)
+    public function __construct(Request $request, Router $router)
     {
         $this->request = $request;
-        $this->context = $params;
+        $this->router = $router;
     }
 }

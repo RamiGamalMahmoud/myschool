@@ -1,14 +1,17 @@
 <?php
 
-namespace SM\Repos\Students;
+namespace SM\Repos\StudentsAffairs;
 
-use SM\Entities\Entity;
+use SM\Entities\StudentsAffairs\Student;
 
 interface IStudentRepo
 {
-    function create(Entity $entity);
-    function edit(Entity $entity);
-    function getAll();
-    function getById($id);
-    function remove($id);
+    function getAll(): array;
+    public function getByGradeNumber(int $gradeNumber): array;
+    public function getByClassNumber(int $gradeNumber, int $classNumber): array;
+    public function getById(): Student;
+    // function create(Student $student);
+    // function edit(Student $student);
+    // function getById($id): Student;
+    // function remove($id);
 }
