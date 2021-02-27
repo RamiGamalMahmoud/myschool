@@ -16,18 +16,26 @@ $table-border-color: #AAA;
 
   .table-head {
     overflow: hidden;
+    max-width: 100%;
+
+    .table-head-content {
+      max-width: calc(100% - 17px);
+      overflow: hidden;
+      background-color: white;
+    }
   }
 
   .table-body {
+    overflow-y: scroll;
+
     table {
       border-top: none;
 
       tbody tr:focus {
         outline: none;
-        background-color: $secondary-color;
-        color: #FFF;
+        background-color: $light-fg-color;
+        color: #000;
       }
     }
   }
-
 }
