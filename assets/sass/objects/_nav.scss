@@ -1,0 +1,23 @@
+.nav {
+
+  ul {
+    list-style: none;
+
+    .link {
+      display: inline-block;
+      color: #FFF;
+      font-weight: bold;
+      margin: 0 5px;
+
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #FFF;
+      }
+
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+}
