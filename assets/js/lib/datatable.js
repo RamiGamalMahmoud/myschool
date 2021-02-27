@@ -6,11 +6,11 @@ export default class DataTable {
     this.headerContent = this.table.querySelector('.table-head .table-head-content');
     this.body = this.table.querySelector('.table-body');
     this.tableBody = this.body.querySelector('.table tbody');
-    this.cells = this.body.querySelectorAll('td');
+    this.cells = this.body.querySelectorAll('td[contenteditable="true"]');
     this.isScrollable = this.table.getAttribute('scrollable') || false;
   }
 
-  init(link = null, callback = null) {
+  init(url = null, onCellChangeHandler = null) {
 
     this.addScrolling();
 
@@ -39,8 +39,8 @@ export default class DataTable {
         selection.addRange(range);
       });
 
-      if (link !== null) {
-        cell.addEventListener('blur', saveChanges(cell, link, callback));
+      if (url !== null) {
+        cell.addEventListener('blur', saveChanges(cell, url, onCellChangeHandler));
       }
       cell.addEventListener('blur', function () {
         cell.classList.remove('active-cell');
@@ -60,8 +60,9 @@ export default class DataTable {
   }
 
   rowKlickedHandler(ev) {
-    if (!ev.target.getAttribute('contenteditable'))
+    if (!ev.target.getAttribute('contenteditable')) {
       ev.target.parentNode.focus();
+    }
   }
 
   rowKeydownHandler(ev, row) {
@@ -156,63 +157,10 @@ export default class DataTable {
   }
 }
 
-const saveChanges = (cell, link, callback = null) => {
+const saveChanges = (cell, url, onCellChangeHandler) => {
   return () => {
-    if (cell.getAttribute('dirty') == "true") {
-
-      // The data objet that will be sint via POST request
-      let data = {
-        id: '',
-        subjectName: '',
-        degree: ''
-      }
-
-      // initialize the data object
-      let table = document.getElementById('monitoring-table');
-      let head = table.querySelector('.table-head .table tr:nth-of-type(2)');
-      let index = cell.cellIndex;
-      let subjectName = head.children[index].getAttribute('subject-name');
-      let degree = cell.textContent;
-
-      if (degree === '') {
-        alert('empty');
-        degree = null;
-      } else if (isNaN(parseFloat(degree))) {
-        degree = -1;
-      }
-
-      data.id = cell.parentElement.querySelector('[studentId]').getAttribute('studentId');
-      data.degree = degree;
-      data.subjectName = subjectName;
-
-      let xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-          if (this.status == 200) {
-            let deg = JSON.parse(this.responseText)['degree'];
-            if (deg < 0) {
-              cell.textContent = 'غ';
-              cell.classList.add('warning');
-            } else {
-              cell.textContent = deg;
-              cell.classList.remove('warning');
-            }
-            cell.textContent = deg < 0 ? 'غ' : deg;
-            cell.classList.remove('danger');
-            cell.setAttribute('dirty', false);
-          } else {
-            alert(JSON.parse(this.responseText)['message']);
-            cell.textContent = cell.getAttribute('old-value');
-            cell.setAttribute('old-value', cell.textContent);
-            cell.classList.add('danger');
-          }
-        }
-      };
-
-      // Sending the POST request
-      xhr.open('POST', link, true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify(data));
+    if (cell.getAttribute('dirty') === "true") {
+      onCellChangeHandler(cell, url);
     }
   }
 }
