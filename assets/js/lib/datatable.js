@@ -3,6 +3,7 @@ export default class DataTable {
   constructor(table) {
     this.table = table;
     this.head = this.table.querySelector('.table-head');
+    this.headerContent = this.table.querySelector('.table-head .table-head-content');
     this.body = this.table.querySelector('.table-body');
     this.tableBody = this.body.querySelector('.table tbody');
     this.cells = this.body.querySelectorAll('td');
@@ -83,8 +84,11 @@ export default class DataTable {
 
   addScrolling() {
     if (this.body !== null && this.head !== null) {
-      this.body.scrollTo(this.body.scrollWidth, 0);
-      this.body.addEventListener('scroll', () => this.head.scroll(this.body.scrollLeft, 0));
+      if (this.headerContent) {
+        this.body.addEventListener('scroll', () => this.headerContent.scroll(this.body.scrollLeft, 0));
+      } else {
+        this.body.addEventListener('scroll', () => this.head.scroll(this.body.scrollLeft, 0));
+      }
     }
   }
 
