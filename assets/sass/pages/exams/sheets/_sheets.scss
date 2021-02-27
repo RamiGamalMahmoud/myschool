@@ -6,13 +6,9 @@
 
   }
 
-  .table-head {
-    max-width: calc(100% - 17px);
-  }
-
   .table-body {
     height: calc(100vh - 260px);
-    margin-top: 10px;
+    margin-top: 5px;
 
     .table {
       border-top: 1px solid #000;
