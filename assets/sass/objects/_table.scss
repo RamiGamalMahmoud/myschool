@@ -2,14 +2,37 @@ $table-border-color: #AAA;
 
 .table {
 
-  overflow: hidden;
+  // overflow: scroll;
   border: 1px solid $table-border-color;
   border-collapse: collapse;
   text-align: center;
 
-  th,
-  td {
+  tr {
+    background-color: #FFF;
+
+  }
+
+  td,
+  th {
     padding: 5px;
+
+    &.sticky {
+
+      &-left {
+        position: sticky;
+        left: 0;
+      }
+
+      &-right {
+        position: sticky;
+        background-color: inherit;
+        right: 0;
+      }
+
+      &-right-* {
+        color: red;
+      }
+    }
 
     &:not(:last-of-type) {
       border-left: 1px solid $table-border-color;
@@ -47,6 +70,12 @@ $table-border-color: #AAA;
       max-width: 250px;
       min-width: 250px;
     }
+
+    &.cell-size-6 {
+      width: 300px;
+      max-width: 300px;
+      min-width: 300px;
+    }
   }
 
   tr:not(:first-of-type) {
@@ -83,4 +112,16 @@ $table-border-color: #AAA;
         translate(25%, 0px) rotate(-90deg);
     }
   }
+
+  td.link-cell {
+    position: relative;
+    padding: 0;
+
+    .link {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
 }
