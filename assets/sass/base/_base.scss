@@ -1,3 +1,29 @@
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 200;
+
+  .header-section {
+    height: 100%;
+    min-width: 120px;
+  }
+}
+
+.profile-menu {
+  background-color: $main-color;
+
+  .link {
+    color: #FFF;
+  }
+}
+
+.content {
+  width: 100%;
+  margin: auto;
+  padding: 0 5px;
+  margin-top: 40px;
+}
+
 .table {
   $red: #f3558e;
   $yellow: #faee1c;
