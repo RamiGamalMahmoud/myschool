@@ -82,6 +82,8 @@ class EmployeesAffairsView
         $employeeType = [
             'management' => 'إدارة مدرسية',
             'teacher' => 'مدرس',
+            'specialist' => 'أخاصئي',
+            'lab-secretary' => 'أمين معمل',
             'employee' => 'إداري',
             'worker' => 'عامل'
         ];
