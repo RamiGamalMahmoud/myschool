@@ -11,6 +11,7 @@
 	</head>
 
 	<body>
+		{% apply spaceless %}
 		<div class="content-wrapper">
 			<header class="header">
 				<div class="header-section">
@@ -42,6 +43,8 @@
 			<div class="content"> {% block content %}{% endblock content %}
 				</div>
 			</div>
+			{% endapply %}
+
 			<script src="/js/app.js" type="module"></script>
 		</body>
 
