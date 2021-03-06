@@ -57,8 +57,10 @@ class EmployeesAffairsController
         $presentStatus = $this->router->get('present_status');
         if ($presentStatus === 'present') {
             $this->showPresent();
-        } else {
+        } else if ($presentStatus === 'all') {
             $this->showAll();
+        } else {
+            $this->showPresent();
         }
     }
 

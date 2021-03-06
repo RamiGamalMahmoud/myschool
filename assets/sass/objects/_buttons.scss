@@ -17,6 +17,12 @@
     border: none;
   }
 
+  &.close-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+
   @import 'items-colors';
 
   @import 'item-sizes';

@@ -1,0 +1,37 @@
+.checkbox-container {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+
+  .checkbox-label {
+    background-color: $gray;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 2px;
+    color: #000;
+    transition: background-color .4s;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    display: none;
+  }
+
+  input[type="checkbox"]:checked~.checkbox-label {
+    background-color: $success;
+    box-shadow: 0 0 10px $success;
+    color: #FFF;
+  }
+
+  input[type="checkbox"].clear-selection:checked~.checkbox-label {
+    background-color: $danger;
+    box-shadow: 0 0 10px $danger;
+    color: #FFF;
+  }
+}

@@ -1,10 +1,10 @@
 {% extends "employees-affairs/employees-affairs.twig" %}
 
-{% block employeesContent %}
-	<div class="page-header">
-		{% include "employees-affairs/edit-employee/components/page-header.twig" %}
-	</div>
+{% set headerContent %}
+{% include "employees-affairs/edit-employee/components/page-header.twig" %}
+{% endset %}
 
+{% block employeesContent %}
 	<div id="edit-employee-form">
 		{% include "employees-affairs/edit-employee/components/edit-form.twig" %}
 	</div>

@@ -1,0 +1,19 @@
+.data-table {
+  width: 1180px;
+
+  .table-head .columns-names {
+    height: 50px;
+  }
+
+  .table-body {
+    max-height: 700px;
+    min-height: calc(100% - 40px);
+
+    td.classrooms {
+
+      .btn.classroom {
+        margin: 2px;
+      }
+    }
+  }
+}

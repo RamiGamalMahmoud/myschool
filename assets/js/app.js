@@ -13,4 +13,5 @@ import { DataTable } from './lib';
 import './src/employees';
 import './src/students-affairs';
 import './src/exams';
+import './src/timetable';
 import './src/login.js';

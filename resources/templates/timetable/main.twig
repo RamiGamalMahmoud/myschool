@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% set sectionTitle = "مسئول الجدول" %}
+
+{% block header %}
+	{% include "timetable/components/header.twig" %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="timetable-content" id="timetable-content">
+		{% block timetableContent %}{% endblock timetableContent %}
+	</div>
+{% endblock content %}

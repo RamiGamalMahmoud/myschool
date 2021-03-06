@@ -1,0 +1,37 @@
+{% extends "timetable/main.twig" %}
+
+{% block timetableContent %}
+
+	<div class="data-table" id="timetable">
+
+		<div class="table-head">
+			<div class="table-head-content">
+				<table class="table">
+					<thead>
+						{% include "timetable/teacher-table/columns-sizes.twig" %}
+						{% include "timetable/teacher-table/columns-names.twig" %}
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="table-body">
+			<table class="table">
+				<thead>
+					{% include "timetable/teacher-table/columns-sizes.twig" %}
+				</thead>
+				<tbody>
+					{% set serial = 1 %}
+					{% for teacher in teachers %}
+						<tr>
+							{% include "timetable/teacher-table/data.twig" with {serial} %}
+						</tr>
+						{% set serial = serial + 1 %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+{% endblock timetableContent %}

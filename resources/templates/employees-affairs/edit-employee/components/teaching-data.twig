@@ -1,0 +1,41 @@
+<fieldset id="teaching-data">
+	<legend>بيانات مدرس</legend>
+	{% include "employees-affairs/edit-employee/components/is-dirty.twig" with { status: 0, name: "teaching-data[is-dirty]" }%}
+
+	<div class="form-item-container subject">
+		<label for="subject" class="lbl">مادة التدريس</label>
+		<select name="teaching-data[subject]" id="subject" class="combo-box resetable">
+			<option value="">المادة</option>
+			{% for subject in subjects %}
+				<option value="{{ subject.getSubjectName }}">{{ subject.getArabicName }}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div class="form-item-container classrooms">
+		<div class="checkboxes-container">
+			<label class="lbl checkboxes-title">الفصول</label>
+
+			<div class="checkboxes">
+				{% for grade in grades %}
+					<div class="grade-classrooms">
+						<span class="grade-title text-box">{{ grade['name'] }}</span>
+						{% for classroom in grade["classrooms"] %}
+							<div class="checkbox-container">
+								<input type="checkbox" name="classrooms[]" class="checkbox resetable" id="{{ classroom.getClassName }}" value="{{ classroom.getId }}">
+								<label name="{{ classroom.getClassName }}" for="{{ classroom.getClassName }}" class="checkbox-label btn">{{ classroom.getClassName }}</label>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</div>
+
+	<div class=" form-item-container quorum">
+		<label for="quorum" class="lbl">نصاب المدرس</label>
+		<input type="number" name="teaching-data[quorum]" id="quorum" class="text-box resetable">
+	</div>
+	{% include "employees-affairs/edit-employee/components/fieldset-buttons.twig" %}
+</fieldset>

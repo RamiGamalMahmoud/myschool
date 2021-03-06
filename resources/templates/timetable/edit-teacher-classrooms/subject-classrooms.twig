@@ -1,0 +1,32 @@
+<fieldset class="subject-classrooms" style="display: inline-block">
+	<legend>{{ subject["subject"].getArabicName() }}</legend>
+
+	<div id="subject-classrooms-container">
+
+		<div class="form-item-container classrooms">
+
+			<div class="checkboxes">
+				{% for grade in grades %}
+					<div class="grade-classrooms">
+						<span class="grade-title text-box">{{ grade['name'] }}</span>
+						{% for classroom in grade["classrooms"] %}
+							{% set className = classroom.getClassName %}
+							<div class="checkbox-container" classroom="{{ classroom.getId }}">
+								{% include "timetable/edit-teacher-classrooms/classroom-checkbox.twig" %}
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+				<div class="checkbox-container" role="cancel" classroom="{{ classroom.getId }}">
+					<input type="checkbox" name="classrooms[]" class="clear-selection" id="{{ subject['subject'].getid }}-{{ classroom.getId }}" value="{{ subject['subject'].getid }}-clear">
+					<label for="{{ subject["subject"].getId }}-{{ className }}" class="checkbox-label btn checkbox-clear clear-classrooms">
+						x
+					</label>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</fieldset>

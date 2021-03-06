@@ -1,6 +1,10 @@
 $table-border-color: #AAA;
 
 .data-table {
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px $gray;
+  padding: 5px;
 
   max-width: 100%;
 

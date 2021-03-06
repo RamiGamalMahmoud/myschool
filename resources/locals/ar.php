@@ -107,7 +107,9 @@ return [
             "management" => 'إدارة مدرسية',
             "teacher" => 'مدرس',
             "employee" => 'إداري',
-            "worker" => 'عامل'
+            "worker" => 'عامل',
+            "lab secretary" => "أمين معمل",
+            "specialist" => "أخصائي"
         ]
     ]
 ];

@@ -31,4 +31,13 @@ class Grade
     {
         return $this->gradeNumber;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getGradeName(),
+            'number' => $this->getGradeNumber()
+        ];
+    }
 }

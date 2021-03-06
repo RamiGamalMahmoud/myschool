@@ -15,6 +15,7 @@ class StudentRepo extends BaseRepo implements IStudentRepo
 
     public function __construct(IDataAccess $dataAccess)
     {
+        parent::__construct($dataAccess, 'students_data');
         $this->dataAccess = $dataAccess;
         $this->table = 'students_data';
 
@@ -34,7 +35,8 @@ class StudentRepo extends BaseRepo implements IStudentRepo
             'grade.grade_number',
             'grade.grade_name',
             'class_room.class_number',
-            'class_room.class_name'
+            'class_room.class_name',
+            'class_room.color'
         ];
     }
     public function getAll(): array

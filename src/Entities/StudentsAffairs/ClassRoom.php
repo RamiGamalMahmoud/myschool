@@ -10,13 +10,16 @@ class ClassRoom
 
     private string $className;
 
+    private string $color;
+
     private Grade $grade;
 
-    public function __construct($id, $classNumber, $className, Grade $grade)
+    public function __construct($id, $classNumber, $className, $color, Grade $grade)
     {
         $this->id = $id;
         $this->classNumber = $classNumber;
         $this->className = $className;
+        $this->color = $color;
         $this->grade = $grade;
     }
 
@@ -35,6 +38,11 @@ class ClassRoom
         return $this->className;
     }
 
+    public function getClassColor()
+    {
+        return $this->color;
+    }
+
     public function getGradeId()
     {
         return $this->grade->getId();
@@ -48,5 +56,15 @@ class ClassRoom
     public function getGradeNumber()
     {
         return $this->grade->getGradeNumber();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getGradeName(),
+            'color' => $this->getClassColor(),
+            'grade' => $this->grade->toArray()
+        ];
     }
 }

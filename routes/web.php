@@ -17,6 +17,7 @@ use SM\Controllers\StudentsAffairs\AbsenceController;
 use SM\Controllers\StudentsAffairs\StudentAbsenceController;
 use SM\Controllers\StudentsAffairs\StudentDataController;
 use SM\Controllers\StudentsAffairs\StudentsAffairsController;
+use SM\Controllers\Timetable\TimetableController;
 
 /**
  * GET ROUTES
@@ -89,6 +90,30 @@ Route::get(
     [StudentAbsenceController::class, 'showClassAbsenceRegistrationTable']
 );
 
+Route::get(
+    'timetable',
+    [TimetableController::class, 'index']
+);
+
+Route::get(
+    'timetable/teacher-table',
+    [TimetableController::class, 'showTeacherTable']
+);
+
+Route::get(
+    'timetable/teacher/edit/{id}',
+    [TimetableController::class, 'editTeacherClassrooms']
+);
+
+Route::get(
+    'timetable/teacher/get/{id}',
+    [TimetableController::class, 'getTeacherData']
+);
+
+Route::post(
+    'timetable/teacher/update',
+    [TimetableController::class, 'updateTeacher']
+);
 /**
  * POST ROUTES
  */

@@ -12,4 +12,28 @@
   &.lrg {
     font-size: .7em;
   }
+
+  font-weight: bold;
+  // padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+
+  .title,
+  .text {
+    padding: 5px;
+    margin: 0;
+  }
+
+  .title {
+    border-radius: 0 5px 5px 0;
+    background-color: $warning;
+    color: #FFF;
+
+  }
+
+  .text {
+    border-radius: 5px 0 0 5px;
+    background-color: $secondary-color;
+    color: #FFF;
+  }
 }

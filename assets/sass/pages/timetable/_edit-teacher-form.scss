@@ -1,0 +1,64 @@
+.edit-teacher-classrooms-form {
+  background-color: #FFF;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+  border-radius: 10px;
+
+  legend {
+    border-radius: 5px;
+  }
+
+  fieldset {
+    margin: 10px;
+  }
+}
+
+.form-header {
+  text-align: center;
+  font-size: 1.2rem;
+
+  .tag {
+    &:not(:first-of-type) {
+      margin-right: 5px;
+    }
+  }
+}
+
+#subject-classrooms {
+  display: inline-block;
+  padding: 10px;
+  margin: auto;
+}
+
+.form-item-container.classrooms {
+
+  .checkboxes,
+  .checkboxes-container {
+    overflow: hidden;
+  }
+
+  .checkboxes {
+    display: inline-block;
+  }
+
+  .grade-classrooms {
+    float: right;
+    width: 70px;
+    overflow: hidden;
+    padding: 5px;
+
+    &:hover .grade-title {
+      background-color: $warning;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    }
+
+    .grade-title {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+}

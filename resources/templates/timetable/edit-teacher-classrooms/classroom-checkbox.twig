@@ -1,0 +1,4 @@
+<input type="checkbox" name="classrooms[]" {% for cls in subject["classrooms"] %} {% if cls.getClassName == className %} checked {% endif %} {% endfor %} class="checkbox" id="{{ subject["subject"].getId }}-{{ className }}" value="{{ subject['subject'].getid }}-{{ classroom.getId }}">
+<label for="{{ subject["subject"].getId }}-{{ className }}" class="checkbox-label btn classroom">
+	{{ className }}
+</label>

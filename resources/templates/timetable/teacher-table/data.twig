@@ -1,0 +1,21 @@
+{% set teacherId = teacher.getId  %}
+
+<td>{{ teacherId }}</td>
+<td teacher-id="{{ teacherId }}" class="text-right teacher-name link-cell">
+	<a href="/timetable/teacher/edit/{{teacherId}}" class="link">{{ teacher.getName }}</a>
+</td>
+<td subject="{{ teacher.getSubject.getArabicName }}" style="position: relative;">
+	<span class="bar" style="background-color: #{{ teacher.getSubject.getSubjectColor }}"></span>
+	<span>{{ teacher.getSubject.getArabicName }}</span>
+</td>
+<td>{{ teacher["quorum"] }}</td>
+<td>0</td>
+<td class="classrooms">
+	{% for subject in teacher.getClassrooms %}
+		{% for classroom in subject['classrooms'] %}
+			<span class="btn mdm classroom" classroom="{{ classroom.getId }}" style="background-color: #{{ subject['subject'].getSubjectColor }}">
+				{{ classroom.getClassName }}
+			</span>
+		{% endfor %}
+	{% endfor %}
+</td>

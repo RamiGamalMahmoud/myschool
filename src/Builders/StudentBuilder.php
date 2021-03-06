@@ -11,7 +11,13 @@ class StudentBuilder
     public static function buildStudent(array $data)
     {
         $grade = new Grade($data['grade_id'], $data['grade_number'], $data['grade_name']);
-        $classroom = new ClassRoom($data['class_room_id'], $data['class_number'], $data['class_name'], $grade);
+        $classroom = new ClassRoom(
+            $data['class_room_id'],
+            $data['class_number'],
+            $data['class_name'],
+            $data['color'],
+            $grade
+        );
         $student = new Student(
             $data['id'],
             $data['name'],

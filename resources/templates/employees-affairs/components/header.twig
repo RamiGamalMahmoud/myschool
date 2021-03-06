@@ -1,4 +1,5 @@
 {% block header %}
 	{% include "employees-affairs/components/menu-bar.twig" %}
 	{% include "employees-affairs/components/search-box/search-box.twig" %}
+	{% include(template_from_string(headerContent)) %}
 {% endblock %}

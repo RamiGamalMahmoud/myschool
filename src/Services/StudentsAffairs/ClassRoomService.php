@@ -8,15 +8,20 @@ use SM\Repos\StudentsAffairs\IClassRoomRepo;
 
 class ClassRoomService
 {
-    private IClassRoomRepo $classRoomRepo;
+    private IClassRoomRepo $classroomRepo;
 
     public function __construct()
     {
-        $this->classRoomRepo = new ClassRoomRepo(new MySQLAccess());
+        $this->classroomRepo = new ClassRoomRepo(new MySQLAccess());
     }
 
     public function getClassRooms()
     {
-        return $this->classRoomRepo->getAll();
+        return $this->classroomRepo->getAll();
+    }
+
+    public function getClassroomById($id)
+    {
+        return $this->classroomRepo->getByid($id);
     }
 }

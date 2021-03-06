@@ -1,0 +1,25 @@
+{% extends "timetable/main.twig" %}
+
+{% block timetableContent %}
+
+	<form method="POST" class="edit-teacher-classrooms-form" action="/timetable/teacher/update">
+		<div class="form-header">
+			<div class="subject-container tag">
+				<input type="hidden" name="teacher-id" teacher-id value="{{ teacher.getId }}">
+				<span class="title">الاسم</span>
+				<span class="text" id="teacher-name">{{ teacher.getName }}</span>
+			</div>
+
+			<div class="subject-container tag">
+				<span class="title">التخصص</span>
+				<span class="text" id="subject">{{ teacher.getSubject.getArabicName }}</span>
+			</div>
+		</div>
+
+		<div id="subject-classrooms">
+			{% for subject in teacher.getClassRooms %}
+				{% include "timetable/edit-teacher-classrooms/subject-classrooms.twig" with {'subject' : subject} %}
+			{% endfor %}
+		</div>
+		<input class="btn info" type="submit" value="حفظ" id="submit"></form>
+{% endblock timetableContent %}

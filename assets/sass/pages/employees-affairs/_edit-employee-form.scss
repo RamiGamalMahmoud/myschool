@@ -1,74 +1,81 @@
+@import './edit-teacher-data';
+
 .combo-box,
 .text-box {
   font-size: .8em;
   margin: 0;
 }
 
-form .text-box {
-  width: 250px;
-  text-align: right;
-}
+.edit-employee-form {
+  .text-box {
+    width: 250px;
+    text-align: right;
+  }
 
-.combo-box {
-  width: 150px;
-  font-weight: bold;
-}
+  .combo-box {
+    width: 150px;
+    font-weight: bold;
+  }
 
-.lbl {
-  width: 150px;
-  text-align: right;
-  display: block;
-}
+  .lbl {
+    width: 150px;
+    text-align: right;
+    display: block;
+  }
 
-.lbl,
-.combo-box,
-.text-box {
-  height: 30px;
-}
+  .lbl,
+  .combo-box,
+  .text-box {
+    height: 30px;
+  }
 
-.form-row {
-  overflow: hidden;
-}
+  fieldset {
+    position: relative;
+    width: 250px;
+    margin: 0 10px;
+    float: right;
+  }
 
-.form-item-container {
-  float: right;
-  margin-right: 20px;
-}
+  .fieldset-buttons {
 
-.form-row-content {
-  display: inline-block;
-  margin: auto;
-}
-
-fieldset {
-  position: relative;
-  width: 850px;
-}
-
-.fieldset-buttons {
-
-  position: absolute;
-  top: 0;
-  left: 15px;
-}
-
-.reset-btn {
-  visibility: hidden;
-  font-size: .7rem;
-}
-
-.buttons-container {
-  position: relative;
-
-  .content-wrapper {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
+    top: 0;
+    left: 15px;
 
-    .btn {
-      width: 200px;
-      height: 30px;
+    .reset-btn {
+      visibility: hidden;
+      font-size: .7rem;
+    }
+  }
+}
+
+.form-item-container.classrooms {
+
+  .checkboxes,
+  .checkboxes-container {
+    overflow: hidden;
+  }
+
+  .checkboxes {
+    display: inline-block;
+  }
+
+  .grade-classrooms {
+    float: right;
+    width: 60px;
+    overflow: hidden;
+    padding: 5px;
+
+    &:hover .grade-title {
+      background-color: $warning;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    }
+
+    .grade-title {
+      width: 50px;
+      height: 40px;
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 }
