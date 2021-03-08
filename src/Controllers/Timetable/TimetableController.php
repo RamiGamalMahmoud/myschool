@@ -20,6 +20,25 @@ class TimetableController extends BaseController
 
     private TeacherService $teacherService;
 
+
+    private function getGradesData()
+    {
+        $classroomService = new ClassRoomService();
+        $gradeService = new GradeService();
+        $classrooms = $classroomService->getClassRooms();
+        $grades = $gradeService->getGrades();
+        $gradeClassrooms = [];
+
+        foreach ($grades as $grade) {
+            $classroomsInGrade = array_filter($classrooms, function ($classroom) use ($grade) {
+                return ($classroom->getGradeNumber() === $grade->getGradeNumber());
+            });
+            $gradeClassrooms[$grade->getGradeNumber()] = ['name' => $grade->getGradeName(), 'classrooms' => $classroomsInGrade];
+        }
+
+        return $gradeClassrooms;
+    }
+
     public function __construct(Request $request, Router $router)
     {
         parent::__construct($request, $router);
@@ -55,23 +74,5 @@ class TimetableController extends BaseController
         $teacher = $this->teacherService->getTeacher($id);
         $this->view->addToContextData('grades', $this->getGradesData());
         $this->view->showEditTeacherForm($teacher);
-    }
-
-    private function getGradesData()
-    {
-        $classroomService = new ClassRoomService();
-        $gradeService = new GradeService();
-        $classrooms = $classroomService->getClassRooms();
-        $grades = $gradeService->getGrades();
-        $gradeClassrooms = [];
-
-        foreach ($grades as $grade) {
-            $classroomsInGrade = array_filter($classrooms, function ($classroom) use ($grade) {
-                return ($classroom->getGradeNumber() === $grade->getGradeNumber());
-            });
-            $gradeClassrooms[$grade->getGradeNumber()] = ['name' => $grade->getGradeName(), 'classrooms' => $classroomsInGrade];
-        }
-
-        return $gradeClassrooms;
     }
 }
