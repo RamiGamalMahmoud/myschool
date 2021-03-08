@@ -96,6 +96,26 @@ Route::get(
 );
 
 Route::get(
+    'timetable/show/main-table',
+    [TimetableController::class, 'showMainTable']
+);
+
+Route::get(
+    'timetable/show/teacher-timetable/{id}',
+    [TimetableController::class, 'showMainTable']
+);
+
+Route::get(
+    'timetable/show/classroom-timetable/{id}',
+    [TimetableController::class, 'showMainTable']
+);
+
+Route::get(
+    'timetable/show/day-timetable/{id}',
+    [TimetableController::class, 'showMainTable']
+);
+
+Route::get(
     'timetable/teacher-table',
     [TimetableController::class, 'showTeacherTable']
 );
