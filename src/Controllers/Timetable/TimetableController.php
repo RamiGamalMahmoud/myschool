@@ -75,4 +75,36 @@ class TimetableController extends BaseController
         $this->view->addToContextData('grades', $this->getGradesData());
         $this->view->showEditTeacherForm($teacher);
     }
+
+    public function showMainTable()
+    {
+        $teachers = $this->teacherService->getAllTeachers();
+        $schoolDays = $this->timetableService->getAllSchoolDays();
+        $timetableDays = $this->timetableService->getAllTimetableDays();
+
+        $gradesData = $this->getGradesData();
+        $this->view->addToContextData('timetable', $timetableDays);
+        $this->view->addToContextData('days', $schoolDays);
+        $this->view->addToContextData('teachers', $teachers);
+        $this->view->showMainTable();
+    }
+
+    public function showDayTimetable()
+    {
+        $dayId = $this->router->get('id');
+        $teachers = $this->teacherService->getAllTeachers();
+        $timetableDays = $this->timetableService->getDayTimetable($dayId);
+
+        $gradesData = $this->getGradesData();
+        $this->view->addToContextData('timetable', $timetableDays);
+        $this->view->addToContextData('day', $this->timetableService->getSchoolDay($dayId));
+        $this->view->addToContextData('teachers', $teachers);
+        $this->view->showDayTimetable();
+    }
+
+    public function updateTimetable()
+    {
+        $data = (array)($this->request->getAjaxData());
+        $this->timetableService->updateTimetable($data);
+    }
 }
