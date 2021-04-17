@@ -36,6 +36,17 @@ class TeacherRepo extends BaseRepo implements ITeacherRepo
         $this->dataAccess->run($query);
     }
 
+    public function getTeacherClassroomsId($teacherId, $usbjectId)
+    {
+        $query = new Query();
+        $query->select(['id'])
+            ->from('teacher_classrooms')
+            ->where('teacher_id', '=', $teacherId)
+            ->andWhere('subject_id', '=', $usbjectId);
+        $teacherClassroomsId = $this->dataAccess->get($query);
+        return $teacherClassroomsId['id'];
+    }
+
     public function getTeacherById($id)
     {
         $query = new Query();
