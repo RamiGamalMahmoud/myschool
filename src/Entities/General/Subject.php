@@ -48,6 +48,15 @@ class Subject
         return $this->color;
     }
 
+    public function getColor()
+    {
+        $rgb = str_split($this->color, 2);
+        $rgb = array_map(function ($color) {
+            return hexdec($color);
+        }, $rgb);
+        return $rgb;
+    }
+
     public function toArray(): array
     {
         return [
