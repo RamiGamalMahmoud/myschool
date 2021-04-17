@@ -112,7 +112,7 @@ Route::get(
 
 Route::get(
     'timetable/show/day-timetable/{id}',
-    [TimetableController::class, 'showMainTable']
+    [TimetableController::class, 'showDayTimetable']
 );
 
 Route::get(
@@ -152,6 +152,10 @@ Route::post(
     [StudentAbsenceController::class, 'registerStudentAbsence']
 );
 
+Route::post(
+    'timetable/period/update',
+    [TimetableController::class, 'updateTimetable']
+);
 /**
  * MIDDLEWARE ROUTES
  */
