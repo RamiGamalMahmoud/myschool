@@ -22,8 +22,8 @@ export default class XHR {
 
   onFail(callable) {
     this.xhr.addEventListener('readystatechange', function () {
-      if (this.readyState !== 4 || this.status !== 200) {
-        callable();
+      if (this.readyState === 4 && this.status !== 200) {
+        callable(this.responseText);
       }
     });
   }
