@@ -20,13 +20,15 @@ $table-border-color: #AAA;
     &.sticky {
 
       &-left {
+        background-color: inherit;
         position: sticky;
         left: 0;
       }
 
       &-right {
         position: sticky;
-        background-color: inherit;
+        background-color: #FFF;
+        box-shadow: -3px 0 5px -2px rgba(0, 0, 0, .2);
         right: 0;
       }
 
@@ -107,8 +109,8 @@ $table-border-color: #AAA;
   tbody {
     tr {
       &:hover {
-        background-color: #c1eaf1;
-        color: #000;
+        background-color: rgba(0, 150, 140, 0.1);
+        color: #333;
       }
     }
   }
