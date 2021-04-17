@@ -26,4 +26,16 @@ class TimetableView extends BaseView
         $this->addToContextData('teacher', $teacher);
         $this->render();
     }
+
+    public function showMainTable()
+    {
+        $this->template = 'timetable/timetable/main-table/main-table.twig';
+        $this->render();
+    }
+
+    public function showDayTimetable()
+    {
+        $this->template = 'timetable/timetable/day-table/day-table.twig';
+        $this->render();
+    }
 }
