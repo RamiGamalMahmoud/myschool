@@ -4,6 +4,7 @@ import ResetableFieldset from './resetable-fieldset';
 import SearchBox from './search-box';
 import SearchResult from './search-result';
 import XHR from './xhr';
+import flash from './flash';
 
 export {
   DataTable,
@@ -11,5 +12,6 @@ export {
   ResetableFieldset,
   SearchBox,
   SearchResult,
-  XHR
+  XHR,
+  flash
 };
