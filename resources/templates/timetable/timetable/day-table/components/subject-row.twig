@@ -1,0 +1,7 @@
+<td subject-id="{{subject['subject'].getId}}" style="background-color: rgba({{ subject['subject'].getColor[0] }}, {{ subject['subject'].getColor[1] }}, {{ subject['subject'].getColor[2] }}, .2)">
+	{{ subject['subject'].getArabicName   }}</td>
+{% for period in day.getPeriods %}
+	<td style="padding: 0">
+		{{ timetable[teacher.getId][subject['subject'].getId][period.getId] }}
+	</td>
+{% endfor %}

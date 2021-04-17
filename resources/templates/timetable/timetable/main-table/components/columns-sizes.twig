@@ -1,0 +1,10 @@
+<tr class="head-space-holder">
+	<th class="cell-size-1"></th>
+	<th class="cell-size-4"></th>
+	<th class="cell-size-2"></th>
+	{% for day in days %}
+		{% for period in day.getPeriods %}
+			<th class="cell-size-1"></th>
+		{% endfor %}
+	{% endfor %}
+</tr>

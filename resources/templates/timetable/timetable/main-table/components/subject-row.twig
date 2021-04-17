@@ -1,0 +1,17 @@
+{% set subjectBackground = 'style="background-color: rgba({{ subject[\'subject\'].getColor[0] }}, {{ subject[\'subject\'].getColor[1] }}, {{ subject[\'subject\'].getColor[2] }}, .1)"' %}
+
+<td teacher-id="{{ teacher.getId() }}" subject-id="{{subject['subject'].getId}}" {% include(template_from_string(subjectBackground)) %}>
+	{{ subject['subject'].getArabicName   }}</td>
+{% for day in days %}
+	{% for period in day.getPeriods %}
+		<td day-id="{{ day.getId() }}" period-id="{{ period.getId() }}" class="classroom" {% if loop.last %} {% include(template_from_string(dayBlock)) %} {% endif %}>
+			{% set currentClassroom = timetable[day.getId()][teacher.getId()][subject['subject'].getId()][period.getId()] %}
+			<select class="combo-box">
+				<option value="0"></option>
+				{% for classroom in subject["classrooms"] %}
+					<option value="{{ classroom.getId() }}" {% if classroom.getClassName == currentClassroom %} selected {% endif %}>{{ classroom.getClassName }}</option>
+				{% endfor %}
+			</select>
+		</td>
+	{% endfor %}
+{% endfor %}

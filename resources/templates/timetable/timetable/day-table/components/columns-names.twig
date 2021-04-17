@@ -1,0 +1,12 @@
+<tr>
+	<th colspan="1" rowspan="2">مسلسل</th>
+	<th colspan="1" rowspan="2">اسم المدرس</th>
+	<th colspan="1" rowspan="2">المادة</th>
+	<th colspan="{{ day.getPeriodsCount }}" rowspan="1">{{ day.getDayName }}</th>
+</tr>
+
+<tr>
+	{% for period in day.getPeriods %}
+		<th colspan="1" rowspan="1">{{ period.getPeriodNumber }}</th>
+	{% endfor %}
+</tr>

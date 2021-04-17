@@ -1,0 +1,35 @@
+{% extends "timetable/main.twig" %}
+
+{% block timetableContent %}
+
+	<div class="data-table" id="day-table">
+
+		<div class="table-head">
+			<div class="table-head-content">
+				<table class="table">
+					<thead>
+						{% include "timetable/timetable/day-table/components/columns-sizes.twig" %}
+						{% include "timetable/timetable/day-table/components/columns-names.twig" %}
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="table-body">
+			<table class="table">
+				<thead>
+					{% include "timetable/timetable/day-table/components/columns-sizes.twig" %}
+				</thead>
+				<tbody>
+					{% set serial = 1 %}
+					{% for teacher in teachers %}
+						{% include "timetable/timetable/day-table/components/data.twig" with {serial} %}
+						{% set serial = serial + 1 %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+{% endblock timetableContent %}

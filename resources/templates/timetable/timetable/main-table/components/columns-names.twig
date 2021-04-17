@@ -1,0 +1,16 @@
+<tr>
+	<th colspan="1" rowspan="2">مسلسل</th>
+	<th colspan="1" rowspan="2" class="sticky-right">اسم المدرس</th>
+	<th colspan="1" rowspan="2">المادة</th>
+	{% for day in days %}
+		<th colspan="{{ day.getPeriodsCount }}" rowspan="1" {% include(template_from_string(dayBlock)) %}>{{ day.getDayName }}</th>
+	{% endfor %}
+</tr>
+
+<tr>
+	{% for day in days %}
+		{% for period in day.getPeriods %}
+			<th colspan="1" rowspan="1" {% if loop.last %} {% include(template_from_string(dayBlock)) %} {% endif %}>{{ period.getPeriodNumber }}</th>
+		{% endfor %}
+	{% endfor %}
+</tr>
