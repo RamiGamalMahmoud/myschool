@@ -1,10 +1,36 @@
-.timetable-content {
-  position: relative;
+#main-table {
 
-  .overlay {
-    display: none;
+
+  .table-body {
+    tbody tr {
+      border-top: 1px dashed $secondary-color;
+    }
   }
 
-  @import './teachers-table';
-  @import './edit-teacher-form';
+  .classroom {
+    padding: 2px 4px;
+
+    select {
+      appearance: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: .9em;
+      transition: background-color 0.5s;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: #FFF;
+
+        option {
+          background-color: #FFF;
+          color: #555;
+        }
+      }
+    }
+  }
 }
