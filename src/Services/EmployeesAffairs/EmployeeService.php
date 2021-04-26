@@ -5,6 +5,7 @@ namespace SM\Services\EmployeesAffairs;
 use Simple\Core\DataAccess\MySQLAccess;
 use Simple\Helpers\Log;
 use SM\Builders\PersonBuilder;
+use SM\Contracts\Services\EmployeeServiceInterface;
 use SM\Entities\Employees\Employee;
 use SM\Entities\EmployeesAffairs\EmployeeStatus;
 use SM\Entities\EmployeesAffairs\SocialStatus;
@@ -21,7 +22,7 @@ use SM\Repos\EmployeesAffairs\SocialData\ISocialStatusRepo;
 use SM\Repos\EmployeesAffairs\SocialData\LastSocialStatusRepo;
 use SM\Repos\EmployeesAffairs\SocialData\SocialStatusRepo;
 
-class EmployeeService
+class EmployeeService implements EmployeeServiceInterface
 {
     private IEmployeeRepo $employeeRepo;
 
