@@ -6,11 +6,10 @@ use Simple\Core\Router;
 use Simple\Core\Request;
 use Simple\Core\Redirect;
 use Simple\Core\Response;
-use Simple\Helpers\Log;
 use SM\Builders\PersonBuilder;
+use SM\Contracts\Services\EmployeeServiceInterface;
 use SM\Entities\EmployeesAffairs\SocialStatus;
 use SM\Entities\EmployeesAffairs\EmployeeStatus;
-use SM\Services\EmployeesAffairs\EmployeeService;
 use SM\Views\EmployeesAffairs\EmployeesAffairsView;
 
 class EmployeesAffairsController
@@ -28,7 +27,7 @@ class EmployeesAffairsController
     /**
      * @var \SM\Services\EmployeesAffairs\EmployeeService
      */
-    private EmployeeService $employeeService;
+    private EmployeeServiceInterface $employeeService;
 
     /**
      * @var \SM\Views\EmployeesAffairs\EmployeesAffairsView
@@ -41,11 +40,11 @@ class EmployeesAffairsController
      * @param \Simple\Core\Request $request
      * @param \Simple\Core\Router $router
      */
-    public function __construct(Request $request, Router $router)
+    public function __construct(Request $request, Router $router, EmployeeServiceInterface $employeeService)
     {
         $this->request = $request;
         $this->router = $router;
-        $this->employeeService = new EmployeeService();
+        $this->employeeService = $employeeService;
         $this->view = new EmployeesAffairsView();
     }
 
