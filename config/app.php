@@ -8,5 +8,11 @@ return [
 
     'document_root' => $_SERVER['SERVER_ADMIN'] === 'localhost' ? '/myschool/public/' : '/',
 
-    'time_zone' => 'Africa/Cairo'
+    'db_connection' => 'mysql',
+
+    'time_zone' => 'Africa/Cairo',
+
+    'providers' => [
+        SM\Providers\AppServiceProvider::class
+    ]
 ];
