@@ -3,10 +3,11 @@
 namespace SM\Services\Address;
 
 use Simple\Core\DataAccess\MySQLAccess;
+use SM\Contracts\Services\AddressServiceInterface;
 use SM\Repos\Address\CityRepo;
 use SM\Repos\Address\GovernorateRepo;
 
-class AddressService
+class AddressService implements AddressServiceInterface
 {
     private GovernorateRepo $governorateRepo;
 
