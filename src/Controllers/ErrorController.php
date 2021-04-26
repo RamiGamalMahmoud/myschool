@@ -2,10 +2,11 @@
 
 namespace SM\Controllers;
 
+use Simple\Contracts\ErrorHandlerInterface;
 use Simple\Core\IErrorHandler;
 use Simple\Core\View;
 
-class ErrorController implements IErrorHandler
+class ErrorController implements ErrorHandlerInterface
 {
     private array $context;
     private string $template = 'errors/error.twig';
