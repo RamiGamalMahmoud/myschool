@@ -13,7 +13,7 @@
   "repositories": [
     {
       "type": "path",
-      "url": "E:\\work-space\\programing\\web\\php\\packages\\Simple"
+      "url": "D:\\work-space\\programing\\web\\php\\packages\\Simple"
     }
   ],
   "require": {

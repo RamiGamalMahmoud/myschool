@@ -4,19 +4,23 @@
  * Database configrations goes here
  */
 return [
+    'driver' => 'mysql',
 
-    'mysql' => [
-        'db'       => 'myschool',
-        'driver'   => 'mysql',
-        'host'     => 'localhost',
-        'password' => '',
-        'port'     => '3306',
-        'userName' => 'root'
-    ],
+    'connections' => [
 
-    'sqlite' => [],
+        'mysql' => [
+            'db'       => 'myschool',
+            'driver'   => 'mysql',
+            'host'     => 'localhost',
+            'password' => '',
+            'port'     => '3306',
+            'userName' => 'root'
+        ],
 
-    'sqlserver' => [],
+        'sqlite' => [],
 
-    'oracle' => []
+        'sqlserver' => [],
+
+        'oracle' => []
+    ]
 ];
